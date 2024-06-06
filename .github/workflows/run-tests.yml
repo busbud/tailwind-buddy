@@ -1,0 +1,38 @@
+name: Run tests
+on:
+  pull_request:
+    types:
+      - opened
+      - reopened
+      - edited
+      - synchronize
+
+jobs:
+  main:
+    runs-on: ubuntu-latest
+    env:
+      NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Use Node.js
+        uses: actions/setup-node@v1
+        with:
+          node-version: "20.x"
+
+      - name: Install dependencies
+        run: npm i -g pnpm && pnpm i
+
+      - name: Run commitlint
+        env:
+          COMMIT_MESSAGE: ${{ github.event.pull_request.title }}
+        run: echo $COMMIT_MESSAGE | npx commitlint
+
+      - name: Run lint
+        run: pnpm tca:lint
+
+      - name: Run build
+        run: pnpm tca:build
+
+      - name: Run test
+        run: pnpm tca:test

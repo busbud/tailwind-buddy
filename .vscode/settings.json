@@ -1,0 +1,13 @@
+{
+  "editor.quickSuggestions": {
+    "strings": "on"
+  },
+  "css.validate": false,
+  "editor.inlineSuggest.enabled": true,
+  "tailwindCSS.classAttributes": [
+    "class",
+    "className",
+    ".*Styles.",
+    ".*Classes."
+  ]
+}

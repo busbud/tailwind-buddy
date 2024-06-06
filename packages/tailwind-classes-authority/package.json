@@ -1,0 +1,40 @@
+{
+  "name": "tailwind-classes-authorithy",
+  "private": false,
+  "version": "0.0.1",
+  "type": "module",
+  "license": "UNLICENSED",
+  "files": [
+    "dist"
+  ],
+  "main": "./dist/tca.umd.cjs",
+  "module": "./dist/tca.js",
+  "types": "./dist/tca.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/tca.js",
+      "require": "./dist/tca.umd.cjs",
+      "types": "./dist/tca.d.ts"
+    }
+  },
+  "engines": {
+    "node": "20.12.2"
+  },
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "test": "vitest",
+    "css": "tailwindcss -i ./input.css -o ./dist/output.css"
+  },
+  "devDependencies": {
+    "autoprefixer": "^10.4.19",
+    "postcss": "^8.4.38",
+    "typescript": "^5.2.2",
+    "vite": "^5.2.0",
+    "vite-plugin-dts": "^3.8.1",
+    "vitest": "^1.4.0"
+  },
+  "dependencies": {
+    "tailwindcss": "^3.4.3"
+  }
+}

@@ -1,4 +1,16 @@
 
+## v0.0.11
+
+[compare changes](https://github.com/flozero/tailwind-classes-authorithy/compare/v0.0.10...v0.0.11)
+
+### 🏡 Chore
+
+- Top level config ([570b5ee](https://github.com/flozero/tailwind-classes-authorithy/commit/570b5ee))
+
+### ❤️ Contributors
+
+- Florent Giraud ([@flozero](http://github.com/flozero))
+
 ## v0.0.10
 
 [compare changes](https://github.com/flozero/tailwind-classes-authorithy/compare/v0.0.9...v0.0.10)

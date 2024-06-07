@@ -1,4 +1,16 @@
 
+## v0.0.13
+
+[compare changes](https://github.com/flozero/tailwind-classes-authorithy/compare/v0.0.12...v0.0.13)
+
+### 🏡 Chore
+
+- Renamve package name ([77a76fe](https://github.com/flozero/tailwind-classes-authorithy/commit/77a76fe))
+
+### ❤️ Contributors
+
+- Florent Giraud ([@flozero](http://github.com/flozero))
+
 ## v0.0.12
 
 [compare changes](https://github.com/flozero/tailwind-classes-authorithy/compare/v0.0.11...v0.0.12)

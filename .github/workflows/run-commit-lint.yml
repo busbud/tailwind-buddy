@@ -1,4 +1,4 @@
-name: Run tests
+name: Run Commit lint
 on:
   pull_request:
     types:
@@ -6,9 +6,6 @@ on:
       - reopened
       - edited
       - synchronize
-  push:
-    branches:
-      - main
 
 jobs:
   main:
@@ -26,11 +23,7 @@ jobs:
       - name: Install dependencies
         run: npm i -g pnpm && pnpm i
 
-      - name: Run lint
-        run: pnpm tca:lint
-
-      - name: Run build
-        run: pnpm tca:build
-
-      - name: Run test
-        run: pnpm tca:test
+      - name: Run commitlint
+        env:
+          COMMIT_MESSAGE: ${{ github.event.pull_request.title }}
+        run: echo $COMMIT_MESSAGE | npx commitlint

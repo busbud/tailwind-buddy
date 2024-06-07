@@ -1,14 +1,11 @@
-import { Label } from "awesome";
+import { Label } from "ui-kit";
 
 function App() {
   return (
     <div className="gap-8 flex flex-col">
       <Label
-        size={{
-          initial: "sm",
-          md: "xxl",
-        }}
-        fontWeight={"extraBold"}
+        size="xxl"
+        fontWeight="extraBold"
       >
         Label
       </Label>

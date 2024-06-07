@@ -1,7 +1,34 @@
 // import { tv } from "tailwind-variants";
 import { tca } from "tailwind-classes-authority"
-console.log(tca)
 
+export const labelVariants = tca({
+    slots: {
+        "root": "bg-black"
+    },
+    "variants": {
+        fontWeight: {
+            default: "font-regular",
+            values: {
+                regular: "font-regular",
+                bold: "font-bold",
+                extraBold: "font-extrabold"
+            }
+        },
+        size: {
+            default: "md",
+            values: {
+                xxl: ["text-4xl", "leading-10", "tracking-tight"],
+                xl: "text-2xl leading-8",
+                lg: "text-lg leading-6",
+                md: "text-md leading-4",
+                sm: "text-sm leading-4",
+                xs: "text-xs uppercase leading-4 tracking-wider",
+                xxs: "text-xs uppercase leading-4 tracking-wider"
+            }
+        
+        }
+    }
+})
 // export const labelVariants = tv(
 //   {
 //     slots: {

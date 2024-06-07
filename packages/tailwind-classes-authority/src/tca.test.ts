@@ -1,26 +1,49 @@
-// sum.test.js
 import { describe, expect, test } from 'vitest'
-import { miniAndCoumpounds } from "./configs/miniAndCoumpound"
+import { full, fullWithoutTwMerge } from "./configs/full"
+import { twMerge } from "tailwind-merge"
 
 describe('test tv', () => {
-    const { root, cat } = miniAndCoumpounds()
 
+    const { root, cat } = full()
+    const { root: rootWithoutTwMerge, cat: catWithoutMerge } = fullWithoutTwMerge()
+    
     test("root slot", () => {
-        const str = root({color: "success", disabled: true})
-        const str_second = root({color: "success", disabled: false})
-        const str_third = root({color: "secondary", disabled: true})
-        const str_fourth = root({color: "secondary", disabled: false})
+        const options = {
+            color: "success"
+        }
+        const str = root(options)
+        const str_second = rootWithoutTwMerge(options)
 
-        expect(str).toBe("font-weight-extra-bold text-white-100 text-size-600 py-150 px-400 rounded-full active:opacity-80 bg-purple-500 hover:bg-purple-700 opacity-50 bg-gray-500 pointer-events-none bg-green-100 text-green-700 dark:text-green-800")
-        expect(str_second).toBe("font-weight-extra-bold text-white-100 text-size-600 py-150 px-400 rounded-full active:opacity-80 bg-purple-500 hover:bg-purple-700 opacity-50 bg-gray-500 pointer-events-none")
-        expect(str_third).toBe("font-weight-extra-bold text-white-100 text-size-600 py-150 px-400 rounded-full active:opacity-80 bg-purple-500 hover:bg-purple-700 opacity-50 bg-gray-500 pointer-events-none text-slate-400 bg-slate-200 dark:bg-slate-800 opacity-100")
-        expect(str_fourth).toBe("font-weight-extra-bold text-white-100 text-size-600 py-150 px-400 rounded-full active:opacity-80 bg-purple-500 hover:bg-purple-700 opacity-50 bg-gray-500 pointer-events-none")
+        const expectedFullStr = "font-extrabold bg-red-100 bg-red-400 bg-red-500"
+
+        expect(str_second).toBe(expectedFullStr)
+        expect(str).toBe(twMerge(expectedFullStr))
     })
 
     test("cat slot", () => {
-        const str = cat({ disabled: true})
-        const str_second = cat({ disabled: true, color: "primary"})
-        expect(str).toBe("text-red-500 bg-orange-500")
-        expect(str_second).toBe("text-red-500 bg-orange-500")
+        const options = {
+            disabled: true
+        }
+        const str = cat(options)
+        const str_second = catWithoutMerge(options)
+
+        const expectedFullStr = "text-blue-100 text-blue-200 text-blue-500"
+
+        expect(str_second).toBe(expectedFullStr)
+        expect(str).toBe(twMerge(expectedFullStr))
+    })
+
+    test("cat slot with coumpound class string", () => {
+        const options = {
+            disabled: false
+        }
+
+        const str = cat(options)
+        const str_second = catWithoutMerge(options)
+
+        const expectedFullStr = "text-blue-100 text-blue-200 text-blue-400 text-blue-600"
+
+        expect(str_second).toBe(expectedFullStr)
+        expect(str).toBe(twMerge(expectedFullStr))
     })
 })

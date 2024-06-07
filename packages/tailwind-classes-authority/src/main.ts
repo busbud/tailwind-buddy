@@ -1,9 +1,9 @@
-import { miniAndCoumpounds } from "./configs/miniAndCoumpound";
+// import { full } from "./configs/full";
 
-// createMultiTV
-// createOneTV
-// Merge classes -> base => variant => compound => className
+// // createMultiTV
+// // createOneTV
+// // Merge classes -> base => variant => compound => className
 
-const { root } = miniAndCoumpounds();
+// const { root } = full();
 
-console.log(root({"bonjour": "hello"}));
+// console.log(root({"bonjour": "hello"}));

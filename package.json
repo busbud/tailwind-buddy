@@ -8,9 +8,9 @@
   },
   "scripts": {
     "commit": "commit",
-    "tca:release": "pnpm --filter './packages/tailwind-classes-authority' release",
-    "tca:test": "pnpm --filter './packages/tailwind-classes-authority' test:ci",
-    "tca:build": "pnpm --filter './packages/tailwind-classes-authority' build"
+    "tca:release": "pnpm --filter './packages/core' release",
+    "tca:test": "pnpm --filter './packages/core' test:ci",
+    "tca:build": "pnpm --filter './packages/core' build"
     
   },
   "devDependencies": {

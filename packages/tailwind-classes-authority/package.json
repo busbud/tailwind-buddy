@@ -21,10 +21,13 @@
     "node": "20.12.2"
   },
   "scripts": {
-    "dev": "vite",
     "build": "tsc && vite build",
-    "test": "vitest",
-    "css": "tailwindcss -i ./input.css -o ./dist/output.css"
+    "release": "pnpm prepack && changelogen --release  && pnpm publish --no-git-checks && git push --follow-tags",
+    "npm-auth-check": "[[ $(npm_config_registry=https://registry.npmjs.org npm whoami) = \"busbud-dev\" ]] && echo \"NPM Authentication ✅\"",
+    "prepack": "pnpm build",
+    "test:ci": "CI=true pnpm test:unit",
+    "test:unit": "vitest"
+
   },
   "devDependencies": {
     "autoprefixer": "^10.4.19",

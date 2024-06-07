@@ -27,7 +27,8 @@ export const labelVariants = tca({
             }
         
         }
-    }
+    },
+    compoundVariants: []
 })
 // export const labelVariants = tv(
 //   {

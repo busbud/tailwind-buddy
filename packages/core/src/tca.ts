@@ -17,9 +17,10 @@ export const tca = (variantDefinition:any, tcaConfig: any = {}) => () => {
     return slots.reduce((acc, slot) => {
         acc[slot] = (variantsProps: any = {}, otherProps: any = {}) => {
 
+
             const slotDefaultClasses = variantDefinition.slots[slot] ? [variantDefinition.slots[slot]] : []
             const [defaultProps, slotVariantsClasses] = retrieveVariantsClasses(variants, variantsProps, slot)
-            const slotCompoundClasses = retrieveCompoundClasses(variantDefinition.compoundVariants, defaultProps, slot)
+            const slotCompoundClasses = retrieveCompoundClasses(variantDefinition.compoundVariants || [], defaultProps, slot)
 
             const str = [
                 ...slotDefaultClasses,

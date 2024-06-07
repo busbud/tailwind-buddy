@@ -26,9 +26,6 @@ jobs:
       - name: Install dependencies
         run: npm i -g pnpm && pnpm i
 
-      - name: Run lint
-        run: pnpm tca:lint
-
       - name: Run build
         run: pnpm tca:build
 

@@ -32,9 +32,10 @@ export const labelVariantsConfigurations = {
         {
             conditions: {
                 fontWeight: "bold",
-                size: "lg"
+                size: "lg",
+                disabled: true
             },
-            class: "bg-blue-500"
+            class: "bg-blue-500 text-white"
         }
     ]
 }

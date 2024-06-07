@@ -5,13 +5,14 @@ function App() {
   return (
     <div className="gap-8 flex flex-col">
       <Label
-        className="bg-purple-500"
+        className="bg-green-500"
         size={{
           initial: "md",
           sm: "lg",
           md: "xl",
           lg: "xxl",
         }}
+        // size="lg"
         fontWeight="bold"
       >
         Label

@@ -19,6 +19,8 @@ export const Label: React.FC<PropsWithChildren<LabelProps>> = ({
       className={root({
         size,
         fontWeight,
+      }, {
+        disabled: true,
         className
       })}
       {...restProps}

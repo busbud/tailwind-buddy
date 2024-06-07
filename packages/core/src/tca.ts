@@ -1,7 +1,6 @@
 import { extractSlots } from "./utils/extract-slots";
 import { extendTailwindMerge } from "tailwind-merge"
 import { retrieveVariantsClasses } from "./utils/variants";
-// import { retrieveCompoundClasses } from "./utils/compounds";
 
 export const defaultConfiguration = {
     screens: ["sm", "md", "lg", "xl", "xxl"],
@@ -14,22 +13,23 @@ export const tca = (variantDefinition: any, tcaConfig: any = {}) => () => {
 
     return slots.reduce((acc, slot) => {
         acc[slot] = (variantsProps: any = {}, otherProps: any = {}) => {
-
-            const className = variantsProps.className || ""
-            delete variantsProps["className"]
+            const className = otherProps.className || ""
             const slotDefaultClasses = variantDefinition.slots[slot] ? [variantDefinition.slots[slot]] : []
             const slotVariantsClasses = retrieveVariantsClasses(variants, variantsProps, slot)
             const validCompounds: any[] = []
-            let _str = []
             if (variantDefinition.compoundVariants.length > 0) {
                 variantDefinition.compoundVariants.forEach((compound: any) => {
                     let hasFailed = false
                     let tmpClasses: any[] = []
                     Object.entries(compound.conditions).forEach(([key, value]: any) => {
+                        console.log(key, value)
                         if (hasFailed) return
-
-                        if (variantsProps[key] === "string") {
+                        if (!variantsProps[key]) {
+                            if (otherProps[key] !== value) hasFailed = true
+                        }
+                        else if (typeof variantsProps[key] === "string") {
                             if (value !== variantsProps[key]) hasFailed = true
+                            else tmpClasses.push(compound.class)
                         } else if (typeof variantsProps[key] === "object") {
                             let found = false
                             let _k = ""

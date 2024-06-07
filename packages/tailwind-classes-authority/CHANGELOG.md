@@ -1,4 +1,16 @@
 
+## v0.0.4
+
+[compare changes](https://github.com/flozero/tailwind-classes-authorithy/compare/v0.0.3...v0.0.4)
+
+### 🏡 Chore
+
+- Remove automated workflows ([7210b14](https://github.com/flozero/tailwind-classes-authorithy/commit/7210b14))
+
+### ❤️ Contributors
+
+- Florent Giraud ([@flozero](http://github.com/flozero))
+
 ## v0.0.3
 
 

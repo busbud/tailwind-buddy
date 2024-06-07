@@ -1,4 +1,23 @@
 
+## v0.0.15
+
+[compare changes](https://github.com/flozero/tailwind-classes-authority/compare/v0.0.14...v0.0.15)
+
+### 🚀 Enhancements
+
+- Make compound variant responsive ([be81e53](https://github.com/flozero/tailwind-classes-authority/commit/be81e53))
+- Enforce otherProps to have other compound expactation + className ([21c64c2](https://github.com/flozero/tailwind-classes-authority/commit/21c64c2))
+
+### 🏡 Chore
+
+- **release:** V0.0.14 ([94447f4](https://github.com/flozero/tailwind-classes-authority/commit/94447f4))
+- Adding sandbox and ui kit project ([12e5167](https://github.com/flozero/tailwind-classes-authority/commit/12e5167))
+- Improved sandbox ([6dff1f8](https://github.com/flozero/tailwind-classes-authority/commit/6dff1f8))
+
+### ❤️ Contributors
+
+- Florent Giraud ([@flozero](http://github.com/flozero))
+
 ## v0.0.14
 
 [compare changes](https://github.com/flozero/tailwind-classes-authorithy/compare/v0.0.13...v0.0.14)

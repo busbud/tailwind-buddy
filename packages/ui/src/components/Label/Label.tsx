@@ -18,7 +18,8 @@ export const Label: React.FC<PropsWithChildren<LabelProps>> = ({
     <Component
       className={root({
         size,
-        fontWeight
+        fontWeight,
+        className
       })}
       {...restProps}
     >

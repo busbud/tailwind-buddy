@@ -9,5 +9,8 @@
     "className",
     ".*Styles.",
     ".*Classes."
+  ],
+  "tailwindCSS.experimental.classRegex": [
+    ["tca\\(([^)]*)\\)", "[\"'`]([^\"'`]*).*?[\"'`]"]
   ]
 }

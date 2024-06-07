@@ -16,7 +16,7 @@ export const labelVariantsConfigurations = {
         size: {
             default: "md",
             values: {
-                xxl: "text-9xl leading-10 tracking-tight",
+                xxl: ["text-9xl", "leading-10", "tracking-tight"],
                 xl: "text-2xl leading-8",
                 lg: "text-lg leading-6",
                 md: "text-md leading-4",
@@ -28,14 +28,15 @@ export const labelVariantsConfigurations = {
             }
         }
     },
-    compoundVariants: [
-        {
-            conditions: {
-                fontWeight: "bold",
-                size: "lg"
-            },
-            class: "bg-blue-500"
-        }
-    ]
+    // compoundVariants: [
+    //     {
+    //         conditions: {
+    //             fontWeight: "bold",
+    //             size: "xxl"
+    //         },
+    //         class: "bg-blue-500"
+    //     }
+    // ]
 }
+
 export const labelVariants = tca(labelVariantsConfigurations)

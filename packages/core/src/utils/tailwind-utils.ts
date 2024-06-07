@@ -4,13 +4,13 @@ const safelistClasses = new Set()
 
 function extractClassesFromVariants (variants: any) {
   Object.entries(variants).forEach(([variantKey, variant]: any) => {
-    Object.entries(variant.values).forEach(([subKey, responsive]: any) => {
-      if (typeof responsive === "string") {
-        responsive.split(" ").forEach(v => {
+    Object.entries(variant.values).forEach(([subKey, value]: any) => {
+      if (typeof value === "string") {
+        value.split(" ").forEach(v => {
           safelistClasses.add(v)
         })
-      } else if (typeof responsive === "object") {
-        Object.entries(responsive).forEach(([rKey, values]: any) => {
+      } else if (typeof value === "object") {
+        Object.entries(value).forEach(([rKey, values]: any) => {
           if (Array.isArray(values)) {
             values.forEach(v => safelistClasses.add(v))
           } else {
@@ -32,7 +32,7 @@ function extractClassesFromCompoundVariants(compoundVariants: any) {
   compoundVariants.forEach((compoundVariant: any) => {
     if (typeof compoundVariant.class === "string") {
       compoundVariant.class.split(" ").forEach((v: any) => safelistClasses.add(v))
-    } else {
+    }  else {
       Object.entries(compoundVariant.class).forEach(([key, val]: any) => {
         safelistClasses.add(val)
       })

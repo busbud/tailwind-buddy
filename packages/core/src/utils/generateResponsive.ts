@@ -9,5 +9,5 @@ export const generateResponsive = (str: string, screens: string[]) => {
         })
     })
 
-    return str_final
+    return str_final.split(" ")
 }

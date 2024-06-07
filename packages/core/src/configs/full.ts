@@ -85,7 +85,6 @@ export const full = tca(defaultConfiguration)
 export const fullWithoutTwMerge = tca(defaultConfiguration, {
   "tailwindMergeDisabled": true
 })
-export const fullWithResponsive = tca(defaultConfiguration, {
-  "responsive": true
-})
+
+export const fullWithResponsive = tca(defaultConfiguration)
 

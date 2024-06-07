@@ -1,4 +1,16 @@
 
+## v0.0.5
+
+[compare changes](https://github.com/flozero/tailwind-classes-authorithy/compare/v0.0.4...v0.0.5)
+
+### 🏡 Chore
+
+- Try to fix deployment ([2ff391e](https://github.com/flozero/tailwind-classes-authorithy/commit/2ff391e))
+
+### ❤️ Contributors
+
+- Florent Giraud ([@flozero](http://github.com/flozero))
+
 ## v0.0.4
 
 [compare changes](https://github.com/flozero/tailwind-classes-authorithy/compare/v0.0.3...v0.0.4)

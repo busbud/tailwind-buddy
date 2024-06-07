@@ -1,2 +1,2 @@
-export { generateAllSafeList } from "./utils/tailwind-utils";
+export { generateSafeList } from "./utils/tailwind-utils";
 export { tca, defaultConfiguration } from "./tca"

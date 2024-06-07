@@ -40,7 +40,7 @@ function extractClassesFromCompoundVariants(compoundVariants: any) {
   })
 }
 
-export function generateAllSafeList(variantsArray: any[], screens: string[] = []) {
+export function generateSafeList(variantsArray: any[], screens: string[] = []) {
     variantsArray.forEach(variantDefinitions => {
       if (variantDefinitions.slots) extractClassesFromDefaultSlots(variantDefinitions.slots)
       if (variantDefinitions.variants) extractClassesFromVariants(variantDefinitions.variants)

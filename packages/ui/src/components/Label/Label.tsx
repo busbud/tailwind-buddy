@@ -1,27 +1,34 @@
-import { PropsWithChildren } from "react";
-import { LabelProps } from "./Label.types";
-import { labelVariants } from "./Label.variants";
+import React from "react";
 
-export const Label: React.FC<PropsWithChildren<LabelProps>> = ({
-  as: Component = "span",
-  className,
-  children,
-  fontWeight = "regular",
-  size = "md",
-  ...restProps
-}) => {
-  const { root } = labelVariants();
+// import { PropsWithChildren } from "react";
+// import { LabelProps } from "./Label.types";
+// import { labelVariants } from "./Label.variants";
 
-  return (
-    <Component
-      className={root({
-        size,
-        fontWeight,
-        className,
-      })}
-      {...restProps}
-    >
-      {children}
-    </Component>
-  );
-};
+// export const Label: React.FC<PropsWithChildren<LabelProps>> = ({
+//   as: Component = "span",
+//   className,
+//   children,
+//   fontWeight = "regular",
+//   size = "md",
+//   ...restProps
+// }) => {
+//   const { root } = labelVariants();
+
+//   return (
+//     <Component
+//       className={root({
+//         size,
+//         fontWeight,
+//         className,
+//       })}
+//       {...restProps}
+//     >
+//       {children}
+//     </Component>
+//   );
+// };
+
+
+export const Label: React.FC = () => {
+  return <div>Label</div>;
+}

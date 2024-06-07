@@ -1,5 +1,5 @@
 {
-  "name": "awesome",
+  "name": "ui-kit",
   "version": "0.0.1",
   "type": "module",
   "license": "UNLICENSED",
@@ -38,6 +38,7 @@
     "node": "20.12.2"
   },
   "devDependencies": {
+    "tailwind-classes-authority": "workspace:*",
     "@types/react": "^18.3.2",
     "@types/react-dom": "^18.3.0",
     "@typescript-eslint/eslint-plugin": "^7.2.0",

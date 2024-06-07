@@ -21,7 +21,7 @@ importers:
         specifier: 3.1.0
         version: 3.1.0
 
-  packages/tailwind-classes-authority:
+  packages/core:
     dependencies:
       tailwindcss:
         specifier: ^3.4.3

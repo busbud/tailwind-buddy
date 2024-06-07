@@ -1,6 +1,6 @@
 import { tca } from "../tca";
 
-const defaultConfiguration ={
+export const defaultConfiguration ={
   "slots": {
       "root": "font-extrabold bg-red-100",
       "cat": "text-blue-100"
@@ -53,12 +53,38 @@ const defaultConfiguration ={
     }
   ]
 }
+
+export const smallConfiguration = {
+  "slots": {
+    "root": "bg-red-100",
+  },
+  variants: {
+    "color": {
+      "default": "secondary",
+      "values": {
+        "secondary": {
+          "root": "bg-red-300"
+        }
+      }
+    }
+  },
+  "compoundVariants": [
+    {
+      "conditions": {
+        "color": ["secondary", "primary"],
+      },
+      "class": {
+        "root": "bg-red-600",
+      }
+    }
+  ]
+}
+
 export const full = tca(defaultConfiguration)
 
 export const fullWithoutTwMerge = tca(defaultConfiguration, {
   "tailwindMergeDisabled": true
 })
-
 export const fullWithResponsive = tca(defaultConfiguration, {
   "responsive": true
 })

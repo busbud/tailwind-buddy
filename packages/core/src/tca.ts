@@ -15,25 +15,29 @@ export const tca = (variantDefinition: any, tcaConfig: any = {}) => () => {
         acc[slot] = (variantsProps: any = {}, otherProps: any = {}) => {
             const className = otherProps.className || ""
             const slotDefaultClasses = variantDefinition.slots[slot] ? [variantDefinition.slots[slot]] : []
-            const slotVariantsClasses = retrieveVariantsClasses(variants, variantsProps, slot)
+            const [defaultProps, slotVariantsClasses] = retrieveVariantsClasses(variants, variantsProps, slot)
             const validCompounds: any[] = []
+            const withDefaultProps = {
+                ...defaultProps,
+                ...variantsProps
+            }
             if (variantDefinition.compoundVariants.length > 0) {
                 variantDefinition.compoundVariants.forEach((compound: any) => {
                     let hasFailed = false
                     let tmpClasses: any[] = []
                     Object.entries(compound.conditions).forEach(([key, value]: any) => {
-                        console.log(key, value)
                         if (hasFailed) return
-                        if (!variantsProps[key]) {
-                            if (otherProps[key] !== value) hasFailed = true
-                        }
-                        else if (typeof variantsProps[key] === "string") {
-                            if (value !== variantsProps[key]) hasFailed = true
-                            else tmpClasses.push(compound.class)
-                        } else if (typeof variantsProps[key] === "object") {
+                        if (typeof withDefaultProps[key] == "undefined") {
+                            if (otherProps[key] !== value) {
+                                hasFailed = true
+                            }
+                        } else if (typeof withDefaultProps[key] === "string") {
+                            if (Array.isArray(value) && !value.includes(withDefaultProps[key])) hasFailed = true
+                            else if (typeof value === "string" && value !== withDefaultProps[key]) hasFailed = true
+                        } else if (typeof withDefaultProps[key] === "object") {
                             let found = false
                             let _k = ""
-                            Object.entries(variantsProps[key]).forEach(([k, v]: any) => {
+                            Object.entries(withDefaultProps[key]).forEach(([k, v]: any) => {
                                 if (value === v) {
                                     found = true
                                     _k = k
@@ -45,6 +49,13 @@ export const tca = (variantDefinition: any, tcaConfig: any = {}) => () => {
                                     tmpClasses.push(`${_k}:${v}`)
                                 })
                             }
+                        } else if (typeof withDefaultProps[key] === "boolean") {
+                            if (value !== withDefaultProps[key]) hasFailed = true
+                            else {
+                                if (typeof compound.class === "string") tmpClasses.push(compound.class)
+                                else if (Array.isArray(compound.class)) tmpClasses.push(...compound.class)
+                                else compound.class[slot] ? tmpClasses.push(compound.class[slot]) : ""
+                            }
                         }
                     })
                     if (!hasFailed) tmpClasses.forEach(v => validCompounds.push(v))
@@ -55,7 +66,7 @@ export const tca = (variantDefinition: any, tcaConfig: any = {}) => () => {
                 ...Object.values(slotVariantsClasses),
                 ...validCompounds,
                 className
-            ].join(" ")
+            ].join(" ").trim()
 
             if (tcaConfig.tailwindMergeDisabled) {
                 return str

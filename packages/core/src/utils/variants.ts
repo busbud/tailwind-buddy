@@ -49,8 +49,11 @@ export const retrieveVariantsClasses = (variants: any, variantsProps: any = {}, 
         return acc
     }, {})
 
-    return {
-        ...defaults,
-        ...overrides
-    }
+    return [
+        defaultProps,
+        {
+            ...defaults,
+            ...overrides
+        }
+    ]
 }

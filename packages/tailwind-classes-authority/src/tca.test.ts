@@ -1,11 +1,12 @@
 import { describe, expect, test } from 'vitest'
-import { full, fullWithoutTwMerge } from "./configs/full"
+import { full, fullWithResponsive, fullWithoutTwMerge } from "./configs/full"
 import { twMerge } from "tailwind-merge"
 
 describe('test tv', () => {
 
     const { root, cat } = full()
     const { root: rootWithoutTwMerge, cat: catWithoutMerge } = fullWithoutTwMerge()
+    const { root: rootWithResponsive } = fullWithResponsive()
     
     test("root slot", () => {
         const options = {
@@ -45,5 +46,17 @@ describe('test tv', () => {
 
         expect(str_second).toBe(expectedFullStr)
         expect(str).toBe(twMerge(expectedFullStr))
+    })
+
+    test("root slot with responsive", () => {
+        const options = {
+            color: "success"
+        }
+        const str = rootWithResponsive(options)
+
+        const expectedFullStr = "font-extrabold bg-red-100 bg-red-400 bg-red-500"
+        const expectedFullStrWithResponsive = `${twMerge(expectedFullStr)} sm:font-extrabold md:font-extrabold lg:font-extrabold xl:font-extrabold sm:bg-red-500 md:bg-red-500 lg:bg-red-500 xl:bg-red-500`
+
+        expect(str).toBe(twMerge(expectedFullStrWithResponsive))
     })
 })

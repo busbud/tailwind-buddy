@@ -2,11 +2,17 @@ import { extractSlots } from "./utils/extract-slots";
 import { extendTailwindMerge } from "tailwind-merge"
 import { retrieveVariantsClasses } from "./utils/variants";
 import { retrieveCompoundClasses } from "./utils/compounds";
+import { generateResponsive } from "./utils/generateResponsive";
+
+export const defaultConfiguration = {
+    screens: ["sm", "md", "lg", "xl"],
+}
 
 export const tca = (variantDefinition:any, tcaConfig: any = {}) => () => {
     const slots: any[] = extractSlots(variantDefinition);
     const variants = variantDefinition.variants || {};
     const twMerge = extendTailwindMerge(tcaConfig.tailwindMergeConfig || {});
+    const isResponsive = tcaConfig.responsive || false
 
     return slots.reduce((acc, slot) => {
         acc[slot] = (variantsProps: any = {}, otherProps: any = {}) => {
@@ -21,8 +27,16 @@ export const tca = (variantDefinition:any, tcaConfig: any = {}) => () => {
                 ...slotCompoundClasses
             ].join(" ")
 
-            if (tcaConfig.tailwindMergeDisabled) return str
-            return twMerge(str)
+            if (tcaConfig.tailwindMergeDisabled) {
+                if (isResponsive) return generateResponsive(str, defaultConfiguration.screens)
+                return str
+            }
+
+            if (isResponsive) {
+                return generateResponsive(twMerge(str), defaultConfiguration.screens)
+            } else {
+                return twMerge(str)
+            }
         }
         return acc 
     }, {})

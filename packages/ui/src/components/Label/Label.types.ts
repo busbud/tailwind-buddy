@@ -4,7 +4,7 @@ export interface RegularProps {
   disabled: boolean;
 }
 
-export type Slots = "root" | "label"
+export type Slots = "root"
 export interface Variants {
   fontWeight?: string
   size?: string
@@ -13,8 +13,8 @@ export interface Variants {
 export type VariantConfiguration = TCA_VARIANT_DEFINITION<Slots, Variants, RegularProps>
 export interface LabelProps
   extends React.HTMLAttributes<HTMLBaseElement>,
-  VariantConfiguration,
-  Variants {
+  Variants,
+  RegularProps {
   /** The component used for the root node. Either a string to use a HTML element or a component. */
   as?: React.ElementType;
 }

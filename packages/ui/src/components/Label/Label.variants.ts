@@ -3,24 +3,19 @@ import { VariantConfiguration } from "./Label.types"
 
 export const labelVariantsConfigurations: VariantConfiguration = {
     "slots": {
-        "label": "text-red-500",
         "root": "text-blue-500"
     },
     "variants": {
         "size": {
             "default": "",
             "values": {
-                xxl: {
-                    "label": ["", ""]
-                }
+                xxl: "text-blue-500",
             }
         },
         "fontWeight": {
             "default": "",
             "values": {
-                xxl: {
-                    "label": ["", ""]
-                }
+                xxl: "text-red-500"
             }
         }
     }, 
@@ -29,12 +24,10 @@ export const labelVariantsConfigurations: VariantConfiguration = {
             "conditions": {
                 "fontWeight": "bold"
             },
-            "class": {
-                "label": "",
-                "root": ""
-            }
+            "class": ""
         }
     ]
 }
+
 
 export const labelVariants = tca(labelVariantsConfigurations)

@@ -14,15 +14,17 @@ export const Label: React.FC<PropsWithChildren<LabelProps>> = ({
 }) => {
   const { root } = labelVariants();
 
+  console.log(root({
+    "fontWeight": fontWeight,
+    "size": size,
+  }, {
+    "className": "",
+    "disabled": false
+  }))
+
   return (
     <Component
-      className={root({
-        size,
-        fontWeight,
-      }, {
-        disabled: true,
-        className
-      })}
+      className=""
       {...restProps}
     >
       {children}

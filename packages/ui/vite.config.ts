@@ -14,9 +14,9 @@ export default defineConfig({
     lib: {
       // Could also be a dictionary or array of multiple entry points
       entry: ["./src/index.ts"],
-      name: "awesome",
+      name: "uikit",
       // the proper extensions will be added
-      fileName: "awesome",
+      fileName: "uikit",
     },
     rollupOptions: {
       external: ["react", "react-dom", "fs", "path"],

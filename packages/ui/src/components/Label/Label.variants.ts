@@ -1,42 +1,40 @@
 import { tca } from "tailwind-classes-authority"
+import { VariantConfiguration } from "./Label.types"
 
-export const labelVariantsConfigurations = {
-    slots: {
-        "root": "text-red-500"
+export const labelVariantsConfigurations: VariantConfiguration = {
+    "slots": {
+        "label": "text-red-500",
+        "root": "text-blue-500"
     },
     "variants": {
-        fontWeight: {
-            default: "regular",
-            values: {
-                regular: "font-regular",
-                bold: "font-bold",
-                extraBold: "font-extrabold",
+        "size": {
+            "default": "",
+            "values": {
+                xxl: {
+                    "label": ["", ""]
+                }
             }
         },
-        size: {
-            default: "md",
-            values: {
-                xxl: "text-9xl leading-10 tracking-tight",
-                xl: "text-2xl leading-8",
-                lg: "text-lg leading-6",
-                md: "text-md leading-4",
-                sm: "text-sm leading-4",
-                xs: {
-                    root: "text-xs uppercase leading-4 tracking-wider"
-                },
-                xxs: "text-xs uppercase leading-4 tracking-wider"
+        "fontWeight": {
+            "default": "",
+            "values": {
+                xxl: {
+                    "label": ["", ""]
+                }
             }
         }
-    },
-    compoundVariants: [
+    }, 
+    "compoundVariants": [
         {
-            conditions: {
-                fontWeight: "bold",
-                size: "lg",
-                disabled: true
+            "conditions": {
+                "fontWeight": "bold"
             },
-            class: "bg-blue-500 text-white"
+            "class": {
+                "label": "",
+                "root": ""
+            }
         }
     ]
 }
+
 export const labelVariants = tca(labelVariantsConfigurations)

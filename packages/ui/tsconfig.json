@@ -18,7 +18,7 @@
     "noEmit": true,
     "declaration": true,
     "jsx": "react-jsx",
-    "typeRoots": ["./dist/awesome.d.ts"],
+    "typeRoots": ["./dist/uikit.d.ts"],
     "removeComments": false,
 
     /* Linting */

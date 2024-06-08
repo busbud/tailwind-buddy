@@ -1,4 +1,3 @@
-// @ts-nocheck
 import { Label } from "ui-kit";
 
 function App() {
@@ -6,14 +5,8 @@ function App() {
     <div className="gap-8 flex flex-col">
       <Label
         className="bg-green-500"
-        size={{
-          initial: "md",
-          sm: "lg",
-          md: "xl",
-          lg: "xxl",
-        }}
-        // size="lg"
-        fontWeight="bold"
+        disabled={false}
+        size=""
       >
         Label
       </Label>

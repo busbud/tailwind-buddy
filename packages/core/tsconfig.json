@@ -14,7 +14,6 @@
     "moduleResolution": "bundler",
     "allowImportingTsExtensions": true,
     "resolveJsonModule": true,
-    "isolatedModules": true,
     "noEmit": true,
     "declaration": true,
     "typeRoots": ["./dist/tca.d.ts"],
@@ -27,5 +26,5 @@
     "noFallthroughCasesInSwitch": true
   },
   "references": [{ "path": "./tsconfig.node.json" }],
-  "include": ["src", "src/configs", "tailwind.config.js"]
+  "include": ["src"]
 }

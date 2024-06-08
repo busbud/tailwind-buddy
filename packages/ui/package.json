@@ -8,9 +8,9 @@
     "tailwind.config.js",
     "src"
   ],
-  "main": "./dist/awesome.umd.cjs",
-  "module": "./dist/awesome.js",
-  "types": "./dist/awesome.d.ts",
+  "main": "./dist/uikit.umd.cjs",
+  "module": "./dist/uikit.js",
+  "types": "./dist/uikit.d.ts",
   "scripts": {
     "build": "tsc && vite build",
     "build:withcss": "tsc && vite build && pnpm generate:css",
@@ -18,9 +18,9 @@
   },
   "exports": {
     ".": {
-      "import": "./dist/awesome.js",
-      "require": "./dist/awesome.umd.cjs",
-      "types": "./dist/awesome.d.ts"
+      "import": "./dist/uikit.js",
+      "require": "./dist/uikit.umd.cjs",
+      "types": "./dist/uikit.d.ts"
     },
     "./tailwind.config.js": {
       "import": "./tailwind.config.js",

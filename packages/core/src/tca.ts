@@ -2,11 +2,31 @@ import { extractSlots } from "./utils/extract-slots";
 import { extendTailwindMerge } from "tailwind-merge"
 import { retrieveVariantsClasses } from "./utils/variants";
 
+type MergeConfig = Parameters<typeof extendTailwindMerge>[0];
+
+export interface TCA_CONFIG {
+    tailwindMergeConfig?: MergeConfig;
+    tailwindMergeDisabled?: boolean;
+}
+export interface VARIANT<Slots extends string> {
+    default: string;
+    values: Record<string, string | string[] | Partial<Record<Slots, string | string[]>>>;
+}
+
+export interface TCA_VARIANT_DEFINITION<Slots extends string, Variants, Props extends Record<string, any> = {}> {
+    slots: Record<Slots, string>;
+    variants: Record<keyof Variants, VARIANT<Slots>>;
+    compoundVariants: Array<{
+        conditions: Partial<Record<keyof Variants | keyof Props, string | string[] | boolean>>;
+        class: string | string[] | Partial<Record<Slots, string>>;
+    }>;
+}
+
 export const defaultConfiguration = {
     screens: ["sm", "md", "lg", "xl", "xxl"],
 }
 
-export const tca = (variantDefinition: any, tcaConfig: any = {}) => () => {
+export const tca = <Slots extends string, Variants, Props extends Record<string, any> = {}>(variantDefinition: TCA_VARIANT_DEFINITION<Slots, Variants, Props>, tcaConfig: TCA_CONFIG = {}) => () => {
     const slots: any[] = extractSlots(variantDefinition);
     const variants = variantDefinition.variants || {};
     const twMerge = extendTailwindMerge(tcaConfig.tailwindMergeConfig || {});
@@ -76,4 +96,3 @@ export const tca = (variantDefinition: any, tcaConfig: any = {}) => () => {
         return acc 
     }, {})
 };
-

@@ -45,12 +45,6 @@ export const defaultConfiguration ={
         "cat": "text-blue-500"
       }
     },
-    // {
-    //   "conditions": {
-    //     "disabled": false,
-    //   },
-    //   "class": "text-blue-600"
-    // }
   ]
 }
 

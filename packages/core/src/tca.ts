@@ -1,5 +1,6 @@
 import { extendTailwindMerge } from "tailwind-merge"
-import { createSlotFunction } from "./utils/createSlotFunction";
+import { retrieveVariantsClasses } from "./utils/variants";
+import { retrieveCompoundClasses } from "./utils/compounds";
 
 type MergeConfig = Parameters<typeof extendTailwindMerge>[0];
 
@@ -15,7 +16,7 @@ export interface VARIANT<Slots extends string> {
 export interface TCA_VARIANT_DEFINITION<Slots extends string, Variants, Props extends Record<string, any> = {}> {
     slots: Record<Slots, string>;
     variants: Record<keyof Variants, VARIANT<Slots>>;
-    compoundVariants: Array<{
+    compoundVariants?: Array<{
         conditions: Partial<Record<keyof Variants | keyof Props, string | string[] | boolean>>;
         class: string | Partial<Record<Slots, string>>;
     }>;
@@ -25,13 +26,43 @@ export const defaultConfiguration = {
     screens: ["sm", "md", "lg", "xl", "xxl"],
 }
 
-export const tca = <Slots extends string, Variants, Props extends Record<string, any> = {}>(variantDefinition: TCA_VARIANT_DEFINITION<Slots, Variants, Props>, tcaConfig: TCA_CONFIG = {}) => (): Record<Slots, (variantsProps: Variants, otherProps: Props & { className?: string }) => string>=> {
+type OtherProps<Props> = {
+    [key in keyof Props]?: Props;
+} & {
+    className?: string;
+};
+
+export const tca = <Slots extends string, Variants, Props extends Record<string, any> = {}>(variantDefinition: TCA_VARIANT_DEFINITION<Slots, Variants, Props>, tcaConfig: TCA_CONFIG = {}) => (): Record<Slots, (variantsProps?: Variants, otherProps?: Props & { className?: string }) => string>=> {
     const slots = Object.keys(variantDefinition.slots)
     const variants = variantDefinition.variants || {};
     const twMerge = extendTailwindMerge(tcaConfig.tailwindMergeConfig || {});
 
     return slots.reduce((acc, slot) => {
-        acc[slot as Slots] = createSlotFunction(variantDefinition, twMerge, slot, variants, tcaConfig)
+        acc[slot as Slots] = (variantsProps?: Variants, otherProps?: OtherProps<Props>) => {
+            const className = otherProps?.className || ""
+            const slotDefaultClasses = variantDefinition.slots[slot as Slots] ? [variantDefinition.slots[slot as Slots]] : []
+            const [defaultProps, slotVariantsClasses] = retrieveVariantsClasses(variants, variantsProps, slot)
+            let compoundClasses: any[] = []
+            const withDefaultProps = {
+                ...defaultProps,
+                ...variantsProps
+            }
+    
+            if (variantDefinition.compoundVariants && variantDefinition.compoundVariants.length > 0) {
+                compoundClasses = retrieveCompoundClasses(variantDefinition.compoundVariants, withDefaultProps, otherProps, slot)
+            }
+            const str = [
+                ...slotDefaultClasses,
+                ...Object.values(slotVariantsClasses),
+                ...compoundClasses,
+                className
+            ].join(" ").trim()
+    
+            if (tcaConfig.tailwindMergeDisabled) {
+                return str
+            }
+            return twMerge(str)
+        }
         return acc 
-    }, {} as Record<Slots, (variantsProps: Variants, otherProps: Props & { className?: string }) => string>)
+    }, {} as Record<Slots, (variantsProps?: Variants, otherProps?: OtherProps<Props>) => string>)
 };

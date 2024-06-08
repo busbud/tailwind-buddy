@@ -22,10 +22,6 @@ importers:
         version: 3.1.0
 
   packages/core:
-    dependencies:
-      tailwindcss:
-        specifier: ^3.4.3
-        version: 3.4.4
     devDependencies:
       autoprefixer:
         specifier: ^10.4.19
@@ -39,6 +35,9 @@ importers:
       tailwind-merge:
         specifier: ^2.3.0
         version: 2.3.0
+      tailwindcss:
+        specifier: ^3.4.4
+        version: 3.4.4
       typescript:
         specifier: ^5.2.2
         version: 5.4.5

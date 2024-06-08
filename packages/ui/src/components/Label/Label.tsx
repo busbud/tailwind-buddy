@@ -24,7 +24,7 @@ export const Label: React.FC<PropsWithChildren<LabelProps>> = ({
 
   return (
     <Component
-      className=""
+      className="text-red-500"
       {...restProps}
     >
       {children}

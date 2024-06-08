@@ -11,5 +11,8 @@
     ".*Classes."
   ],
   "tailwindCSS.experimental.classRegex": [
+    "\"slots\":\\s*\\{[^}]*\"[^\"]+\":\\s*\"([^\"]+)\"[^}]*\\}", // Matches classes in slots object
+    "\"values\":\\s*\\{[^}]*\"[^\"]+\":\\s*\"([^\"]+)\"[^}]*\\}", // Matches classes in values object (direct string or nested object)
+    "\"class\":\\s*\"([^\"]+)\""
   ]
 }

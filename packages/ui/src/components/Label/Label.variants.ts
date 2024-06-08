@@ -7,15 +7,17 @@ export const labelVariantsConfigurations: VariantConfiguration = {
     },
     "variants": {
         "size": {
-            "default": "",
+            "default": "xxl",
             "values": {
-                xxl: "text-blue-500",
+                "xxl": "text-blue-500"
             }
         },
         "fontWeight": {
             "default": "",
             "values": {
-                xxl: "text-red-500"
+                xxl: {
+                    "root": "text-blue-500"
+                }
             }
         }
     }, 
@@ -24,7 +26,7 @@ export const labelVariantsConfigurations: VariantConfiguration = {
             "conditions": {
                 "fontWeight": "bold"
             },
-            "class": ""
+            "class": "text-blue-500"
         }
     ]
 }

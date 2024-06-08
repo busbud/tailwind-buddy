@@ -7,6 +7,6 @@ export default {
     "./src/**/*.{js,ts,jsx,tsx}",
     "./node_modules/ui-kit/dist/awesome.js"
   ],
-  safelist: twConfig.safelist,
+  safelist: twConfig.safelist
 }
 

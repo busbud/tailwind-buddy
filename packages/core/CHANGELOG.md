@@ -1,4 +1,20 @@
 
+## v0.0.17
+
+[compare changes](https://github.com/flozero/tailwind-classes-authorithy/compare/v0.0.16...v0.0.17)
+
+### 🚀 Enhancements
+
+- Improve typing and extract function of slot function ([7eb6653](https://github.com/flozero/tailwind-classes-authorithy/commit/7eb6653))
+
+### 🏡 Chore
+
+- Comment test ([25cd060](https://github.com/flozero/tailwind-classes-authorithy/commit/25cd060))
+
+### ❤️ Contributors
+
+- Florent Giraud ([@flozero](http://github.com/flozero))
+
 ## v0.0.16
 
 [compare changes](https://github.com/flozero/tailwind-classes-authorithy/compare/v0.0.14...v0.0.16)

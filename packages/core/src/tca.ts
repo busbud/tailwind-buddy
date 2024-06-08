@@ -34,13 +34,14 @@ export const tca = <Slots extends string, Variants, Props extends Record<string,
     return slots.reduce((acc, slot) => {
         acc[slot] = (variantsProps: any = {}, otherProps: any = {}) => {
             const className = otherProps.className || ""
-            const slotDefaultClasses = variantDefinition.slots[slot] ? [variantDefinition.slots[slot]] : []
+            const slotDefaultClasses = variantDefinition.slots[slot as Slots] ? [variantDefinition.slots[slot as Slots]] : []
             const [defaultProps, slotVariantsClasses] = retrieveVariantsClasses(variants, variantsProps, slot)
             const validCompounds: any[] = []
             const withDefaultProps = {
                 ...defaultProps,
                 ...variantsProps
             }
+
             if (variantDefinition.compoundVariants.length > 0) {
                 variantDefinition.compoundVariants.forEach((compound: any) => {
                     let hasFailed = false

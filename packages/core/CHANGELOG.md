@@ -1,4 +1,17 @@
 
+## v0.0.18
+
+[compare changes](https://github.com/flozero/tailwind-classes-authorithy/compare/v0.0.17...v0.0.18)
+
+### 🚀 Enhancements
+
+- Improve vs code settings to have a great regex auto complete ([fb92584](https://github.com/flozero/tailwind-classes-authorithy/commit/fb92584))
+- Typing optional for other props ([aa69ea8](https://github.com/flozero/tailwind-classes-authorithy/commit/aa69ea8))
+
+### ❤️ Contributors
+
+- Florent Giraud ([@flozero](http://github.com/flozero))
+
 ## v0.0.17
 
 [compare changes](https://github.com/flozero/tailwind-classes-authorithy/compare/v0.0.16...v0.0.17)

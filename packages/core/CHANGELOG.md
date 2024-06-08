@@ -1,4 +1,26 @@
 
+## v0.0.16
+
+[compare changes](https://github.com/flozero/tailwind-classes-authorithy/compare/v0.0.14...v0.0.16)
+
+### 🚀 Enhancements
+
+- Make compound variant responsive ([be81e53](https://github.com/flozero/tailwind-classes-authorithy/commit/be81e53))
+- Enforce otherProps to have other compound expactation + className ([21c64c2](https://github.com/flozero/tailwind-classes-authorithy/commit/21c64c2))
+- Update typing for configuration ([f331e98](https://github.com/flozero/tailwind-classes-authorithy/commit/f331e98))
+- Update typing for configuration ([f7bf24e](https://github.com/flozero/tailwind-classes-authorithy/commit/f7bf24e))
+
+### 🏡 Chore
+
+- Adding sandbox and ui kit project ([12e5167](https://github.com/flozero/tailwind-classes-authorithy/commit/12e5167))
+- Improved sandbox ([6dff1f8](https://github.com/flozero/tailwind-classes-authorithy/commit/6dff1f8))
+- **release:** V0.0.15 ([0163b5f](https://github.com/flozero/tailwind-classes-authorithy/commit/0163b5f))
+- Check tests on conditions ([4ec6220](https://github.com/flozero/tailwind-classes-authorithy/commit/4ec6220))
+
+### ❤️ Contributors
+
+- Florent Giraud ([@flozero](http://github.com/flozero))
+
 ## v0.0.15
 
 [compare changes](https://github.com/flozero/tailwind-classes-authority/compare/v0.0.14...v0.0.15)

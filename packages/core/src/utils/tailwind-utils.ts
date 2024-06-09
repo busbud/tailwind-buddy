@@ -1,8 +1,6 @@
 import { generateResponsive } from "./generateResponsive"
 
-const safelistClasses = new Set()
-
-function extractClassesFromVariants (variants: any) {
+function extractClassesFromVariants (variants: any, safelistClasses: Set<string>) {
   Object.entries(variants).forEach(([variantKey, variant]: any) => {
     Object.entries(variant.values).forEach(([subKey, value]: any) => {
       if (typeof value === "string") {
@@ -11,24 +9,20 @@ function extractClassesFromVariants (variants: any) {
         })
       } else if (typeof value === "object") {
         Object.entries(value).forEach(([rKey, values]: any) => {
-          if (Array.isArray(values)) {
-            values.forEach(v => safelistClasses.add(v))
-          } else {
-            values.split(" ").forEach((v: any) => safelistClasses.add(v))
-          }
+          values.split(" ").forEach((v: any) => safelistClasses.add(v))
         })
       }
     })
   })
 }
 
-function extractClassesFromDefaultSlots(defaultSlots: any)  {
+function extractClassesFromDefaultSlots(defaultSlots: any, safelistClasses: Set<string>)  {
   Object.entries(defaultSlots).forEach(([key, value]: any) => {
     safelistClasses.add(value)
   })
 }
 
-function extractClassesFromCompoundVariants(compoundVariants: any) {
+function extractClassesFromCompoundVariants(compoundVariants: any, safelistClasses: Set<string>) {
   compoundVariants.forEach((compoundVariant: any) => {
     if (typeof compoundVariant.class === "string") {
       compoundVariant.class.split(" ").forEach((v: any) => safelistClasses.add(v))
@@ -41,10 +35,13 @@ function extractClassesFromCompoundVariants(compoundVariants: any) {
 }
 
 export function generateSafeList(variantsArray: any[], screens: string[] = []) {
+
+  const safelistClasses = new Set()
+
     variantsArray.forEach(variantDefinitions => {
-      if (variantDefinitions.slots) extractClassesFromDefaultSlots(variantDefinitions.slots)
-      if (variantDefinitions.variants) extractClassesFromVariants(variantDefinitions.variants)
-      if (variantDefinitions.compoundVariants) extractClassesFromCompoundVariants(variantDefinitions.compoundVariants)
+      if (variantDefinitions.slots) extractClassesFromDefaultSlots(variantDefinitions.slots, safelistClasses)
+      if (variantDefinitions.variants) extractClassesFromVariants(variantDefinitions.variants, safelistClasses)
+      if (variantDefinitions.compoundVariants) extractClassesFromCompoundVariants(variantDefinitions.compoundVariants, safelistClasses)
     })
     return generateResponsive(Array.from(safelistClasses).join(" "), screens)
 }

@@ -9,22 +9,20 @@ export const Label: React.FC<PropsWithChildren<LabelProps>> = ({
   className,
   children,
   fontWeight = "regular",
-  size = "md",
+  size = "large",
   ...restProps
 }) => {
   const { root } = labelVariants();
 
-  console.log(root({
-    "fontWeight": fontWeight,
-    "size": size,
-  }, {
-    "className": "",
-    "disabled": false
-  }))
-
   return (
     <Component
-      className="text-red-500"
+      className={root({
+        "fontWeight": fontWeight,
+        "size": size,
+      }, {
+        "className": "",
+        "disabled": false
+      })}
       {...restProps}
     >
       {children}

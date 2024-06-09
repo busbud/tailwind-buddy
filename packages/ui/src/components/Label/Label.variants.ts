@@ -9,7 +9,8 @@ export const labelVariantsConfigurations: VariantConfiguration = {
         "size": {
             "default": "xxl",
             "values": {
-                "xxl": "text-blue-500"
+                "small": "text-blue-500",
+                "large": "text-red-500"
             }
         },
         "fontWeight": {

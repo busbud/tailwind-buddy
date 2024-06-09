@@ -1,4 +1,4 @@
-import type { TCA_VARIANT_DEFINITION } from "tailwind-classes-authority"
+import type { ResponsiveVariants, TCA_VARIANT_DEFINITION } from "tailwind-classes-authority"
 
 export interface RegularProps {
   disabled: boolean;
@@ -7,7 +7,7 @@ export interface RegularProps {
 export type Slots = "root"
 export interface Variants {
   fontWeight?: string
-  size?: string
+  size?: ResponsiveVariants<"small" | "large">
 }
 
 export type VariantConfiguration = TCA_VARIANT_DEFINITION<Slots, Variants, RegularProps>

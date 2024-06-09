@@ -4,8 +4,10 @@ function App() {
   return (
     <div className="gap-8 flex flex-col">
       <Label
-        size=""
-        fontWeight=""
+        size={{
+          "initial": "small",
+          "md": "large"
+        }}
         disabled={true}
         className="text-green-500"
       >

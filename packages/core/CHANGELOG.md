@@ -1,4 +1,18 @@
 
+## v0.0.23
+
+[compare changes](https://github.com/flozero/tailwind-classes-authorithy/compare/v0.0.22...v0.0.23)
+
+### 🚀 Enhancements
+
+- Add possibility to override screens type ([e770da8](https://github.com/flozero/tailwind-classes-authorithy/commit/e770da8))
+- Add possibility to override screens type ([4f15493](https://github.com/flozero/tailwind-classes-authorithy/commit/4f15493))
+- Improve dx on the sandbox ([82e7271](https://github.com/flozero/tailwind-classes-authorithy/commit/82e7271))
+
+### ❤️ Contributors
+
+- Florent Giraud ([@flozero](http://github.com/flozero))
+
 ## v0.0.22
 
 [compare changes](https://github.com/flozero/tailwind-classes-authorithy/compare/v0.0.21...v0.0.22)

@@ -1,4 +1,16 @@
 
+## v0.0.22
+
+[compare changes](https://github.com/flozero/tailwind-classes-authorithy/compare/v0.0.21...v0.0.22)
+
+### 🚀 Enhancements
+
+- Connect compound to responsive ([6f41930](https://github.com/flozero/tailwind-classes-authorithy/commit/6f41930))
+
+### ❤️ Contributors
+
+- Florent Giraud ([@flozero](http://github.com/flozero))
+
 ## v0.0.21
 
 [compare changes](https://github.com/flozero/tailwind-classes-authorithy/compare/v0.0.20...v0.0.21)

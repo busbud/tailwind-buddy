@@ -1,4 +1,17 @@
 
+## v0.0.20
+
+[compare changes](https://github.com/flozero/tailwind-classes-authorithy/compare/v0.0.19...v0.0.20)
+
+### 🚀 Enhancements
+
+- Add responsive variants without compound and tests ([db14361](https://github.com/flozero/tailwind-classes-authorithy/commit/db14361))
+- Add responsive variants without compound and tests ([8839c00](https://github.com/flozero/tailwind-classes-authorithy/commit/8839c00))
+
+### ❤️ Contributors
+
+- Florent Giraud ([@flozero](http://github.com/flozero))
+
 ## v0.0.19
 
 [compare changes](https://github.com/flozero/tailwind-classes-authorithy/compare/v0.0.18...v0.0.19)

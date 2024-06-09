@@ -36,7 +36,7 @@ function extractClassesFromCompoundVariants(compoundVariants: any, safelistClass
 
 export function generateSafeList(variantsArray: any[], screens: string[] = []) {
 
-  const safelistClasses = new Set()
+  const safelistClasses: Set<string> = new Set()
 
     variantsArray.forEach(variantDefinitions => {
       if (variantDefinitions.slots) extractClassesFromDefaultSlots(variantDefinitions.slots, safelistClasses)

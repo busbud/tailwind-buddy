@@ -6,7 +6,7 @@ function App() {
       <Label
         size={{
           "initial": "small",
-          "md": "large"
+          "lg": "large"
         }}
         disabled={true}
         className="text-green-500"

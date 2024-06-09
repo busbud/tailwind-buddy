@@ -1,11 +1,11 @@
 import { describe, expect, test } from 'vitest'
-import { simpleComponent, simpleComponentWithoutTwMerge } from "./simple-only-root"
+import { simpleComponent, simpleComponentWithoutTwMerge } from "../../src/configs/simple"
 import { twMerge } from "tailwind-merge"
 
 describe('test simple config', () => {
 
-    const { root } = simpleComponent()
-    const { root: rootWithoutTwMerge } = simpleComponentWithoutTwMerge()
+    const { root, children } = simpleComponent()
+    const { root: rootWithoutTwMerge, children: childrenWithoutMerge } = simpleComponentWithoutTwMerge()
     
     describe("defaults values", () => {
         
@@ -15,6 +15,13 @@ describe('test simple config', () => {
             expect(rootWithoutTwMerge()).toBe(root_full_str)
             expect(root()).toBe(twMerge(root_full_str))
         })
+
+        test("children", () => {
+            const children_full_str = "text-blue-100 text-blue-200"
+
+            expect(childrenWithoutMerge()).toBe(children_full_str)
+            expect(children()).toBe(twMerge(children_full_str))
+        })
     })
 
     describe("with variants other than default", () => {
@@ -23,6 +30,13 @@ describe('test simple config', () => {
 
             expect(rootWithoutTwMerge({ color: "secondary" })).toBe(root_full_str)
             expect(root({ color: "secondary" })).toBe(twMerge(root_full_str))
+        })
+
+        test("children", () => {
+            const children_full_str = "text-blue-100 text-green-500"
+
+            expect(childrenWithoutMerge({ color: "secondary" })).toBe(children_full_str)
+            expect(children({ color: "secondary" })).toBe(twMerge(children_full_str))
         })
     })
 

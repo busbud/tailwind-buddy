@@ -23,10 +23,10 @@ export interface TCA_VARIANT_DEFINITION<Slots extends string, Variants, Props ex
     }>;
 }
 
-export type Screens = "sm" | "md" | "lg" | "xl" | "xxl"
+export type DefaultScreens = "sm" | "md" | "lg" | "xl" | "xxl"
 
-export type ResponsiveVariants<T> = {
-        [K in Screens]?: T;
+export type ResponsiveVariants<T, S extends string | number | symbol = DefaultScreens> = {
+        [K in S]?: T;
     } & {
         "initial": T;
     } | T 
@@ -40,7 +40,6 @@ type OtherProps<Props> = {
 export const tca = <Slots extends string, Variants, Props extends Record<string, any> = {}>(variantDefinition: TCA_VARIANT_DEFINITION<Slots, Variants, Props>, tcaConfig: TCA_CONFIG = {}) => (): Record<Slots, (variantsProps?: Variants, otherProps?: Props & { className?: string }) => string>=> {
     const slots = Object.keys(variantDefinition.slots)
     const twMerge = extendTailwindMerge(tcaConfig.tailwindMergeConfig || {});
-    const isResponsive = tcaConfig.responsive || false
 
     return slots.reduce((acc, slot) => {
         acc[slot as Slots] = (variantsProps, otherProps) => {

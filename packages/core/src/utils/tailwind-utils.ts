@@ -34,7 +34,7 @@ function extractClassesFromCompoundVariants(compoundVariants: any, safelistClass
   })
 }
 
-export function generateSafeList(variantsArray: any[], screens: string[] = []) {
+export const generateSafeList = function (variantsArray: any[], screens: string[] = []) {
 
   const safelistClasses: Set<string> = new Set()
 

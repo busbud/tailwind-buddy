@@ -8,12 +8,12 @@
   ],
   "main": "./dist/tca.umd.cjs",
   "module": "./dist/tca.js",
-  "types": "./dist/tca.d.ts",
+  "types": "./dist/main.d.ts",
   "exports": {
     ".": {
       "import": "./dist/tca.js",
       "require": "./dist/tca.umd.cjs",
-      "types": "./dist/tca.d.ts"
+      "types": "./dist/main.d.ts"
     }
   },
   "engines": {
@@ -26,6 +26,9 @@
     "prepack": "pnpm build",
     "test:ci": "CI=true pnpm test:unit",
     "test:unit": "vitest"
+  },
+  "peerDependencies": {
+    "tailwind-merge": "^2.3.0"
   },
   "devDependencies": {
     "autoprefixer": "^10.4.19",

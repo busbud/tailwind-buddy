@@ -18,11 +18,12 @@ export default defineConfig({
       fileName: "tca",
     },
     rollupOptions: {
-      external: ["fs", "path"],
+      external: ["fs", "path", "tailwind-merge"],
       output: {
         globals: {
           path: "path",
           fs: "fs",
+          "tailwind-merge": "tailwind-merge"
         },
       },
     },

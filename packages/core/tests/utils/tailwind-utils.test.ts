@@ -1,7 +1,7 @@
 import { describe, expect, test } from "vitest"
-import { generateSafeList } from './tailwind-utils'
-import { simpleConfiguration } from "@/configs/simple"
-import { simpleCompoundConfiguration } from "@/configs/simple-compound"
+import { generateSafeList } from '../../src/utils/tailwind-utils'
+import { simpleConfiguration } from "../../src/configs/simple"
+import { simpleCompoundConfiguration } from "../../src/configs/simple-compound"
 
 describe('safelist', () => {
     test("without compounds", () => {

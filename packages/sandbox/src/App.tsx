@@ -7,7 +7,7 @@ function App() {
         size=""
         fontWeight=""
         disabled={true}
-        className="bg-green-500"
+        className="text-green-500"
       >
         Label
       </Label>

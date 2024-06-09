@@ -1,11 +1,9 @@
 function extractValue (value: any, slot: string) {
     if (typeof value === "string") return value
-    if (Array.isArray(value)) return value.join(" ")
-    if (value[slot]) {
+    if (value?.[slot]) {
         if (typeof value[slot] === "string") return value[slot]
-        if (Array.isArray(value[slot])) return value[slot].join(" ")
     }
-    return ""
+    return " "
 }
 
 function retrieveFromResponsiveProps(variants: any, key: string, value: any, slot: string) {
@@ -44,7 +42,7 @@ export const retrieveVariantsClasses = (variants: any, variantsProps: any = {}, 
         } else {
             val = extractValue(variants[key]?.values[value], slot)
         }
-        if (val.length) acc[key] = val
+        if (val.length) acc[key] = val.length == 1 ? "" : val
         defaultProps[key] = typeof value == "boolean" ? String(value) : value
         return acc
     }, {})

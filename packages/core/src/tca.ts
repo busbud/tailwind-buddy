@@ -34,23 +34,24 @@ type OtherProps<Props> = {
 
 export const tca = <Slots extends string, Variants, Props extends Record<string, any> = {}>(variantDefinition: TCA_VARIANT_DEFINITION<Slots, Variants, Props>, tcaConfig: TCA_CONFIG = {}) => (): Record<Slots, (variantsProps?: Variants, otherProps?: Props & { className?: string }) => string>=> {
     const slots = Object.keys(variantDefinition.slots)
-    const variants = variantDefinition.variants || {};
     const twMerge = extendTailwindMerge(tcaConfig.tailwindMergeConfig || {});
 
     return slots.reduce((acc, slot) => {
         acc[slot as Slots] = (variantsProps?: Variants, otherProps?: OtherProps<Props>) => {
             const className = otherProps?.className || ""
             const slotDefaultClasses = variantDefinition.slots[slot as Slots] ? [variantDefinition.slots[slot as Slots]] : []
-            const [defaultProps, slotVariantsClasses] = retrieveVariantsClasses(variants, variantsProps, slot)
+            const [defaultProps, slotVariantsClasses] = retrieveVariantsClasses(variantDefinition.variants, variantsProps, slot)
             let compoundClasses: any[] = []
             const withDefaultProps = {
                 ...defaultProps,
-                ...variantsProps
+                ...variantsProps,
+                ...otherProps
             }
-    
+
             if (variantDefinition.compoundVariants && variantDefinition.compoundVariants.length > 0) {
-                compoundClasses = retrieveCompoundClasses(variantDefinition.compoundVariants, withDefaultProps, otherProps, slot)
+                compoundClasses = retrieveCompoundClasses(variantDefinition.compoundVariants, withDefaultProps, slot)
             }
+
             const str = [
                 ...slotDefaultClasses,
                 ...Object.values(slotVariantsClasses),

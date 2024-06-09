@@ -1,6 +1,6 @@
 import { TCA_VARIANT_DEFINITION, tca } from "@/tca";
 
-type Slots = "root" | "children"
+type Slots = "root"
 type Variants = {
   color: "primary" | "secondary"
 }
@@ -10,7 +10,6 @@ type VariantConfiguration = TCA_VARIANT_DEFINITION<Slots, Variants>
 export const simpleConfiguration: VariantConfiguration = {
     "slots": {
         "root": "text-red-100",
-        "children": "text-blue-100"
     },
     "variants": {
       "color": {
@@ -18,7 +17,6 @@ export const simpleConfiguration: VariantConfiguration = {
         "values": {
           "primary": {
             "root": "text-red-200",
-            "children": "text-blue-200"
           },
           "secondary": "text-green-500"
         }

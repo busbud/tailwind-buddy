@@ -1,4 +1,16 @@
 
+## v0.0.19
+
+[compare changes](https://github.com/flozero/tailwind-classes-authorithy/compare/v0.0.18...v0.0.19)
+
+### 🚀 Enhancements
+
+- Adding a lot of tests before going back to responsive variants ([0a6293c](https://github.com/flozero/tailwind-classes-authorithy/commit/0a6293c))
+
+### ❤️ Contributors
+
+- Florent Giraud ([@flozero](http://github.com/flozero))
+
 ## v0.0.18
 
 [compare changes](https://github.com/flozero/tailwind-classes-authorithy/compare/v0.0.17...v0.0.18)

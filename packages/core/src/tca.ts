@@ -7,6 +7,7 @@ type MergeConfig = Parameters<typeof extendTailwindMerge>[0];
 export interface TCA_CONFIG {
     tailwindMergeConfig?: MergeConfig;
     tailwindMergeDisabled?: boolean;
+    responsive?: boolean;
 }
 export interface VARIANT<Slots extends string> {
     default: string;
@@ -22,22 +23,27 @@ export interface TCA_VARIANT_DEFINITION<Slots extends string, Variants, Props ex
     }>;
 }
 
-export const defaultConfiguration = {
-    screens: ["sm", "md", "lg", "xl", "xxl"],
-}
+export type Screens = "sm" | "md" | "lg" | "xl" | "xxl"
+
+export type ResponsiveVariants<T> = {
+        [K in Screens]?: T;
+    } & {
+        "initial": T;
+    } | T 
 
 type OtherProps<Props> = {
-    [key in keyof Props]?: Props;
+        [key in keyof Props]?: Props;
 } & {
-    className?: string;
+        className?: string;
 };
 
 export const tca = <Slots extends string, Variants, Props extends Record<string, any> = {}>(variantDefinition: TCA_VARIANT_DEFINITION<Slots, Variants, Props>, tcaConfig: TCA_CONFIG = {}) => (): Record<Slots, (variantsProps?: Variants, otherProps?: Props & { className?: string }) => string>=> {
     const slots = Object.keys(variantDefinition.slots)
     const twMerge = extendTailwindMerge(tcaConfig.tailwindMergeConfig || {});
+    const isResponsive = tcaConfig.responsive || false
 
     return slots.reduce((acc, slot) => {
-        acc[slot as Slots] = (variantsProps?: Variants, otherProps?: OtherProps<Props>) => {
+        acc[slot as Slots] = (variantsProps, otherProps) => {
             const className = otherProps?.className || ""
             const slotDefaultClasses = variantDefinition.slots[slot as Slots] ? [variantDefinition.slots[slot as Slots]] : []
             const [defaultProps, slotVariantsClasses] = retrieveVariantsClasses(variantDefinition.variants, variantsProps, slot)

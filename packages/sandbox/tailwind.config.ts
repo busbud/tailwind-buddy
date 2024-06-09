@@ -1,4 +1,4 @@
-import twConfig from "ui-kit/tailwind.config.js"
+import twConfig from "ui-kit/tailwind.config"
 
 /** @type {import('tailwindcss').Config} */
 export default {

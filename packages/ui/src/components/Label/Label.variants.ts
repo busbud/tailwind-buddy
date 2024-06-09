@@ -3,21 +3,21 @@ import { VariantConfiguration } from "./Label.types"
 
 export const labelVariantsConfigurations: VariantConfiguration = {
     "slots": {
-        "root": "text-blue-500"
+        "root": /** @tw */ "text-blue-500"
     },
     "variants": {
         "size": {
-            "default": "xxl",
+            "default": "small",
             "values": {
-                "small": "text-blue-500",
-                "large": "text-red-500"
+                "small": /** @tw */ "text-sm",
+                "large": /** @tw */ "text-7xl"
             }
         },
         "fontWeight": {
-            "default": "",
+            "default": "xxl",
             "values": {
                 xxl: {
-                    "root": "text-blue-500"
+                    "root": /** @tw */ "font-extrabold"
                 }
             }
         }
@@ -25,9 +25,9 @@ export const labelVariantsConfigurations: VariantConfiguration = {
     "compoundVariants": [
         {
             "conditions": {
-                "fontWeight": "bold"
+                "disabled": true
             },
-            "class": "text-blue-500"
+            "class": /** @tw */ "bg-red-500"
         }
     ]
 }

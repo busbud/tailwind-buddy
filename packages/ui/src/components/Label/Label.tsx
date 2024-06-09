@@ -10,6 +10,7 @@ export const Label: React.FC<PropsWithChildren<LabelProps>> = ({
   children,
   fontWeight = "regular",
   size = "large",
+  disabled = false,
   ...restProps
 }) => {
   const { root } = labelVariants();
@@ -20,8 +21,8 @@ export const Label: React.FC<PropsWithChildren<LabelProps>> = ({
         "fontWeight": fontWeight,
         "size": size,
       }, {
-        "className": "",
-        "disabled": false
+        className,
+        disabled
       })}
       {...restProps}
     >

@@ -1,4 +1,21 @@
 
+## v0.0.21
+
+[compare changes](https://github.com/flozero/tailwind-classes-authorithy/compare/v0.0.20...v0.0.21)
+
+### 🚀 Enhancements
+
+- Update safelist generate classes and tests ([e540225](https://github.com/flozero/tailwind-classes-authorithy/commit/e540225))
+- Update safelist generate classes and tests ([7251e99](https://github.com/flozero/tailwind-classes-authorithy/commit/7251e99))
+
+### 🏡 Chore
+
+- Update sandbox ([8a028c7](https://github.com/flozero/tailwind-classes-authorithy/commit/8a028c7))
+
+### ❤️ Contributors
+
+- Florent Giraud ([@flozero](http://github.com/flozero))
+
 ## v0.0.20
 
 [compare changes](https://github.com/flozero/tailwind-classes-authorithy/compare/v0.0.19...v0.0.20)

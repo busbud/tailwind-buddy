@@ -29,16 +29,13 @@
     "./style.css": "./dist/style.css"
   },
   "dependencies": {
-    "clsx": "^2.1.1",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "tailwind-variants": "^0.2.1"
+    "react-dom": "^18.2.0"
   },
   "engines": {
     "node": "20.12.2"
   },
   "devDependencies": {
-    "tailwind-classes-authority": "workspace:*",
     "@types/react": "^18.3.2",
     "@types/react-dom": "^18.3.0",
     "@typescript-eslint/eslint-plugin": "^7.2.0",
@@ -46,6 +43,7 @@
     "@vitejs/plugin-react": "^4.2.1",
     "autoprefixer": "^10.4.19",
     "postcss": "^8.4.38",
+    "tailwind-classes-authority": "workspace:*",
     "tailwindcss": "^3.4.3",
     "typescript": "^5.2.2",
     "vite": "^5.2.0",

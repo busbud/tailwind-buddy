@@ -7,7 +7,8 @@
     "dev": "nuxt dev",
     "generate": "nuxt generate",
     "preview": "nuxt preview",
-    "postinstall": "nuxt prepare"
+    "postinstall": "nuxt prepare",
+    "deploy": "gh-pages -d .output/public"
   },
   "dependencies": {
     "nuxt": "^3.11.2",
@@ -15,5 +16,8 @@
     "shadcn-docs-nuxt": "latest",
     "vue": "^3.4.27",
     "vue-router": "^4.3.2"
+  },
+  "devDependencies": {
+    "gh-pages": "^6.1.1"
   }
 }

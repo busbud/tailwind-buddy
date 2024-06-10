@@ -3,4 +3,7 @@ export default defineNuxtConfig({
   devtools: { enabled: false },
   extends: ['shadcn-docs-nuxt'],
   telemetry: false,
+  "nitro": {
+    "baseURL": "/flozero/"
+  }
 });

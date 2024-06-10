@@ -1,10 +1,10 @@
 export default defineAppConfig({
   shadcnDocs: () => ({
     site: {
-      name: 'shadcn-docs-nuxt'
+      name: 'tailwind-classes-authority'
     },
     header: {
-      title: 'shadcn-docs-starter',
+      title: 'tailwind-classes-authority',
       showTitle: true,
       darkModeToggle: true,
       logo: {
@@ -14,7 +14,7 @@ export default defineAppConfig({
       nav: [],
       links: [{
         icon: 'lucide:github',
-        to: 'https://github.com/ZTL-UwU/shadcn-docs-nuxt',
+        to: 'https://github.com/flozero/tailwind-classes-authority',
         target: '_blank',
       }],
     },
@@ -31,7 +31,7 @@ export default defineAppConfig({
       credits: 'Copyright © 2024',
       links: [{
         icon: 'lucide:github',
-        to: 'https://github.com/ZTL-UwU/shadcn-docs-nuxt',
+        to: 'https://github.com/flozero/tailwind-classes-authority',
         target: '_blank',
       }],
     },
@@ -41,12 +41,12 @@ export default defineAppConfig({
       links: [{
         title: 'Star on GitHub',
         icon: 'lucide:star',
-        to: 'https://github.com/ZTL-UwU/shadcn-docs-nuxt',
+        to: 'https://github.com/flozero/tailwind-classes-authority',
         target: '_blank',
       }, {
         title: 'Create Issues',
         icon: 'lucide:circle-dot',
-        to: 'https://github.com/ZTL-UwU/shadcn-docs-nuxt/issues',
+        to: 'https://github.com/flozero/tailwind-classes-authority/issues',
         target: '_blank',
       }],
     },

@@ -6,7 +6,7 @@ navigation: false
 ::hero
 ---
 announcement:
-  title: 'Release v0.1.3'
+  title: 'Release v0.0.23'
   icon: 'noto:party-popper'
   to: /getting-started
 actions:
@@ -14,17 +14,13 @@ actions:
     to: /getting-started
   - name: GitHub
     variant: outline
-    to: https://github.com/ZTL-UwU/shadcn-docs-nuxt
+    to: https://github.com/flozero/tailwind-classes-authority
     leftIcon: 'lucide:github'
 ---
 
 #title
-Effortless and Beautiful<br>Docs Template.
+Tailwind Classes Authority
 
 #description
-Beautifully designed Nuxt Content template with shadcn-vue.<br>Customizable. Compatible. Open Source.
+Build easily your UI library powered by Tailwind and Tailwind-merge
 ::
-
-<div class="border rounded-lg shadow-md">
-  <iframe src="/getting-started/writing/components" height="700" width="100%" class="rounded-lg" scrolling="no" frameborder="0">
-</div>

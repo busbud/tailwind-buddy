@@ -1,5 +1,5 @@
 import { describe, expect, test } from 'vitest'
-import { simpleCompoundComponent, simpleCompoundComponentWithoutTwMerge } from "../../src/configs/simple-compound"
+import { simpleCompoundComponent, simpleCompoundComponentWithoutTwMerge } from "../setup/simple-compound"
 import { twMerge } from "tailwind-merge"
 
 describe('test with class name', () => {

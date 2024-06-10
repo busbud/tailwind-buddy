@@ -21,15 +21,7 @@ export const labelVariantsConfigurations: VariantConfiguration = {
                 }
             }
         }
-    }, 
-    "compoundVariants": [
-        {
-            "conditions": {
-                "disabled": true
-            },
-            "class": /** @tw */ "bg-red-500"
-        }
-    ]
+    }
 }
 
 

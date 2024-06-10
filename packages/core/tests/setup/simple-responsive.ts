@@ -1,4 +1,4 @@
-import { ResponsiveVariants, TCA_VARIANT_DEFINITION, tca } from "@/tca";
+import { ResponsiveVariants, TCA_VARIANT_DEFINITION, tca } from "../../src/tca";
 
 type Slots = "root"
 

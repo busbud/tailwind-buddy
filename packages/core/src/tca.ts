@@ -10,7 +10,7 @@ export interface TCA_CONFIG {
     responsive?: boolean;
 }
 export interface VARIANT<Slots extends string> {
-    default: string;
+    default: keyof this["values"];
     values: Record<string, string | Partial<Record<Slots, string>>>;
 }
 

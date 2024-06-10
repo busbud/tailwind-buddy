@@ -1,6 +1,6 @@
 import { describe, expect, test } from 'vitest'
 import { twMerge } from "tailwind-merge"
-import { responsiveAndCompoundComponent, responsiveAndCompoundComponentWithoutTwMerge } from '../../src/configs/responsive-and-compound'
+import { responsiveAndCompoundComponent, responsiveAndCompoundComponentWithoutTwMerge } from '../setup/responsive-and-compound'
 
 describe('test resposive simple config', () => {
 

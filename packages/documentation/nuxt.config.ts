@@ -2,5 +2,9 @@
 export default defineNuxtConfig({
   devtools: { enabled: false },
   extends: ['shadcn-docs-nuxt'],
-  telemetry: false
+  telemetry: false,
+  app: {
+    baseURL: '/tailwind-classes-authority/',
+    buildAssetsDir: 'assets'
+  }
 });

@@ -3,12 +3,12 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "build": "NUXT_APP_BASE_URL=/tailwind-classes-authority npx nuxt build --preset github_pages",
+    "build": "npx nuxt build --preset github_pages",
     "dev": "nuxt dev",
     "generate": "nuxt generate",
     "preview": "nuxt preview",
     "postinstall": "nuxt prepare",
-    "deploy": "gh-pages -d .output/public"
+    "deploy": "gh-pages --dotfiles -d .output/public"
   },
   "dependencies": {
     "nuxt": "^3.11.2",

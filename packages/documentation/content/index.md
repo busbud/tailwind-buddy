@@ -8,10 +8,10 @@ navigation: false
 announcement:
   title: 'Release v0.0.23'
   icon: 'noto:party-popper'
-  to: /
+  to: /getting-started
 actions:
   - name: Get Started
-    to: /
+    to: /getting-started
   - name: GitHub
     variant: outline
     to: https://github.com/flozero/tailwind-classes-authority

@@ -1,6 +1,6 @@
-# Content v2 Minimal Starter
+# shadcn-docs-nuxt Minimal Starter
 
-Look at the [Content documentation](https://content.nuxt.com/) to learn more.
+Starter template for [shadcn-docs-nuxt](https://github.com/ZTL-UwU/shadcn-docs-nuxt).
 
 ## Setup
 
@@ -15,6 +15,9 @@ npm install
 
 # pnpm
 pnpm install
+
+# bun
+bun install
 ```
 
 ## Development Server

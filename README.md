@@ -1,4 +1,4 @@
-# Tailwind classes authority 🎨
+# Tailwind classes variants authority 🎨
 
 You are looking for the [documentation go here](#documentation)
 

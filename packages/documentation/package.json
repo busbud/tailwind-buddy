@@ -3,7 +3,7 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "build": "nuxt build",
+    "build": "NUXT_APP_BASE_URL=/tailwind-classes-authority npx nuxt build --preset github_pages",
     "dev": "nuxt dev",
     "generate": "nuxt generate",
     "preview": "nuxt preview",

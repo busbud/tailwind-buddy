@@ -1,70 +1,101 @@
-// @ts-nocheck
-import { extendTailwindMerge } from "tailwind-merge"
 import { retrieveVariantsClasses } from "./utils/variants";
 import { retrieveCompoundClasses } from "./utils/compounds";
 
-type MergeConfig = Parameters<typeof extendTailwindMerge>[0];
 
-export interface TCA_CONFIG {
-    tailwindMergeConfig?: MergeConfig;
-    tailwindMergeDisabled?: boolean;
-    responsive?: boolean;
-}
-export interface VARIANT<Slots extends string> {
-    default: keyof this["values"];
-    values: Record<string, string | Partial<Record<Slots, string>>>;
-}
+type Slots = Record<string, string> | undefined;
 
-export interface TCA_VARIANT_DEFINITION<Slots extends string, Variants, Props extends Record<string, any> = {}> {
-    slots: Record<Slots, string>;
-    variants: Record<keyof Variants, VARIANT<Slots>>;
-    compoundVariants?: Array<{
-        conditions: Partial<Record<keyof Variants | keyof Props, string | string[] | boolean>>;
-        class: string | Partial<Record<Slots, string>>;
-    }>;
-}
+type TVBaseName = "base";
 
-export type DefaultScreens = "sm" | "md" | "lg" | "xl" | "xxl"
+type TVSlotsWithBase<S extends Slots, B extends string> = B extends undefined
+  ? keyof S
+  : keyof S | TVBaseName;
 
-export type ResponsiveVariants<T, S extends string | number | symbol = DefaultScreens> = {
-        [K in S]?: T;
-    } & {
-        "initial": T;
-    } | T 
+type SlotsClassValue<S extends Slots, B extends string> = {
+    [K in TVSlotsWithBase<S, B>]?: string;
+  };
 
-type OtherProps<Props> = {
-        [key in keyof Props]?: Props;
-} & {
-        className?: string;
-};
-
-// export const tca = <Slots extends string, Variants, Props extends Record<string, any> = {}>(variantDefinition: TCA_VARIANT_DEFINITION<Slots, Variants, Props>, tcaConfig: TCA_CONFIG = {}) => (): Record<Slots, (variantsProps?: Variants, otherProps?: Props & { className?: string }) => string>=> {
-export const tca = (variantDefinition = {}, tcaConfig = {}) => (variantsProps, otherProps) => {
-    const slots = Object.keys(variantDefinition.slots)
-    if (slots.length <= 1) {
-        const className = otherProps?.className || ""
-        const slotDefaultClasses: string = variantDefinition.slots["root"] ?? ""
-        const [defaultProps, slotVariantsClasses] = retrieveVariantsClasses(variantDefinition.variants, variantsProps, "root")
-        let compoundClasses: any[] = []
-        const withDefaultProps = {
-            ...defaultProps,
-            ...variantsProps,
-            ...otherProps
-        }
-
-        if (variantDefinition.compoundVariants && variantDefinition.compoundVariants.length > 0) {
-            compoundClasses = retrieveCompoundClasses(variantDefinition.compoundVariants, withDefaultProps, "root")
-        }
-
-        const str = [
-            slotDefaultClasses,
-            ...Object.values(slotVariantsClasses),
-            ...compoundClasses,
-            className
-        ].join(" ").trim()
-
-        return str
+export type TVVariants<
+    S extends Slots,
+> = {
+        [key: string]: {
+            [key: string]: string | {
+                [key in keyof S]?: string
+            }
+        };
     }
+
+export type StringToBoolean<T> = T extends "true" | "false" ? boolean : T;
+
+// export type TVDefaultVariants<
+//     V extends TVVariants<S>,
+//     S extends Slots,
+//     EV extends TVVariants<ES>,
+//     ES extends Slots,
+//   > = {
+//     [K in keyof V | keyof EV]?:
+//       | (K extends keyof V ? StringToBoolean<keyof V[K]> : never)
+//       | (K extends keyof EV ? StringToBoolean<keyof EV[K]> : never);
+//   };
+
+export type TVDefaultVariants<
+    V extends TVVariants<S>,
+    S extends Slots,
+> = {
+    [K in keyof V]?: (K extends keyof V ? StringToBoolean<keyof V[K]> : never)
+  };
+
+
+export type TCA = {
+    <
+        V extends B extends string
+            ? Record<string, Record<string, string>>
+            : TVVariants<S>,
+        CV extends Array<{
+            conditions: Record<string, string | string[] | boolean>;
+            class: string | Record<string, string>;
+        }>,
+        DV extends TVDefaultVariants<V, S>,
+        B extends string | undefined = undefined,
+        S extends Slots | undefined = undefined,
+    >(
+        options: (B extends string
+            ? { base: B }
+            : { slots: S } ) & {
+            variants?: V;
+            compoundVariants?: CV;
+            defaultVariants?: DV;
+        }
+    ): string
+}
+
+
+export const tca: TCA = (variantDefinition) => {
+    return ""
+    // const slots = Object.keys(variantDefinition.slots)
+    // if (slots.length <= 1) {
+    //     const className = otherProps?.className || ""
+    //     const slotDefaultClasses: string = variantDefinition.slots["root"] ?? ""
+    //     const [defaultProps, slotVariantsClasses] = retrieveVariantsClasses(variantDefinition.variants, variantsProps, "root")
+    //     let compoundClasses: any[] = []
+    //     const withDefaultProps = {
+    //         ...defaultProps,
+    //         ...variantsProps,
+    //         ...otherProps
+    //     }
+
+    //     if (variantDefinition.compoundVariants && variantDefinition.compoundVariants.length > 0) {
+    //         compoundClasses = retrieveCompoundClasses(variantDefinition.compoundVariants, withDefaultProps, "root")
+    //     }
+
+    //     const str = [
+    //         slotDefaultClasses,
+    //         ...Object.values(slotVariantsClasses),
+    //         ...compoundClasses,
+    //         className
+    //     ].join(" ").trim()
+
+    //     return str
+    // }
 
     // return slots.reduce((acc, slot) => {
     //     acc[slot as Slots] = (variantsProps, otherProps) => {

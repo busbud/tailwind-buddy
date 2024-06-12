@@ -1,18 +1,17 @@
 import { retrieveVariantsClasses } from "./utils/variants";
 import { retrieveCompoundClasses } from "./utils/compounds";
 
-
 type Slots = Record<string, string> | undefined;
 
-type TVBaseName = "base";
+// type TVBaseName = "base";
 
-type TVSlotsWithBase<S extends Slots, B extends string> = B extends undefined
-  ? keyof S
-  : keyof S | TVBaseName;
+// type TVSlotsWithBase<S extends Slots, B extends string> = B extends undefined
+//   ? keyof S
+//   : keyof S | TVBaseName;
 
-type SlotsClassValue<S extends Slots, B extends string> = {
-    [K in TVSlotsWithBase<S, B>]?: string;
-  };
+// type SlotsClassValue<S extends Slots, B extends string> = {
+//     [K in TVSlotsWithBase<S, B>]?: string;
+//   };
 
 export type TVVariants<
     S extends Slots,
@@ -24,18 +23,7 @@ export type TVVariants<
         };
     }
 
-export type StringToBoolean<T> = T extends "true" | "false" ? boolean : T;
-
-// export type TVDefaultVariants<
-//     V extends TVVariants<S>,
-//     S extends Slots,
-//     EV extends TVVariants<ES>,
-//     ES extends Slots,
-//   > = {
-//     [K in keyof V | keyof EV]?:
-//       | (K extends keyof V ? StringToBoolean<keyof V[K]> : never)
-//       | (K extends keyof EV ? StringToBoolean<keyof EV[K]> : never);
-//   };
+// export type StringToBoolean<T> = T extends "true" | "false" ? boolean : T;
 
 export type TVDefaultVariants<
     V extends TVVariants<S>,
@@ -45,16 +33,23 @@ export type TVDefaultVariants<
     // [K in keyof V]?: (K extends keyof V ? StringToBoolean<keyof V[K]> : never)
   };
 
+export type CompoundVariant<
+    V extends TVVariants<S>,
+    S extends Slots,
+> = {
+    conditions: {
+        [K in keyof V]?: (K extends keyof V ? keyof V[K] : never) | (K extends keyof V ? keyof V[K] : never)[] | boolean
+    }
+    class: string | Record<string, string>;
+}
+
 
 export type TCA = {
     <
         V extends B extends string
             ? Record<string, Record<string, string>>
             : TVVariants<S>,
-        CV extends Array<{
-            conditions: Record<string, string | string[] | boolean>;
-            class: string | Record<string, string>;
-        }>,
+        CV extends CompoundVariant<V, S>,
         DV extends TVDefaultVariants<V, S>,
         B extends string | undefined = undefined,
         S extends Slots | undefined = undefined,
@@ -63,7 +58,7 @@ export type TCA = {
             ? { base: B }
             : { slots: S } ) & {
             variants?: V;
-            compoundVariants?: CV;
+            compoundVariants?: CV[];
             defaultVariants?: DV;
         }
     ): string

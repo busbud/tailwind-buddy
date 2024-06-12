@@ -25,7 +25,7 @@ export const simpleConfiguration = tca({
 export const simpleConfigurationWithSlots = tca({
   slots: {
     "root": "text-red-100 text-red-200",
-    label: "text-blue-100 text-blue-200"
+    label: "text-blue-100 text-blue-200",
   },
   "variants": {
     "color": {
@@ -38,7 +38,15 @@ export const simpleConfigurationWithSlots = tca({
   },
   defaultVariants: {
     "color": "secondary",
-  }
+  },
+  "compoundVariants": [
+    {
+      "conditions": {
+        "color": ["primary", "secondary"],
+      },
+      "class": "text-red-100 text-red-200"
+    }
+  ]
 })
 
 // export const simpleComponent = tca(simpleConfiguration)

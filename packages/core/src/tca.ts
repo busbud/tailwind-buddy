@@ -41,7 +41,8 @@ export type TVDefaultVariants<
     V extends TVVariants<S>,
     S extends Slots,
 > = {
-    [K in keyof V]?: (K extends keyof V ? StringToBoolean<keyof V[K]> : never)
+    [K in keyof V]?: (K extends keyof V ? keyof V[K] : never)
+    // [K in keyof V]?: (K extends keyof V ? StringToBoolean<keyof V[K]> : never)
   };
 
 

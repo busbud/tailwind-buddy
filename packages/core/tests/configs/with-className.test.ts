@@ -1,60 +1,24 @@
 import { describe, expect, test } from 'vitest'
-import { simpleCompoundComponent, simpleCompoundComponentWithoutTwMerge } from "../setup/simple-compound"
-import { twMerge } from "tailwind-merge"
+import { simpleComponent } from "../setup/simple-with-slots"
 
 describe('test with class name', () => {
-
-    const { root, children } = simpleCompoundComponent()
-    const { root: rootWithoutTwMerge, children: childrenWithoutTwMerge } = simpleCompoundComponentWithoutTwMerge()
+    const { root, label } = simpleComponent
     
     describe("defaults values", () => {
-        
         test("root", () => {
-            const full_str = "text-red-100 text-red-200 text-purple-500"
+            const full_str = /** @tw */ "text-red-100 text-red-200 bg-red-500 text-lg text-purple-500"
             const options = {
-                className: "text-purple-500"
+                className: /** @tw */ "text-purple-500"
             }
-
-            expect(rootWithoutTwMerge({}, options)).toBe(full_str)
-            expect(root({}, options)).toBe(twMerge(full_str))
+            expect(root(options)).toBe(full_str)
         })
 
-        test("children", () => {
-            const full_str = "text-blue-100 text-blue-200 text-purple-500"
+        test("label", () => {
+            const full_str = /** @tw */ "text-blue-100 text-blue-200 bg-red-500 text-sm text-orange-500"
             const options = {
-                className: "text-purple-500"
+                className: /** @tw */ "text-orange-500"
             }
-
-            expect(childrenWithoutTwMerge({}, options)).toBe(full_str)
-            expect(children({}, options)).toBe(twMerge(full_str))
-        })
-    })
-
-    describe("with compound variants", () => {
-        const options = {
-            className: "text-purple-500",
-            disabled: true
-        }
-
-        test("root", () => {
-            const full_str = "text-red-100 text-red-200 text-red-300 text-purple-500"
-
-            expect(rootWithoutTwMerge({}, options)).toBe(full_str)
-            expect(root({}, options)).toBe(twMerge(full_str))
-        })
-
-        test("children", () => {
-            const full_str = "text-blue-100 text-blue-200 text-purple-500"
-
-            expect(childrenWithoutTwMerge({}, options)).toBe(full_str)
-            expect(children({}, options)).toBe(twMerge(full_str))
-        })
-
-        test("root with secondary color", () => {
-            const full_str = "text-red-100 text-green-100 text-red-300 text-green-200 text-purple-500"
-
-            expect(rootWithoutTwMerge({ color: "secondary" }, options)).toBe(full_str)
-            expect(root({ color: "secondary" }, options)).toBe(twMerge(full_str))
+            expect(label(options)).toBe(full_str)
         })
     })
 })

@@ -1,34 +1,25 @@
-import { ResponsiveVariants, TCA_VARIANT_DEFINITION, tca } from "../../src/tca";
+import { tca } from "../../src/tca";
 
-type Slots = "root"
-
-export type Screens = "sm" | "md" | "lg" | "xl" | "xxl"
-
-type Variants = {
-  size: ResponsiveVariants<"small" | "large" | "extralarge">
-}
-
-type VariantConfiguration = TCA_VARIANT_DEFINITION<Slots, Variants>
-
-export const simpleConfiguration: VariantConfiguration = {
-    "slots": {
-        "root": /** @tw */ "text-red-100",
+export const simpleResponsiveComponent = tca({
+  "slots": {
+      "root": /** @tw */ "text-red-100",
+  },
+  "variants": {
+    "size": {
+        "small": {
+          "root": /** @tw */ "text-xl",
+        },
+        "large": /** @tw */ "text-4xl",
+        "extralarge": /** @tw */ "text-5xl leading-tight",
     },
-    "variants": {
-      "size": {
-        "default": "primary",
-        "values": {
-          "small": {
-            "root": /** @tw */ "text-xl",
-          },
-          "large": /** @tw */ "text-4xl",
-          "extralarge": /** @tw */ "text-5xl leading-tight",
-        }
-      }
+    "color": {
+      "primary": /** @tw */ "text-red-200",
+      "secondary": /** @tw */ "text-blue-200",
     }
-}
-
-export const simpleResponsiveComponent = tca(simpleConfiguration)
-export const simpleResponsiveComponentWithoutTwMerge = tca(simpleConfiguration, {
-  "tailwindMergeDisabled": true
-})
+  },
+  defaultVariants: {
+    "size": "small",
+    "color": "primary"
+  },
+  "responsiveVariants": ["size"]
+})()

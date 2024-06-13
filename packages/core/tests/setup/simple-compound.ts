@@ -1,51 +1,42 @@
-import { TCA_VARIANT_DEFINITION, tca } from "../../src/tca";
+import { tca } from "../../src/tca";
 
-type Slots = "root" | "children"
-type Variants = {
-  color?: "primary" | "secondary"
-}
-type RegularProps = {
+interface MyComponent {
   disabled?: boolean
 }
-type VariantConfiguration = TCA_VARIANT_DEFINITION<Slots, Variants, RegularProps>
 
-export const simpleCompoundConfiguration: VariantConfiguration = {
-    "slots": {
-      "root": /** @tw */ "text-red-100",
-      "children": /** @tw */ "text-blue-100",
-    },
-    "variants": {
-      "color": {
-        "default": "primary",
-        "values": {
-          "primary": {
-            "root": /** @tw */ "text-red-200",
-            "children": /** @tw */ "text-blue-200",
-          },
-          "secondary": /** @tw */ "text-green-100"
-        }
-      }
-    },
-    compoundVariants: [
-      {
-        "conditions": {
-          disabled: true
+export const simpleCompoundComponent = tca({
+  "slots": {
+    "root": /** @tw */ "text-red-100",
+    "children": /** @tw */ "text-blue-100",
+  },
+  "variants": {
+    "color": {
+        "primary": {
+          "root": /** @tw */ "text-red-200",
+          "children": /** @tw */ "text-blue-200",
         },
-        class: {
-          "root": /** @tw */ "text-red-300"
-        }
+        "secondary": /** @tw */ "text-green-100"
+      }
+  },
+  "defaultVariants": {
+    "color": "primary"
+  },
+  compoundVariants: [
+    {
+      "conditions": {
+        "disabled": true
       },
-      {
-        "conditions": {
-          disabled: true,
-          color: "secondary"
-        },
-        class: /** @tw */ "text-green-200"
+      class: {
+        "root": /** @tw */ "text-red-300"
       }
-    ]
-}
-
-export const simpleCompoundComponent = tca(simpleCompoundConfiguration)
-export const simpleCompoundComponentWithoutTwMerge = tca(simpleCompoundConfiguration, {
-  "tailwindMergeDisabled": true,
-})
+    },
+    {
+      "conditions": {
+        disabled: true,
+        color: "secondary"
+      },
+      class: /** @tw */ "text-green-200"
+    }
+  ],
+  responsiveVariants: ["color"]
+})<MyComponent>()

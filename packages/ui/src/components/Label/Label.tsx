@@ -1,29 +1,28 @@
 import React from "react";
 
 import { PropsWithChildren } from "react";
-import { LabelProps } from "./Label.types";
-import { labelVariants } from "./Label.variants";
+import { LabelProps, labelVariants } from "./Label.variants";
+import { twMerge } from "tailwind-merge"
 
 export const Label: React.FC<PropsWithChildren<LabelProps>> = ({
   as: Component = "span",
   className,
   children,
-  fontWeight = "regular",
-  size = "large",
-  disabled = false,
+  fontWeight,
+  size,
+  disabled,
   ...restProps
 }) => {
-  const { root } = labelVariants();
+  const { root } = labelVariants
 
   return (
     <Component
-      className={root({
+      className={twMerge(root({
         fontWeight,
         size,
-      }, {
         className,
-        disabled
-      })}
+        disabled,
+      }))}
       {...restProps}
     >
       {children}

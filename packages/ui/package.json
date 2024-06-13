@@ -31,7 +31,8 @@
   "dependencies": {
     "clsx": "^2.1.1",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react-dom": "^18.2.0",
+    "tailwind-merge": "^2.3.0"
   },
   "engines": {
     "node": "20.12.2"

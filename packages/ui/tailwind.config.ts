@@ -1,4 +1,4 @@
-import { labelVariantsConfigurations } from "./src/components/Label/Label.variants"
+import { labelVariants } from "./src/components/Label/Label.variants";
 import { generateSafeList } from "tailwind-classes-authority"
 
 export type Screens = "lg" | "xl"
@@ -12,5 +12,5 @@ export default {
       screens
     }
   },
-  safelist: generateSafeList([labelVariantsConfigurations], screens)
+  safelist: generateSafeList([labelVariants], screens)
 };

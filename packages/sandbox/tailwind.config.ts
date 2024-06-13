@@ -5,7 +5,7 @@ export default {
   content: [
     "./index.html",
     "./src/**/*.{js,ts,jsx,tsx}",
-    "./node_modules/ui-kit/dist/awesome.js"
+    "./node_modules/ui-kit/dist/uikit.js"
   ],
   theme: {
     extend: twConfig.theme.extend

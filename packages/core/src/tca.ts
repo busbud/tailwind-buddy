@@ -27,11 +27,13 @@ export type DefaultVariants<
 
 export type CompoundVariant<
     V extends Variants<S>,
-    S extends Slots,
+    S extends Slots
 > = {
     conditions: {
-        [K in keyof V]?: (K extends keyof V ? keyof V[K] : never) | (K extends keyof V ? keyof V[K] : never)[] | boolean
-    }
+            [K in keyof V]?: (K extends keyof V ? keyof V[K] : never) | (K extends keyof V ? keyof V[K] : never)[] | boolean
+        } & {
+            [K in string]?: string | string[] | boolean
+        }
     class: string | Record<string, string>;
 }
 
@@ -46,7 +48,7 @@ export type ResponsiveVariant<V, K extends keyof V> = {
 export type MergedProps<Props, V, R extends ResponsiveVariants<V>> = {
     className?: string,
 } & {
-    [K in keyof V]?: R extends undefined ? keyof V[K] : (K extends R[number] ? ResponsiveVariant<V, K> : keyof V[K])
+    [K in keyof V]?: R extends undefined ? keyof V[K] : (K extends R[number] ? ResponsiveVariant<V, K> | keyof V[K] : keyof V[K])
 } & {
     [K in keyof Props]?: Props[K]
 }
@@ -68,17 +70,9 @@ export type TCA =
         }
     ) => <Props>() => {
         [Slot in keyof S]: (props?: MergedProps<Props, V, R>) => string
-    } & {
-        definition: {
-            slots: S,
-            variants?: V;
-            compoundVariants?: CV[];
-            responsiveVariants?: R;
-            defaultVariants: DV;
-        }
     }
 
-export type VariantsProps<V extends Record<string, (...args: any[]) => unknown>> = Parameters<V[keyof V]>[0];
+export type VariantsProps<V extends Record<string, (...args: any[]) => unknown >> = Parameters<V[keyof V]>[0];
 
 export const tca: TCA = (variantDefinition) => ():any => {
     const slots = Object.keys(variantDefinition.slots)

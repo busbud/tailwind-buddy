@@ -1,28 +1,35 @@
 import { tca } from "tailwind-classes-authority"
-import { VariantConfiguration } from "./Label.types"
+import { LabelBaseProps } from "./Label.types"
+import type { VariantsProps } from "tailwind-classes-authority"
 
-export const labelVariantsConfigurations: VariantConfiguration = {
+export const labelVariants = tca({
     "slots": {
         "root": /** @tw */ "text-blue-500"
     },
     "variants": {
         "size": {
-            "default": "small",
-            "values": {
-                "small": /** @tw */ "text-sm",
-                "large": /** @tw */ "text-7xl"
-            }
+            "small": /** @tw */ "text-xs",
+            "large": /** @tw */ "text-7xl"
         },
         "fontWeight": {
-            "default": "xxl",
-            "values": {
-                xxl: {
-                    "root": /** @tw */ "font-extrabold"
-                }
+            xxl: {
+                "root": /** @tw */ "font-extrabold"
             }
         }
-    }
-}
+    },
+    "defaultVariants": {
+        "size": "small",
+        "fontWeight": "xxl"
+    },
+    compoundVariants: [
+        {
+            "conditions": {
+                disabled: true,
+            },
+            class: /** @tw */ "bg-red-500",
+        }
+    ],
+    "responsiveVariants": ["size"]
+})<LabelBaseProps>()
 
-
-export const labelVariants = tca(labelVariantsConfigurations)
+export type LabelProps = VariantsProps<typeof labelVariants>

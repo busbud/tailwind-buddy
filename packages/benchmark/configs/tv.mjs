@@ -27,19 +27,27 @@ const noSlots = {
   ],
 }
 
-export const noSlotsAndCompoundNoTwMerge = {
+export const noSlotsAndCompoundNoTwMergeNoResponsive = {
     avatar: tv(noSlots, {
         twMerge: false,
     }),
 };
 
-export const noSlotsNoCompound = {
+export const noSlotsCompound = {
   avatar: tv(noSlots, {
     twMergeConfig
   }),
 };
 
-export default {
-  noSlotsAndCompoundNoTwMerge,
-  noSlotsNoCompound
+export const slotsCompoundResponsive = {
+  avatar: tv({
+    ...noSlots,
+    slots: {
+      ...noSlots.slots,
+      label: "sr-only"
+    },
+  }, {
+    responsive: true,
+    twMergeConfig
+  }),
 }

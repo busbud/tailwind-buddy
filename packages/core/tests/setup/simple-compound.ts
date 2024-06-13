@@ -24,7 +24,8 @@ export const simpleCompoundComponent = tca({
   compoundVariants: [
     {
       "conditions": {
-        "disabled": true
+        "disabled": true,
+        // color: "primary"
       },
       class: {
         "root": /** @tw */ "text-red-300"
@@ -33,10 +34,10 @@ export const simpleCompoundComponent = tca({
     {
       "conditions": {
         disabled: true,
-        color: "secondary"
+        color: ["secondary", "primary"]
       },
       class: /** @tw */ "text-green-200"
-    }
+    },
   ],
   responsiveVariants: ["color"]
 })<MyComponent>()

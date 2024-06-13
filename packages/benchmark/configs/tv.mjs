@@ -38,16 +38,3 @@ export const noSlotsCompound = {
     twMergeConfig
   }),
 };
-
-export const slotsCompoundResponsive = {
-  avatar: tv({
-    ...noSlots,
-    slots: {
-      ...noSlots.slots,
-      label: "sr-only"
-    },
-  }, {
-    responsive: true,
-    twMergeConfig
-  }),
-}

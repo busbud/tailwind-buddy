@@ -10,11 +10,18 @@ export const retrieveCompoundClasses = (compoundVariants: any, withDefaultProps:
         
         Object.entries(compound.conditions).forEach(([key, value]: any) => {
             if (hasFailed) return
-            if (typeof withDefaultProps[key] === "object") {
+            if (Array.isArray(value)) {
+                if (!value.includes(withDefaultProps[key])) hasFailed = true
+            } else if (typeof withDefaultProps[key] === "object") {
                 let found = false
                 let _k = ""
                 Object.entries(withDefaultProps[key]).forEach(([k, v]: any) => {
-                    if (value === v) {
+                    if (Array.isArray(value)) {
+                        if (value.includes(v)) {
+                            found = true
+                            _k = k
+                        }
+                    } else if (value === v) {
                         found = true
                         _k = k
                     }
@@ -25,8 +32,7 @@ export const retrieveCompoundClasses = (compoundVariants: any, withDefaultProps:
                         tmpClasses.add(`${_k}:${v}`)
                     })
                 }
-            }
-            else if (withDefaultProps[key] !== value) return hasFailed = true
+            } else if (withDefaultProps[key] !== value) return hasFailed = true
         })
 
         if (!hasFailed) {

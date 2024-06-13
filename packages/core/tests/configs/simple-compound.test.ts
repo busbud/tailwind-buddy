@@ -7,12 +7,12 @@ describe('test simple compounds wit no responsive', () => {
 
     describe("with compound variants and default", () => {
         test("root", () => {
-            const full_str = "text-red-100 text-red-200 text-red-300"
+            const full_str = "text-red-100 text-red-200 text-red-300 text-green-200"
             expect(root({ disabled: true })).toBe(full_str)
         })
 
         test("children", () => {
-            const full_str = "text-blue-100 text-blue-200"
+            const full_str = "text-blue-100 text-blue-200 text-green-200"
             expect(children({ disabled: true })).toBe(full_str)
         })
 

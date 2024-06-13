@@ -31,14 +31,6 @@ suite
         twMerge(TCA.noSlotsAndCompoundNoTwMergeNoResponsive.avatar.root({ size: "md" }));
     })
 
-    // TV - slots true - twMerge yes - compound yes => CVA do not support slots
-    .add("TV - slots true - twMerge yes - compound yes", function () {
-        TV.slotsCompoundResponsive.avatar({ size: "md" });
-    })
-    .add("TCA - slots true - twMerge no - compound yes", function () {
-        twMerge(TCA.slotsAndCompoundNoTwMergeResponsive.avatar.root({ size: "md" }));
-    })
-
     .on("cycle", function (event) {
         console.log(String(event.target));
     })

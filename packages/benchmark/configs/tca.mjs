@@ -45,13 +45,3 @@ export const slotsAndCompoundNoTwMergeNoResponsive = {
         },
     })(),
 }
-export const slotsAndCompoundNoTwMergeResponsive = {
-    avatar: tca({
-        ...options,
-        slots: {
-            ...options.slots,
-            label: "sr-only"
-        },
-        responsiveVariants: ["size"]
-    })(),
-}

@@ -90,7 +90,7 @@ export const tca: TCA = (variantDefinition) => ():any => {
             }
 
             if (slotDefaultClass) classesToReturn.push(slotDefaultClass)
-     
+
             Object.entries(mergedPropsWithDefaults).forEach(([key, value]: any) => {
                 const variant = variantDefinition.variants![key]
                 // responsive props
@@ -101,7 +101,7 @@ export const tca: TCA = (variantDefinition) => ():any => {
                         const classStr = extractValue(variant[value], slot)
                         if (classStr) classesToReturn.push(classStr)
                     }
-            }
+                }
             })
 
             if (variantDefinition.compoundVariants && variantDefinition.compoundVariants.length > 0) {

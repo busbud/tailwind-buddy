@@ -3,10 +3,16 @@ import { simpleConfiguration } from "../setup/simple"
 // import { simpleComponent, simpleComponentWithoutTwMerge } from "../setup/simple"
 import { twMerge } from "tailwind-merge"
 
+
+
 describe('test simple config', () => {
 
     describe("defaults values", () => {
         test("", () => {
+            const { root, label } = simpleConfiguration
+            root({
+
+            })
             expect(true).toBe(true)
         })
     })

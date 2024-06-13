@@ -1,0 +1,1 @@
+import{_ as s,o as t,c as o,r as c}from"./D1xQrmUH.js";const l={},r={class:"my-6 ml-6 [&>li]:mt-2 list-decimal list-inside"};function n(e,a){return t(),o("ol",r,[c(e.$slots,"default")])}const _=s(l,[["render",n]]);export{_ as default};

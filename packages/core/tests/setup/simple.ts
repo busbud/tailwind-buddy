@@ -1,16 +1,14 @@
 import { tca } from "../../src/tca";
-// import { TCA_VARIANT_DEFINITION, tca } from "../../src/tca";
 
-type Slots = "root" | "children"
-// type Variants = {
-//   color: "primary" | "secondary"
-// }
+interface MyComponent {
+  disabled?: boolean
+}
 
-// type VariantConfiguration = TCA_VARIANT_DEFINITION<Slots, Variants>
-
-// export const simpleConfiguration: VariantConfiguration = {
 export const simpleConfiguration = tca({
-    base: "text-red-100 text-red-200",
+    slots: {
+      root: "text-red-100 text-red-200",
+      label: "prout"
+    },
     "variants": {
       "color": {
         "primary": "bg-red-500",

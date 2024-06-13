@@ -1,40 +1,30 @@
 import { retrieveVariantsClasses } from "./utils/variants";
 import { retrieveCompoundClasses } from "./utils/compounds";
 
-type Slots = Record<string, string> | undefined;
+type Slots = {
+    [slot: string]: string
+    root: string;
+};
 
-// type TVBaseName = "base";
-
-// type TVSlotsWithBase<S extends Slots, B extends string> = B extends undefined
-//   ? keyof S
-//   : keyof S | TVBaseName;
-
-// type SlotsClassValue<S extends Slots, B extends string> = {
-//     [K in TVSlotsWithBase<S, B>]?: string;
-//   };
-
-export type TVVariants<
+export type Variants<
     S extends Slots,
 > = {
-        [key: string]: {
-            [key: string]: string | {
+        [variant: string]: {
+            [kind: string]: string | {
                 [key in keyof S]?: string
             }
         };
     }
 
-// export type StringToBoolean<T> = T extends "true" | "false" ? boolean : T;
-
 export type TVDefaultVariants<
-    V extends TVVariants<S>,
+    V extends Variants<S>,
     S extends Slots,
 > = {
     [K in keyof V]?: (K extends keyof V ? keyof V[K] : never)
-    // [K in keyof V]?: (K extends keyof V ? StringToBoolean<keyof V[K]> : never)
   };
 
 export type CompoundVariant<
-    V extends TVVariants<S>,
+    V extends Variants<S>,
     S extends Slots,
 > = {
     conditions: {
@@ -46,27 +36,27 @@ export type CompoundVariant<
 
 export type TCA = {
     <
-        V extends B extends string
-            ? Record<string, Record<string, string>>
-            : TVVariants<S>,
+        V extends Variants<S>,
         CV extends CompoundVariant<V, S>,
         DV extends TVDefaultVariants<V, S>,
-        B extends string | undefined = undefined,
-        S extends Slots | undefined = undefined,
+        S extends Slots,
     >(
-        options: (B extends string
-            ? { base: B }
-            : { slots: S } ) & {
+        options: {
+            slots: S,
             variants?: V;
             compoundVariants?: CV[];
             defaultVariants?: DV;
         }
-    ): string
+    ): {
+        [K in keyof S]: (props) => string
+    }
 }
 
 
 export const tca: TCA = (variantDefinition) => {
-    return ""
+    return {
+        
+    }
     // const slots = Object.keys(variantDefinition.slots)
     // if (slots.length <= 1) {
     //     const className = otherProps?.className || ""

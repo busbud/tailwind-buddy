@@ -1,1 +1,0 @@
-import{_ as o,o as t,c,r}from"./D1xQrmUH.js";const s={},l={class:"mt-6 border-l-2 pl-6 italic"};function a(e,n){return t(),c("blockquote",l,[r(e.$slots,"default")])}const d=o(s,[["render",a]]);export{d as default};

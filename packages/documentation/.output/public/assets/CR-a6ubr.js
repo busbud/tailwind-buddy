@@ -1,1 +1,0 @@
-import{_ as t,o as r,c as o,r as n}from"./D1xQrmUH.js";const s={},c={class:"border px-4 py-2 text-left font-bold [&[align=center]]:text-center [&[align=right]]:text-right"};function a(e,l){return r(),o("th",c,[n(e.$slots,"default")])}const f=t(s,[["render",a]]);export{f as default};

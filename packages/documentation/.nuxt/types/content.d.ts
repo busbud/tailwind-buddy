@@ -1,4 +1,0 @@
-declare module '#content/server' {
-  const serverQueryContent: typeof import('/Users/florentgiraud/dev/busbud/tailwind-classes-authority/node_modules/.pnpm/@nuxt+content@2.12.1_ioredis@5.4.1_nuxt@3.11.2_@opentelemetry+api@1.9.0_@parcel+watcher@2.4.1_6z2aizzl4o6tqt2aeem7x7h7uy/node_modules/@nuxt/content/dist/runtime/legacy/types').serverQueryContent
-  const parseContent: typeof import('/Users/florentgiraud/dev/busbud/tailwind-classes-authority/node_modules/.pnpm/@nuxt+content@2.12.1_ioredis@5.4.1_nuxt@3.11.2_@opentelemetry+api@1.9.0_@parcel+watcher@2.4.1_6z2aizzl4o6tqt2aeem7x7h7uy/node_modules/@nuxt/content/dist/runtime/server').parseContent
-}

@@ -27,14 +27,10 @@
     "test:ci": "CI=true pnpm test:unit",
     "test:unit": "vitest"
   },
-  "peerDependencies": {
-    "tailwind-merge": "^2.3.0"
-  },
   "devDependencies": {
     "autoprefixer": "^10.4.19",
     "changelogen": "^0.5.5",
     "postcss": "^8.4.38",
-    "tailwind-merge": "^2.3.0",
     "tailwindcss": "^3.4.4",
     "typescript": "^5.2.2",
     "vite": "^5.2.0",

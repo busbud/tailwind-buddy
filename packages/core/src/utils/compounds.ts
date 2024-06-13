@@ -1,10 +1,4 @@
-function extractValue (value: any, slot: string) {
-    if (typeof value === "string") return value
-    if (value?.[slot]) {
-        if (typeof value[slot] === "string") return value[slot]
-    }
-    return " "
-}
+import { extractValue } from "./values"
 
 export const retrieveCompoundClasses = (compoundVariants: any, withDefaultProps: any = {}, slot: any) => {
     const validCompounds = new Set()

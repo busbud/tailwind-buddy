@@ -1,27 +1,19 @@
 import { describe, expect, test } from 'vitest'
-import { simpleResponsiveComponent, simpleResponsiveComponentWithoutTwMerge } from "../setup/simple-responsive"
-import { twMerge } from "tailwind-merge"
+import { simpleResponsiveComponent } from "../setup/simple-responsive"
 
 describe('test resposive simple config', () => {
 
-    const { root } = simpleResponsiveComponent()
-    const { root: rootWithoutTwMerge } = simpleResponsiveComponentWithoutTwMerge()
-    
+    const { root } = simpleResponsiveComponent
     describe("responsive values", () => {
         test("root", () => {
-            const root_full_str = /** @tw */ "text-red-100 text-xl md:text-5xl md:leading-tight"
-            expect(rootWithoutTwMerge({
-                "size": {
-                    "initial": "small",
-                    "md": "extralarge"
-                }
-            })).toBe(root_full_str)
+            const root_full_str = /** @tw */ "text-red-100 text-xl md:text-5xl md:leading-tight text-blue-200"
             expect(root({
                 "size": {
                     "initial": "small",
                     "md": "extralarge"
-                }
-            })).toBe(twMerge(root_full_str))
+                },
+                "color": "secondary"
+            })).toBe(root_full_str)
         })
     })
 })

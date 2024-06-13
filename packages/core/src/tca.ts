@@ -1,10 +1,12 @@
-import { retrieveVariantsClasses } from "./utils/variants";
 import { retrieveCompoundClasses } from "./utils/compounds";
+import { extractResponsivePropsFromVariant, extractValue } from "./utils/values";
 
 type Slots = {
     [slot: string]: string
     root: string;
 };
+
+type ResponsiveVariants<V> = [keyof V] | []
 
 export type Variants<
     S extends Slots,
@@ -16,11 +18,11 @@ export type Variants<
         };
     }
 
-export type TVDefaultVariants<
+export type DefaultVariants<
     V extends Variants<S>,
     S extends Slots,
 > = {
-    [K in keyof V]?: (K extends keyof V ? keyof V[K] : never)
+    [K in keyof V]: (K extends keyof V ? keyof V[K] : never)
   };
 
 export type CompoundVariant<
@@ -33,84 +35,94 @@ export type CompoundVariant<
     class: string | Record<string, string>;
 }
 
+export type Screens = ["sm", "md", "lg", "xl", "2xl"]
 
-export type TCA = {
+export type ResponsiveVariant<V, K extends keyof V> = {
+    ["initial"]: keyof V[K]
+} & {
+    [screen in Screens[number]]?: keyof V[K]
+}
+
+export type MergedProps<Props, V, R extends ResponsiveVariants<V>> = {
+    className?: string,
+} & {
+    [K in keyof V]?: R extends undefined ? keyof V[K] : (K extends R[number] ? ResponsiveVariant<V, K> : keyof V[K])
+} & {
+    [K in keyof Props]?: Props[K]
+}
+
+export type TCA = 
     <
         V extends Variants<S>,
         CV extends CompoundVariant<V, S>,
-        DV extends TVDefaultVariants<V, S>,
+        DV extends DefaultVariants<V, S>,
+        R extends ResponsiveVariants<V>,
         S extends Slots,
     >(
         options: {
             slots: S,
             variants?: V;
             compoundVariants?: CV[];
-            defaultVariants?: DV;
+            responsiveVariants?: R;
+            defaultVariants: DV;
         }
-    ): {
-        [K in keyof S]: (props) => string
+    ) => <Props>() => {
+        [Slot in keyof S]: (props?: MergedProps<Props, V, R>) => string
+    } & {
+        definition: {
+            slots: S,
+            variants?: V;
+            compoundVariants?: CV[];
+            responsiveVariants?: R;
+            defaultVariants: DV;
+        }
     }
-}
 
+export type VariantsProps<V extends Record<string, (...args: any[]) => unknown>> = Parameters<V[keyof V]>[0];
 
-export const tca: TCA = (variantDefinition) => {
-    return {
-        
-    }
-    // const slots = Object.keys(variantDefinition.slots)
-    // if (slots.length <= 1) {
-    //     const className = otherProps?.className || ""
-    //     const slotDefaultClasses: string = variantDefinition.slots["root"] ?? ""
-    //     const [defaultProps, slotVariantsClasses] = retrieveVariantsClasses(variantDefinition.variants, variantsProps, "root")
-    //     let compoundClasses: any[] = []
-    //     const withDefaultProps = {
-    //         ...defaultProps,
-    //         ...variantsProps,
-    //         ...otherProps
-    //     }
+export const tca: TCA = (variantDefinition) => ():any => {
+    const slots = Object.keys(variantDefinition.slots)
+    return slots.reduce((acc, slot: string) => {
+        acc[slot] = (props: any) => {
+            const className = props?.className || ""
+            if (props?.className) delete props.className
+            const classesToReturn: string[] = []
 
-    //     if (variantDefinition.compoundVariants && variantDefinition.compoundVariants.length > 0) {
-    //         compoundClasses = retrieveCompoundClasses(variantDefinition.compoundVariants, withDefaultProps, "root")
-    //     }
+            const slotDefaultClass = variantDefinition.slots[slot] ? variantDefinition.slots[slot] : ""
+            let compoundClasses: any[] = []
+            const mergedPropsWithDefaults = {
+                ...variantDefinition.defaultVariants,
+                ...props
+            }
 
-    //     const str = [
-    //         slotDefaultClasses,
-    //         ...Object.values(slotVariantsClasses),
-    //         ...compoundClasses,
-    //         className
-    //     ].join(" ").trim()
+            if (slotDefaultClass) classesToReturn.push(slotDefaultClass)
+     
+            Object.entries(mergedPropsWithDefaults).forEach(([key, value]: any) => {
+                const variant = variantDefinition.variants![key]
+                // responsive props
+                if (typeof value === "object") {
+                    classesToReturn.push(extractResponsivePropsFromVariant(value, variant, slot))
+                } else if (typeof value === "string") {
+                    if (variant?.[value]) {
+                        const classStr = extractValue(variant[value], slot)
+                        if (classStr) classesToReturn.push(classStr)
+                    }
+            }
+            })
 
-    //     return str
-    // }
+            if (variantDefinition.compoundVariants && variantDefinition.compoundVariants.length > 0) {
+                retrieveCompoundClasses(variantDefinition.compoundVariants, mergedPropsWithDefaults, slot).forEach((v: any) => {
+                    if (v) {
+                        classesToReturn.push(v)
+                    }
+                })
+            }
 
-    // return slots.reduce((acc, slot) => {
-    //     acc[slot as Slots] = (variantsProps, otherProps) => {
-    //         const className = otherProps?.className || ""
-    //         const slotDefaultClasses = variantDefinition.slots[slot as Slots] ? [variantDefinition.slots[slot as Slots]] : []
-    //         const [defaultProps, slotVariantsClasses] = retrieveVariantsClasses(variantDefinition.variants, variantsProps, slot)
-    //         let compoundClasses: any[] = []
-    //         const withDefaultProps = {
-    //             ...defaultProps,
-    //             ...variantsProps,
-    //             ...otherProps
-    //         }
-
-    //         if (variantDefinition.compoundVariants && variantDefinition.compoundVariants.length > 0) {
-    //             compoundClasses = retrieveCompoundClasses(variantDefinition.compoundVariants, withDefaultProps, slot)
-    //         }
-
-    //         const str = [
-    //             ...slotDefaultClasses,
-    //             ...Object.values(slotVariantsClasses),
-    //             ...compoundClasses,
-    //             className
-    //         ].join(" ").trim()
-    
-    //         // if (tcaConfig.tailwindMergeDisabled) {
-    //         return str
-    //         // }
-    //         // return twMerge(str)
-    //     }
-    //     return acc 
-    // }, {} as Record<Slots, (variantsProps?: Variants, otherProps?: OtherProps<Props>) => string>)
+            if (className) classesToReturn.push(className)
+            return classesToReturn.join(" ")
+        }
+        return acc 
+    }, {
+        definition: variantDefinition
+    } as any)
 };

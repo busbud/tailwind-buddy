@@ -1,4 +1,16 @@
 
+## v0.0.25
+
+[compare changes](https://github.com/busbud/tailwind-classes-authority/compare/v0.0.24...v0.0.25)
+
+### 🏡 Chore
+
+- Fix typing for responsiveVariants multiple values ([89a74fa](https://github.com/busbud/tailwind-classes-authority/commit/89a74fa))
+
+### ❤️ Contributors
+
+- Florent Giraud ([@flozero](http://github.com/flozero))
+
 ## v0.0.24
 
 [compare changes](https://github.com/busbud/tailwind-classes-authority/compare/v0.0.23...v0.0.24)

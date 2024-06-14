@@ -24,12 +24,12 @@ export const labelVariants = tca({
     compoundVariants: [
         {
             "conditions": {
-                disabled: true,
+                "disabled": true,
             },
             class: /** @tw */ "bg-red-500",
         }
     ],
-    "responsiveVariants": ["size"]
+    "responsiveVariants": ["fontWeight"]
 })<LabelBaseProps>()
 
 export type LabelProps = VariantsProps<typeof labelVariants>

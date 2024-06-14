@@ -6,7 +6,7 @@ type Slots = {
     root: string;
 };
 
-type ResponsiveVariants<V> = [keyof V] | []
+type ResponsiveVariants<V> = (keyof V)[]
 
 export type Variants<
     S extends Slots,

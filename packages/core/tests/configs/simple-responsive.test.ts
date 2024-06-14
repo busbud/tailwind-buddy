@@ -1,6 +1,13 @@
 import { describe, expect, test } from 'vitest'
 import { simpleResponsiveComponent } from "../setup/simple-responsive"
 
+
+declare global {
+    interface GlobalScreens {
+        screens: ["lg"];
+    }
+}
+
 describe('test resposive simple config', () => {
 
     const { root } = simpleResponsiveComponent

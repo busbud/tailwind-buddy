@@ -37,6 +37,10 @@ export type CompoundVariant<
     class: string | Record<string, string>;
 }
 
+// interface GlobalScreens {
+//     screens: string[];
+// }
+
 export type Screens = ["sm", "md", "lg", "xl", "2xl"]
 
 export type ResponsiveVariant<V, K extends keyof V> = {

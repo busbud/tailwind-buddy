@@ -2,6 +2,7 @@ import { describe, expect, test } from "vitest"
 import { generateSafeList } from '../../src/utils/tailwind-utils'
 import { simpleResponsiveComponent } from "../setup/simple-responsive"
 import { simpleCompoundComponent } from "../setup/simple-compound"
+import { screensOverrides } from "../screens"
 
 describe('safelist', () => {
   test("without compounds", () => {
@@ -18,7 +19,7 @@ describe('safelist', () => {
 
     const generate_str = generateSafeList(
       [simpleResponsiveComponent],
-      ["sm", "md"]
+      screensOverrides
     )
     expect(generate_str).toStrictEqual(str)
   })
@@ -36,7 +37,7 @@ describe('safelist', () => {
     ]
     const generate_str = generateSafeList(
       [simpleCompoundComponent],
-      ["sm", "md"]
+      screensOverrides
     )
     expect(generate_str).toStrictEqual(str)
   })

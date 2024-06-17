@@ -11,7 +11,7 @@ describe('test simple compounds wit no responsive', () => {
             expect(root({ disabled: true })).toBe(full_str)
         })
 
-        test.only("children", () => {
+        test("children", () => {
             const full_str = "text-blue-100 text-blue-200 text-green-200"
             expect(children({ disabled: true })).toBe(full_str)
         })

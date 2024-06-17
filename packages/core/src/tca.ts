@@ -83,109 +83,112 @@ export type TCA =
 
 export type VariantsProps<V extends Record<string, (...args: any[]) => unknown >> = Parameters<V[keyof V]>[0];
 
-export function extractValue (value: any, slot: string) {
-    if (typeof value === "string") return value
-    if (value?.[slot]) {
-        if (typeof value[slot] === "string") return value[slot]
-    }
-    return undefined
+export function extractValue(value: any, slot: string) {
+    if (typeof value === "string") return value;
+    if (value?.[slot] && typeof value[slot] === "string") return value[slot];
+    return undefined;
 }
 
 function transformConditionsToBeUsable(obj: any) {
-    let acc: any = {}
-    
-    Object.entries(obj).forEach(([key, value]: any) => {
-        if (typeof value !== "object") {
-            acc[key] = { "initial": value }
-        } else {
-            acc[key] = value
-        }
-    })
-    return acc
+    const acc: any = {};
+    for (const [key, value] of Object.entries(obj)) {
+        acc[key] = typeof value === "object" ? value : { "initial": value };
+    }
+    return acc;
 }
 
-export const tca: TCA = (variantDefinition) => ():any => {
-    const slots = Object.keys(variantDefinition.slots)
+export const tca: TCA = (variantDefinition) => (): any => {
+    const slots = Object.keys(variantDefinition.slots);
     return slots.reduce((acc, slot: string) => {
         acc[slot] = (props: any) => {
-            const className = props?.className || ""
-            if (props?.className) delete props.className
-            const classesToReturn: string[] = []
+            const className = props?.className || "";
+            if (props?.className) delete props.className;
+            const classesToReturn: string[] = [];
 
-            const slotDefaultClass = variantDefinition.slots[slot] ? variantDefinition.slots[slot] : ""
+            const slotDefaultClass = variantDefinition.slots[slot] || "";
             const mergedPropsWithDefaults = {
                 ...variantDefinition.defaultVariants,
                 ...props
-            }
+            };
 
+            if (slotDefaultClass) classesToReturn.push(slotDefaultClass);
 
-            if (slotDefaultClass) classesToReturn.push(slotDefaultClass)
+            const transformed = transformConditionsToBeUsable(mergedPropsWithDefaults);
+            const transformed_breakpoints: any = { "initial": {} };
+            const transformed_entries = Object.entries(transformed as { [key: string]: any });
 
-            const transformed = transformConditionsToBeUsable(mergedPropsWithDefaults)
-            const transformed_breakpoints: any = {
-                "initial": {}
-            }
+            for (const [key, value] of transformed_entries) {
+                const variant = variantDefinition.variants![key];
+                if (!variant) continue;
 
-            Object.entries(transformed).forEach(([key, value]: any) => {
-                const variant = variantDefinition.variants![key]
-                if (!variant) return
-                Object.entries(value).forEach(([responsiveKey, val]: any) => {
-                    const variantValue = variant[val]
-                    const classStr = extractValue(variantValue, slot)
-                    if (responsiveKey === "initial" && classStr) classesToReturn.push(classStr)
-                    else if (classStr) classStr.split(" ").forEach((v: string) => {
-                        transformed_breakpoints[responsiveKey] = {}
-                        classesToReturn.push(`${responsiveKey}:${v}`)
-                    })
-                })
-            })
-
-            Object.entries(transformed).forEach(([key, value]: any) => {
-                const isOnlyInitial = Object.keys(value).length === 1 && value["initial"]
-                if (isOnlyInitial) {
-                    Object.keys(transformed_breakpoints).forEach((responsiveKey: any) => {
-                        transformed_breakpoints[responsiveKey][key] = transformed[key][responsiveKey] ? transformed[key][responsiveKey] : transformed[key]["initial"]
-                    })
-                } else {
-                    Object.entries(value).forEach(([responsiveKey, val]: any) => {
-                        transformed_breakpoints[responsiveKey][key] = val
-                    })
+                const variants_decomposed = Object.entries(value as { [key: string]: any });
+                for (const [responsiveKey, val] of variants_decomposed) {
+                    const variantValue = variant[val];
+                    const classStr = extractValue(variantValue, slot);
+                    if (classStr) {
+                        if (responsiveKey === "initial") {
+                            classesToReturn.push(classStr);
+                        } else {
+                            classStr.split(" ").forEach((v: string) => {
+                                transformed_breakpoints[responsiveKey] = transformed_breakpoints[responsiveKey] || {};
+                                classesToReturn.push(`${responsiveKey}:${v}`);
+                            });
+                        }
+                    }
                 }
-            })
-            if (variantDefinition.compoundVariants && variantDefinition.compoundVariants.length > 0) {
-                variantDefinition.compoundVariants.forEach((compound: any) => {
-                    const classes = extractValue(compound.class, slot)
-                    Object.entries(transformed_breakpoints).forEach(([breakpoint, value]: any) => {
-                        let validated = true
-                        Object.entries(compound.conditions).forEach(([key, compoundConditionValue]: any) => {
-                            if (validated === false) return
-                            if (!Array.isArray(compoundConditionValue)) {
-                                if (value[key] !== compoundConditionValue) {
-                                    validated = false
-                                }
+            }
+
+            for (const [key, value] of transformed_entries) {
+                const isOnlyInitial = Object.keys(value).length === 1 && value["initial"];
+                if (isOnlyInitial) {
+                    for (const responsiveKey in transformed_breakpoints) {
+                        transformed_breakpoints[responsiveKey][key] = value[responsiveKey] || value["initial"];
+                    }
+                } else {
+                    for (const [responsiveKey, val] of Object.entries(value)) {
+                        transformed_breakpoints[responsiveKey][key] = val;
+                    }
+                }
+            }
+
+            const transformed_breakpoints_entries = Object.entries(transformed_breakpoints) as [string, any][];
+
+            if (variantDefinition.compoundVariants && variantDefinition.compoundVariants!.length > 0) {
+                for (const compound of variantDefinition.compoundVariants) {
+                    const classes = extractValue(compound.class, slot);
+                    
+                    for (const [breakpoint, value] of transformed_breakpoints_entries) {
+                        let validated = true;
+                        const conditions = Object.entries(compound.conditions as { [key: string]: any })
+                        for (const [key, compoundConditionValue] of conditions) {
+                            if (!validated) break;
+                            if (Array.isArray(compoundConditionValue)) {
+                                if (!compoundConditionValue.includes(value[key])) validated = false;
                             } else {
-                                if (!compoundConditionValue.includes(value[key])) validated = false
-                            }
-                        })
-                        if (validated) {
-                            const classStr = extractValue(classes, slot)
-                            if (breakpoint === "initial") {
-                                if (classStr) classesToReturn.push(classStr)
-                            } else {
-                                if (!classStr) return 
-                                classStr.split(" ").forEach((v: string) => {
-                                    classesToReturn.push(`${breakpoint}:${v}`)
-                                })
+                                if (value[key] !== compoundConditionValue) validated = false;
                             }
                         }
-                    })
-                })
+                        if (validated && classes) {
+                            const classStr = extractValue(classes, slot);
+                            if (classStr) {
+                                if (breakpoint === "initial") {
+                                    classesToReturn.push(classStr);
+                                } else {
+                                    classStr.split(" ").forEach((v: string) => {
+                                        classesToReturn.push(`${breakpoint}:${v}`);
+                                    });
+                                }
+                            }
+                        }
+                    }
+                }
             }
-            if (className) classesToReturn.push(className)
-            return classesToReturn.join(" ")
-        }
-        return acc 
+
+            if (className) classesToReturn.push(className);
+            return classesToReturn.join(" ");
+        };
+        return acc;
     }, {
         definition: variantDefinition
-    } as any)
+    } as any);
 };

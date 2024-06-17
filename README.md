@@ -1,23 +1,26 @@
 # Tailwind Buddy: Your Friendly Helper for Composing Tailwind Classes 🎨
 
-You are at the good place if you are looking for:
-- The Fastest tailwind variant utilty that you can ask [our benchmarks](./packages/benchmark/README.md) or [see here](#benchmarks)
-- Building tailwind variant components powered by tailwind
-- Wants to handle variants props responsivness
-- Ease of use (We try to find the good balance between developer experience who will build the library and the ones who will use your ui library)
-- Compound variants that works with responsivness (Compound can base their classes overrides based on variants values but also other random props you give)
-- Framework agnostic (Even if we have build the library base on react it will works nicely with other frameworks)
-- SSR friendly (we do generate the necessary classes you need both responsive and not)
-- Want to be able to use slots (Sometimes you want to be able to cut down your component into smaller piece but want to use the same props)
-- A package actively maintained as its used by our company to power our new design system
+Welcome! If you are looking for:
 
-This library is opinonated inspired by [CVA](https://cva.style/docs) and [tailwind-variants](https://github.com/nextui-org/tailwind-variants). 
+- The fastest Tailwind variant utility, as demonstrated in [our benchmarks](./packages/benchmark/README.md) or [see here](#benchmarks)
+- Tools for building Tailwind variant components
+- Support for responsive variant props
+- Ease of use, balancing developer experience for both library builders and users
+- Compound variants that work responsively, overriding classes based on variant values and other props
+- Framework-agnostic solutions (works well with frameworks other than React)
+- SSR-friendly class generation, both responsive and non-responsive
+- The ability to use slots (to break down components into smaller parts while using the same props)
+- An actively maintained package used by our company for our new design system
+- This library is opinionated and inspired by
+
+This library is opinonated and inspired by [CVA](https://cva.style/docs) and [tailwind-variants](https://github.com/nextui-org/tailwind-variants). 
 
 ## Minimum setup  (no responsive values, no compounds)
 
-### Vscode settings for tailwind auto complete
 
-We do have experimented few path to have auto complete and we still looking for a better way. But for now we suggest you to setup your vscode settings like this.
+### Vscode settings for Tailwind Autocomplete
+
+For the best experience, set up your VSCode settings as follows:
 
 `.vscode/settings.json`
 
@@ -40,7 +43,7 @@ We do have experimented few path to have auto complete and we still looking for 
 }
 ```
 
-The important part is `tailwindCSS.experimental.classRegex` that will autocomplete the string when you put `/** @tw */` in front. You will see in the label example how we do use it.
+The key part is `tailwindCSS.experimental.classRegex`, which autocompletes the string when you put `/** @tw */` in front. You will see how we use it in the label example.
 
 ### Installation
 
@@ -91,18 +94,19 @@ export const labelVariants = compose({
 export type LabelProps = VariantsProps<typeof labelVariants>
 ```
 
-And that's it. The key take aways here are:
-- You need at least on slot root
-- You need to define every default variants
-- We do have auto complete using special comments `/** @tw */`
+Key Takeaways:
 
-If you want to benefits to the maximum we suggest you to use [tailwind merge](#adding-tailwind-merge-to-minify-the-string-generated)
+- You need at least one slot, root.
+- You must define default values for all variants.
+- We use `/** @tw */` for Tailwind autocomplete.
 
-## Adding tailwind merge to minify the string generated
+To maximize benefits, we recommend using [tailwind merge](#adding-tailwind-merge-to-minify-the-string-generated)
 
-Our package do not take care of giving you the smaller possible string. As `tailwind merge` is probably the best one you can find to handle this. We didn't wanted to create another one. 
 
-We choose to not expose it from our package in case as for us you also wants to use tailwind merge outside of the design system itself but wants to control one version of it. With that you don't have to manage two versions of the same package.
+
+## Adding Tailwind Merge to Minify the Generated String
+
+Our package does not optimize the class string size. As tailwind-merge is highly efficient for this purpose, we chose not to create another solution. This allows you to use tailwind-merge outside the design system and manage one version of it.
 
 ### Install tailwind merge
 

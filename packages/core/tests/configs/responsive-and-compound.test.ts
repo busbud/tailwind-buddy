@@ -17,7 +17,21 @@ describe('test resposive simple config', () => {
         })
     
         test("with other props", () => {
-            const root_full_str = /** @tw */ "text-red-100 text-xl md:text-4xl lg:text-xl xl:text-5xl xl:leading-tight xl:bg-red-500 xl:text-blue-500 lg:bg-gray-500 lg:border-red-500"
+            const root_full_str = [
+                "text-red-100",
+                "text-xl", 
+                "md:text-4xl", 
+                "lg:text-xl", 
+                "xl:text-5xl", 
+                "xl:leading-tight", 
+                "xl:bg-red-500", 
+                "xl:text-blue-500", 
+                "bg-gray-500", 
+                "border-red-500",
+                "lg:bg-gray-500", 
+                "lg:border-red-500"
+            ].join(" ")
+            
             expect(root({
                 size: {
                    "initial": "small",
@@ -31,7 +45,22 @@ describe('test resposive simple config', () => {
 
         test("with other props", () => {
 
-            const root_full_str = /** @tw */ "text-red-100 text-xl md:text-4xl lg:text-xl xl:text-5xl xl:leading-tight xl:bg-red-500 xl:text-blue-500 lg:bg-gray-500 lg:border-red-500 border-black"
+            const root_full_str = [
+                "text-red-100",
+                "text-xl",
+                "md:text-4xl",
+                "lg:text-xl",
+                "xl:text-5xl",
+                "xl:leading-tight", 
+                "xl:bg-red-500", 
+                "xl:text-blue-500", 
+                "bg-gray-500", 
+                "border-red-500",
+                "lg:bg-gray-500", 
+                "lg:border-red-500", 
+                "border-black"
+            ].join(" ")
+
             expect(root({
                 size: {
                    "initial": "small",

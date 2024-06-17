@@ -1,8 +1,8 @@
 import { labelVariants } from "./src/components/Label/Label.variants";
 import { generateSafeList } from "tailwind-classes-authority"
 
-export type Screens = "lg" | "xl"
-export const screens: Screens[] = ["lg", "xl"]
+export type Screens = "sm" | "md" | "lg" | "xl"
+export const screens: Screens[] = ["sm", "md", "lg", "xl"]
 
 /** @type {import('tailwindcss').Config} */
 export default {

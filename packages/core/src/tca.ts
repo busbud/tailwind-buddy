@@ -1,6 +1,3 @@
-import { retrieveCompoundClasses } from "./utils/compounds";
-import { extractResponsivePropsFromVariant, extractValue } from "./utils/values";
-
 type Slots = {
     [slot: string]: string
     root: string;
@@ -41,7 +38,7 @@ export type CompoundVariant<
 //     screens: string[];
 // }
 
-export type Screens = ["sm", "md", "lg", "xl", "2xl"]
+export type Screens = ["sm", "md", "lg", "xl"]
 
 export type ResponsiveVariant<V, K extends keyof V> = {
     ["initial"]: keyof V[K]
@@ -71,12 +68,41 @@ export type TCA =
             compoundVariants?: CV[];
             responsiveVariants?: R;
             defaultVariants: DV;
-        }
+        },
     ) => <Props>() => {
         [Slot in keyof S]: (props?: MergedProps<Props, V, R>) => string
+    } & {
+        definition: {
+            slots: S,
+            variants?: V;
+            compoundVariants?: CV[];
+            responsiveVariants?: R;
+            defaultVariants: DV;
+        }
     }
 
 export type VariantsProps<V extends Record<string, (...args: any[]) => unknown >> = Parameters<V[keyof V]>[0];
+
+export function extractValue (value: any, slot: string) {
+    if (typeof value === "string") return value
+    if (value?.[slot]) {
+        if (typeof value[slot] === "string") return value[slot]
+    }
+    return undefined
+}
+
+function transformConditionsToBeUsable(obj: any) {
+    let acc: any = {}
+    
+    Object.entries(obj).forEach(([key, value]: any) => {
+        if (typeof value !== "object") {
+            acc[key] = { "initial": value }
+        } else {
+            acc[key] = value
+        }
+    })
+    return acc
+}
 
 export const tca: TCA = (variantDefinition) => ():any => {
     const slots = Object.keys(variantDefinition.slots)
@@ -87,35 +113,74 @@ export const tca: TCA = (variantDefinition) => ():any => {
             const classesToReturn: string[] = []
 
             const slotDefaultClass = variantDefinition.slots[slot] ? variantDefinition.slots[slot] : ""
-            let compoundClasses: any[] = []
             const mergedPropsWithDefaults = {
                 ...variantDefinition.defaultVariants,
                 ...props
             }
 
+
             if (slotDefaultClass) classesToReturn.push(slotDefaultClass)
 
-            Object.entries(mergedPropsWithDefaults).forEach(([key, value]: any) => {
-                const variant = variantDefinition.variants![key]
-                // responsive props
-                if (typeof value === "object") {
-                    classesToReturn.push(extractResponsivePropsFromVariant(value, variant, slot))
-                } else if (typeof value === "string") {
-                    if (variant?.[value]) {
-                        const classStr = extractValue(variant[value], slot)
-                        if (classStr) classesToReturn.push(classStr)
-                    }
-                }
-            })
-
-            if (variantDefinition.compoundVariants && variantDefinition.compoundVariants.length > 0) {
-                retrieveCompoundClasses(variantDefinition.compoundVariants, mergedPropsWithDefaults, slot).forEach((v: any) => {
-                    if (v) {
-                        classesToReturn.push(v)
-                    }
-                })
+            const transformed = transformConditionsToBeUsable(mergedPropsWithDefaults)
+            const transformed_breakpoints: any = {
+                "initial": {}
             }
 
+            Object.entries(transformed).forEach(([key, value]: any) => {
+                const variant = variantDefinition.variants![key]
+                if (!variant) return
+                Object.entries(value).forEach(([responsiveKey, val]: any) => {
+                    const variantValue = variant[val]
+                    const classStr = extractValue(variantValue, slot)
+                    if (responsiveKey === "initial" && classStr) classesToReturn.push(classStr)
+                    else if (classStr) classStr.split(" ").forEach((v: string) => {
+                        transformed_breakpoints[responsiveKey] = {}
+                        classesToReturn.push(`${responsiveKey}:${v}`)
+                    })
+                })
+            })
+
+            Object.entries(transformed).forEach(([key, value]: any) => {
+                const isOnlyInitial = Object.keys(value).length === 1 && value["initial"]
+                if (isOnlyInitial) {
+                    Object.keys(transformed_breakpoints).forEach((responsiveKey: any) => {
+                        transformed_breakpoints[responsiveKey][key] = transformed[key][responsiveKey] ? transformed[key][responsiveKey] : transformed[key]["initial"]
+                    })
+                } else {
+                    Object.entries(value).forEach(([responsiveKey, val]: any) => {
+                        transformed_breakpoints[responsiveKey][key] = val
+                    })
+                }
+            })
+            if (variantDefinition.compoundVariants && variantDefinition.compoundVariants.length > 0) {
+                variantDefinition.compoundVariants.forEach((compound: any) => {
+                    const classes = extractValue(compound.class, slot)
+                    Object.entries(transformed_breakpoints).forEach(([breakpoint, value]: any) => {
+                        let validated = true
+                        Object.entries(compound.conditions).forEach(([key, compoundConditionValue]: any) => {
+                            if (validated === false) return
+                            if (!Array.isArray(compoundConditionValue)) {
+                                if (value[key] !== compoundConditionValue) {
+                                    validated = false
+                                }
+                            } else {
+                                if (!compoundConditionValue.includes(value[key])) validated = false
+                            }
+                        })
+                        if (validated) {
+                            const classStr = extractValue(classes, slot)
+                            if (breakpoint === "initial") {
+                                if (classStr) classesToReturn.push(classStr)
+                            } else {
+                                if (!classStr) return 
+                                classStr.split(" ").forEach((v: string) => {
+                                    classesToReturn.push(`${breakpoint}:${v}`)
+                                })
+                            }
+                        }
+                    })
+                })
+            }
             if (className) classesToReturn.push(className)
             return classesToReturn.join(" ")
         }

@@ -25,7 +25,6 @@ export const simpleCompoundComponent = tca({
     {
       "conditions": {
         "disabled": true,
-        // color: "primary"
       },
       class: {
         "root": /** @tw */ "text-red-300"

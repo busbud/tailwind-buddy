@@ -1,4 +1,22 @@
 
+## v0.0.26
+
+[compare changes](https://github.com/busbud/tailwind-buddy/compare/v0.0.25...v0.0.26)
+
+### 🚀 Enhancements
+
+- Fix compounds and make sure by test we handle strong use case ([23dc6a9](https://github.com/busbud/tailwind-buddy/commit/23dc6a9))
+
+### 🏡 Chore
+
+- Add benchmarks image ([fd8edae](https://github.com/busbud/tailwind-buddy/commit/fd8edae))
+- Update package name and start from scratch documentation ([3f8115d](https://github.com/busbud/tailwind-buddy/commit/3f8115d))
+- Fix lock file ([ef71a9c](https://github.com/busbud/tailwind-buddy/commit/ef71a9c))
+
+### ❤️ Contributors
+
+- Florent Giraud ([@flozero](http://github.com/flozero))
+
 ## v0.0.25
 
 [compare changes](https://github.com/busbud/@busbud/tailwind-buddy/compare/v0.0.24...v0.0.25)

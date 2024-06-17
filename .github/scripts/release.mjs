@@ -17,7 +17,7 @@ const headerMatchRegex = /^##[^\S\r\n]+v(\d+\.\d+\.\d+)/gm;
  * ****************************************************************************************************************** */
 const CHANGELOG_PATH = path.resolve(
   __dirname,
-  "../../packages/tailwind-classes-authority/CHANGELOG.md"
+  "../../packages/@busbud/tailwind-buddy/CHANGELOG.md"
 );
 
 function extractLatestReleaseLog() {

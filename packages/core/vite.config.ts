@@ -13,9 +13,9 @@ export default defineConfig({
     lib: {
       // Could also be a dictionary or array of multiple entry points
       entry: ["./src/main.ts"],
-      name: "tca",
+      name: "tailwindbuddy",
       // the proper extensions will be added
-      fileName: "tca",
+      fileName: "tailwindbuddy",
     },
     rollupOptions: {
       external: ["fs", "path"],

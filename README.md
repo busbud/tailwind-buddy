@@ -1,161 +1,25 @@
-# Tailwind classes variants authority 🎨
+# Tailwind Buddy: Your Friendly Helper for Composing Tailwind Classes 🎨
 
-You are looking for the [documentation go here](#documentation)
+You are at the good place if you are looking for:
+- The Fastest tailwind variant utilty that you can ask [our benchmarks](./packages/benchmark/README.md) or [see here](#benchmarks)
+- Building tailwind variant components powered by tailwind
+- Wants to handle variants props responsivness
+- Ease of use (We try to find the good balance between developer experience who will build the library and the ones who will use your ui library)
+- Compound variants that works with responsivness (Compound can base their classes overrides based on variants values but also other random props you give)
+- Framework agnostic (Even if we have build the library base on react it will works nicely with other frameworks)
+- SSR friendly (we do generate the necessary classes you need both responsive and not)
+- Want to be able to use slots (Sometimes you want to be able to cut down your component into smaller piece but want to use the same props)
+- A package actively maintained as its used by our company to power our new design system
 
-## What it is ?
+This library is opinonated inspired by [CVA](https://cva.style/docs) and [tailwind-variants](https://github.com/nextui-org/tailwind-variants). 
 
-This library is highly opinonated inspired on the object definition by [tailwind-variants](https://github.com/nextui-org/tailwind-variants). 
+## Minimum setup  (no responsive values, no compounds)
 
-## What this library is trying to solve ?
+### Vscode settings for tailwind auto complete
 
-First we wanted a solution that can be framework agnostic. To achieve that we need something that build string and receive parameters that do not care if you are from react, vue, vanilla JS.
+We do have experimented few path to have auto complete and we still looking for a better way. But for now we suggest you to setup your vscode settings like this.
 
-We found solution that was really close to our needs. [tailwind-variants](https://github.com/nextui-org/tailwind-variants)
-
-The promise of this library was great:
-- Responsive props
-- Having compound variant that override classes.
-- Typescript auto complete is pretty good overhall
-- Not so much configurations to work with it
-
-But the reality is different:
-- The package is not super actively maintained.
-- Dealing with some complex use case seems inconsistent or not working like:
-    - We can't mix regular props with, variant props, with responsive variant props. Basically 
-    - working with responsive props and compoundsVariants are just not working
-    - composing configuration seems to broke typings
-    - when you make responsive variants it makes all of them responsive
-    - can't interact with other kinds of props inside the compounds conditions
-
-## How do tried to solve this
-
-First we focus on that every features is working:
-- variants
-- responsive variants
-- slots
-- make it fast
-- compound variants
-- compounds variants + responsive variants
-- compounds can interact with kind of props than variants values
-
-Worth mentionning that we still do not support extends. [Check the github discussion](https://github.com/flozero/tailwind-classes-authority/discussions/1) to participate how you would expect to have it working.
-
-## What would need to be improved
-
-We will create few github issues with good first issue label. 
-
-## Documentation
-
-If you need like a cookbook Have a look at:
-- [Our tests](packages/core/tests/configs) or [Our utils tests](packages/core/tests/utils/)
-- [The test configs that our tests are usings](packages/core/tests/setup)
-
-### Installation
-
-```
-pnpm add tailwind-classes-authority
-```
-
-You may need to add `tailwind-merge` if so.
-
-```
-pnpm add tailwind-merge
-```
-
-### Setup your tailwind types and screens
-
-If you are extending / overriding tailwind screens config
-
-You will need to setup as we have done [inside our tailwind.config test](./packages/ui/tailwind.config.ts)
-
-```js
-    export type Screens = "lg" | "xl"
-    export const screens: Screens[] = ["lg", "xl"]
-```
-
-We will need that later to handle responsive props and having a single source of truth.
-
-### Build your first component
-
-We will use our [label component](./packages/ui/src/components/Label/Label.types.ts) as reference.
-
-Generally you will want to start by creating the types of your component
-
-#### We will need to define the slots we will find. By default you will always have a root slot.
-
-```js
-export type Slots = "root"
-```
-
-#### Define what variants we will find
-
-```js
-export interface Variants {
-  fontWeight?: string
-  size?: ResponsiveVariants<"small" | "large", Screens>
-}
-```
-
-You will see that a variant can be responsive or not. This will impact how we will use props on the component. You can omit the Screen generic parameter if you didn't override default tailwind screens.
-
-#### Defining component Props
-
-```js
-export interface LabelProps
-  extends React.HTMLAttributes<HTMLBaseElement>,
-  Variants {
-  /** The component used for the root node. Either a string to use a HTML element or a component. */
-  as?: React.ElementType;
-}
-```
-
-#### Creating variant configuration type
-
-```js
-export type VariantConfiguration = TCA_VARIANT_DEFINITION<Slots, Variants, LabelProps>
-```
-
-This config will help us type our variantConfiguration. 
-
-Basically Slots will tell the object what we will need to find as slots.
-
-What variants need to be defined.
-
-What other props compounds will use to create conditions here we put any props the component can receive but you can restrict it. 
-
-### Defining variant configuration
-
-```js
-export const labelVariantsConfigurations: VariantConfiguration = {
-    "slots": {
-        "root": /** @tw */ "text-blue-500"
-    },
-    "variants": {
-        "size": {
-            "default": "small",
-            "values": {
-                "small": /** @tw */ "text-sm",
-                "large": /** @tw */ "text-7xl"
-            }
-        },
-        "fontWeight": {
-            "default": "xxl",
-            "values": {
-                xxl: {
-                    "root": /** @tw */ "font-extrabold"
-                }
-            }
-        }
-    }
-}
-
-
-export const labelVariants = tca(labelVariantsConfigurations)
-```
-
-We want to have auto complete from tailwind. We tried other solution but it was crashing our IDE. We decided to use something that works until we find something better using `/** @tw */`
-
-If you want to have this update your vscode settings with this.
+`.vscode/settings.json`
 
 ```json
 {
@@ -176,47 +40,157 @@ If you want to have this update your vscode settings with this.
 }
 ```
 
-Key take aways:
-- As you will see with typescript. You will have to define all the slots. 
-- You will also have to define the default values of variants
-- the values from variants can received a string that means all slots will receive this values otherwise define the slots
-- for compounds same rule expect its for class.
+The important part is `tailwindCSS.experimental.classRegex` that will autocomplete the string when you put `/** @tw */` in front. You will see in the label example how we do use it.
 
-### Apply it inside the component
+### Installation
 
-Now what you have everything defined. lets check [our component](./packages/ui/src/components/Label/Label.tsx).
-
-```js
-const { root } = labelVariants();
+```
+pnpm add @busbud/tailwind-buddy
 ```
 
-You will apply elements like this
+### Create your first component
 
-```js
-className={root({
-    fontWeight,
-    size,
-}, {
-    className,
-    disabled
-})}
+Component typing:
+
+``` tsx
+export interface LabelBaseProps
+  extends React.HTMLAttributes<HTMLBaseElement> {
+  as?: React.ElementType;
+  disabled?: boolean;
+}
 ```
 
-The first object will take variants values
+Component variant definition
 
-the second object will take any other props and also the `className`. The `className` will override everything else. Check [How override works](#how-override-works) if you want to understand a bit more.
+``` tsx
+import { compose } from "@busbud/tailwind-buddy"
+import { LabelBaseProps } from "./Label.types"
+import type { VariantsProps } from "@busbud/tailwind-buddy"
 
-### How override works
+export const labelVariants = compose({
+    "slots": { // you will always have at least the root slot to define
+        "root": /** @tw */ "text-blue-500" // We do use /** @tw */ to be able to have auto complete from tailwind
+    },
+    "variants": {
+        "size": {
+            "small": /** @tw */ "text-xs",
+            "large": /** @tw */ "text-7xl"
+        },
+        "fontWeight": {
+            xxl: {
+                "root": /** @tw */ "font-extrabold"
+            }
+        }
+    },
+    "defaultVariants": { // all variants should have a default values
+        "size": "small",
+        "fontWeight": "xxl"
+    }
+})<LabelBaseProps>()
 
-Override will works in this order:
-- slots values
-- variants values
-- compound class when condition meet
-- className override
+export type LabelProps = VariantsProps<typeof labelVariants>
+```
 
-Basically we put everything in a long string in this order and let tailwind-merge do its job.
+And that's it. The key take aways here are:
+- You need at least on slot root
+- You need to define every default variants
+- We do have auto complete using special comments `/** @tw */`
 
-### Simple slots Configuration
+If you want to benefits to the maximum we suggest you to use [tailwind merge](#adding-tailwind-merge-to-minify-the-string-generated)
 
-Check [this config](./packages/core/tests/setup/simple.ts)
+## Adding tailwind merge to minify the string generated
 
+Our package do not take care of giving you the smaller possible string. As `tailwind merge` is probably the best one you can find to handle this. We didn't wanted to create another one. 
+
+We choose to not expose it from our package in case as for us you also wants to use tailwind merge outside of the design system itself but wants to control one version of it. With that you don't have to manage two versions of the same package.
+
+### Install tailwind merge
+
+`pnpm add tailwind-merge`
+
+now you can use it in two ways
+
+1) without updating tailwind merge
+
+```tsx
+import React from "react";
+
+import { PropsWithChildren } from "react";
+import { LabelProps, labelVariants } from "./Label.variants";
+import { twMerge } from "tailwind-merge"
+
+export const Label: React.FC<PropsWithChildren<LabelProps>> = ({
+  as: Component = "span",
+  className,
+  children,
+  fontWeight,
+  size,
+  disabled,
+  ...restProps
+}) => {
+  const { root } = labelVariants
+
+  return (
+    <Component
+      className={twMerge(root({
+        fontWeight,
+        size,
+        className,
+        disabled
+      }))}
+      {...restProps}
+    >
+      {children}
+    </Component>
+  );
+};
+```
+
+2) By extending the default tailwind merge 
+
+```tsx
+import {extendTailwindMerge} from "tailwind-merge";
+
+export const COMMON_UNITS = ["small", "medium", "large"];
+
+export const twMergeConfig = {
+    theme: {
+      opacity: ["disabled"],
+      spacing: [
+        "divider",
+        "unit",
+      ],
+      borderWidth: COMMON_UNITS,
+      borderRadius: COMMON_UNITS,
+    },
+    classGroups: {
+      shadow: [{shadow: COMMON_UNITS}],
+      "font-size": [{text: ["tiny", ...COMMON_UNITS]}],
+      "bg-image": ["bg-stripe-gradient"],
+      "min-w": [
+        {
+          "min-w": ["unit", "unit-2", "unit-4", "unit-6", "unit-8", "unit-10", "unit-12", "unit-14"],
+        },
+      ],
+    },
+};
+export const twMerge = extendTailwindMerge(twMergeConfig);
+```
+
+Then use it as the first example but instead of importing from `tailwind-merge` you would import from this file.
+
+## Working with slots
+
+## Working with compound variants
+
+## Working with responsive Variants
+
+## local development
+
+## Contributing
+
+## Benchmarks
+
+TCA is our lib.
+
+![](./packages/benchmark/benchmarks.png)

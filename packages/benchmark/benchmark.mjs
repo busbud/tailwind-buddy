@@ -3,7 +3,7 @@ import Benchmark from "benchmark";
 const suite = new Benchmark.Suite();
 
 import * as CVA from "./configs/cva.mjs"
-import * as TCA from "./configs/tca.mjs"
+import * as TAILWINDBUDDY from "./configs/tailwindbuddy.mjs"
 import * as TV from "./configs/tv.mjs"
 import { twMerge } from "./configs/twMerge.config.mjs"
 
@@ -16,8 +16,8 @@ suite
     .add("CVA - slots false - twMerge no - compound yes", function () {
         CVA.noSlotsAndCompoundNoTwMergeNoResponsive.avatar({ size: "md" });
     })
-    .add("TCA - slots false - twMerge no - compound yes", function () {
-        TCA.noSlotsAndCompoundNoTwMergeNoResponsive.avatar.root({ size: "md" });
+    .add("TAILWINDBUDDY - slots false - twMerge no - compound yes", function () {
+        TAILWINDBUDDY.noSlotsAndCompoundNoTwMergeNoResponsive.avatar.root({ size: "md" });
     })
 
     //  TV - slots false - twMerge yes - compound yes
@@ -27,8 +27,8 @@ suite
     .add("CVA - slots false - twMerge yes - compound yes", function () {
         twMerge(CVA.noSlotsAndCompoundNoTwMergeNoResponsive.avatar({ size: "md" }));
     })
-    .add("TCA - slots false - twMerge yes - compound yes", function () {
-        twMerge(TCA.noSlotsAndCompoundNoTwMergeNoResponsive.avatar.root({ size: "md" }));
+    .add("TAILWINDBUDDY - slots false - twMerge yes - compound yes", function () {
+        twMerge(TAILWINDBUDDY.noSlotsAndCompoundNoTwMergeNoResponsive.avatar.root({ size: "md" }));
     })
 
     .on("cycle", function (event) {

@@ -1,18 +1,18 @@
 {
-  "name": "@busbud/tailwind-classes-authority",
+  "name": "@busbud/tailwind-buddy",
   "version": "0.0.25",
   "type": "module",
   "license": "MIT",
   "files": [
     "dist"
   ],
-  "main": "./dist/tca.umd.cjs",
-  "module": "./dist/tca.js",
+  "main": "./dist/tailwindbuddy.umd.cjs",
+  "module": "./dist/tailwindbuddy.js",
   "types": "./dist/main.d.ts",
   "exports": {
     ".": {
-      "import": "./dist/tca.js",
-      "require": "./dist/tca.umd.cjs",
+      "import": "./dist/tailwindbuddy.js",
+      "require": "./dist/tailwindbuddy.umd.cjs",
       "types": "./dist/main.d.ts"
     }
   },

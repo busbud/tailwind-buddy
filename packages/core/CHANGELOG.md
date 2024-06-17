@@ -1,11 +1,11 @@
 
 ## v0.0.25
 
-[compare changes](https://github.com/busbud/tailwind-classes-authority/compare/v0.0.24...v0.0.25)
+[compare changes](https://github.com/busbud/@busbud/tailwind-buddy/compare/v0.0.24...v0.0.25)
 
 ### 🏡 Chore
 
-- Fix typing for responsiveVariants multiple values ([89a74fa](https://github.com/busbud/tailwind-classes-authority/commit/89a74fa))
+- Fix typing for responsiveVariants multiple values ([89a74fa](https://github.com/busbud/@busbud/tailwind-buddy/commit/89a74fa))
 
 ### ❤️ Contributors
 
@@ -13,46 +13,46 @@
 
 ## v0.0.24
 
-[compare changes](https://github.com/busbud/tailwind-classes-authority/compare/v0.0.23...v0.0.24)
+[compare changes](https://github.com/busbud/@busbud/tailwind-buddy/compare/v0.0.23...v0.0.24)
 
 ### 🚀 Enhancements
 
-- Add documentation ([9973d7e](https://github.com/busbud/tailwind-classes-authority/commit/9973d7e))
-- Add documentation ([e650e98](https://github.com/busbud/tailwind-classes-authority/commit/e650e98))
-- Add documentation ([88f01a0](https://github.com/busbud/tailwind-classes-authority/commit/88f01a0))
-- Improve typings and make sure everything is working in the sandbox ([a1797e3](https://github.com/busbud/tailwind-classes-authority/commit/a1797e3))
-- Update benchmark for cva, tv, tca ([1d6af50](https://github.com/busbud/tailwind-classes-authority/commit/1d6af50))
-- Provide better benchmarks and testing ([e01d067](https://github.com/busbud/tailwind-classes-authority/commit/e01d067))
+- Add documentation ([9973d7e](https://github.com/busbud/@busbud/tailwind-buddy/commit/9973d7e))
+- Add documentation ([e650e98](https://github.com/busbud/@busbud/tailwind-buddy/commit/e650e98))
+- Add documentation ([88f01a0](https://github.com/busbud/@busbud/tailwind-buddy/commit/88f01a0))
+- Improve typings and make sure everything is working in the sandbox ([a1797e3](https://github.com/busbud/@busbud/tailwind-buddy/commit/a1797e3))
+- Update benchmark for cva, tv, tailwindbuddy ([1d6af50](https://github.com/busbud/@busbud/tailwind-buddy/commit/1d6af50))
+- Provide better benchmarks and testing ([e01d067](https://github.com/busbud/@busbud/tailwind-buddy/commit/e01d067))
 
 ### 📖 Documentation
 
-- Start working on the documentation ([25c4cf8](https://github.com/busbud/tailwind-classes-authority/commit/25c4cf8))
+- Start working on the documentation ([25c4cf8](https://github.com/busbud/@busbud/tailwind-buddy/commit/25c4cf8))
 
 ### 🏡 Chore
 
-- **release:** V0.0.23 ([a4b7372](https://github.com/busbud/tailwind-classes-authority/commit/a4b7372))
-- Remove unused libraries ([d95e104](https://github.com/busbud/tailwind-classes-authority/commit/d95e104))
-- Adding @nuxthq/studio ([189839b](https://github.com/busbud/tailwind-classes-authority/commit/189839b))
-- Try documentation deployment ([28c1791](https://github.com/busbud/tailwind-classes-authority/commit/28c1791))
-- Try documentation deployment ([0c2bec2](https://github.com/busbud/tailwind-classes-authority/commit/0c2bec2))
-- Try documentation deployment ([01cc150](https://github.com/busbud/tailwind-classes-authority/commit/01cc150))
-- Add missing lib utils ([e8d1247](https://github.com/busbud/tailwind-classes-authority/commit/e8d1247))
-- Add missing lib utils ([1048744](https://github.com/busbud/tailwind-classes-authority/commit/1048744))
-- Add missing lib utils ([f8acf59](https://github.com/busbud/tailwind-classes-authority/commit/f8acf59))
-- Add missing lib utils ([407bb55](https://github.com/busbud/tailwind-classes-authority/commit/407bb55))
-- Add missing lib utils ([2302050](https://github.com/busbud/tailwind-classes-authority/commit/2302050))
-- Move back doc folder ([241bd07](https://github.com/busbud/tailwind-classes-authority/commit/241bd07))
-- Move back doc folder ([fc3b99e](https://github.com/busbud/tailwind-classes-authority/commit/fc3b99e))
-- Add benchmark and update a bit logic ([7891504](https://github.com/busbud/tailwind-classes-authority/commit/7891504))
-- Improving typing ([40d04e7](https://github.com/busbud/tailwind-classes-authority/commit/40d04e7))
-- Improving typing ([5a6da73](https://github.com/busbud/tailwind-classes-authority/commit/5a6da73))
-- Improving typing ([57a38a0](https://github.com/busbud/tailwind-classes-authority/commit/57a38a0))
-- Update typing ([b99aabf](https://github.com/busbud/tailwind-classes-authority/commit/b99aabf))
-- Reduce size of generated list and improve performance ([a8f1d2f](https://github.com/busbud/tailwind-classes-authority/commit/a8f1d2f))
-- Reduce size of generated list and improve performance ([307b38e](https://github.com/busbud/tailwind-classes-authority/commit/307b38e))
-- Reduce size of generated list and improve performance ([9db3b8f](https://github.com/busbud/tailwind-classes-authority/commit/9db3b8f))
-- Remove documentation folder and add benchmark ([8169f16](https://github.com/busbud/tailwind-classes-authority/commit/8169f16))
-- Working on responsive screens default values ([1ae9a8e](https://github.com/busbud/tailwind-classes-authority/commit/1ae9a8e))
+- **release:** V0.0.23 ([a4b7372](https://github.com/busbud/@busbud/tailwind-buddy/commit/a4b7372))
+- Remove unused libraries ([d95e104](https://github.com/busbud/@busbud/tailwind-buddy/commit/d95e104))
+- Adding @nuxthq/studio ([189839b](https://github.com/busbud/@busbud/tailwind-buddy/commit/189839b))
+- Try documentation deployment ([28c1791](https://github.com/busbud/@busbud/tailwind-buddy/commit/28c1791))
+- Try documentation deployment ([0c2bec2](https://github.com/busbud/@busbud/tailwind-buddy/commit/0c2bec2))
+- Try documentation deployment ([01cc150](https://github.com/busbud/@busbud/tailwind-buddy/commit/01cc150))
+- Add missing lib utils ([e8d1247](https://github.com/busbud/@busbud/tailwind-buddy/commit/e8d1247))
+- Add missing lib utils ([1048744](https://github.com/busbud/@busbud/tailwind-buddy/commit/1048744))
+- Add missing lib utils ([f8acf59](https://github.com/busbud/@busbud/tailwind-buddy/commit/f8acf59))
+- Add missing lib utils ([407bb55](https://github.com/busbud/@busbud/tailwind-buddy/commit/407bb55))
+- Add missing lib utils ([2302050](https://github.com/busbud/@busbud/tailwind-buddy/commit/2302050))
+- Move back doc folder ([241bd07](https://github.com/busbud/@busbud/tailwind-buddy/commit/241bd07))
+- Move back doc folder ([fc3b99e](https://github.com/busbud/@busbud/tailwind-buddy/commit/fc3b99e))
+- Add benchmark and update a bit logic ([7891504](https://github.com/busbud/@busbud/tailwind-buddy/commit/7891504))
+- Improving typing ([40d04e7](https://github.com/busbud/@busbud/tailwind-buddy/commit/40d04e7))
+- Improving typing ([5a6da73](https://github.com/busbud/@busbud/tailwind-buddy/commit/5a6da73))
+- Improving typing ([57a38a0](https://github.com/busbud/@busbud/tailwind-buddy/commit/57a38a0))
+- Update typing ([b99aabf](https://github.com/busbud/@busbud/tailwind-buddy/commit/b99aabf))
+- Reduce size of generated list and improve performance ([a8f1d2f](https://github.com/busbud/@busbud/tailwind-buddy/commit/a8f1d2f))
+- Reduce size of generated list and improve performance ([307b38e](https://github.com/busbud/@busbud/tailwind-buddy/commit/307b38e))
+- Reduce size of generated list and improve performance ([9db3b8f](https://github.com/busbud/@busbud/tailwind-buddy/commit/9db3b8f))
+- Remove documentation folder and add benchmark ([8169f16](https://github.com/busbud/@busbud/tailwind-buddy/commit/8169f16))
+- Working on responsive screens default values ([1ae9a8e](https://github.com/busbud/@busbud/tailwind-buddy/commit/1ae9a8e))
 
 ### ❤️ Contributors
 
@@ -179,18 +179,18 @@
 
 ## v0.0.15
 
-[compare changes](https://github.com/flozero/tailwind-classes-authority/compare/v0.0.14...v0.0.15)
+[compare changes](https://github.com/flozero/@busbud/tailwind-buddy/compare/v0.0.14...v0.0.15)
 
 ### 🚀 Enhancements
 
-- Make compound variant responsive ([be81e53](https://github.com/flozero/tailwind-classes-authority/commit/be81e53))
-- Enforce otherProps to have other compound expactation + className ([21c64c2](https://github.com/flozero/tailwind-classes-authority/commit/21c64c2))
+- Make compound variant responsive ([be81e53](https://github.com/flozero/@busbud/tailwind-buddy/commit/be81e53))
+- Enforce otherProps to have other compound expactation + className ([21c64c2](https://github.com/flozero/@busbud/tailwind-buddy/commit/21c64c2))
 
 ### 🏡 Chore
 
-- **release:** V0.0.14 ([94447f4](https://github.com/flozero/tailwind-classes-authority/commit/94447f4))
-- Adding sandbox and ui kit project ([12e5167](https://github.com/flozero/tailwind-classes-authority/commit/12e5167))
-- Improved sandbox ([6dff1f8](https://github.com/flozero/tailwind-classes-authority/commit/6dff1f8))
+- **release:** V0.0.14 ([94447f4](https://github.com/flozero/@busbud/tailwind-buddy/commit/94447f4))
+- Adding sandbox and ui kit project ([12e5167](https://github.com/flozero/@busbud/tailwind-buddy/commit/12e5167))
+- Improved sandbox ([6dff1f8](https://github.com/flozero/@busbud/tailwind-buddy/commit/6dff1f8))
 
 ### ❤️ Contributors
 

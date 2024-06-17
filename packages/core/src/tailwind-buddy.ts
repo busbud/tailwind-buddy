@@ -54,7 +54,7 @@ export type MergedProps<Props, V, R extends ResponsiveVariants<V>> = {
     [K in keyof Props]?: Props[K]
 }
 
-export type TCA = 
+export type TB = 
     <
         V extends Variants<S>,
         CV extends CompoundVariant<V, S>,
@@ -72,7 +72,7 @@ export type TCA =
     ) => <Props>() => {
         [Slot in keyof S]: (props?: MergedProps<Props, V, R>) => string
     } & {
-        definition: {
+        definition: () => {
             slots: S,
             variants?: V;
             compoundVariants?: CV[];
@@ -97,7 +97,7 @@ function transformConditionsToBeUsable(obj: any) {
     return acc;
 }
 
-export const tca: TCA = (variantDefinition) => (): any => {
+export const compose: TB = (variantDefinition) => (): any => {
     const slots = Object.keys(variantDefinition.slots);
     return slots.reduce((acc, slot: string) => {
         acc[slot] = (props: any) => {
@@ -189,6 +189,6 @@ export const tca: TCA = (variantDefinition) => (): any => {
         };
         return acc;
     }, {
-        definition: variantDefinition
+        definition: () => variantDefinition
     } as any);
 };

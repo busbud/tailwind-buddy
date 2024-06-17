@@ -1,6 +1,6 @@
 
-import { ElementType, ReactNode } from "react";
-import { VariantsProps, tca } from "../../src/tca";
+import { ElementType } from "react";
+import { compose } from "../../src/tailwind-buddy";
 
 export interface LabelProps {
   as?: ElementType;
@@ -8,7 +8,7 @@ export interface LabelProps {
   disabled?: boolean;
 }
 
-export const labelVariants = tca(
+export const labelVariants = compose(
     {
       slots: {
         root: /** @tw */ "inline-flex",

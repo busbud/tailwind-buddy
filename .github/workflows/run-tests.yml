@@ -27,7 +27,7 @@ jobs:
         run: npm i -g pnpm && pnpm i
 
       - name: Run build
-        run: pnpm tca:build
+        run: pnpm tailwindbuddy:build
 
       - name: Run test
-        run: pnpm tca:test
+        run: pnpm tailwindbuddy:test

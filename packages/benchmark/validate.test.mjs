@@ -1,6 +1,6 @@
 import { expect, test, describe } from 'vitest'
 import * as CVA from "./configs/cva.mjs"
-import * as TCA from "./configs/tca.mjs"
+import * as TAILWINDBUDDY from "./configs/tailwindbuddy.mjs"
 import * as TV from "./configs/tv.mjs"
 import { twMerge } from "./configs/twMerge.config.mjs"
 
@@ -14,7 +14,7 @@ describe("validate output between libs", () => {
         expect(
             CVA.noSlotsAndCompoundNoTwMergeNoResponsive.avatar({ size: "md" })
         ).toBe(
-            TCA.noSlotsAndCompoundNoTwMergeNoResponsive.avatar.root({ size: "md" })
+            TAILWINDBUDDY.noSlotsAndCompoundNoTwMergeNoResponsive.avatar.root({ size: "md" })
         )
     })
 
@@ -27,7 +27,7 @@ describe("validate output between libs", () => {
         expect(
             twMerge(CVA.noSlotsAndCompoundNoTwMergeNoResponsive.avatar({ size: "md" }))
         ).toBe(
-            twMerge(TCA.noSlotsAndCompoundNoTwMergeNoResponsive.avatar.root({ size: "md" }))
+            twMerge(TAILWINDBUDDY.noSlotsAndCompoundNoTwMergeNoResponsive.avatar.root({ size: "md" }))
         )
     })
 })

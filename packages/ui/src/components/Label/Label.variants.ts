@@ -1,8 +1,8 @@
-import { tca } from "tailwind-classes-authority"
+import { compose } from "@busbud/tailwind-buddy"
 import { LabelBaseProps } from "./Label.types"
-import type { VariantsProps } from "tailwind-classes-authority"
+import type { VariantsProps } from "@busbud/tailwind-buddy"
 
-export const labelVariants = tca({
+export const labelVariants = compose({
     "slots": {
         "root": /** @tw */ "text-blue-500"
     },

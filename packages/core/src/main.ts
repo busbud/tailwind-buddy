@@ -1,3 +1,3 @@
 export { generateSafeList } from "./utils/tailwind-utils";
-export { tca } from "./tca"
-export type { VariantsProps } from "./tca"
+export { compose } from "./tailwind-buddy"
+export type { VariantsProps } from "./tailwind-buddy"

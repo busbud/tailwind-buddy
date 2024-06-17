@@ -1,5 +1,5 @@
 import { labelVariants } from "./src/components/Label/Label.variants";
-import { generateSafeList } from "tailwind-classes-authority"
+import { generateSafeList } from "@busbud/tailwind-buddy"
 
 export type Screens = "sm" | "md" | "lg" | "xl"
 export const screens: Screens[] = ["sm", "md", "lg", "xl"]

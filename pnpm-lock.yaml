@@ -23,15 +23,15 @@ importers:
 
   packages/benchmark:
     devDependencies:
+      '@busbud/tailwind-buddy':
+        specifier: workspace:*
+        version: link:../core
       benchmark:
         specifier: ^2.1.4
         version: 2.1.4
       class-variance-authority:
         specifier: ^0.7.0
         version: 0.7.0
-      tailwind-classes-authority:
-        specifier: workspace:*
-        version: link:../core
       tailwind-merge:
         specifier: ^2.3.0
         version: 2.3.0
@@ -121,6 +121,9 @@ importers:
         specifier: ^2.3.0
         version: 2.3.0
     devDependencies:
+      '@busbud/tailwind-buddy':
+        specifier: workspace:*
+        version: link:../core
       '@types/react':
         specifier: ^18.3.2
         version: 18.3.3
@@ -142,9 +145,6 @@ importers:
       postcss:
         specifier: ^8.4.38
         version: 8.4.38
-      tailwind-classes-authority:
-        specifier: workspace:*
-        version: link:../core
       tailwindcss:
         specifier: ^3.4.3
         version: 3.4.4

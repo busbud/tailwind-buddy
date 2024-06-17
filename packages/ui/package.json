@@ -45,7 +45,7 @@
     "@vitejs/plugin-react": "^4.2.1",
     "autoprefixer": "^10.4.19",
     "postcss": "^8.4.38",
-    "tailwind-classes-authority": "workspace:*",
+    "@busbud/tailwind-buddy": "workspace:*",
     "tailwindcss": "^3.4.3",
     "typescript": "^5.2.2",
     "vite": "^5.2.0",

@@ -1,10 +1,10 @@
-import { tca } from "../../src/tca";
+import { compose } from "../../src/tailwind-buddy";
 
 interface MyComponent {
   disabled?: boolean
 }
 
-export const responsiveAndCompoundComponent = tca({
+export const responsiveAndCompoundComponent = compose({
   "slots": {
       "root": /** @tw */ "text-red-100",
   },

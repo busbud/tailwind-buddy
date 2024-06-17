@@ -7,9 +7,9 @@
   },
   "scripts": {
     "commit": "commit",
-    "tca:release": "pnpm --filter './packages/core' release",
-    "tca:test": "pnpm --filter './packages/core' test:ci",
-    "tca:build": "pnpm --filter './packages/core' build"
+    "tailwindbuddy:release": "pnpm --filter './packages/core' release",
+    "tailwindbuddy:test": "pnpm --filter './packages/core' test:ci",
+    "tailwindbuddy:build": "pnpm --filter './packages/core' build"
     
   },
   "devDependencies": {

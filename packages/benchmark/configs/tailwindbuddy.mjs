@@ -1,4 +1,4 @@
-import { tca } from "tailwind-classes-authority"
+import { compose } from "@busbud/tailwind-buddy"
 
 const options = {
     slots: {
@@ -33,11 +33,11 @@ const options = {
 }
 
 export const noSlotsAndCompoundNoTwMergeNoResponsive = {
-    avatar: tca(options)(),
+    avatar: compose(options)(),
 }
 
 export const slotsAndCompoundNoTwMergeNoResponsive = {
-    avatar: tca({
+    avatar: compose({
         ...options,
         slots: {
             ...options.slots,

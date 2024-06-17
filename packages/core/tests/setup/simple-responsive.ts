@@ -1,6 +1,6 @@
-import { tca } from "../../src/tca";
+import { compose } from "../../src/tailwind-buddy";
 
-export const simpleResponsiveComponent = tca({
+export const simpleResponsiveComponent = compose({
   "slots": {
       "root": /** @tw */ "text-red-100",
   },

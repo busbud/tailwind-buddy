@@ -5,10 +5,11 @@ export const generateSafeList = function (variantsArray: any[], screens: string[
   const safelistClasses: Set<string> = new Set()
   const compoundClassesToTransform: Set<string> = new Set()
   variantsArray.forEach(({ definition }) => {
-    if (definition.responsiveVariants && definition.responsiveVariants.length > 0) {
-      const compounds = definition.compoundVariants || []
-      definition.responsiveVariants.forEach((variant: any) => {
-          Object.entries(definition.variants[variant]).forEach(([key, value]: any) => {
+    const definitionResult = definition()
+    if (definitionResult.responsiveVariants && definitionResult.responsiveVariants.length > 0) {
+      const compounds = definitionResult.compoundVariants || []
+      definitionResult.responsiveVariants.forEach((variant: any) => {
+          Object.entries(definitionResult.variants[variant]).forEach(([key, value]: any) => {
             if (typeof value === "string") {
               value.split(" ").forEach((v: any) => safelistClasses.add(v))
             } else if (typeof value === "object") {

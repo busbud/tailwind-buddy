@@ -13,7 +13,7 @@
   "devDependencies": {
     "benchmark": "^2.1.4",
     "class-variance-authority": "^0.7.0",
-    "tailwind-classes-authority": "workspace:*",
+    "@busbud/tailwind-buddy": "workspace:*",
     "tailwind-merge": "^2.3.0",
     "tailwind-variants": "^0.2.1",
     "vitest": "^1.4.0"

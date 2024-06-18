@@ -1,4 +1,17 @@
 
+## v0.0.28
+
+[compare changes](https://github.com/busbud/tailwind-buddy/compare/v0.0.27...v0.0.28)
+
+### 📖 Documentation
+
+- Improve engish explanation thanks chat gpt ([1dfb367](https://github.com/busbud/tailwind-buddy/commit/1dfb367))
+- Finalize missing documentation ([ca8539c](https://github.com/busbud/tailwind-buddy/commit/ca8539c))
+
+### ❤️ Contributors
+
+- Florent Giraud ([@flozero](http://github.com/flozero))
+
 ## v0.0.27
 
 [compare changes](https://github.com/busbud/tailwind-buddy/compare/v0.0.26...v0.0.27)

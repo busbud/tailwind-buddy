@@ -1,4 +1,8 @@
 
+## v0.0.30
+
+[compare changes](https://github.com/busbud/tailwind-buddy/compare/v0.0.29...v0.0.30)
+
 ## v0.0.29
 
 [compare changes](https://github.com/busbud/tailwind-buddy/compare/v0.0.28...v0.0.29)

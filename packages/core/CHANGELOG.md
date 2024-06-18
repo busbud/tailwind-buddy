@@ -1,4 +1,16 @@
 
+## v0.0.32
+
+[compare changes](https://github.com/busbud/tailwind-buddy/compare/v0.0.31...v0.0.32)
+
+### 🏡 Chore
+
+- Add a readme that redirect to the root one ([10fe956](https://github.com/busbud/tailwind-buddy/commit/10fe956))
+
+### ❤️ Contributors
+
+- Florent Giraud ([@flozero](http://github.com/flozero))
+
 ## v0.0.31
 
 [compare changes](https://github.com/busbud/tailwind-buddy/compare/v0.0.30...v0.0.31)

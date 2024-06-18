@@ -1,4 +1,16 @@
 
+## v0.0.33
+
+[compare changes](https://github.com/busbud/tailwind-buddy/compare/v0.0.32...v0.0.33)
+
+### 🏡 Chore
+
+- Move changelog to root folder ([f986e91](https://github.com/busbud/tailwind-buddy/commit/f986e91))
+
+### ❤️ Contributors
+
+- Florent Giraud ([@flozero](http://github.com/flozero))
+
 ## v0.0.32
 
 [compare changes](https://github.com/busbud/tailwind-buddy/compare/v0.0.31...v0.0.32)

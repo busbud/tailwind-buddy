@@ -1,5 +1,5 @@
-export const generateResponsive = (variants: string[], breakpoints: string[]) => {
-  let classNames: string[] = [];
+export const generateResponsiveVariants = (variants: string[], breakpoints: string[]) => {
+  const classNames: string[] = [];
 
   variants.forEach((variant) => {
     breakpoints.forEach((breakpoint) => {

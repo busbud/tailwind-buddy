@@ -33,5 +33,5 @@ export const generateSafeList = function (variantsArray: any[], screens: string[
     [
       ...Array.from(safelistClasses),
       ...Array.from(compoundClassesToTransform)
-    ].join(" "), screens)
+    ], screens)
 }

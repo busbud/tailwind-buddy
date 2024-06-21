@@ -1,13 +1,11 @@
-export const generateResponsive = (str: string, screens: string[]) => {
-    const strArray: string[] = str.split(" ")
+export const generateResponsive = (variants: string[], breakpoints: string[]) => {
+  let classNames: string[] = [];
 
-    let str_final: string[] = []
+  variants.forEach((variant) => {
+    breakpoints.forEach((breakpoint) => {
+        classNames.push(`${breakpoint}:${variant}`);
+    });
+  });
 
-    strArray.forEach((str, index) => {
-        screens.forEach(screen => {
-            str_final.push(`${screen}:${str}`)
-        })
-    })
-
-    return str_final
-}
+  return classNames;
+};

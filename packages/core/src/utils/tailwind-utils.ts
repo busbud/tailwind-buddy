@@ -1,4 +1,4 @@
-import { generateResponsive } from "./generateResponsive"
+import { generateResponsiveVariants } from "./generate-responsive-variants"
 
 export const generateSafeList = function (variantsArray: any[], screens: string[] = []) {
 
@@ -29,9 +29,9 @@ export const generateSafeList = function (variantsArray: any[], screens: string[
   })
 
   if (safelistClasses.size === 0) return []
-  return generateResponsive(
+  return generateResponsiveVariants(
     [
       ...Array.from(safelistClasses),
       ...Array.from(compoundClassesToTransform)
-    ].join(" "), screens)
+    ], screens)
 }

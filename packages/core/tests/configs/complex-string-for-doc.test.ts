@@ -1,7 +1,7 @@
 import { describe, expect, test } from "vitest";
 import { fooVariants } from "../setup/complex-string-for-doc";
 
-describe.only("test simple config", () => {
+describe("test simple config", () => {
   const { root } = fooVariants;
 
   test("should be a oneline string", () => {

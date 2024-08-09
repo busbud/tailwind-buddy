@@ -1,4 +1,23 @@
 
+## v0.0.34
+
+[compare changes](https://github.com/busbud/tailwind-buddy/compare/v0.0.33...v0.0.34)
+
+### 💅 Refactors
+
+- Update generateResponsive to use an array of variants instead of a string ([f354d0c](https://github.com/busbud/tailwind-buddy/commit/f354d0c))
+
+### 🏡 Chore
+
+- Review comments ([41b34b8](https://github.com/busbud/tailwind-buddy/commit/41b34b8))
+- Add logic to remove extra spaces ([fa4a0ac](https://github.com/busbud/tailwind-buddy/commit/fa4a0ac))
+- Remove .only ([1870f5e](https://github.com/busbud/tailwind-buddy/commit/1870f5e))
+
+### ❤️ Contributors
+
+- Florent Giraud ([@flozero](http://github.com/flozero))
+- Michael Vial ([@briganti](http://github.com/briganti))
+
 ## v0.0.33
 
 [compare changes](https://github.com/busbud/tailwind-buddy/compare/v0.0.32...v0.0.33)

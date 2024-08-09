@@ -10,7 +10,6 @@
     "tailwindbuddy:release": "pnpm --filter './packages/core' release",
     "tailwindbuddy:test": "pnpm --filter './packages/core' test:ci",
     "tailwindbuddy:build": "pnpm --filter './packages/core' build"
-    
   },
   "devDependencies": {
     "@commitlint/cli": "^19.2.1",

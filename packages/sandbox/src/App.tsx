@@ -1,4 +1,4 @@
-import { Label } from "ui-kit";
+import { Dumb, Label } from "ui-kit";
 
 function App() {
   return (
@@ -11,6 +11,8 @@ function App() {
       >
         Label
       </Label>
+
+      <Dumb />
     </div>
   );
 }

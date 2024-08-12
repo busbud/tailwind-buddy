@@ -47,7 +47,7 @@ export const buttonVariants = compose({
   variants: {
     intent: {
       primary: "bg-blue-500 text-white",
-      secondary: "bg-gray-200 text-gray-800",
+      secondary: "bg-gray-200 text-black",
     },
     size: {
       small: "text-sm",
@@ -126,10 +126,19 @@ export const cardVariants = compose({
   defaultVariants: {
     size: "small",
   },
-});
+})();
 
-// Usage
-const { root, header, body } = cardVariants({ size: "large" });
+export const Card = () => {
+  // Usage
+  const { root, header, body } = cardVariants;
+
+  return (
+    <div className={twMerge(root({ size: "large" }))}>
+      <div className={twMerge(header({ size: "large" }))}>header</div>
+      <div className={twMerge(body())}>body</div>
+    </div>
+  );
+};
 ```
 
 ## Compound Variants
@@ -165,13 +174,35 @@ export const buttonVariants = compose({
   responsiveVariants: ["intent"],
 });
 
+// Usage in a React component
+import { twMerge } from "tailwind-merge";
+
+// class .font-bold will be applied as the condition is fulfilled.
+export const Button: React.FC<{}> = () => {
+  const { root } = buttonVariants;
+
+  return (
+    <button
+      className={twMerge(
+        root({
+          intent: "primary",
+          size: large,
+        })
+      )}
+    >
+      Go
+    </button>
+  );
+};
+
 // In your Tailwind config
 import { generateSafeList } from "@busbud/tailwind-buddy";
 import { buttonVariants } from "./path-to-your-variants";
 
 export default {
   // ... other Tailwind configurations ...
-  safelist: generateSafeList([buttonVariants], ["sm", "md", "lg", "xl"]),
+  safelist: generateSafeList([buttonVariants], ["sm", "md", "lg", "xl"]), // those values are needed to tell what breakpoint you do support. Today we only support with TS the default tailwind breakpoints
+  //
 };
 ```
 

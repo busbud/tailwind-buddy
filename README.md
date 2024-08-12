@@ -202,7 +202,7 @@ import { buttonVariants } from "./path-to-your-variants";
 // As you now Expect responsive for this component make sure to import the buttonVariants
 export default {
   // ... other Tailwind configurations ...
-  safelist: generateSafeList([buttonVariants], ["sm", "md", "lg", "xl"]), // those values are required to align with tailwind breakpoints
+  safelist: generateSafeList([buttonVariants], ["sm", "md", "lg", "xl"]), // those values are required to align with tailwind breakpoints and make them available as in the example above
   //
 };
 ```

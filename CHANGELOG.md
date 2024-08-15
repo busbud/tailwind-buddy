@@ -1,4 +1,20 @@
 
+## v0.0.35
+
+[compare changes](https://github.com/busbud/tailwind-buddy/compare/v0.0.34...v0.0.35)
+
+### 🏡 Chore
+
+- Simplify and re organize the readme ([870ffb0](https://github.com/busbud/tailwind-buddy/commit/870ffb0))
+- Update readme ([3770924](https://github.com/busbud/tailwind-buddy/commit/3770924))
+- Update readme ([0b50974](https://github.com/busbud/tailwind-buddy/commit/0b50974))
+- Update readme ([e7bf3c4](https://github.com/busbud/tailwind-buddy/commit/e7bf3c4))
+- Remove engines to avoid blocking strict engine ([7706405](https://github.com/busbud/tailwind-buddy/commit/7706405))
+
+### ❤️ Contributors
+
+- Florent Giraud ([@flozero](http://github.com/flozero))
+
 ## v0.0.34
 
 [compare changes](https://github.com/busbud/tailwind-buddy/compare/v0.0.33...v0.0.34)

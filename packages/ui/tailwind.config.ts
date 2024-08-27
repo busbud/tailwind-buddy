@@ -1,16 +1,17 @@
+import { buttonVariants } from "./src/components/Button/Button.variants";
 import { labelVariants } from "./src/components/Label/Label.variants";
-import { generateSafeList } from "@busbud/tailwind-buddy"
+import { generateSafeList } from "@busbud/tailwind-buddy";
 
-export type Screens = "sm" | "md" | "lg" | "xl"
-export const screens: Screens[] = ["sm", "md", "lg", "xl"]
+export type Screens = "sm" | "md" | "lg" | "xl";
+export const screens: Screens[] = ["sm", "md", "lg", "xl"];
 
 /** @type {import('tailwindcss').Config} */
 export default {
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx,mdx}"],
   theme: {
     extend: {
-      screens
-    }
+      screens,
+    },
   },
-  safelist: generateSafeList([labelVariants], screens)
+  safelist: generateSafeList([labelVariants, buttonVariants], screens),
 };

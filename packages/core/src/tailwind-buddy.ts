@@ -89,10 +89,22 @@ export function extractValue(value: any, slot: string) {
   return undefined;
 }
 
-function transformConditionsToBeUsable(obj: any) {
-  const acc: any = {};
+function buildArrayWithResponsivesFromDefault(obj: Record<string, any>): any[] {
+  const acc: any[] = [];
   for (const [key, value] of Object.entries(obj)) {
-    acc[key] = typeof value === "object" ? value : { initial: value };
+    if (value === undefined || value === null)
+      throw new Error("value is missing");
+    else if (typeof value === "object") {
+      if (typeof value["initial"] === "undefined") {
+        throw new Error(
+          `initial value is missing for the variant ${key} ${value}`
+        );
+      } else {
+        acc.push([key, value]);
+      }
+    } else {
+      acc.push([key, { initial: value }]);
+    }
   }
   return acc;
 }
@@ -103,35 +115,48 @@ export const compose: TB = (variantDefinition) => (): any => {
     (acc, slot: string) => {
       acc[slot] = (props: any) => {
         const className = props?.className || "";
+        // remove className afterward as we will use the props for compounds evaluations
         if (props?.className) delete props.className;
+
+        // final list of classes to return we are going to populate as we go
         const classesToReturn: string[] = [];
 
         const slotDefaultClass = variantDefinition.slots[slot] || "";
-        const mergedPropsWithDefaults = {
+        if (slotDefaultClass) classesToReturn.push(slotDefaultClass);
+
+        const mergedPropsWithDefaultsProperties = {
           ...variantDefinition.defaultVariants,
           ...props,
         };
 
-        if (slotDefaultClass) classesToReturn.push(slotDefaultClass);
-
-        const transformed = transformConditionsToBeUsable(
-          mergedPropsWithDefaults
-        );
+        /**
+         * build the responsive object with the initial value
+         * if the value is not an object, we assume it's a string and we wrap it in an object
+         * [[mergedPropKey]: { initial: value, ...otherResponsive }]
+         * */
+        const responsiveArrayFromDefaults =
+          buildArrayWithResponsivesFromDefault(
+            mergedPropsWithDefaultsProperties
+          );
+        // final trasnformed responsive object
         const transformed_breakpoints: any = { initial: {} };
-        const transformed_entries = Object.entries(
-          transformed as { [key: string]: any }
-        );
 
-        for (const [key, value] of transformed_entries) {
-          const variant = variantDefinition.variants![key];
+        //
+        for (const [variantKey, value] of responsiveArrayFromDefaults) {
+          // retrieve variant from definition. Continue when the key is not a variant but a props
+          const variant = variantDefinition.variants![variantKey];
           if (!variant) continue;
 
-          const variants_decomposed = Object.entries(
-            value as { [key: string]: any }
-          );
-          for (const [responsiveKey, val] of variants_decomposed) {
-            const variantValue = variant[val];
+          const variantsDecomposedFromDefault: [string | "initial", string][] =
+            Object.entries(value);
+
+          for (const [
+            responsiveKey,
+            variantSubKey,
+          ] of variantsDecomposedFromDefault) {
+            const variantValue = variant[variantSubKey];
             const classStr = extractValue(variantValue, slot);
+
             if (classStr) {
               if (responsiveKey === "initial") {
                 classesToReturn.push(classStr);
@@ -142,11 +167,14 @@ export const compose: TB = (variantDefinition) => (): any => {
                   classesToReturn.push(`${responsiveKey}:${v}`);
                 });
               }
+            } else {
+              transformed_breakpoints[responsiveKey] =
+                transformed_breakpoints[responsiveKey] || {};
             }
           }
         }
 
-        for (const [key, value] of transformed_entries) {
+        for (const [key, value] of responsiveArrayFromDefaults) {
           const isOnlyInitial =
             Object.keys(value).length === 1 && value["initial"];
           if (isOnlyInitial) {

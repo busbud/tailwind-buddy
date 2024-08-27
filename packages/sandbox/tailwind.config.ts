@@ -1,15 +1,12 @@
-import twConfig from "ui-kit/tailwind.config"
+import type { Config } from "tailwindcss";
+import tailwindConfig from "ui-kit/tailwind.config";
 
-/** @type {import('tailwindcss').Config} */
 export default {
   content: [
     "./index.html",
     "./src/**/*.{js,ts,jsx,tsx}",
-    "./node_modules/ui-kit/dist/uikit.js"
+    "./node_modules/ui-kit/dist/uikit.js",
   ],
-  theme: {
-    extend: twConfig.theme.extend
-  },
-  safelist: twConfig.safelist
-}
-
+  theme: tailwindConfig.theme,
+  safelist: tailwindConfig.safelist,
+} satisfies Config;

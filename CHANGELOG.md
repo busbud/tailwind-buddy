@@ -1,4 +1,16 @@
 
+## v0.0.36
+
+[compare changes](https://github.com/busbud/tailwind-buddy/compare/v0.0.35...v0.0.36)
+
+### 🩹 Fixes
+
+- Fix when slot accessed but not defined ([e6eced4](https://github.com/busbud/tailwind-buddy/commit/e6eced4))
+
+### ❤️ Contributors
+
+- Florent Giraud ([@flozero](http://github.com/flozero))
+
 ## v0.0.35
 
 [compare changes](https://github.com/busbud/tailwind-buddy/compare/v0.0.34...v0.0.35)

@@ -84,16 +84,16 @@ export type VariantsProps<
 > = Parameters<V[keyof V]>[0];
 
 export function extractValue(value: any, slot: string) {
-  if (typeof value === "string") return value;
-  if (value?.[slot] && typeof value[slot] === "string") return value[slot];
+  if (typeof value === "string") return value.replace(/\s+/g, " ").trim();
+  else if (value?.[slot] && typeof value[slot] === "string")
+    return value[slot].replace(/\s+/g, " ").trim();
   return undefined;
 }
 
 function buildArrayWithResponsivesFromDefault(obj: Record<string, any>): any[] {
   const acc: any[] = [];
   for (const [key, value] of Object.entries(obj)) {
-    if (value === undefined || value === null)
-      throw new Error("value is missing");
+    if (value === undefined || value === null) continue;
     else if (typeof value === "object") {
       if (typeof value["initial"] === "undefined") {
         throw new Error(
@@ -122,7 +122,8 @@ export const compose: TB = (variantDefinition) => (): any => {
         const classesToReturn: string[] = [];
 
         const slotDefaultClass = variantDefinition.slots[slot] || "";
-        if (slotDefaultClass) classesToReturn.push(slotDefaultClass);
+        if (slotDefaultClass)
+          classesToReturn.push(slotDefaultClass.replace(/\s+/g, " ").trim());
 
         const mergedPropsWithDefaultsProperties = {
           ...variantDefinition.defaultVariants,
@@ -157,7 +158,7 @@ export const compose: TB = (variantDefinition) => (): any => {
             const variantValue = variant[variantSubKey];
             const classStr = extractValue(variantValue, slot);
 
-            if (classStr) {
+            if (classStr && classStr.length > 0) {
               if (responsiveKey === "initial") {
                 classesToReturn.push(classStr);
               } else {
@@ -231,7 +232,7 @@ export const compose: TB = (variantDefinition) => (): any => {
         }
 
         if (className) classesToReturn.push(className);
-        return classesToReturn.join(" ").replace(/\s+/g, " ").trim();
+        return classesToReturn.join(" ");
       };
       return acc;
     },

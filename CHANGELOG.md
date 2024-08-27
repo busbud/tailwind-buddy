@@ -1,4 +1,16 @@
 
+## v0.0.38
+
+[compare changes](https://github.com/busbud/tailwind-buddy/compare/v0.0.37...v0.0.38)
+
+### 🏡 Chore
+
+- Fix peer dep ([d76e79d](https://github.com/busbud/tailwind-buddy/commit/d76e79d))
+
+### ❤️ Contributors
+
+- Florent Giraud ([@flozero](http://github.com/flozero))
+
 ## v0.0.37
 
 [compare changes](https://github.com/busbud/tailwind-buddy/compare/v0.0.35...v0.0.37)

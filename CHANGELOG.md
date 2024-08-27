@@ -1,4 +1,16 @@
 
+## v0.0.39
+
+[compare changes](https://github.com/busbud/tailwind-buddy/compare/v0.0.38...v0.0.39)
+
+### 🩹 Fixes
+
+- Trim any string before working on them to avoid class considered when empty space ([f8ce866](https://github.com/busbud/tailwind-buddy/commit/f8ce866))
+
+### ❤️ Contributors
+
+- Florent Giraud ([@flozero](http://github.com/flozero))
+
 ## v0.0.38
 
 [compare changes](https://github.com/busbud/tailwind-buddy/compare/v0.0.37...v0.0.38)

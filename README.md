@@ -229,7 +229,7 @@ export const compose = setupCompose<Screens>(screens, {
 });
 ```
 
-Take in consideration that this is going to drop the performance hard check the performance for more information.
+Take in consideration that this is going to drop the performance hard check the benchmarks for more information.
 
 ## Tailwind Autocomplete in VSCode (Optional)
 

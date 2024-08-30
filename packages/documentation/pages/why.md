@@ -1,3 +1,8 @@
+---
+title: Why using tailwind buddy and key features
+editLink: true
+---
+
 # Tailwind Buddy: Your Friendly Helper for Composing Tailwind Classes 🎨
 
 ## What problem does Tailwind Buddy solve?

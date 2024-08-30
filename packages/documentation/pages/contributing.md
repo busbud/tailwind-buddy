@@ -1,3 +1,8 @@
+---
+title: Tailwind buddy how to contribute
+editLink: true
+---
+
 # Contributing
 
 First easy contribution would be to help on improving the documentation.

@@ -6,6 +6,9 @@ export default defineConfig({
   description:
     "Tailwind Buddy: Your Friendly Helper for Composing Tailwind Classes, SSR friendly and responsive variants 🎨",
   themeConfig: {
+    search: {
+      provider: "local",
+    },
     // https://vitepress.dev/reference/default-theme-config
     nav: [
       { text: "Home", link: "/" },

@@ -1,3 +1,8 @@
+---
+title: Tailwind buddy working with slots
+editLink: true
+---
+
 # Working with Slots
 
 Slots allow you to break down components into smaller parts while using the same props. Here's an example:

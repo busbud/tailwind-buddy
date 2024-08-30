@@ -1,3 +1,8 @@
+---
+title: Tailwind buddy setup
+editLink: true
+---
+
 # Installation
 
 ```bash

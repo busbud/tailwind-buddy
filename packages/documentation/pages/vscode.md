@@ -1,3 +1,8 @@
+---
+title: Tailwind Autocomplete in VSCode (Optional)
+editLink: true
+---
+
 # Tailwind Autocomplete in VSCode (Optional)
 
 For Tailwind class autocomplete in VSCode, add the following to your `.vscode/settings.json`:

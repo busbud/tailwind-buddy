@@ -1,3 +1,8 @@
+---
+title: Tailwind buddy responsive variants
+editLink: true
+---
+
 # Responsive Variants
 
 To enable responsive variants:

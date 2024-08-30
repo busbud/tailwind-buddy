@@ -1,3 +1,8 @@
+---
+title: Tailwind buddy usage
+editLink: true
+---
+
 # Usage
 
 Let's create a button component with two variants, featuring different background colors on mobile and desktop.

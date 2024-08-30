@@ -1,3 +1,8 @@
+---
+title: Tailwind buddy compound variants
+editLink: true
+---
+
 # Compound Variants
 
 Compound variants allow you to apply styles when multiple variant conditions are met:

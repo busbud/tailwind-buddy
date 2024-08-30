@@ -1,3 +1,8 @@
+---
+title: Tailwind buddy local development
+editLink: true
+---
+
 # Local Development
 
 1. Install pnpm: `npm i -g pnpm`

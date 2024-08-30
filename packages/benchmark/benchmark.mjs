@@ -4,7 +4,6 @@ const suite = new Benchmark.Suite();
 
 import * as CVA from "./configs/cva.mjs";
 import * as TAILWINDBUDDY from "./configs/tailwindbuddy.mjs";
-import * as TAILWINDBUDDYPERFORMANCEMODEOFF from "./configs/tailwindbuddy-performance-mode-off.mjs";
 import * as TV from "./configs/tv.mjs";
 import { twMerge } from "./configs/twMerge.config.mjs";
 
@@ -22,16 +21,6 @@ suite
       size: "md",
     });
   })
-  .add(
-    "TAILWINDBUDDYPERFORMANCEMODEOFF - slots false - twMerge no - compound yes",
-    function () {
-      TAILWINDBUDDYPERFORMANCEMODEOFF.noSlotsAndCompoundNoTwMergeNoResponsive.avatar.root(
-        {
-          size: "md",
-        }
-      );
-    }
-  )
 
   //  TV - slots false - twMerge yes - compound yes
   .add("TV - slots false - twMerge yes - compound yes", function () {
@@ -47,18 +36,6 @@ suite
       })
     );
   })
-  .add(
-    "TAILWINDBUDDYPERFORMANCEMODEOFF - slots false - twMerge yes - compound yes",
-    function () {
-      twMerge(
-        TAILWINDBUDDYPERFORMANCEMODEOFF.noSlotsAndCompoundNoTwMergeNoResponsive.avatar.root(
-          {
-            size: "md",
-          }
-        )
-      );
-    }
-  )
 
   .on("cycle", function (event) {
     console.log(String(event.target));

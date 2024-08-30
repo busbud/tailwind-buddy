@@ -10,7 +10,12 @@ import { buildArrayWithResponsivesFromDefault } from "./utils/arrays";
 import { processStrings } from "./utils/strings";
 import { extractValueFromVariantSlot } from "./utils/variants";
 
-export const setupCompose = <Sc extends string>(screens: Sc[]) => {
+export const setupCompose = <Sc extends string>(
+  screens: Sc[],
+  options?: {
+    disablePerformance: boolean;
+  }
+) => {
   return <
     V extends Variants<S>,
     CV extends CompoundVariant<V, S>,
@@ -24,7 +29,9 @@ export const setupCompose = <Sc extends string>(screens: Sc[]) => {
     responsiveVariants?: R;
     defaultVariants: DV;
   }) => {
-    const transformedVariantDefinition = processStrings(variantDefinition);
+    const transformedVariantDefinition = options?.disablePerformance
+      ? processStrings(variantDefinition)
+      : variantDefinition;
 
     return <Props>() => {
       const slots = Object.keys(transformedVariantDefinition.slots) as Array<

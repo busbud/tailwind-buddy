@@ -222,6 +222,16 @@ export default {
 };
 ```
 
+## disablePerformance
+
+We do not support writing a variant definition using template string. You can enable it by updating your setupCompose:
+
+```ts
+export const compose = setupCompose<Screens>(screens, {
+  disablePerformance: true,
+});
+```
+
 Take in consideration that this is going to drop the performance hard check the benchmarks for more information.
 
 ## Tailwind Autocomplete in VSCode (Optional)
@@ -274,4 +284,4 @@ After that make sure to look at [good first issue label on github.](https://gith
 
 ## Benchmarks
 
-![Screenshot 2024-08-30 at 2 31 12 AM](https://github.com/user-attachments/assets/af963ec2-1e8e-49e2-898f-452b2454a303)
+![Screenshot 2024-08-30 at 10 20 51 AM](https://github.com/user-attachments/assets/152ca2a5-cc42-4987-adb1-65c052c8cd51)

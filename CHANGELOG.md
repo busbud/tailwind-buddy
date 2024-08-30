@@ -1,11 +1,33 @@
+## v2.0.0
 
-## v1.0.2
+[compare changes](https://github.com/busbud/tailwind-buddy/compare/v0.0.39...v2.0.0)
 
-[compare changes](https://github.com/busbud/tailwind-buddy/compare/v1.0.1...v1.0.2)
+### 🚀 Enhancements
+
+- ⚠️ Screens overrides, new setupCompose, performance mode, simplify tailwind config ([bc0d623](https://github.com/busbud/tailwind-buddy/commit/bc0d623))
 
 ### 🏡 Chore
 
+- Split into separate files ([fed5289](https://github.com/busbud/tailwind-buddy/commit/fed5289))
+- Remove documentation not useful ([df0b2bd](https://github.com/busbud/tailwind-buddy/commit/df0b2bd))
+- Documentation typo ([a9bf4f3](https://github.com/busbud/tailwind-buddy/commit/a9bf4f3))
+- Update benchmark ([f292bd2](https://github.com/busbud/tailwind-buddy/commit/f292bd2))
+- Update benchmark ([8b4a1a6](https://github.com/busbud/tailwind-buddy/commit/8b4a1a6))
+- Update test for performance ([675b820](https://github.com/busbud/tailwind-buddy/commit/675b820))
+- Add documentation using vitepress ([63d1c6f](https://github.com/busbud/tailwind-buddy/commit/63d1c6f))
+- Add documentation using vitepress ([559b61d](https://github.com/busbud/tailwind-buddy/commit/559b61d))
+- Adding search to documentation ([810536a](https://github.com/busbud/tailwind-buddy/commit/810536a))
+- Enable performance by default ([f231a7d](https://github.com/busbud/tailwind-buddy/commit/f231a7d))
+- Update benchmarks ([064af08](https://github.com/busbud/tailwind-buddy/commit/064af08))
+- Update documentation ([afd2714](https://github.com/busbud/tailwind-buddy/commit/afd2714))
+- Update documentation ([e3137c0](https://github.com/busbud/tailwind-buddy/commit/e3137c0))
+- Force v1 check documentation for breaking changes ([dd65860](https://github.com/busbud/tailwind-buddy/commit/dd65860))
+- **release:** V1.0.1 ([99c1b5c](https://github.com/busbud/tailwind-buddy/commit/99c1b5c))
 - Force pnpm for publish ([1f57eec](https://github.com/busbud/tailwind-buddy/commit/1f57eec))
+
+#### ⚠️ Breaking Changes
+
+- ⚠️ Screens overrides, new setupCompose, performance mode, simplify tailwind config ([bc0d623](https://github.com/busbud/tailwind-buddy/commit/bc0d623))
 
 ### ❤️ Contributors
 
@@ -503,7 +525,6 @@
 
 ## v0.0.3
 
-
 ### 🏡 Chore
 
 - Setup project ([5b02978](https://github.com/flozero/tailwind-classes-authorithy/commit/5b02978))
@@ -526,4 +547,3 @@
 ### ❤️ Contributors
 
 - Florent Giraud ([@flozero](http://github.com/flozero))
-

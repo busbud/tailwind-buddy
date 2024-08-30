@@ -5,7 +5,6 @@ layout: home
 hero:
   name: "Tailwind Buddy"
   text: "Your Friendly Helper for Composing Tailwind Classes, SSR friendly and responsive variants 🎨"
-  tagline: My great project tagline
   actions:
     - theme: brand
       text: Start now
@@ -14,7 +13,7 @@ hero:
 features:
   - title: Framework agnostic
     details: works well with frameworks other than React
-  - title: SSR-friendl
+  - title: SSR-friendly
     details: SSR-friendly class generation, both responsive and non-responsive
   - title: Responsive variants
     details: Support for responsive variant props

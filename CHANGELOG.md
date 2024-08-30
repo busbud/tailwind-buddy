@@ -1,4 +1,16 @@
 
+## v1.0.2
+
+[compare changes](https://github.com/busbud/tailwind-buddy/compare/v1.0.1...v1.0.2)
+
+### 🏡 Chore
+
+- Force pnpm for publish ([1f57eec](https://github.com/busbud/tailwind-buddy/commit/1f57eec))
+
+### ❤️ Contributors
+
+- Florent Giraud ([@flozero](http://github.com/flozero))
+
 ## v1.0.1
 
 [compare changes](https://github.com/busbud/tailwind-buddy/compare/v0.1.0...v1.0.1)

@@ -17,7 +17,7 @@ Tailwind Buddy addresses common challenges in managing Tailwind classes for comp
 - SSR-friendly class generation, both responsive and non-responsive
 - Ability to use slots for component composition
 - Compound variants that work responsively, overriding classes based on variant values and other props
-- High-performance variant utility, as demonstrated in [our benchmarks](./packages/benchmark/README.md)
+- High-performance variant utility, as demonstrated in [our benchmarks](./packages/benchmark/README.md) when enabling performance mode.
 
 This library is inspired by [CVA](https://cva.style/docs) and [tailwind-variants](https://github.com/nextui-org/tailwind-variants), offering our unique approach to solving common Tailwind challenges.
 
@@ -27,12 +27,24 @@ This library is inspired by [CVA](https://cva.style/docs) and [tailwind-variants
 pnpm add @busbud/tailwind-buddy
 ```
 
+## Setup compose function
+
+Tailwind buddy expose a `setupCompose` function. Create a `tailwind-buddy-interface.ts`
+
+```ts
+import { setupCompose } from "@busbud/tailwind-buddy";
+
+export type Screens = "sm" | "md";
+export const screens: Screens[] = ["sm", "md"];
+export const compose = setupCompose<Screens>(screens);
+```
+
 ## Usage
 
 Let's create a button component with two variants, featuring different background colors on mobile and desktop.
 
 ```tsx
-import { compose } from "@busbud/tailwind-buddy";
+import { compose } from "../tailwind-buddy-interface.ts";
 import type { VariantsProps } from "@busbud/tailwind-buddy";
 
 interface ButtonBaseProps
@@ -157,7 +169,7 @@ export const buttonVariants = compose({
       class: "font-bold",
     },
   ],
-});
+})();
 ```
 
 ## Responsive Variants
@@ -172,7 +184,7 @@ To enable responsive variants:
 export const buttonVariants = compose({
   // ... other configurations ...
   responsiveVariants: ["intent"],
-});
+})();
 
 // Usage in a React component
 import { twMerge } from "tailwind-merge";
@@ -202,10 +214,22 @@ import { buttonVariants } from "./path-to-your-variants";
 // As you now Expect responsive for this component make sure to import the buttonVariants
 export default {
   // ... other Tailwind configurations ...
-  safelist: generateSafeList([buttonVariants], ["sm", "md", "lg", "xl"]), // those values are required to align with tailwind breakpoints and make them available as in the example above
+  safelist: generateSafeList([buttonVariants]), // those values are required to align with tailwind breakpoints and make them available as in the example above
   //
 };
 ```
+
+## extraPerformanceDisabled
+
+We do not support writing a variant definition using template string. You can enable it by updating your setupCompose:
+
+```ts
+export const compose = setupCompose<Screens>(screens, {
+  extraPerformanceDisabled: true,
+});
+```
+
+Take in consideration that this is going to drop the performance hard check the performance for more information.
 
 ## Tailwind Autocomplete in VSCode (Optional)
 

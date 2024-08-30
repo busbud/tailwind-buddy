@@ -1,42 +1,42 @@
-import { compose } from "../../src/tailwind-buddy";
+import { compose } from "../../tests/constants";
 
 interface MyComponent {
-  disabled?: boolean
+  disabled?: boolean;
 }
 
 export const simpleCompoundComponent = compose({
-  "slots": {
-    "root": /** @tw */ "text-red-100",
-    "children": /** @tw */ "text-blue-100",
+  slots: {
+    root: /** @tw */ "text-red-100",
+    children: /** @tw */ "text-blue-100",
   },
-  "variants": {
-    "color": {
-        "primary": {
-          "root": /** @tw */ "text-red-200",
-          "children": /** @tw */ "text-blue-200",
-        },
-        "secondary": /** @tw */ "text-green-100"
-      }
+  variants: {
+    color: {
+      primary: {
+        root: /** @tw */ "text-red-200",
+        children: /** @tw */ "text-blue-200",
+      },
+      secondary: /** @tw */ "text-green-100",
+    },
   },
-  "defaultVariants": {
-    "color": "primary"
+  defaultVariants: {
+    color: "primary",
   },
   compoundVariants: [
     {
-      "conditions": {
-        "disabled": true,
+      conditions: {
+        disabled: true,
       },
       class: {
-        "root": /** @tw */ "text-red-300"
-      }
+        root: /** @tw */ "text-red-300",
+      },
     },
     {
-      "conditions": {
+      conditions: {
         disabled: true,
-        color: ["secondary", "primary"]
+        color: ["secondary", "primary"],
       },
-      class: /** @tw */ "text-green-200"
+      class: /** @tw */ "text-green-200",
     },
   ],
-  responsiveVariants: ["color"]
-})<MyComponent>()
+  responsiveVariants: ["color"],
+})<MyComponent>();

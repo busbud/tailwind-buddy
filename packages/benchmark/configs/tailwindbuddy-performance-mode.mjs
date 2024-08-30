@@ -1,6 +1,8 @@
 import { setupCompose } from "@busbud/tailwind-buddy";
 
-const compose = setupCompose(["md", "lg", "xl", "2xl"]);
+const compose = setupCompose(["md", "lg", "xl", "2xl"], {
+  extraPerformanceEnabled: true,
+});
 
 const options = {
   slots: {

@@ -26,7 +26,7 @@ export default defineConfig({
           { text: "Working with Slots", link: "/pages/slots" },
           { text: "Compound Variants", link: "/pages/compound-variants" },
           { text: "Responsive Variants", link: "/pages/responsive-variants" },
-          { text: "extraPerformanceDisabled", link: "/pages/performance" },
+          { text: "disablePerformance", link: "/pages/performance" },
           {
             text: "Tailwind Autocomplete in VSCode (Optional)",
             link: "/pages/vscode",

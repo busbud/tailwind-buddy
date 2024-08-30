@@ -7,11 +7,14 @@ import {
   Variants,
 } from "./types/variants";
 import { buildArrayWithResponsivesFromDefault } from "./utils/arrays";
+import { processStrings } from "./utils/strings";
 import { extractValueFromVariantSlot } from "./utils/variants";
 
 export const setupCompose = <Sc extends string>(
   screens: Sc[],
-  options = { extraPerformanceDisabled: false }
+  options?: {
+    disablePerformance: boolean;
+  }
 ) => {
   return <
     V extends Variants<S>,
@@ -26,8 +29,14 @@ export const setupCompose = <Sc extends string>(
     responsiveVariants?: R;
     defaultVariants: DV;
   }) => {
+    const transformedVariantDefinition = options?.disablePerformance
+      ? processStrings(variantDefinition)
+      : variantDefinition;
+
     return <Props>() => {
-      const slots = Object.keys(variantDefinition.slots) as Array<keyof S>;
+      const slots = Object.keys(transformedVariantDefinition.slots) as Array<
+        keyof S
+      >;
 
       // Create an empty object and assert its type to avoid the TS error
       const slotMethods = {} as {
@@ -43,19 +52,14 @@ export const setupCompose = <Sc extends string>(
           // final list of classes to return we are going to populate as we go
           const classesToReturn: string[] = [];
 
-          const slotDefaultClass = variantDefinition.slots[slot] || "";
+          const slotDefaultClass =
+            transformedVariantDefinition.slots[slot] || "";
           if (slotDefaultClass) {
-            if (options.extraPerformanceDisabled) {
-              classesToReturn.push(
-                slotDefaultClass.replace(/\s+/g, " ").trim()
-              );
-            } else {
-              classesToReturn.push(slotDefaultClass);
-            }
+            classesToReturn.push(slotDefaultClass);
           }
 
           const mergedPropsWithDefaultsProperties = {
-            ...variantDefinition.defaultVariants,
+            ...transformedVariantDefinition.defaultVariants,
             ...props,
           };
 
@@ -69,14 +73,14 @@ export const setupCompose = <Sc extends string>(
               mergedPropsWithDefaultsProperties
             );
           // final trasnformed responsive object
-          const transformed_breakpoints: {
+          const transformedBreakpoints: {
             [key: string]: { [key: string]: unknown };
           } = { initial: {} };
 
           //
           for (const [variantKey, value] of responsiveArrayFromDefaults) {
             // retrieve variant from definition. Continue when the key is not a variant but a props
-            const variant = variantDefinition.variants![variantKey];
+            const variant = transformedVariantDefinition.variants![variantKey];
             if (!variant) continue;
 
             const variantsDecomposedFromDefault: [
@@ -99,14 +103,14 @@ export const setupCompose = <Sc extends string>(
                   classesToReturn.push(classStr);
                 } else {
                   classStr.split(" ").forEach((v: string) => {
-                    transformed_breakpoints[responsiveKey] =
-                      transformed_breakpoints[responsiveKey] || {};
+                    transformedBreakpoints[responsiveKey] =
+                      transformedBreakpoints[responsiveKey] || {};
                     classesToReturn.push(`${responsiveKey}:${v}`);
                   });
                 }
               } else {
-                transformed_breakpoints[responsiveKey] =
-                  transformed_breakpoints[responsiveKey] || {};
+                transformedBreakpoints[responsiveKey] =
+                  transformedBreakpoints[responsiveKey] || {};
               }
             }
           }
@@ -115,32 +119,32 @@ export const setupCompose = <Sc extends string>(
             const isOnlyInitial =
               Object.keys(value).length === 1 && value["initial"];
             if (isOnlyInitial) {
-              for (const responsiveKey in transformed_breakpoints) {
-                transformed_breakpoints[responsiveKey][key] =
+              for (const responsiveKey in transformedBreakpoints) {
+                transformedBreakpoints[responsiveKey][key] =
                   value[responsiveKey] || value["initial"];
               }
             } else {
               for (const [responsiveKey, val] of Object.entries(value)) {
-                transformed_breakpoints[responsiveKey][key] = val;
+                transformedBreakpoints[responsiveKey][key] = val;
               }
             }
           }
 
-          const transformed_breakpoints_entries = Object.entries(
-            transformed_breakpoints
+          const transformedBreakpoints_entries = Object.entries(
+            transformedBreakpoints
           ) as [string, any][];
 
           if (
-            variantDefinition.compoundVariants &&
-            variantDefinition.compoundVariants!.length > 0
+            transformedVariantDefinition.compoundVariants &&
+            transformedVariantDefinition.compoundVariants!.length > 0
           ) {
-            for (const compound of variantDefinition.compoundVariants) {
+            for (const compound of transformedVariantDefinition.compoundVariants) {
               const classes = extractValueFromVariantSlot(compound.class, slot);
 
               for (const [
                 breakpoint,
                 value,
-              ] of transformed_breakpoints_entries) {
+              ] of transformedBreakpoints_entries) {
                 let validated = true;
                 const conditions = Object.entries(
                   compound.conditions as { [key: string]: any }
@@ -181,11 +185,11 @@ export const setupCompose = <Sc extends string>(
 
         // Add the definition method
         definition: () => ({
-          slots: variantDefinition.slots,
-          variants: variantDefinition.variants,
-          compoundVariants: variantDefinition.compoundVariants,
-          responsiveVariants: variantDefinition.responsiveVariants,
-          defaultVariants: variantDefinition.defaultVariants,
+          slots: transformedVariantDefinition.slots,
+          variants: transformedVariantDefinition.variants,
+          compoundVariants: transformedVariantDefinition.compoundVariants,
+          responsiveVariants: transformedVariantDefinition.responsiveVariants,
+          defaultVariants: transformedVariantDefinition.defaultVariants,
           screens,
         }),
       };

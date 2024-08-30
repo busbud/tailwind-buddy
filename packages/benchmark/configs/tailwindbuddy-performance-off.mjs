@@ -1,7 +1,7 @@
 import { setupCompose } from "@busbud/tailwind-buddy";
 
 const compose = setupCompose(["md", "lg", "xl", "2xl"], {
-  extraPerformanceDisabled: true,
+  disablePerformance: true,
 });
 
 const options = {

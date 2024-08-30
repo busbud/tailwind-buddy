@@ -3,13 +3,13 @@ title: Tailwind buddy performance
 editLink: true
 ---
 
-# extraPerformanceDisabled
+# disablePerformance
 
-We do not support writing a variant definition using template string. You can enable it by updating your setupCompose:
+We do not support writing a variant definition using template string by default. You can enable it by updating your setupCompose:
 
 ```ts
 export const compose = setupCompose<Screens>(screens, {
-  extraPerformanceDisabled: true,
+  disablePerformance: true,
 });
 ```
 

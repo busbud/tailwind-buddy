@@ -1,4 +1,12 @@
-import { compose } from "../../tests/constants";
+import { setupCompose } from "../../src/tailwind-buddy";
+
+export type Screens = "sm" | "md";
+const screens: Screens[] = ["sm", "md"];
+const _compose = setupCompose<Screens>(screens, {
+  extraPerformanceDisabled: true,
+});
+
+export const compose = _compose;
 
 export const fooVariants = compose({
   slots: {

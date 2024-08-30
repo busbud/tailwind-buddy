@@ -1,4 +1,21 @@
 
+## v1.0.1
+
+[compare changes](https://github.com/busbud/tailwind-buddy/compare/v0.1.0...v1.0.1)
+
+### 🏡 Chore
+
+- Add documentation using vitepress ([63d1c6f](https://github.com/busbud/tailwind-buddy/commit/63d1c6f))
+- Add documentation using vitepress ([559b61d](https://github.com/busbud/tailwind-buddy/commit/559b61d))
+- Adding search to documentation ([810536a](https://github.com/busbud/tailwind-buddy/commit/810536a))
+- Update documentation ([afd2714](https://github.com/busbud/tailwind-buddy/commit/afd2714))
+- Update documentation ([e3137c0](https://github.com/busbud/tailwind-buddy/commit/e3137c0))
+- Force v1 check documentation for breaking changes ([dd65860](https://github.com/busbud/tailwind-buddy/commit/dd65860))
+
+### ❤️ Contributors
+
+- Florent Giraud ([@flozero](http://github.com/flozero))
+
 ## v0.0.39
 
 [compare changes](https://github.com/busbud/tailwind-buddy/compare/v0.0.38...v0.0.39)

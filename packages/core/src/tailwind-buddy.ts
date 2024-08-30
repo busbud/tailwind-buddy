@@ -1,113 +1,6 @@
-type Slots = {
-  [slot: string]: string;
-  root: string;
-};
-
-type ResponsiveVariants<V> = (keyof V)[];
-
-export type Variants<S extends Slots> = {
-  [variant: string]: {
-    [kind: string]:
-      | string
-      | {
-          [key in keyof S]?: string;
-        };
-  };
-};
-
-export type DefaultVariants<V extends Variants<S>, S extends Slots> = {
-  [K in keyof V]: K extends keyof V ? keyof V[K] : never;
-};
-
-export type CompoundVariant<V extends Variants<S>, S extends Slots> = {
-  conditions: {
-    [K in keyof V]?:
-      | (K extends keyof V ? keyof V[K] : never)
-      | (K extends keyof V ? keyof V[K] : never)[]
-      | boolean;
-  } & {
-    [K in string]?: string | string[] | boolean;
-  };
-  class: string | Record<string, string>;
-};
-
-// interface GlobalScreens {
-//     screens: string[];
-// }
-
-export type Screens = ["sm", "md", "lg", "xl"];
-
-export type ResponsiveVariant<V, K extends keyof V> = {
-  ["initial"]: keyof V[K];
-} & {
-  [screen in Screens[number]]?: keyof V[K];
-};
-
-export type MergedProps<Props, V, R extends ResponsiveVariants<V>> = {
-  className?: string;
-} & {
-  [K in keyof V]?: R extends undefined
-    ? keyof V[K]
-    : K extends R[number]
-    ? ResponsiveVariant<V, K> | keyof V[K]
-    : keyof V[K];
-} & {
-  [K in keyof Props]?: Props[K];
-};
-
-export type TB = <
-  V extends Variants<S>,
-  CV extends CompoundVariant<V, S>,
-  DV extends DefaultVariants<V, S>,
-  R extends ResponsiveVariants<V>,
-  S extends Slots
->(options: {
-  slots: S;
-  variants?: V;
-  compoundVariants?: CV[];
-  responsiveVariants?: R;
-  defaultVariants: DV;
-}) => <Props>() => {
-  [Slot in keyof S]: (props?: MergedProps<Props, V, R>) => string;
-} & {
-  definition: () => {
-    slots: S;
-    variants?: V;
-    compoundVariants?: CV[];
-    responsiveVariants?: R;
-    defaultVariants: DV;
-  };
-};
-
-export type VariantsProps<
-  V extends Record<string, (...args: any[]) => unknown>
-> = Parameters<V[keyof V]>[0];
-
-export function extractValue(value: any, slot: string) {
-  if (typeof value === "string") return value.replace(/\s+/g, " ").trim();
-  else if (value?.[slot] && typeof value[slot] === "string")
-    return value[slot].replace(/\s+/g, " ").trim();
-  return undefined;
-}
-
-function buildArrayWithResponsivesFromDefault(obj: Record<string, any>): any[] {
-  const acc: any[] = [];
-  for (const [key, value] of Object.entries(obj)) {
-    if (value === undefined || value === null) continue;
-    else if (typeof value === "object") {
-      if (typeof value["initial"] === "undefined") {
-        throw new Error(
-          `initial value is missing for the variant ${key} ${value}`
-        );
-      } else {
-        acc.push([key, value]);
-      }
-    } else {
-      acc.push([key, { initial: value }]);
-    }
-  }
-  return acc;
-}
+import { TB } from "./types/definition";
+import { buildArrayWithResponsivesFromDefault } from "./utils/arrays";
+import { extractValueFromVariantSlot } from "./utils/variants";
 
 export const compose: TB = (variantDefinition) => (): any => {
   const slots = Object.keys(variantDefinition.slots);
@@ -156,7 +49,7 @@ export const compose: TB = (variantDefinition) => (): any => {
             variantSubKey,
           ] of variantsDecomposedFromDefault) {
             const variantValue = variant[variantSubKey];
-            const classStr = extractValue(variantValue, slot);
+            const classStr = extractValueFromVariantSlot(variantValue, slot);
 
             if (classStr && classStr.length > 0) {
               if (responsiveKey === "initial") {
@@ -199,7 +92,7 @@ export const compose: TB = (variantDefinition) => (): any => {
           variantDefinition.compoundVariants!.length > 0
         ) {
           for (const compound of variantDefinition.compoundVariants) {
-            const classes = extractValue(compound.class, slot);
+            const classes = extractValueFromVariantSlot(compound.class, slot);
 
             for (const [breakpoint, value] of transformed_breakpoints_entries) {
               let validated = true;
@@ -216,7 +109,7 @@ export const compose: TB = (variantDefinition) => (): any => {
                 }
               }
               if (validated && classes) {
-                const classStr = extractValue(classes, slot);
+                const classStr = extractValueFromVariantSlot(classes, slot);
                 if (classStr) {
                   if (breakpoint === "initial") {
                     classesToReturn.push(classStr);

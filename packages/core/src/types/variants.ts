@@ -1,4 +1,3 @@
-import { Screens } from "./screens";
 import { Slots } from "./slots";
 
 export type ResponsiveVariants<V> = (keyof V)[];
@@ -29,8 +28,8 @@ export type CompoundVariant<V extends Variants<S>, S extends Slots> = {
   class: string | Record<string, string>;
 };
 
-export type ResponsiveVariant<V, K extends keyof V> = {
+export type ResponsiveVariant<V, Sc extends string, K extends keyof V> = {
   ["initial"]: keyof V[K];
 } & {
-  [screen in Screens[number]]?: keyof V[K];
+  [screen in Sc]?: keyof V[K];
 };

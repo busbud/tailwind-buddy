@@ -1,38 +1,38 @@
-import { compose } from "../../src/tailwind-buddy";
+import { compose } from "../../tests/constants";
 
 interface MyComponent {
-  disabled?: boolean
+  disabled?: boolean;
 }
 
 export const responsiveAndCompoundComponent = compose({
-  "slots": {
-      "root": /** @tw */ "text-red-100",
+  slots: {
+    root: /** @tw */ "text-red-100",
   },
-  "variants": {
-    "size": {
-      "small": {
-        "root": /** @tw */ "text-xl",
+  variants: {
+    size: {
+      small: {
+        root: /** @tw */ "text-xl",
       },
-      "large": /** @tw */ "text-4xl",
-      "extralarge": /** @tw */ "text-5xl leading-tight",
-    }
+      large: /** @tw */ "text-4xl",
+      extralarge: /** @tw */ "text-5xl leading-tight",
+    },
   },
-  "defaultVariants": {
-    "size": "small"
+  defaultVariants: {
+    size: "small",
   },
-  "compoundVariants": [
+  compoundVariants: [
     {
-      "conditions": {
-        "size": "extralarge",
+      conditions: {
+        size: "extralarge",
       },
-      "class": /** @tw */ "bg-red-500 text-blue-500"
+      class: /** @tw */ "bg-red-500 text-blue-500",
     },
     {
-      "conditions": {
+      conditions: {
         disabled: true,
-        size: "small"
+        size: "small",
       },
-      class: /** @tw */ "bg-gray-500 border-red-500"
-    }
-  ]
-})<MyComponent>()
+      class: /** @tw */ "bg-gray-500 border-red-500",
+    },
+  ],
+})<MyComponent>();

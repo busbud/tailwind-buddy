@@ -17,8 +17,8 @@ function App() {
         appearance="primary"
         iconStart={<SearchIcon />}
         size={{
-          initial: "xs",
-          lg: "md",
+          initial: "sm",
+          md: "md",
         }}
       >
         asdas

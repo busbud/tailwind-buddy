@@ -1,5 +1,6 @@
-import { compose, VariantsProps } from "@busbud/tailwind-buddy";
+import { VariantsProps } from "@busbud/tailwind-buddy";
 import { ButtonBaseProps } from "@/components/Button/Button.types.ts";
+import { compose } from "../../tailwind-buddy-interface";
 
 export const buttonVariants = compose({
   slots: {

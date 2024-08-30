@@ -1,4 +1,4 @@
-import { compose } from "../../src/tailwind-buddy";
+import { compose } from "../../tests/constants";
 
 export const buttonVariants = compose({
   slots: {

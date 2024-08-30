@@ -3,6 +3,7 @@ import { defineConfig } from "vitepress";
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
   title: "Tailwind Buddy",
+  base: "/tailwind-buddy/",
   description:
     "Tailwind Buddy: Your Friendly Helper for Composing Tailwind Classes, SSR friendly and responsive variants 🎨",
   themeConfig: {

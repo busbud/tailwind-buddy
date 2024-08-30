@@ -1,3 +1,19 @@
+## v2.0.1
+
+[compare changes](https://github.com/busbud/tailwind-buddy/compare/v1.0.2...v2.0.1)
+
+### 🏡 Chore
+
+- **release:** V1.0.2 ([1a8d036](https://github.com/busbud/tailwind-buddy/commit/1a8d036))
+- **release:** V2.0.0 ([62f78ce](https://github.com/busbud/tailwind-buddy/commit/62f78ce))
+- Add manual deployment ([13cd927](https://github.com/busbud/tailwind-buddy/commit/13cd927))
+- Update documentation path ([64d1c59](https://github.com/busbud/tailwind-buddy/commit/64d1c59))
+- Fix base path for documentation ([ed54c3b](https://github.com/busbud/tailwind-buddy/commit/ed54c3b))
+
+### ❤️ Contributors
+
+- Florent Giraud ([@flozero](http://github.com/flozero))
+
 ## v2.0.0
 
 [compare changes](https://github.com/busbud/tailwind-buddy/compare/v0.0.39...v2.0.0)

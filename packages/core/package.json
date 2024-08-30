@@ -18,7 +18,7 @@
   },
   "scripts": {
     "build": "tsc && vite build",
-    "release": "pnpm prepack && changelogen --release --output ../../CHANGELOG.md  && npm publish --no-git-checks --access public && git push --follow-tags",
+    "release": "pnpm prepack && changelogen --release --output ../../CHANGELOG.md  && pnpm publish --no-git-checks --access public && git push --follow-tags",
     "npm-auth-check": "[[ $(npm_config_registry=https://registry.npmjs.org npm whoami) = \"busbud-dev\" ]] && echo \"NPM Authentication ✅\"",
     "prepack": "pnpm build",
     "test:ci": "CI=true pnpm test:unit",

@@ -1,3 +1,19 @@
+## v2.2.0
+
+[compare changes](https://github.com/busbud/tailwind-buddy/compare/v2.1.0...v2.2.0)
+
+### 🚀 Enhancements
+
+- **tailwindbuddy:** Fix typescript compound variant ([8ce6ec2](https://github.com/busbud/tailwind-buddy/commit/8ce6ec2))
+
+### 🏡 Chore
+
+- **release:** V2.1.0 ([faca488](https://github.com/busbud/tailwind-buddy/commit/faca488))
+
+### ❤️ Contributors
+
+- Florent Giraud ([@flozero](http://github.com/flozero))
+
 ## v2.1.0
 
 [compare changes](https://github.com/busbud/tailwind-buddy/compare/v2.0.1...v2.1.0)

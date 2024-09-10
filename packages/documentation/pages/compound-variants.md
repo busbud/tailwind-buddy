@@ -16,7 +16,7 @@ export const buttonVariants = compose({
         intent: "primary",
         size: "large",
       },
-      class: "font-bold",
+      class: ["font-bold"],
     },
   ],
 })();

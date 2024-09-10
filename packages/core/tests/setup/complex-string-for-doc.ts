@@ -1,4 +1,4 @@
-import { setupCompose } from "../../src/tailwind-buddy-array";
+import { setupCompose } from "../../src/tailwind-buddy";
 
 export type Screens = "sm" | "md";
 const screens: Screens[] = ["sm", "md"];
@@ -11,8 +11,7 @@ export const fooVariants = compose({
     root: [
       "hover:border-blue-500",
       "hover:border-solid",
-      "hover:bg-white",
-      "hover:text-blue-500",
+      "hover:bg-white hover:text-blue-500",
       /* Some comment here */
       "group",
       "w-full",

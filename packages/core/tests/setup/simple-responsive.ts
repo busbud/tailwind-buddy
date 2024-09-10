@@ -10,7 +10,7 @@ export const simpleResponsiveComponent = compose({
         root: ["text-xl"],
       },
       large: ["text-4xl"],
-      extralarge: ["text-5xl", "leading-tight"],
+      extralarge: ["text-5xl", "leading-tight bg-orange-500"],
     },
     color: {
       primary: ["text-red-200"],

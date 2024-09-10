@@ -124,7 +124,10 @@ export const setupCompose = <Sc extends string>(screens: Sc[]) => {
                           if (breakpoint === "initial") {
                             classSet.add(cls);
                           } else {
-                            classSet.add(`${breakpoint}:${cls}`);
+                            const splitStr = cls.split(" ");
+                            splitStr.forEach((c) => {
+                              classSet.add(`${breakpoint}:${c}`);
+                            });
                           }
                         });
                       }

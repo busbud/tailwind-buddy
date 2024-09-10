@@ -6,7 +6,7 @@ describe("test resposive simple config", () => {
   describe("responsive values", () => {
     test("root", () => {
       const root_full_str =
-        /** @tw */ "text-red-100 text-xl md:text-5xl md:leading-tight text-blue-200";
+        "text-red-100 text-xl md:text-5xl md:leading-tight md:bg-orange-500 text-blue-200";
       expect(
         root({
           size: {

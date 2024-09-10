@@ -19,7 +19,10 @@ export const generateSafeList = function (variantsArray: any[]) {
               if (Array.isArray(values)) {
                 values.forEach((v: any) => safelistClasses.add(v));
               } else {
-                safelistClasses.add(values);
+                const splitValues = values.split(" ");
+                splitValues.forEach((values: any) => {
+                  safelistClasses.add(values);
+                });
               }
             });
           }

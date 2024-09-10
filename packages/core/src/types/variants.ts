@@ -26,11 +26,14 @@ export type VariantValue<S extends Slots> =
 
 export type CompoundVariant<V extends Variants<S>, S extends Slots> = {
   conditions: {
-    [K in keyof V]?: V[K] extends Record<string, any>
-      ? keyof V[K] | (keyof V[K])[]
-      : never;
+    [K in keyof V]?:
+      | (K extends keyof V ? keyof V[K] : never)
+      | (K extends keyof V ? keyof V[K] : never)[]
+      | boolean;
+  } & {
+    [K in string]?: string | string[] | boolean;
   };
-  class: VariantValue<S>;
+  class: string | string[] | Record<string, string | string[]>;
 };
 
 export type ResponsiveVariant<V, Sc extends string, K extends keyof V> = {

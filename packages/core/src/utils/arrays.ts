@@ -2,6 +2,7 @@ export const buildArrayWithResponsivesFromDefault = (
   obj: Record<string, any>
 ): any[] => {
   const acc: any[] = [];
+  const responsiveKeys = new Set(["initial"]);
   for (const [key, value] of Object.entries(obj)) {
     if (value === undefined || value === null) continue;
     else if (typeof value === "object") {
@@ -11,10 +12,12 @@ export const buildArrayWithResponsivesFromDefault = (
         );
       } else {
         acc.push([key, value]);
+        Object.keys(value).forEach((k) => responsiveKeys.add(k));
       }
     } else {
       acc.push([key, { initial: value }]);
     }
   }
-  return acc;
+
+  return [acc, responsiveKeys];
 };

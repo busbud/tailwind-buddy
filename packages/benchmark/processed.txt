@@ -1,0 +1,312 @@
+Statistical profiling result from isolate-0x158008000-87380-v8.log, (395 ticks, 228 unaccounted, 0 excluded).
+
+ [Shared libraries]:
+   ticks  total  nonlib   name
+
+ [JavaScript]:
+   ticks  total  nonlib   name
+     54   13.7%   13.7%  Builtin: ArrayPrototypeJoin
+     46   11.6%   11.6%  Builtin: StringToList
+     15    3.8%    3.8%  JS: *c.execute file:///Users/florent/dev/tailwind-buddy/packages/core/dist/tailwindbuddy.js:91:17
+      7    1.8%    1.8%  Builtin: LoadIC
+      6    1.5%    1.5%  Builtin: LoadJoinElement_FastSmiOrObjectElements_0
+      4    1.0%    1.0%  JS: ^c.execute file:///Users/florent/dev/tailwind-buddy/packages/core/dist/tailwindbuddy.js:91:17
+      4    1.0%    1.0%  Builtin: ObjectEntries
+      3    0.8%    0.8%  JS: *$ file:///Users/florent/dev/tailwind-buddy/packages/core/dist/tailwindbuddy.js:31:8
+      3    0.8%    0.8%  Builtin: SetPrototypeForEach
+      3    0.8%    0.8%  Builtin: CopyDataProperties
+      2    0.5%    0.5%  Builtin: KeyedLoadIC_Megamorphic
+      2    0.5%    0.5%  Builtin: DeleteProperty
+      2    0.5%    0.5%  Builtin: CreateDataProperty
+      2    0.5%    0.5%  Builtin: CompileLazy
+      2    0.5%    0.5%  Builtin: ArrayIteratorPrototypeNext
+      2    0.5%    0.5%  Builtin: ArrayIncludesSmiOrObject
+      1    0.3%    0.3%  JS: *<anonymous> file:///Users/florent/dev/tailwind-buddy/packages/core/dist/tailwindbuddy.js:110:37
+      1    0.3%    0.3%  Builtin: RecordWriteSaveFP
+      1    0.3%    0.3%  Builtin: LoadGlobalIC
+      1    0.3%    0.3%  Builtin: KeyedStoreIC_Megamorphic
+      1    0.3%    0.3%  Builtin: GrowFastSmiOrObjectElements
+      1    0.3%    0.3%  Builtin: CloneObjectIC
+      1    0.3%    0.3%  Builtin: Call_ReceiverIsNotNullOrUndefined_Baseline_Compact
+      1    0.3%    0.3%  Builtin: CallFunction_ReceiverIsAny
+      1    0.3%    0.3%  Builtin: CEntry_Return1_ArgvOnStack_NoBuiltinExit
+      1    0.3%    0.3%  Builtin: ArrayPrototypeValues
+
+ [C++]:
+   ticks  total  nonlib   name
+
+ [Summary]:
+   ticks  total  nonlib   name
+    167   42.3%   42.3%  JavaScript
+      0    0.0%    0.0%  C++
+     25    6.3%    6.3%  GC
+      0    0.0%          Shared libraries
+    228   57.7%          Unaccounted
+
+ [C++ entry points]:
+   ticks    cpp   total   name
+
+ [Bottom up (heavy) profile]:
+  Note: percentage shows a share of a particular caller in the total
+  amount of its parent calls.
+  Callers occupying less than 1.0% are not shown.
+
+   ticks parent  name
+    228   57.7%  UNKNOWN
+     44   19.3%    Builtin: ArrayPrototypeJoin
+     43   97.7%      JS: *c.execute file:///Users/florent/dev/tailwind-buddy/packages/core/dist/tailwindbuddy.js:91:17
+     22   51.2%        JS: *runTest file:///Users/florent/dev/tailwind-buddy/packages/benchmark/tailwind-buddy.benchmark.mjs:6:17
+     22  100.0%          Script: ~<anonymous> file:///Users/florent/dev/tailwind-buddy/packages/benchmark/tailwind-buddy.benchmark.mjs:1:1
+     22  100.0%            Builtin: GeneratorPrototypeNext
+     20   46.5%        JS: *<anonymous> file:///Users/florent/dev/tailwind-buddy/packages/benchmark/tailwind-buddy.benchmark.mjs:22:36
+     20  100.0%          JS: *runTest file:///Users/florent/dev/tailwind-buddy/packages/benchmark/tailwind-buddy.benchmark.mjs:6:17
+     20  100.0%            Script: ~<anonymous> file:///Users/florent/dev/tailwind-buddy/packages/benchmark/tailwind-buddy.benchmark.mjs:1:1
+      1    2.3%        JS: *<anonymous> file:///Users/florent/dev/tailwind-buddy/packages/benchmark/tailwind-buddy.benchmark.mjs:18:35
+      1  100.0%          JS: ~runTest file:///Users/florent/dev/tailwind-buddy/packages/benchmark/tailwind-buddy.benchmark.mjs:6:17
+      1  100.0%            Script: ~<anonymous> file:///Users/florent/dev/tailwind-buddy/packages/benchmark/tailwind-buddy.benchmark.mjs:1:1
+      1    2.3%      JS: ^c.execute file:///Users/florent/dev/tailwind-buddy/packages/core/dist/tailwindbuddy.js:91:17
+      1  100.0%        JS: ^<anonymous> file:///Users/florent/dev/tailwind-buddy/packages/benchmark/tailwind-buddy.benchmark.mjs:18:35
+      1  100.0%          JS: ~runTest file:///Users/florent/dev/tailwind-buddy/packages/benchmark/tailwind-buddy.benchmark.mjs:6:17
+      1  100.0%            Script: ~<anonymous> file:///Users/florent/dev/tailwind-buddy/packages/benchmark/tailwind-buddy.benchmark.mjs:1:1
+     40   17.5%    Builtin: ObjectEntries
+     24   60.0%      JS: *c.execute file:///Users/florent/dev/tailwind-buddy/packages/core/dist/tailwindbuddy.js:91:17
+     16   66.7%        JS: *<anonymous> file:///Users/florent/dev/tailwind-buddy/packages/benchmark/tailwind-buddy.benchmark.mjs:22:36
+     16  100.0%          JS: *runTest file:///Users/florent/dev/tailwind-buddy/packages/benchmark/tailwind-buddy.benchmark.mjs:6:17
+     16  100.0%            Script: ~<anonymous> file:///Users/florent/dev/tailwind-buddy/packages/benchmark/tailwind-buddy.benchmark.mjs:1:1
+      8   33.3%        JS: *runTest file:///Users/florent/dev/tailwind-buddy/packages/benchmark/tailwind-buddy.benchmark.mjs:6:17
+      8  100.0%          Script: ~<anonymous> file:///Users/florent/dev/tailwind-buddy/packages/benchmark/tailwind-buddy.benchmark.mjs:1:1
+      8  100.0%            Builtin: GeneratorPrototypeNext
+     15   37.5%      JS: *$ file:///Users/florent/dev/tailwind-buddy/packages/core/dist/tailwindbuddy.js:31:8
+     14   93.3%        JS: *c.execute file:///Users/florent/dev/tailwind-buddy/packages/core/dist/tailwindbuddy.js:91:17
+      9   64.3%          JS: *<anonymous> file:///Users/florent/dev/tailwind-buddy/packages/benchmark/tailwind-buddy.benchmark.mjs:22:36
+      9  100.0%            JS: *runTest file:///Users/florent/dev/tailwind-buddy/packages/benchmark/tailwind-buddy.benchmark.mjs:6:17
+      5   35.7%          JS: *runTest file:///Users/florent/dev/tailwind-buddy/packages/benchmark/tailwind-buddy.benchmark.mjs:6:17
+      5  100.0%            Script: ~<anonymous> file:///Users/florent/dev/tailwind-buddy/packages/benchmark/tailwind-buddy.benchmark.mjs:1:1
+      1    6.7%        JS: ^c.execute file:///Users/florent/dev/tailwind-buddy/packages/core/dist/tailwindbuddy.js:91:17
+      1  100.0%          JS: *<anonymous> file:///Users/florent/dev/tailwind-buddy/packages/benchmark/tailwind-buddy.benchmark.mjs:22:36
+      1  100.0%            JS: *runTest file:///Users/florent/dev/tailwind-buddy/packages/benchmark/tailwind-buddy.benchmark.mjs:6:17
+      1    2.5%      JS: ~$ file:///Users/florent/dev/tailwind-buddy/packages/core/dist/tailwindbuddy.js:31:8
+      1  100.0%        JS: ^c.execute file:///Users/florent/dev/tailwind-buddy/packages/core/dist/tailwindbuddy.js:91:17
+      1  100.0%          JS: ~<anonymous> file:///Users/florent/dev/tailwind-buddy/packages/benchmark/tailwind-buddy.benchmark.mjs:18:35
+      1  100.0%            JS: ~runTest file:///Users/florent/dev/tailwind-buddy/packages/benchmark/tailwind-buddy.benchmark.mjs:6:17
+     35   15.4%    JS: *c.execute file:///Users/florent/dev/tailwind-buddy/packages/core/dist/tailwindbuddy.js:91:17
+     35  100.0%      JS: *<anonymous> file:///Users/florent/dev/tailwind-buddy/packages/benchmark/tailwind-buddy.benchmark.mjs:22:36
+     35  100.0%        JS: *runTest file:///Users/florent/dev/tailwind-buddy/packages/benchmark/tailwind-buddy.benchmark.mjs:6:17
+     35  100.0%          Script: ~<anonymous> file:///Users/florent/dev/tailwind-buddy/packages/benchmark/tailwind-buddy.benchmark.mjs:1:1
+     35  100.0%            Builtin: GeneratorPrototypeNext
+     25   11.0%    JS: ^compileForInternalLoader node:internal/bootstrap/realm:383:27
+     25  100.0%      JS: ^requireBuiltin node:internal/bootstrap/realm:420:24
+      4   16.0%        JS: ~<anonymous> node:internal/streams/duplex:1:1
+      4  100.0%          JS: ^compileForInternalLoader node:internal/bootstrap/realm:383:27
+      4  100.0%            JS: ^requireBuiltin node:internal/bootstrap/realm:420:24
+      3   12.0%        JS: ~<anonymous> node:internal/fs/promises:1:1
+      3  100.0%          JS: ^compileForInternalLoader node:internal/bootstrap/realm:383:27
+      3  100.0%            JS: ^requireBuiltin node:internal/bootstrap/realm:420:24
+      2    8.0%        JS: ~getSource node:internal/modules/esm/load:40:25
+      2  100.0%          JS: ~defaultLoad node:internal/modules/esm/load:110:27
+      2  100.0%            JS: ~load node:internal/modules/esm/loader:392:13
+      2    8.0%        JS: ~defaultResolve node:internal/modules/esm/loader:373:17
+      2  100.0%          JS: ~resolve node:internal/modules/esm/loader:343:10
+      2  100.0%            JS: ~getModuleJob node:internal/modules/esm/loader:226:21
+      2    8.0%        JS: ~<anonymous> node:tty:1:1
+      2  100.0%          JS: ^compileForInternalLoader node:internal/bootstrap/realm:383:27
+      2  100.0%            JS: ^requireBuiltin node:internal/bootstrap/realm:420:24
+      2    8.0%        JS: ~<anonymous> node:net:1:1
+      2  100.0%          JS: ^compileForInternalLoader node:internal/bootstrap/realm:383:27
+      2  100.0%            JS: ^requireBuiltin node:internal/bootstrap/realm:420:24
+      1    4.0%        JS: ~getTranslators node:internal/modules/esm/loader:52:24
+      1  100.0%          JS: ~<instance_members_initializer> node:internal/modules/esm/loader:82:1
+      1  100.0%            JS: ~ModuleLoader node:internal/modules/esm/loader:121:14
+      1    4.0%        JS: ~createWritableStdioStream node:internal/bootstrap/switches/is_main_thread:47:35
+      1  100.0%          JS: ~getStdout node:internal/bootstrap/switches/is_main_thread:148:19
+      1  100.0%            JS: ~get node:internal/console/constructor:215:14
+      1    4.0%        JS: ~asyncRunEntryPointWithESMLoader node:internal/modules/run_main:110:47
+      1  100.0%          JS: ~runEntryPointWithESMLoader node:internal/modules/run_main:146:36
+      1  100.0%            JS: ~executeUserEntryPoint node:internal/modules/run_main:159:31
+      1    4.0%        JS: ~<anonymous> node:internal/streams/operators:1:1
+      1  100.0%          JS: ^compileForInternalLoader node:internal/bootstrap/realm:383:27
+      1  100.0%            JS: ^requireBuiltin node:internal/bootstrap/realm:420:24
+      1    4.0%        JS: ~<anonymous> node:internal/streams/compose:1:1
+      1  100.0%          JS: ^compileForInternalLoader node:internal/bootstrap/realm:383:27
+      1  100.0%            JS: ^requireBuiltin node:internal/bootstrap/realm:420:24
+      1    4.0%        JS: ~<anonymous> node:internal/readline/interface:1:1
+      1  100.0%          JS: ^compileForInternalLoader node:internal/bootstrap/realm:383:27
+      1  100.0%            JS: ^requireBuiltin node:internal/bootstrap/realm:420:24
+      1    4.0%        JS: ~<anonymous> node:internal/perf/usertiming:1:1
+      1  100.0%          JS: ^compileForInternalLoader node:internal/bootstrap/realm:383:27
+      1  100.0%            JS: ^requireBuiltin node:internal/bootstrap/realm:420:24
+      1    4.0%        JS: ~<anonymous> node:internal/perf/timerify:1:1
+      1  100.0%          JS: ^compileForInternalLoader node:internal/bootstrap/realm:383:27
+      1  100.0%            JS: ^requireBuiltin node:internal/bootstrap/realm:420:24
+      1    4.0%        JS: ~<anonymous> node:internal/perf/resource_timing:1:1
+      1  100.0%          JS: ^compileForInternalLoader node:internal/bootstrap/realm:383:27
+      1  100.0%            JS: ^requireBuiltin node:internal/bootstrap/realm:420:24
+      1    4.0%        JS: ~#createModuleJob node:internal/modules/esm/loader:264:19
+      1  100.0%          JS: ~getJobFromResolveResult node:internal/modules/esm/loader:236:26
+      1  100.0%            JS: ~getModuleJob node:internal/modules/esm/loader:226:21
+      3    1.3%    JS: ~toRealPath node:internal/modules/helpers:57:20
+      3  100.0%      JS: ~Module._findPath node:internal/modules/cjs/loader:611:28
+      3  100.0%        JS: ~resolveMainPath node:internal/modules/run_main:24:25
+      3  100.0%          JS: ~executeUserEntryPoint node:internal/modules/run_main:159:31
+      3  100.0%            JS: ~<anonymous> node:internal/main/run_main_module:1:1
+      3    1.3%    JS: ~setSourceMapsEnabled node:internal/source_map/source_map_cache:55:30
+      3  100.0%      JS: ~initializeSourceMapsHandlers node:internal/process/pre_execution:703:38
+      3  100.0%        JS: ~prepareExecution node:internal/process/pre_execution:97:26
+      3  100.0%          JS: ~prepareMainThreadExecution node:internal/process/pre_execution:53:36
+      3  100.0%            JS: ~<anonymous> node:internal/main/run_main_module:1:1
+      3    1.3%    JS: ~prepareExecution node:internal/process/pre_execution:97:26
+      3  100.0%      JS: ~prepareMainThreadExecution node:internal/process/pre_execution:53:36
+      3  100.0%        JS: ~<anonymous> node:internal/main/run_main_module:1:1
+      3    1.3%    JS: ~patchProcessObject node:internal/process/pre_execution:223:28
+      3  100.0%      JS: ~prepareExecution node:internal/process/pre_execution:97:26
+      3  100.0%        JS: ~prepareMainThreadExecution node:internal/process/pre_execution:53:36
+      3  100.0%          JS: ~<anonymous> node:internal/main/run_main_module:1:1
+      3    1.3%    Builtin: StringPrototypeSplit
+      3  100.0%      JS: *c.execute file:///Users/florent/dev/tailwind-buddy/packages/core/dist/tailwindbuddy.js:91:17
+      3  100.0%        JS: *<anonymous> file:///Users/florent/dev/tailwind-buddy/packages/benchmark/tailwind-buddy.benchmark.mjs:22:36
+      3  100.0%          JS: *runTest file:///Users/florent/dev/tailwind-buddy/packages/benchmark/tailwind-buddy.benchmark.mjs:6:17
+      3  100.0%            Script: ~<anonymous> file:///Users/florent/dev/tailwind-buddy/packages/benchmark/tailwind-buddy.benchmark.mjs:1:1
+
+     54   13.7%  Builtin: ArrayPrototypeJoin
+     51   94.4%    JS: *c.execute file:///Users/florent/dev/tailwind-buddy/packages/core/dist/tailwindbuddy.js:91:17
+     27   52.9%      JS: *<anonymous> file:///Users/florent/dev/tailwind-buddy/packages/benchmark/tailwind-buddy.benchmark.mjs:22:36
+     27  100.0%        JS: *runTest file:///Users/florent/dev/tailwind-buddy/packages/benchmark/tailwind-buddy.benchmark.mjs:6:17
+     27  100.0%          Script: ~<anonymous> file:///Users/florent/dev/tailwind-buddy/packages/benchmark/tailwind-buddy.benchmark.mjs:1:1
+     27  100.0%            Builtin: GeneratorPrototypeNext
+     22   43.1%      JS: *runTest file:///Users/florent/dev/tailwind-buddy/packages/benchmark/tailwind-buddy.benchmark.mjs:6:17
+     22  100.0%        Script: ~<anonymous> file:///Users/florent/dev/tailwind-buddy/packages/benchmark/tailwind-buddy.benchmark.mjs:1:1
+     22  100.0%          Builtin: GeneratorPrototypeNext
+     22  100.0%            JS: ~run node:internal/modules/esm/module_job:216:12
+      2    3.9%      JS: *<anonymous> file:///Users/florent/dev/tailwind-buddy/packages/benchmark/tailwind-buddy.benchmark.mjs:18:35
+      2  100.0%        JS: ~runTest file:///Users/florent/dev/tailwind-buddy/packages/benchmark/tailwind-buddy.benchmark.mjs:6:17
+      2  100.0%          Script: ~<anonymous> file:///Users/florent/dev/tailwind-buddy/packages/benchmark/tailwind-buddy.benchmark.mjs:1:1
+      2  100.0%            Builtin: GeneratorPrototypeNext
+      2    3.7%    JS: ^c.execute file:///Users/florent/dev/tailwind-buddy/packages/core/dist/tailwindbuddy.js:91:17
+      1   50.0%      JS: ^<anonymous> file:///Users/florent/dev/tailwind-buddy/packages/benchmark/tailwind-buddy.benchmark.mjs:18:35
+      1  100.0%        JS: ~runTest file:///Users/florent/dev/tailwind-buddy/packages/benchmark/tailwind-buddy.benchmark.mjs:6:17
+      1  100.0%          Script: ~<anonymous> file:///Users/florent/dev/tailwind-buddy/packages/benchmark/tailwind-buddy.benchmark.mjs:1:1
+      1  100.0%            Builtin: GeneratorPrototypeNext
+      1   50.0%      JS: *<anonymous> file:///Users/florent/dev/tailwind-buddy/packages/benchmark/tailwind-buddy.benchmark.mjs:22:36
+      1  100.0%        JS: *runTest file:///Users/florent/dev/tailwind-buddy/packages/benchmark/tailwind-buddy.benchmark.mjs:6:17
+      1  100.0%          Script: ~<anonymous> file:///Users/florent/dev/tailwind-buddy/packages/benchmark/tailwind-buddy.benchmark.mjs:1:1
+      1  100.0%            Builtin: GeneratorPrototypeNext
+      1    1.9%    Builtin: ArrayPrototypeJoin
+      1  100.0%      JS: *c.execute file:///Users/florent/dev/tailwind-buddy/packages/core/dist/tailwindbuddy.js:91:17
+      1  100.0%        JS: *<anonymous> file:///Users/florent/dev/tailwind-buddy/packages/benchmark/tailwind-buddy.benchmark.mjs:22:36
+      1  100.0%          JS: *runTest file:///Users/florent/dev/tailwind-buddy/packages/benchmark/tailwind-buddy.benchmark.mjs:6:17
+      1  100.0%            Script: ~<anonymous> file:///Users/florent/dev/tailwind-buddy/packages/benchmark/tailwind-buddy.benchmark.mjs:1:1
+
+     46   11.6%  Builtin: StringToList
+     42   91.3%    JS: *c.execute file:///Users/florent/dev/tailwind-buddy/packages/core/dist/tailwindbuddy.js:91:17
+     21   50.0%      JS: *runTest file:///Users/florent/dev/tailwind-buddy/packages/benchmark/tailwind-buddy.benchmark.mjs:6:17
+     21  100.0%        Script: ~<anonymous> file:///Users/florent/dev/tailwind-buddy/packages/benchmark/tailwind-buddy.benchmark.mjs:1:1
+     21  100.0%          Builtin: GeneratorPrototypeNext
+     21  100.0%            JS: ~run node:internal/modules/esm/module_job:216:12
+     19   45.2%      JS: *<anonymous> file:///Users/florent/dev/tailwind-buddy/packages/benchmark/tailwind-buddy.benchmark.mjs:22:36
+     19  100.0%        JS: *runTest file:///Users/florent/dev/tailwind-buddy/packages/benchmark/tailwind-buddy.benchmark.mjs:6:17
+     19  100.0%          Script: ~<anonymous> file:///Users/florent/dev/tailwind-buddy/packages/benchmark/tailwind-buddy.benchmark.mjs:1:1
+     19  100.0%            Builtin: GeneratorPrototypeNext
+      2    4.8%      JS: *<anonymous> file:///Users/florent/dev/tailwind-buddy/packages/benchmark/tailwind-buddy.benchmark.mjs:18:35
+      2  100.0%        JS: ~runTest file:///Users/florent/dev/tailwind-buddy/packages/benchmark/tailwind-buddy.benchmark.mjs:6:17
+      2  100.0%          Script: ~<anonymous> file:///Users/florent/dev/tailwind-buddy/packages/benchmark/tailwind-buddy.benchmark.mjs:1:1
+      2  100.0%            Builtin: GeneratorPrototypeNext
+      4    8.7%    JS: ^c.execute file:///Users/florent/dev/tailwind-buddy/packages/core/dist/tailwindbuddy.js:91:17
+      2   50.0%      JS: ^<anonymous> file:///Users/florent/dev/tailwind-buddy/packages/benchmark/tailwind-buddy.benchmark.mjs:18:35
+      2  100.0%        JS: ~runTest file:///Users/florent/dev/tailwind-buddy/packages/benchmark/tailwind-buddy.benchmark.mjs:6:17
+      2  100.0%          Script: ~<anonymous> file:///Users/florent/dev/tailwind-buddy/packages/benchmark/tailwind-buddy.benchmark.mjs:1:1
+      2  100.0%            Builtin: GeneratorPrototypeNext
+      1   25.0%      JS: ~<anonymous> file:///Users/florent/dev/tailwind-buddy/packages/benchmark/tailwind-buddy.benchmark.mjs:22:36
+      1  100.0%        JS: *runTest file:///Users/florent/dev/tailwind-buddy/packages/benchmark/tailwind-buddy.benchmark.mjs:6:17
+      1  100.0%          Script: ~<anonymous> file:///Users/florent/dev/tailwind-buddy/packages/benchmark/tailwind-buddy.benchmark.mjs:1:1
+      1  100.0%            Builtin: GeneratorPrototypeNext
+      1   25.0%      JS: *<anonymous> file:///Users/florent/dev/tailwind-buddy/packages/benchmark/tailwind-buddy.benchmark.mjs:22:36
+      1  100.0%        JS: *runTest file:///Users/florent/dev/tailwind-buddy/packages/benchmark/tailwind-buddy.benchmark.mjs:6:17
+      1  100.0%          Script: ~<anonymous> file:///Users/florent/dev/tailwind-buddy/packages/benchmark/tailwind-buddy.benchmark.mjs:1:1
+      1  100.0%            Builtin: GeneratorPrototypeNext
+
+     15    3.8%  JS: *c.execute file:///Users/florent/dev/tailwind-buddy/packages/core/dist/tailwindbuddy.js:91:17
+      9   60.0%    JS: *<anonymous> file:///Users/florent/dev/tailwind-buddy/packages/benchmark/tailwind-buddy.benchmark.mjs:22:36
+      9  100.0%      JS: *runTest file:///Users/florent/dev/tailwind-buddy/packages/benchmark/tailwind-buddy.benchmark.mjs:6:17
+      9  100.0%        Script: ~<anonymous> file:///Users/florent/dev/tailwind-buddy/packages/benchmark/tailwind-buddy.benchmark.mjs:1:1
+      9  100.0%          Builtin: GeneratorPrototypeNext
+      9  100.0%            JS: ~run node:internal/modules/esm/module_job:216:12
+      5   33.3%    JS: *runTest file:///Users/florent/dev/tailwind-buddy/packages/benchmark/tailwind-buddy.benchmark.mjs:6:17
+      5  100.0%      Script: ~<anonymous> file:///Users/florent/dev/tailwind-buddy/packages/benchmark/tailwind-buddy.benchmark.mjs:1:1
+      5  100.0%        Builtin: GeneratorPrototypeNext
+      5  100.0%          JS: ~run node:internal/modules/esm/module_job:216:12
+      5  100.0%            Builtin: AsyncFunctionAwaitResolveClosure
+      1    6.7%    JS: *<anonymous> file:///Users/florent/dev/tailwind-buddy/packages/benchmark/tailwind-buddy.benchmark.mjs:18:35
+      1  100.0%      JS: ~runTest file:///Users/florent/dev/tailwind-buddy/packages/benchmark/tailwind-buddy.benchmark.mjs:6:17
+      1  100.0%        Script: ~<anonymous> file:///Users/florent/dev/tailwind-buddy/packages/benchmark/tailwind-buddy.benchmark.mjs:1:1
+      1  100.0%          Builtin: GeneratorPrototypeNext
+      1  100.0%            JS: ~run node:internal/modules/esm/module_job:216:12
+
+      7    1.8%  Builtin: LoadIC
+      3   42.9%    JS: ^c.execute file:///Users/florent/dev/tailwind-buddy/packages/core/dist/tailwindbuddy.js:91:17
+      1   33.3%      JS: ~<anonymous> file:///Users/florent/dev/tailwind-buddy/packages/benchmark/tailwind-buddy.benchmark.mjs:22:36
+      1  100.0%        JS: *runTest file:///Users/florent/dev/tailwind-buddy/packages/benchmark/tailwind-buddy.benchmark.mjs:6:17
+      1  100.0%          Script: ~<anonymous> file:///Users/florent/dev/tailwind-buddy/packages/benchmark/tailwind-buddy.benchmark.mjs:1:1
+      1  100.0%            Builtin: GeneratorPrototypeNext
+      1   33.3%      JS: *<anonymous> file:///Users/florent/dev/tailwind-buddy/packages/benchmark/tailwind-buddy.benchmark.mjs:22:36
+      1  100.0%        JS: *runTest file:///Users/florent/dev/tailwind-buddy/packages/benchmark/tailwind-buddy.benchmark.mjs:6:17
+      1  100.0%          Script: ~<anonymous> file:///Users/florent/dev/tailwind-buddy/packages/benchmark/tailwind-buddy.benchmark.mjs:1:1
+      1  100.0%            Builtin: GeneratorPrototypeNext
+      1   33.3%      JS: *<anonymous> file:///Users/florent/dev/tailwind-buddy/packages/benchmark/tailwind-buddy.benchmark.mjs:18:35
+      1  100.0%        JS: ~runTest file:///Users/florent/dev/tailwind-buddy/packages/benchmark/tailwind-buddy.benchmark.mjs:6:17
+      1  100.0%          Script: ~<anonymous> file:///Users/florent/dev/tailwind-buddy/packages/benchmark/tailwind-buddy.benchmark.mjs:1:1
+      1  100.0%            Builtin: GeneratorPrototypeNext
+      2   28.6%    JS: ~<anonymous> file:///Users/florent/dev/tailwind-buddy/packages/benchmark/tailwind-buddy.benchmark.mjs:22:36
+      2  100.0%      JS: ~runTest file:///Users/florent/dev/tailwind-buddy/packages/benchmark/tailwind-buddy.benchmark.mjs:6:17
+      2  100.0%        Script: ~<anonymous> file:///Users/florent/dev/tailwind-buddy/packages/benchmark/tailwind-buddy.benchmark.mjs:1:1
+      2  100.0%          Builtin: GeneratorPrototypeNext
+      2  100.0%            JS: ~run node:internal/modules/esm/module_job:216:12
+      1   14.3%    JS: *<anonymous> file:///Users/florent/dev/tailwind-buddy/packages/benchmark/tailwind-buddy.benchmark.mjs:22:36
+      1  100.0%      JS: *runTest file:///Users/florent/dev/tailwind-buddy/packages/benchmark/tailwind-buddy.benchmark.mjs:6:17
+      1  100.0%        Script: ~<anonymous> file:///Users/florent/dev/tailwind-buddy/packages/benchmark/tailwind-buddy.benchmark.mjs:1:1
+      1  100.0%          Builtin: GeneratorPrototypeNext
+      1  100.0%            JS: ~run node:internal/modules/esm/module_job:216:12
+      1   14.3%    Builtin: ArrayForEach
+      1  100.0%      JS: ^c.execute file:///Users/florent/dev/tailwind-buddy/packages/core/dist/tailwindbuddy.js:91:17
+      1  100.0%        JS: ~<anonymous> file:///Users/florent/dev/tailwind-buddy/packages/benchmark/tailwind-buddy.benchmark.mjs:22:36
+      1  100.0%          JS: ~runTest file:///Users/florent/dev/tailwind-buddy/packages/benchmark/tailwind-buddy.benchmark.mjs:6:17
+      1  100.0%            Script: ~<anonymous> file:///Users/florent/dev/tailwind-buddy/packages/benchmark/tailwind-buddy.benchmark.mjs:1:1
+
+      6    1.5%  Builtin: LoadJoinElement_FastSmiOrObjectElements_0
+      6  100.0%    JS: *c.execute file:///Users/florent/dev/tailwind-buddy/packages/core/dist/tailwindbuddy.js:91:17
+      4   66.7%      JS: *runTest file:///Users/florent/dev/tailwind-buddy/packages/benchmark/tailwind-buddy.benchmark.mjs:6:17
+      4  100.0%        Script: ~<anonymous> file:///Users/florent/dev/tailwind-buddy/packages/benchmark/tailwind-buddy.benchmark.mjs:1:1
+      4  100.0%          Builtin: GeneratorPrototypeNext
+      4  100.0%            JS: ~run node:internal/modules/esm/module_job:216:12
+      2   33.3%      JS: *<anonymous> file:///Users/florent/dev/tailwind-buddy/packages/benchmark/tailwind-buddy.benchmark.mjs:22:36
+      2  100.0%        JS: *runTest file:///Users/florent/dev/tailwind-buddy/packages/benchmark/tailwind-buddy.benchmark.mjs:6:17
+      2  100.0%          Script: ~<anonymous> file:///Users/florent/dev/tailwind-buddy/packages/benchmark/tailwind-buddy.benchmark.mjs:1:1
+      2  100.0%            Builtin: GeneratorPrototypeNext
+
+      4    1.0%  JS: ^c.execute file:///Users/florent/dev/tailwind-buddy/packages/core/dist/tailwindbuddy.js:91:17
+      3   75.0%    JS: ^<anonymous> file:///Users/florent/dev/tailwind-buddy/packages/benchmark/tailwind-buddy.benchmark.mjs:18:35
+      3  100.0%      JS: ~runTest file:///Users/florent/dev/tailwind-buddy/packages/benchmark/tailwind-buddy.benchmark.mjs:6:17
+      3  100.0%        Script: ~<anonymous> file:///Users/florent/dev/tailwind-buddy/packages/benchmark/tailwind-buddy.benchmark.mjs:1:1
+      3  100.0%          Builtin: GeneratorPrototypeNext
+      3  100.0%            JS: ~run node:internal/modules/esm/module_job:216:12
+      1   25.0%    JS: ~<anonymous> file:///Users/florent/dev/tailwind-buddy/packages/benchmark/tailwind-buddy.benchmark.mjs:22:36
+      1  100.0%      JS: ~runTest file:///Users/florent/dev/tailwind-buddy/packages/benchmark/tailwind-buddy.benchmark.mjs:6:17
+      1  100.0%        Script: ~<anonymous> file:///Users/florent/dev/tailwind-buddy/packages/benchmark/tailwind-buddy.benchmark.mjs:1:1
+      1  100.0%          Builtin: GeneratorPrototypeNext
+      1  100.0%            JS: ~run node:internal/modules/esm/module_job:216:12
+
+      4    1.0%  Builtin: ObjectEntries
+      3   75.0%    JS: *c.execute file:///Users/florent/dev/tailwind-buddy/packages/core/dist/tailwindbuddy.js:91:17
+      2   66.7%      JS: *<anonymous> file:///Users/florent/dev/tailwind-buddy/packages/benchmark/tailwind-buddy.benchmark.mjs:22:36
+      2  100.0%        JS: *runTest file:///Users/florent/dev/tailwind-buddy/packages/benchmark/tailwind-buddy.benchmark.mjs:6:17
+      2  100.0%          Script: ~<anonymous> file:///Users/florent/dev/tailwind-buddy/packages/benchmark/tailwind-buddy.benchmark.mjs:1:1
+      2  100.0%            Builtin: GeneratorPrototypeNext
+      1   33.3%      JS: *<anonymous> file:///Users/florent/dev/tailwind-buddy/packages/benchmark/tailwind-buddy.benchmark.mjs:18:35
+      1  100.0%        JS: ~runTest file:///Users/florent/dev/tailwind-buddy/packages/benchmark/tailwind-buddy.benchmark.mjs:6:17
+      1  100.0%          Script: ~<anonymous> file:///Users/florent/dev/tailwind-buddy/packages/benchmark/tailwind-buddy.benchmark.mjs:1:1
+      1  100.0%            Builtin: GeneratorPrototypeNext
+      1   25.0%    JS: ^c.execute file:///Users/florent/dev/tailwind-buddy/packages/core/dist/tailwindbuddy.js:91:17
+      1  100.0%      JS: ~<anonymous> file:///Users/florent/dev/tailwind-buddy/packages/benchmark/tailwind-buddy.benchmark.mjs:22:36
+      1  100.0%        JS: *runTest file:///Users/florent/dev/tailwind-buddy/packages/benchmark/tailwind-buddy.benchmark.mjs:6:17
+      1  100.0%          Script: ~<anonymous> file:///Users/florent/dev/tailwind-buddy/packages/benchmark/tailwind-buddy.benchmark.mjs:1:1
+      1  100.0%            Builtin: GeneratorPrototypeNext
+

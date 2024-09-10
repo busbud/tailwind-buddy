@@ -1,4 +1,4 @@
-import { setupCompose } from "../src/tailwind-buddy";
+import { setupCompose } from "../src/tailwind-buddy-array";
 
 export type Screens = "sm" | "md";
 const screens: Screens[] = ["sm", "md"];

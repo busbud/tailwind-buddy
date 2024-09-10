@@ -6,16 +6,16 @@ interface MyComponent {
 
 export const simpleCompoundComponent = compose({
   slots: {
-    root: /** @tw */ "text-red-100",
-    children: /** @tw */ "text-blue-100",
+    root: ["text-red-100"],
+    children: ["text-blue-100"],
   },
   variants: {
     color: {
       primary: {
-        root: /** @tw */ "text-red-200",
-        children: /** @tw */ "text-blue-200",
+        root: ["text-red-200"],
+        children: ["text-blue-200"],
       },
-      secondary: /** @tw */ "text-green-100",
+      secondary: ["text-green-100"],
     },
   },
   defaultVariants: {
@@ -27,7 +27,7 @@ export const simpleCompoundComponent = compose({
         disabled: true,
       },
       class: {
-        root: /** @tw */ "text-red-300",
+        root: ["text-red-300"],
       },
     },
     {
@@ -35,8 +35,8 @@ export const simpleCompoundComponent = compose({
         disabled: true,
         color: ["secondary", "primary"],
       },
-      class: /** @tw */ "text-green-200",
+      class: ["text-green-200"],
     },
   ],
   responsiveVariants: ["color"],
-})<MyComponent>();
+});

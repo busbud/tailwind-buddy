@@ -1,20 +1,16 @@
 import { compose } from "../../tests/constants";
 
-interface MyComponent {
-  disabled?: boolean;
-}
-
 export const responsiveAndCompoundComponent = compose({
   slots: {
-    root: /** @tw */ "text-red-100",
+    root: ["text-red-100"],
   },
   variants: {
     size: {
       small: {
-        root: /** @tw */ "text-xl",
+        root: ["text-xl"],
       },
-      large: /** @tw */ "text-4xl",
-      extralarge: /** @tw */ "text-5xl leading-tight",
+      large: ["text-4xl"],
+      extralarge: ["text-5xl", "leading-tight"],
     },
   },
   defaultVariants: {
@@ -25,14 +21,14 @@ export const responsiveAndCompoundComponent = compose({
       conditions: {
         size: "extralarge",
       },
-      class: /** @tw */ "bg-red-500 text-blue-500",
+      class: ["bg-red-500", "text-blue-500"],
     },
     {
       conditions: {
         disabled: true,
         size: "small",
       },
-      class: /** @tw */ "bg-gray-500 border-red-500",
+      class: ["bg-gray-500", "border-red-500"],
     },
   ],
-})<MyComponent>();
+});

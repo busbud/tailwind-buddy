@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { MergedProps } from "./types/props";
 import { Slots } from "./types/slots";
 import {
@@ -33,11 +34,11 @@ export const setupCompose = <Sc extends string>(
       ? processStrings(variantDefinition)
       : variantDefinition;
 
-    return <Props>() => {
-      const slots = Object.keys(transformedVariantDefinition.slots) as Array<
-        keyof S
-      >;
+    const slots = Object.keys(transformedVariantDefinition.slots) as Array<
+      keyof S
+    >;
 
+    return <Props>() => {
       // Create an empty object and assert its type to avoid the TS error
       const slotMethods = {} as {
         [Slot in keyof S]: (props?: MergedProps<Props, Sc, V, R>) => string;

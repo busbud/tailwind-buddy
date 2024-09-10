@@ -2,19 +2,19 @@ import { compose } from "../../tests/constants";
 
 export const simpleResponsiveComponent = compose({
   slots: {
-    root: /** @tw */ "text-red-100",
+    root: ["text-red-100"],
   },
   variants: {
     size: {
       small: {
-        root: /** @tw */ "text-xl",
+        root: ["text-xl"],
       },
-      large: /** @tw */ "text-4xl",
-      extralarge: /** @tw */ "text-5xl leading-tight",
+      large: ["text-4xl"],
+      extralarge: ["text-5xl", "leading-tight"],
     },
     color: {
-      primary: /** @tw */ "text-red-200",
-      secondary: /** @tw */ "text-blue-200",
+      primary: ["text-red-200"],
+      secondary: ["text-blue-200"],
     },
   },
   defaultVariants: {
@@ -22,4 +22,4 @@ export const simpleResponsiveComponent = compose({
     color: "primary",
   },
   responsiveVariants: ["size"],
-})();
+});

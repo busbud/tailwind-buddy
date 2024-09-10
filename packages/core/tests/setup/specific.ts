@@ -9,45 +9,45 @@ export interface LabelProps {
 
 export const labelVariants = compose({
   slots: {
-    root: /** @tw */ "inline-flex",
-    icon: /** @tw */ "shrink-0",
-    container: /** @tw */ "truncate",
+    root: ["inline-flex"],
+    icon: ["shrink-0"],
+    container: ["truncate"],
   },
   variants: {
     backgroundColor: {
-      blue: /** @tw */ "bg-color-scheme-literal-blue-500",
-      green: /** @tw */ "bg-color-scheme-literal-green-500",
+      blue: ["bg-color-scheme-literal-blue-500"],
+      green: ["bg-color-scheme-literal-green-500"],
     },
     fontWeight: {
-      regular: /** @tw */ "",
+      regular: [""],
       bold: {
-        root: /** @tw */ "font-weight-bold",
+        root: ["font-weight-bold"],
       },
       extraBold: {
-        root: /** @tw */ "font-weight-extra-bold",
+        root: ["font-weight-extra-bold"],
       },
     },
     size: {
       xxl: {
-        root: /** @tw */ "text-size-150",
+        root: ["text-size-150"],
       },
       xl: {
-        root: /** @tw */ "text-size-112",
+        root: ["text-size-112"],
       },
       lg: {
-        root: /** @tw */ "text-size-100",
+        root: ["text-size-100"],
       },
       md: {
-        root: /** @tw */ "text-size-87",
+        root: ["text-size-87"],
       },
       sm: {
-        root: /** @tw */ "text-size-75",
+        root: ["text-size-75"],
       },
       xs: {
-        root: /** @tw */ "text-size-62",
+        root: ["text-size-62"],
       },
       xxs: {
-        root: /** @tw */ "text-size-56",
+        root: ["text-size-56"],
       },
     },
   },
@@ -62,20 +62,20 @@ export const labelVariants = compose({
       conditions: {
         disabled: true,
       },
-      class: "opacity-50",
+      class: ["opacity-50"],
     },
     {
       conditions: {
         fontWeight: ["bold", "extraBold"],
       },
-      class: "opacity-100",
+      class: ["opacity-100"],
     },
     {
       conditions: {
         fontWeight: ["bold", "extraBold"],
         size: "xl",
       },
-      class: "opacity-200",
+      class: ["opacity-200"],
     },
   ],
-})<LabelProps>();
+});

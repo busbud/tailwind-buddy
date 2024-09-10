@@ -3,13 +3,14 @@ import Benchmark from "benchmark";
 const suite = new Benchmark.Suite();
 
 import * as CVA from "./configs/cva.mjs";
-import * as TAILWINDBUDDY from "./configs/tailwindbuddy.mjs";
-import * as TAILWINDBUDDYPERFOFF from "./configs/tailwindbuddy-performance-off.mjs";
+import {
+  noSlotsAndCompoundNoTwMergeNoResponsive,
+  slotsAndCompoundNoTwMergeNoResponsive,
+} from "./configs/tailwindbuddy.mjs";
 import * as TV from "./configs/tv.mjs";
 import { twMerge } from "./configs/twMerge.config.mjs";
 
 suite
-
   // TV - slots false - twMerge no - compound yes
   .add("TV - slots false - twMerge no - compound yes", function () {
     TV.noSlotsAndCompoundNoTwMergeNoResponsive.avatar({ size: "md" });
@@ -18,18 +19,10 @@ suite
     CVA.noSlotsAndCompoundNoTwMergeNoResponsive.avatar({ size: "md" });
   })
   .add("TAILWINDBUDDY - slots false - twMerge no - compound yes", function () {
-    TAILWINDBUDDY.noSlotsAndCompoundNoTwMergeNoResponsive.avatar.root({
+    noSlotsAndCompoundNoTwMergeNoResponsive.avatar.root({
       size: "md",
     });
   })
-  .add(
-    "TAILWINDBUDDYPERFOFF - slots false - twMerge no - compound yes",
-    function () {
-      TAILWINDBUDDYPERFOFF.noSlotsAndCompoundNoTwMergeNoResponsive.avatar.root({
-        size: "md",
-      });
-    }
-  )
 
   //  TV - slots false - twMerge yes - compound yes
   .add("TV - slots false - twMerge yes - compound yes", function () {
@@ -40,23 +33,11 @@ suite
   })
   .add("TAILWINDBUDDY - slots false - twMerge yes - compound yes", function () {
     twMerge(
-      TAILWINDBUDDY.noSlotsAndCompoundNoTwMergeNoResponsive.avatar.root({
+      noSlotsAndCompoundNoTwMergeNoResponsive.avatar.root({
         size: "md",
       })
     );
   })
-  .add(
-    "TAILWINDBUDDYPERFOFF - slots false - twMerge yes - compound yes",
-    function () {
-      twMerge(
-        TAILWINDBUDDYPERFOFF.noSlotsAndCompoundNoTwMergeNoResponsive.avatar.root(
-          {
-            size: "md",
-          }
-        )
-      );
-    }
-  )
 
   .on("cycle", function (event) {
     console.log(String(event.target));

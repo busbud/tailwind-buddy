@@ -15,13 +15,13 @@ export const generateSafeList = function (variantsArray: any[]) {
       definitionResult.responsiveVariants.forEach((variant: any) => {
         Object.entries(definitionResult.variants[variant]).forEach(
           ([key, value]: any) => {
-            if (typeof value === "string") {
-              value.split(" ").forEach((v: any) => safelistClasses.add(v));
-            } else if (typeof value === "object") {
-              Object.entries(value).forEach(([rKey, values]: any) => {
-                values.split(" ").forEach((v: any) => safelistClasses.add(v));
-              });
-            }
+            Object.entries(value).forEach(([rKey, values]: any) => {
+              if (Array.isArray(values)) {
+                values.forEach((v: any) => safelistClasses.add(v));
+              } else {
+                safelistClasses.add(values);
+              }
+            });
           }
         );
 

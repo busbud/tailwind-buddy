@@ -10,21 +10,21 @@ Slots allow you to break down components into smaller parts while using the same
 ```tsx
 export const cardVariants = compose({
   slots: {
-    root: "rounded overflow-hidden",
-    header: "p-4 bg-gray-100",
-    body: "p-4",
+    root: ["rounded overflow-hidden"],
+    header: ["p-4 bg-gray-100"],
+    body: ["p-4"],
   },
   variants: {
     size: {
       small: {
-        root: "max-w-sm",
-        header: "text-sm",
-        body: "text-base",
+        root: ["max-w-sm"],
+        header: ["text-sm"],
+        body: ["text-base"],
       },
       large: {
-        root: "max-w-lg",
-        header: "text-lg",
-        body: "text-xl",
+        root: ["max-w-lg"],
+        header: ["text-lg"],
+        body: ["text-xl"],
       },
     },
   },

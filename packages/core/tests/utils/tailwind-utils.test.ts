@@ -13,6 +13,8 @@ describe("safelist", () => {
       "md:text-5xl",
       "sm:leading-tight",
       "md:leading-tight",
+      "sm:bg-orange-500",
+      "md:bg-orange-500",
     ];
 
     const generate_str = generateSafeList([simpleResponsiveComponent]);

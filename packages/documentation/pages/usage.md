@@ -18,16 +18,16 @@ interface ButtonBaseProps
 
 export const buttonVariants = compose({
   slots: {
-    root: "px-4 py-2 rounded",
+    root: ["px-4 py-2 rounded"],
   },
   variants: {
     intent: {
-      primary: "bg-blue-500 text-white",
-      secondary: "bg-gray-200 text-black",
+      primary: ["bg-blue-500 text-white"] // or ["bg-blue-500", "text-white"],
+      secondary: ["bg-gray-200 text-black"],
     },
     size: {
-      small: "text-sm",
-      large: "text-lg",
+      small: ["text-sm"],
+      large: ["text-lg"],
     },
   },
   defaultVariants: {

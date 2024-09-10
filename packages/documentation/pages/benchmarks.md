@@ -5,4 +5,4 @@ editLink: true
 
 # Benchmarks
 
-![Screenshot 2024-08-30 at 10 20 51 AM](https://github.com/user-attachments/assets/152ca2a5-cc42-4987-adb1-65c052c8cd51)
+![Screenshot 2024-09-10 at 12 27 13 AM](https://github.com/user-attachments/assets/9149d07a-f749-4d89-a81b-53790ec84369)

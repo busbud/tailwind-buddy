@@ -1,4 +1,4 @@
 export type Slots = {
-  [slot: string]: string;
-  root: string;
+  [slot: string]: string | string[];
+  root: string | string[];
 };

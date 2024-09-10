@@ -42,7 +42,7 @@ importers:
         specifier: ^0.2.1
         version: 0.2.1(tailwindcss@3.4.10)
       vitest:
-        specifier: ^1.4.0
+        specifier: ^1.6.0
         version: 1.6.0(@types/node@22.5.0)
 
   packages/core:

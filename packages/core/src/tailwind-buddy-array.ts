@@ -1,18 +1,17 @@
 import { MergedProps } from "./types/props";
 import { Slots } from "./types/slots";
 import {
-  CompoundVariant,
+  Variants,
   DefaultVariants,
   ResponsiveVariants,
-  Variants,
+  CompoundVariant,
+  VariantValue,
 } from "./types/variants";
 
-type VariantValue<S extends Slots> =
-  | string
-  | string[]
-  | {
-      [K in keyof S]?: string | string[];
-    };
+// Utility functions
+const mergeClasses = (classes: string[]): string => {
+  return [...new Set(classes.filter(Boolean))].join(" ");
+};
 
 const flattenVariant = <S extends Slots>(
   variant: VariantValue<S>,
@@ -28,12 +27,7 @@ const flattenVariant = <S extends Slots>(
   return [];
 };
 
-const mergeClasses = (classes: string[]): string => {
-  return [...new Set(classes.filter(Boolean))].join(" ");
-};
-
-const variantCache = new Map<string, string>();
-
+// Main function
 export const setupCompose = <Sc extends string>(screens: Sc[]) => {
   return <
     V extends Variants<S>,
@@ -64,7 +58,10 @@ export const setupCompose = <Sc extends string>(screens: Sc[]) => {
         Object.entries(variantValues).forEach(([valueKey, classes]) => {
           const slotMap = new Map<string, Set<string>>();
           Object.keys(slots).forEach((slotKey) => {
-            const slotClasses = flattenVariant(classes, slotKey);
+            const slotClasses = flattenVariant<S>(
+              classes as VariantValue<S>,
+              slotKey as keyof S
+            );
             slotMap.set(slotKey, new Set(slotClasses));
           });
           variantMap.set(valueKey, slotMap);
@@ -79,10 +76,12 @@ export const setupCompose = <Sc extends string>(screens: Sc[]) => {
         classes: new Map(
           Object.entries(slots).map(([slotKey, _]) => [
             slotKey,
-            new Set(flattenVariant(cv.class, slotKey)),
+            new Set(flattenVariant<S>(cv.class, slotKey as keyof S)),
           ])
         ),
       })) || [];
+
+    const variantCache = new Map<string, string>();
 
     return <Props>() => {
       type SlotFunctionMap = {
@@ -148,17 +147,25 @@ export const setupCompose = <Sc extends string>(screens: Sc[]) => {
               usedBreakpoints.forEach((breakpoint) => {
                 let isMatch = true;
                 Object.entries(conditions).forEach(([key, conditionValue]) => {
-                  const propValue = mergedProps[key];
-                  let valueToCheck;
+                  const propValue = mergedProps[key as keyof V];
+                  let valueToCheck: unknown;
                   if (typeof propValue === "object" && propValue !== null) {
-                    valueToCheck = propValue[breakpoint] || propValue.initial;
+                    // Handle responsive variant
+                    valueToCheck =
+                      breakpoint === "initial"
+                        ? (propValue as { initial: unknown }).initial
+                        : (propValue as Record<string, unknown>)[breakpoint] ||
+                          (propValue as { initial: unknown }).initial;
                   } else {
                     valueToCheck = propValue;
                   }
+
                   isMatch =
                     isMatch &&
                     (Array.isArray(conditionValue)
-                      ? conditionValue.includes(valueToCheck)
+                      ? (conditionValue as Array<unknown>).includes(
+                          valueToCheck
+                        )
                       : conditionValue === valueToCheck);
                 });
                 if (isMatch) {
@@ -180,7 +187,7 @@ export const setupCompose = <Sc extends string>(screens: Sc[]) => {
 
             const result = mergeClasses(Array.from(classSet));
             variantCache.set(cacheKey, result);
-            return result || "";
+            return result;
           };
           return acc;
         },

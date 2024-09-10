@@ -33,7 +33,7 @@ suite
   })
   .add("TAILWINDBUDDY - slots false - twMerge yes - compound yes", function () {
     twMerge(
-      noSlotsAndCompoundNoTwMergeNoResponsive.avatar.root({
+      slotsAndCompoundNoTwMergeNoResponsive.avatar.root({
         size: "md",
       })
     );

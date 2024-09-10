@@ -1,4 +1,5 @@
 import { generateResponsiveVariants } from "./generate-responsive-variants";
+import { cleanString } from "./strings";
 
 export const generateSafeList = function (variantsArray: any[]) {
   const safelistClasses: Set<string> = new Set();
@@ -19,7 +20,7 @@ export const generateSafeList = function (variantsArray: any[]) {
               if (Array.isArray(values)) {
                 values.forEach((v: any) => safelistClasses.add(v));
               } else {
-                const splitValues = values.split(" ");
+                const splitValues = cleanString(values).split(" ");
                 splitValues.forEach((values: any) => {
                   safelistClasses.add(values);
                 });

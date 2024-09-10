@@ -6,8 +6,9 @@ export type Variants<S extends Slots> = {
   [variant: string]: {
     [kind: string]:
       | string[]
+      | string
       | {
-          [key in keyof S]?: string[];
+          [key in keyof S]?: string[] | string;
         };
   };
 };
@@ -18,8 +19,9 @@ export type DefaultVariants<V extends Variants<S>, S extends Slots> = {
 
 export type VariantValue<S extends Slots> =
   | string[]
+  | string
   | {
-      [K in keyof S]?: string[];
+      [K in keyof S]?: string[] | string;
     };
 
 export type CompoundVariant<V extends Variants<S>, S extends Slots> = {

@@ -7,21 +7,6 @@ editLink: true
 
 Slots allow you to break down components into smaller parts while using the same props. Here's an example:
 
-::: danger
-Do not use template strings to define your classes if you want to support multine please use a combination of array and strings
-
-like
-
-```
-[
-  "rounded overflow-hidden",
-  "p-4",
-  "m-4 bg-gray-100"
-]
-```
-
-:::
-
 ```tsx
 export const cardVariants = compose({
   slots: {

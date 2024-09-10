@@ -7,6 +7,7 @@ import {
   CompoundVariant,
   VariantValue,
 } from "./types/variants";
+import { cleanString } from "./utils/strings";
 
 // Utility functions
 const mergeClasses = (classes: string[]): string => {
@@ -95,7 +96,13 @@ export const setupCompose = <Sc extends string>(screens: Sc[]) => {
               return variantCache.get(cacheKey) || "";
             }
 
-            const classSet = new Set<string>(baseClasses);
+            const classSet = new Set<string>();
+
+            if (typeof baseClasses === "string") {
+              classSet.add(cleanString(baseClasses));
+            } else if (Array.isArray(baseClasses)) {
+              baseClasses.forEach((cls) => classSet.add(cleanString(cls)));
+            }
 
             // Merge default variants with props, giving precedence to props
             const mergedProps = { ...defaultVariants, ...props };
@@ -122,9 +129,9 @@ export const setupCompose = <Sc extends string>(screens: Sc[]) => {
                       if (variantClasses) {
                         variantClasses.forEach((cls) => {
                           if (breakpoint === "initial") {
-                            classSet.add(cls);
+                            classSet.add(cleanString(cls));
                           } else {
-                            const splitStr = cls.split(" ");
+                            const splitStr = cleanString(cls).split(" ");
                             splitStr.forEach((c) => {
                               classSet.add(`${breakpoint}:${c}`);
                             });
@@ -174,9 +181,12 @@ export const setupCompose = <Sc extends string>(screens: Sc[]) => {
                 if (isMatch) {
                   classes.get(slotKey)?.forEach((cls) => {
                     if (breakpoint === "initial") {
-                      classSet.add(cls);
+                      classSet.add(cleanString(cls));
                     } else {
-                      classSet.add(`${breakpoint}:${cls}`);
+                      const splitStr = cleanString(cls).split(" ");
+                      splitStr.forEach((c) => {
+                        classSet.add(`${breakpoint}:${c}`);
+                      });
                     }
                   });
                 }
@@ -185,7 +195,9 @@ export const setupCompose = <Sc extends string>(screens: Sc[]) => {
 
             // Add custom className if provided
             if (props?.className) {
-              props.className.split(" ").forEach((cls) => classSet.add(cls));
+              cleanString(props.className)
+                .split(" ")
+                .forEach((cls) => classSet.add(cls));
             }
 
             const result = mergeClasses(Array.from(classSet));

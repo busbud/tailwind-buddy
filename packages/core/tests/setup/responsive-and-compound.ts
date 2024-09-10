@@ -14,7 +14,7 @@ export const responsiveAndCompoundComponent = compose({
         root: ["text-xl"],
       },
       large: ["text-4xl"],
-      extralarge: ["text-5xl", "leading-tight"],
+      extralarge: "text-5xl leading-tight",
     },
   },
   defaultVariants: {
@@ -25,7 +25,12 @@ export const responsiveAndCompoundComponent = compose({
       conditions: {
         size: "extralarge",
       },
-      class: ["bg-red-500", "text-blue-500"],
+      class: `
+        
+      
+      
+          bg-red-500 
+          text-blue-500`,
     },
     {
       conditions: {

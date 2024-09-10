@@ -1,3 +1,21 @@
+## v2.1.0
+
+[compare changes](https://github.com/busbud/tailwind-buddy/compare/v2.0.1...v2.1.0)
+
+### 🚀 Enhancements
+
+- **chore:** Performance ([#18](https://github.com/busbud/tailwind-buddy/pull/18))
+
+### 🏡 Chore
+
+- **release:** V2.0.1 ([0104370](https://github.com/busbud/tailwind-buddy/commit/0104370))
+- Fix documentation typos ([7ead4fb](https://github.com/busbud/tailwind-buddy/commit/7ead4fb))
+- Fix documentation typos ([3bdfc57](https://github.com/busbud/tailwind-buddy/commit/3bdfc57))
+
+### ❤️ Contributors
+
+- Florent Giraud ([@flozero](http://github.com/flozero))
+
 ## v2.0.1
 
 [compare changes](https://github.com/busbud/tailwind-buddy/compare/v1.0.2...v2.0.1)

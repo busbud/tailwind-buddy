@@ -22,4 +22,4 @@ export const simpleResponsiveComponent = compose({
     color: "primary",
   },
   responsiveVariants: ["size"],
-});
+})();

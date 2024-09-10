@@ -6,8 +6,9 @@ export type Variants<S extends Slots> = {
   [variant: string]: {
     [kind: string]:
       | string
+      | string[]
       | {
-          [key in keyof S]?: string;
+          [key in keyof S]?: string | string[];
         };
   };
 };
@@ -25,7 +26,7 @@ export type CompoundVariant<V extends Variants<S>, S extends Slots> = {
   } & {
     [K in string]?: string | string[] | boolean;
   };
-  class: string | Record<string, string>;
+  class: string | Record<string, string> | string[];
 };
 
 export type ResponsiveVariant<V, Sc extends string, K extends keyof V> = {

@@ -78,4 +78,4 @@ export const labelVariants = compose({
       class: ["opacity-200"],
     },
   ],
-});
+})();

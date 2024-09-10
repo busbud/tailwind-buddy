@@ -15,4 +15,4 @@ export const simpleComponent = compose({
   defaultVariants: {
     color: "primary",
   },
-});
+})();

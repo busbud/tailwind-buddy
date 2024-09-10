@@ -5,7 +5,7 @@ describe("test resposive simple config", () => {
   const { root } = responsiveAndCompoundComponent;
 
   describe("responsive values", () => {
-    test.only("with compound and responsive", () => {
+    test("with compound and responsive", () => {
       const root_full_str =
         "text-red-100 text-xl md:text-5xl md:leading-tight md:bg-red-500 md:text-blue-500";
       expect(
@@ -21,7 +21,6 @@ describe("test resposive simple config", () => {
     test("with other props", () => {
       const root_full_str =
         "text-red-100 text-xl md:text-4xl bg-gray-500 border-red-500";
-
       expect(
         root({
           size: {

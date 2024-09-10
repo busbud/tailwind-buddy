@@ -35,7 +35,7 @@ export const options = {
 };
 
 export const noSlotsAndCompoundNoTwMergeNoResponsive = {
-  avatar: compose(options),
+  avatar: compose(options)(),
 };
 
 export const slotsAndCompoundNoTwMergeNoResponsive = {
@@ -45,5 +45,5 @@ export const slotsAndCompoundNoTwMergeNoResponsive = {
       ...options.slots,
       label: "sr-only",
     },
-  }),
+  })(),
 };

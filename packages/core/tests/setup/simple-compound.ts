@@ -39,4 +39,4 @@ export const simpleCompoundComponent = compose({
     },
   ],
   responsiveVariants: ["color"],
-});
+})();

@@ -38,4 +38,4 @@ export const buttonVariants = compose({
     variant: "contained",
   },
   responsiveVariants: ["size"],
-});
+})();

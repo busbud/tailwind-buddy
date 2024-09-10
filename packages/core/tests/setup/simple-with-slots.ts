@@ -22,4 +22,4 @@ export const simpleComponent = compose({
     color: "primary",
     size: "small",
   },
-});
+})();

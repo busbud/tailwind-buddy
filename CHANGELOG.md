@@ -1,3 +1,23 @@
+## v2.3.0
+
+[compare changes](https://github.com/busbud/tailwind-buddy/compare/v2.2.0...v2.3.0)
+
+### 🚀 Enhancements
+
+- **tailwindbuddy:** Fix typescript compound variant ([a837d47](https://github.com/busbud/tailwind-buddy/commit/a837d47))
+
+### 🩹 Fixes
+
+- **safelist:** Safelist was not generating properly classes ([8dcefbd](https://github.com/busbud/tailwind-buddy/commit/8dcefbd))
+
+### 🏡 Chore
+
+- **release:** V2.2.0 ([90c9b5a](https://github.com/busbud/tailwind-buddy/commit/90c9b5a))
+
+### ❤️ Contributors
+
+- Florent Giraud ([@flozero](http://github.com/flozero))
+
 ## v2.2.0
 
 [compare changes](https://github.com/busbud/tailwind-buddy/compare/v2.1.0...v2.2.0)

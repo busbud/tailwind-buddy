@@ -40,7 +40,6 @@ export const buttonVariants = compose({
 export type ButtonProps = VariantsProps<typeof buttonVariants>;
 
 // Usage in a React component
-import { twMerge } from "tailwind-merge";
 
 export const Button: React.FC<React.PropsWithChildren<ButtonProps>> = ({
   as: Component = "button",

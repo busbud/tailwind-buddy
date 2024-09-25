@@ -20,7 +20,6 @@ export const buttonVariants = compose({
 })();
 
 // Usage in a React component
-import { twMerge } from "tailwind-merge";
 
 // class .font-bold will be applied as the condition is fulfilled.
 export const Button: React.FC<{}> = () => {

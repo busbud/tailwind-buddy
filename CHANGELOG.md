@@ -1,3 +1,19 @@
+## v2.4.0
+
+[compare changes](https://github.com/busbud/tailwind-buddy/compare/v2.3.0...v2.4.0)
+
+### 🚀 Enhancements
+
+- **twmerge:** Inject function like tailwind merge possible ([#25](https://github.com/busbud/tailwind-buddy/pull/25))
+
+### 🏡 Chore
+
+- **release:** V2.3.0 ([82a9b4a](https://github.com/busbud/tailwind-buddy/commit/82a9b4a))
+
+### ❤️ Contributors
+
+- Florent Giraud ([@flozero](http://github.com/flozero))
+
 ## v2.3.0
 
 [compare changes](https://github.com/busbud/tailwind-buddy/compare/v2.2.0...v2.3.0)

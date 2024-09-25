@@ -203,6 +203,12 @@ export const setupCompose = <Sc extends string>(
                 .forEach((cls) => classSet.add(cls));
             }
 
+            if (props?.class) {
+              cleanString(props.class)
+                .split(" ")
+                .forEach((cls) => classSet.add(cls));
+            }
+
             const result = mergeClasses(uniquifyClasses(Array.from(classSet)));
             variantCache.set(cacheKey, result);
             return result;

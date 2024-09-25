@@ -7,6 +7,7 @@ export type MergedProps<
   R extends ResponsiveVariants<V>
 > = {
   className?: string;
+  class?: string;
 } & {
   [K in keyof V]?: R extends undefined
     ? keyof V[K]

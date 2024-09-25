@@ -33,7 +33,7 @@ export const Button: React.FC<ButtonProps> = ({
     <button
       className={root({
         appearance,
-        className,
+        class: className,
         size,
         variant,
       })}

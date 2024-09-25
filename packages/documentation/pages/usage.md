@@ -40,7 +40,6 @@ export const buttonVariants = compose({
 export type ButtonProps = VariantsProps<typeof buttonVariants>;
 
 // Usage in a React component
-import { twMerge } from "tailwind-merge";
 
 export const Button: React.FC<React.PropsWithChildren<ButtonProps>> = ({
   as: Component = "button",
@@ -54,16 +53,15 @@ export const Button: React.FC<React.PropsWithChildren<ButtonProps>> = ({
 
   return (
     <Component
-      className={twMerge(
-        root({
+      className={root({
           intent: {
             initial: "primary",
             md: "secondary",
           },
           size,
-          className,
-        })
-      )}
+          {/* className, we do support class and className props. In case you use both class will be the last one in terms of position */}
+          class: className,
+        })}
       {...restProps}
     >
       {children}

@@ -5,6 +5,8 @@ editLink: true
 
 # Responsive Variants
 
+**IMPORTANT**: If you are not using any responsive variants you can just not use all this configuration.
+
 To enable responsive variants:
 
 1. Add the variant to the `responsiveVariants` array in your compose function.
@@ -18,7 +20,6 @@ export const buttonVariants = compose({
 })();
 
 // Usage in a React component
-import { twMerge } from "tailwind-merge";
 
 // class .font-bold will be applied as the condition is fulfilled.
 export const Button: React.FC<{}> = () => {
@@ -26,12 +27,10 @@ export const Button: React.FC<{}> = () => {
 
   return (
     <button
-      className={twMerge(
-        root({
-          intent: "primary",
-          size: large,
-        })
-      )}
+      className={root({
+        intent: "primary",
+        size: large,
+      })}
     >
       Go
     </button>

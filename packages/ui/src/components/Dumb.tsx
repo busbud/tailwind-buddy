@@ -1,6 +1,5 @@
 import { compose } from "../tailwind-buddy-interface";
 import React from "react";
-import { twMerge } from "tailwind-merge";
 
 export const fooVariants = compose({
   slots: {
@@ -33,5 +32,5 @@ export const fooVariants = compose({
 
 export const Dumb: React.FC<any> = () => {
   const { root } = fooVariants;
-  return <div className={twMerge(root())}>Hello</div>;
+  return <div className={root()}>Hello</div>;
 };

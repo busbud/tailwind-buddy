@@ -5,6 +5,8 @@ editLink: true
 
 # Responsive Variants
 
+**IMPORTANT**: If you are not using any responsive variants you can just not use all this configuration.
+
 To enable responsive variants:
 
 1. Add the variant to the `responsiveVariants` array in your compose function.
@@ -26,12 +28,10 @@ export const Button: React.FC<{}> = () => {
 
   return (
     <button
-      className={twMerge(
-        root({
-          intent: "primary",
-          size: large,
-        })
-      )}
+      className={root({
+        intent: "primary",
+        size: large,
+      })}
     >
       Go
     </button>

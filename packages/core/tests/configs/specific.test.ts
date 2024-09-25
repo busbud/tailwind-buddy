@@ -17,7 +17,7 @@ describe("test simple config", () => {
         root({
           size: "xxs",
           fontWeight: "regular",
-          className: "bg-color-scheme-literal-red-500",
+          class: "bg-color-scheme-literal-red-500",
           disabled: true,
         })
       ).toBe(root_full_str);
@@ -34,7 +34,7 @@ describe("test simple config", () => {
         root({
           size: "xxs",
           fontWeight: "regular",
-          className: "bg-color-scheme-literal-red-500",
+          class: "bg-color-scheme-literal-red-500",
           disabled: false,
         })
       ).toBe(root_full_str);
@@ -53,13 +53,13 @@ describe("test simple config", () => {
         root({
           size: "xxs",
           fontWeight: "bold",
-          className: "bg-color-scheme-literal-red-500",
+          class: "bg-color-scheme-literal-red-500",
           disabled: false,
         })
       ).toBe(root_full_str);
     });
 
-    test.skip("start working with responsive props but no array condition", () => {
+    test("start working with responsive props but no array condition", () => {
       const root_full_str = [
         "inline-flex",
         "font-weight-bold",
@@ -78,12 +78,12 @@ describe("test simple config", () => {
             md: "xxl",
           },
           fontWeight: "bold",
-          className: "bg-color-scheme-literal-red-500",
+          class: "bg-color-scheme-literal-red-500",
         })
       ).toBe(root_full_str);
     });
 
-    test.skip("start working with responsive props and array condition", () => {
+    test("start working with responsive props and array condition", () => {
       const root_full_str = [
         "inline-flex",
         "font-weight-bold",
@@ -102,12 +102,12 @@ describe("test simple config", () => {
             initial: "bold",
             md: "extraBold",
           },
-          className: "bg-color-scheme-literal-red-500",
+          class: "bg-color-scheme-literal-red-500",
         })
       ).toBe(root_full_str);
     });
 
-    test.skip("start working with two responsive props and array condition", () => {
+    test("start working with two responsive props and array condition", () => {
       const root_full_str = [
         "inline-flex",
         "font-weight-bold",
@@ -131,12 +131,12 @@ describe("test simple config", () => {
             initial: "bold",
             md: "extraBold",
           },
-          className: "bg-color-scheme-literal-red-500",
+          class: "bg-color-scheme-literal-red-500",
         })
       ).toBe(root_full_str);
     });
 
-    test.skip("start working with two responsive props and array condition", () => {
+    test("start working with two responsive props and array condition", () => {
       const root_full_str = [
         "inline-flex",
         "font-weight-bold",
@@ -162,7 +162,7 @@ describe("test simple config", () => {
             initial: "bold",
             md: "extraBold",
           },
-          className: "bg-color-scheme-literal-red-500",
+          class: "bg-color-scheme-literal-red-500",
           disabled: true,
         })
       ).toBe(root_full_str);

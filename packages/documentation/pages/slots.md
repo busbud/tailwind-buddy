@@ -38,9 +38,9 @@ export const Card = () => {
   const { root, header, body } = cardVariants;
 
   return (
-    <div className={twMerge(root({ size: "large" }))}>
-      <div className={twMerge(header({ size: "large" }))}>header</div>
-      <div className={twMerge(body())}>body</div>
+    <div className={root({ size: "large" })}>
+      <div className={header({ size: "large" })}>header</div>
+      <div className={body()}>body</div>
     </div>
   );
 };

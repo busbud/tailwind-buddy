@@ -1,3 +1,15 @@
+## v2.4.1
+
+[compare changes](https://github.com/busbud/tailwind-buddy/compare/v2.4.0...v2.4.1)
+
+### 🏡 Chore
+
+- **release:** V2.4.0 ([43c13a6](https://github.com/busbud/tailwind-buddy/commit/43c13a6))
+
+### ❤️ Contributors
+
+- Florent Giraud ([@flozero](http://github.com/flozero))
+
 ## v2.4.0
 
 [compare changes](https://github.com/busbud/tailwind-buddy/compare/v2.3.0...v2.4.0)

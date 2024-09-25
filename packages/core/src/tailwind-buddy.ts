@@ -10,7 +10,7 @@ import {
 import { cleanString } from "./utils/strings";
 
 // Utility functions
-const mergeClasses = (classes: string[]): string => {
+const uniquifyClasses = (classes: string[]): string => {
   return [...new Set(classes.filter(Boolean))].join(" ");
 };
 
@@ -29,7 +29,10 @@ const flattenVariant = <S extends Slots>(
 };
 
 // Main function
-export const setupCompose = <Sc extends string>(screens: Sc[]) => {
+export const setupCompose = <Sc extends string>(
+  screens: Sc[],
+  mergeClasses: (str: string) => string = (str) => str
+) => {
   return <
     V extends Variants<S>,
     CV extends CompoundVariant<V, S>,
@@ -200,7 +203,7 @@ export const setupCompose = <Sc extends string>(screens: Sc[]) => {
                 .forEach((cls) => classSet.add(cls));
             }
 
-            const result = mergeClasses(Array.from(classSet));
+            const result = mergeClasses(uniquifyClasses(Array.from(classSet)));
             variantCache.set(cacheKey, result);
             return result;
           };

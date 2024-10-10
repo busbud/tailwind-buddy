@@ -22,3 +22,7 @@ Tailwind Buddy addresses common challenges in managing Tailwind classes for comp
 This library is inspired by [CVA](https://cva.style/docs) and [tailwind-variants](https://github.com/nextui-org/tailwind-variants), offering our unique approach to solving common Tailwind challenges.
 
 ## [Documentation](https://busbud.github.io/tailwind-buddy)
+
+## Want to see a react native project using it ? :p 
+
+https://github.com/flozero/tailwind-buddy-presentation-react-native

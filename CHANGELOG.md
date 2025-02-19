@@ -1,3 +1,19 @@
+## v2.4.2
+
+[compare changes](https://github.com/busbud/tailwind-buddy/compare/v2.4.1...v2.4.2)
+
+### 🩹 Fixes
+
+- Fix props undefined value ([#28](https://github.com/busbud/tailwind-buddy/pull/28))
+
+### 🏡 Chore
+
+- **release:** V2.4.1 ([f06aeb8](https://github.com/busbud/tailwind-buddy/commit/f06aeb8))
+
+### ❤️ Contributors
+
+- Florent Giraud ([@flozero](http://github.com/flozero))
+
 ## v2.4.1
 
 [compare changes](https://github.com/busbud/tailwind-buddy/compare/v2.4.0...v2.4.1)

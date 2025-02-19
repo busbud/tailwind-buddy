@@ -5,10 +5,20 @@ describe("test simple config", () => {
   const { root, label, definition } = simpleComponent;
 
   describe("defaults values", () => {
+
     test("root", () => {
       const root_full_str =
         /** @tw */ "text-red-100 text-red-200 bg-red-500 text-lg";
       expect(root()).toBe(root_full_str);
+    });
+
+    test("root with undefined value but good props just remove them so default variant should be used", () => {
+      const root_full_str =
+        /** @tw */ "text-red-100 text-red-200 bg-red-500 text-lg";
+      expect(root({
+        color: undefined,
+        size: undefined,
+      })).toBe(root_full_str);
     });
 
     test("label", () => {

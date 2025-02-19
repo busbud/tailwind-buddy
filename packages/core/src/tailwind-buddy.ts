@@ -91,10 +91,21 @@ export const setupCompose = <Sc extends string>(
       type SlotFunctionMap = {
         [Slot in keyof S]: (props?: MergedProps<Props, Sc, V, R>) => string;
       };
+
       const slotFunctions: SlotFunctionMap = Object.entries(slots).reduce(
         (acc, [slotKey, baseClasses]) => {
           acc[slotKey as keyof S] = (props?: MergedProps<Props, Sc, V, R>) => {
-            const cacheKey = JSON.stringify({ slot: slotKey, props });
+            const cleanedProps: Record<string, any> = {}
+
+            if (props) {
+              Object.keys(props).forEach(key => {
+                if (props[key]) {
+                  cleanedProps[key] = props[key]
+                }
+              });
+            }
+
+            const cacheKey = JSON.stringify({ slot: slotKey, props: cleanedProps });
             if (variantCache.has(cacheKey)) {
               return variantCache.get(cacheKey) || "";
             }
@@ -108,7 +119,7 @@ export const setupCompose = <Sc extends string>(
             }
 
             // Merge default variants with props, giving precedence to props
-            const mergedProps = { ...defaultVariants, ...props };
+            const mergedProps = { ...defaultVariants, ...cleanedProps };
 
             // Get all breakpoints used in props
             const usedBreakpoints = new Set(["initial"]);
@@ -197,14 +208,14 @@ export const setupCompose = <Sc extends string>(
             });
 
             // Add custom className if provided
-            if (props?.className) {
-              cleanString(props.className)
+            if (cleanedProps?.className) {
+              cleanString(cleanedProps.className)
                 .split(" ")
                 .forEach((cls) => classSet.add(cls));
             }
 
-            if (props?.class) {
-              cleanString(props.class)
+            if (cleanedProps?.class) {
+              cleanString(cleanedProps.class)
                 .split(" ")
                 .forEach((cls) => classSet.add(cls));
             }

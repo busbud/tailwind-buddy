@@ -1,18 +1,26 @@
-import { setupCompose } from "@busbud/tailwind-buddy";
-
-export const compose = setupCompose(["md", "lg", "xl", "2xl"]);
+import { compose } from "@busbud/tailwind-buddy";
 
 export const options = {
   slots: {
-    root: ["relative", "flex", "shrink-0", "overflow-hidden", "rounded-full"],
+    root: "relative flex shrink-0 overflow-hidden rounded-full",
   },
   variants: {
     size: {
-      xs: ["h-6", "w-6"],
-      sm: ["h-8", "w-8"],
-      md: ["h-10", "w-10"],
-      lg: ["h-12", "w-12"],
-      xl: ["h-14", "w-14"],
+      xs: {
+        root: "h-6 w-6"
+      },
+      sm: {
+        root: "h-8 w-8"
+      },
+      md: {
+        root: "h-10 w-10"
+      },
+      lg: {
+        root: "h-12 w-12"
+      },
+      xl: {
+        root: "h-14 w-14"
+      },
     },
   },
   defaultVariants: {
@@ -21,21 +29,23 @@ export const options = {
   compoundVariants: [
     {
       conditions: {
-        size: ["xs", "sm"],
+        size: "xs",
       },
-      class: ["ring-1"],
+      classes: {
+        root: "ring-1"
+      },
     },
     {
       conditions: {
-        size: ["md", "lg", "xl", "2xl"],
+        size: "md",
       },
-      class: ["ring-2"],
+      classes: "ring-2"
     },
   ],
 };
 
 export const noSlotsAndCompoundNoTwMergeNoResponsive = {
-  avatar: compose(options)(),
+  avatar: compose(options),
 };
 
 export const slotsAndCompoundNoTwMergeNoResponsive = {
@@ -45,5 +55,5 @@ export const slotsAndCompoundNoTwMergeNoResponsive = {
       ...options.slots,
       label: "sr-only",
     },
-  })(),
+  }),
 };

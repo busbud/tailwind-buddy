@@ -5,28 +5,28 @@ type ComposeType = {
   variants: {
     appearance: ["default", "primary", "destructive"],
     size: ["xs", "sm", "md"],
-    variant: ["contained", "text"]
+    variant: ["contained", "text"],
   },
   props: {
-    isDisabled: boolean
+    isDisabled?: boolean
   }
 }
 
 export const buttonVariants = compose<ComposeType>({
   slots: {
-    root: /** @tw */ "bg-red-500",
+    root: "bg-red-500",
     label: "bg-red-500",
     icon: "bg-red-500",
   },
   variants: {
     "appearance" : {
-      "root": " bg-red",
+      "root": "bg-red-500",
     },
     "size": {
-     "root": "bg-red-500",
+      "label" :"bg-red-500"
     },
     "variant": {
-     "root": "bg-red-500",
+      "label": "bg-red-500"
     }
   },
   compoundVariants: [
@@ -47,10 +47,12 @@ export const buttonVariants = compose<ComposeType>({
   }
 });
 
-type VariantProps<T extends Record<string, string[]>> = {
-  [K in keyof T]: T[K][number]; // Extracts only valid values from the variant array
+type VariantProps = {
+  appearance?: ComposeType["variants"]["appearance"][number];
+  size?: ComposeType["variants"]["size"][number];
+  variant?: ComposeType["variants"]["variant"][number];
 };
 
-// Combine variants and props into a single type for components
-export type ButtonProps = VariantProps<ComposeType["variants"]> & ComposeType["props"];
+export type ButtonProps = VariantProps & ComposeType["props"];
+
 

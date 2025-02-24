@@ -1,21 +1,25 @@
-import { compose } from "../../tests/constants";
+import { compose } from "../../src/tailwind-buddy"
 
-interface MyComponent {
-  disabled?: boolean;
-}
-
-export const simpleCompoundComponent = compose({
+export const simpleCompoundComponent = compose<{
+  slots: ["root", "children"],
+  variants: {
+    color: ["primary", "secondary"]
+  },
+  props: {
+    disabled?: boolean;
+  }
+}>({
   slots: {
-    root: ["text-red-100"],
-    children: ["text-blue-100"],
+    root: "text-red-100",
+    children: "text-blue-100",
   },
   variants: {
     color: {
-      primary: {
-        root: ["text-red-200"],
-        children: ["text-blue-200"],
+      primary:  "text-red-200",
+      secondary: {
+        "children": "text-green-100",
+        "root": "text-green-100"
       },
-      secondary: ["text-green-100"],
     },
   },
   defaultVariants: {
@@ -26,17 +30,16 @@ export const simpleCompoundComponent = compose({
       conditions: {
         disabled: true,
       },
-      class: {
-        root: ["text-red-300"],
+      classes: {
+        root: "text-red-300",
       },
     },
     {
       conditions: {
         disabled: true,
-        color: ["secondary", "primary"],
+        color: ["primary", "secondary"]
       },
-      class: ["text-green-200"],
+      classes: "text-purple-200",
     },
   ],
-  responsiveVariants: ["color"],
-})<MyComponent>();
+});

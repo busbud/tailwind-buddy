@@ -2,7 +2,7 @@ import { describe, expect, test } from "vitest";
 import { simpleCompoundComponent } from "../setup/simple-compound";
 
 describe("test simple compounds wit no responsive", () => {
-  const { root, children } = simpleCompoundComponent;
+  const { slots: { root, children } } = simpleCompoundComponent;
 
   describe("with compound variants and default", () => {
     test("root", () => {

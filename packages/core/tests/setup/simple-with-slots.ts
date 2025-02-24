@@ -6,7 +6,8 @@ export const simpleComponent = compose<{
     color: ["primary", "secondary"],
     size: ["small", "medium"],
   },
-  props: {}
+  props: {},
+  screens: []
 }>({
   slots: {
     root: "text-red-100 text-red-200",

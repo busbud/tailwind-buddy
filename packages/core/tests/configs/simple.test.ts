@@ -2,7 +2,7 @@ import { describe, expect, test } from "vitest";
 import { simpleComponent } from "../setup/simple-with-slots";
 
 describe("test simple config", () => {
-  const { root, label } = simpleComponent;
+  const { slots: { root, label } } = simpleComponent;
 
   describe("defaults values", () => {
 

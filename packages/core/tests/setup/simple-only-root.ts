@@ -5,7 +5,8 @@ export const simpleComponent = compose<{
   variants: {
     color: ["primary", "secondary"],
   },
-  props: {}
+  props: {},
+  screens: []
 }>({
   slots: {
     root: "text-red-100",

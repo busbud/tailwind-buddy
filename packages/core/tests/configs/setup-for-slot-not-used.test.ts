@@ -2,7 +2,7 @@ import { describe, expect, test } from "vitest";
 import { buttonVariants } from "../setup/setup-for-slot-not-used";
 
 describe("test when slot is not defined but others are in variant", () => {
-  const { icon, root, label } = buttonVariants;
+  const { slots: { icon, root, label } } = buttonVariants;
 
   test("should not have error and do not have extra string", () => {
     const expected = "bg-red-500 bg-purple-300";

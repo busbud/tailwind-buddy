@@ -7,7 +7,8 @@ export const simpleCompoundComponent = compose<{
   },
   props: {
     disabled?: boolean;
-  }
+  },
+  screens: []
 }>({
   slots: {
     root: "text-red-100",
@@ -42,4 +43,5 @@ export const simpleCompoundComponent = compose<{
       classes: "text-purple-200",
     },
   ],
+  responsiveVariants: ["color"],
 });

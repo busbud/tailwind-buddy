@@ -7,7 +7,8 @@ export const buttonVariants = compose<{
     size: ["xs", "sm", "md"],
     variant: ["contained", "text"]
   },
-  props: {}
+  props: {},
+  screens: []
 }>({
   slots: {
     root: "bg-red-100",

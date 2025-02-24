@@ -1,7 +1,7 @@
 import React, { ReactNode } from "react";
 import { type ButtonProps, buttonVariants } from "./Button.variants";
 
-const defaultVariants = buttonVariants.definition().defaultVariants;
+const defaultVariants = buttonVariants.options.defaultVariants;
 
 export const Button: React.FC<ButtonProps> = ({
   appearance = defaultVariants.appearance,
@@ -13,7 +13,7 @@ export const Button: React.FC<ButtonProps> = ({
   variant = defaultVariants.variant,
   ...restProps
 }) => {
-  const { root, icon, label } = buttonVariants;
+  const { slots: { root, icon, label } } = buttonVariants;
 
   const iconContainer = (children: ReactNode) => (
     <span
@@ -33,7 +33,7 @@ export const Button: React.FC<ButtonProps> = ({
     <button
       className={root({
         appearance,
-        class: className,
+        className,
         size,
         variant,
       })}

@@ -8,5 +8,5 @@ export default {
     "./node_modules/ui-kit/dist/uikit.js",
   ],
   theme: tailwindConfig.theme,
-  // safelist: tailwindConfig.safelist,
+  safelist: tailwindConfig.safelist,
 } satisfies Config;

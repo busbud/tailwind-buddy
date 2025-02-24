@@ -1,4 +1,5 @@
-import { compose } from "@busbud/tailwind-buddy";
+import { compose, VariantProps } from "@busbud/tailwind-buddy";
+import { ReactNode } from "react";
 
 type ComposeType = {
   "slots": ["root", "label", "icon"],
@@ -8,8 +9,13 @@ type ComposeType = {
     variant: ["contained", "text"]
   },
   props: {
-    isDisabled: boolean
-  }
+    isDisabled: boolean,
+    children: ReactNode,
+    className: string,
+    iconEnd?: ReactNode,
+    iconStart?: ReactNode,
+  },
+  screens: []
 }
 
 export const buttonVariants = compose<ComposeType>({
@@ -19,19 +25,24 @@ export const buttonVariants = compose<ComposeType>({
     icon: "bg-red-500",
   },
   variants: {
-    "appearance" : {
-      "root": " bg-red",
+    "appearance": {
+      "destructive": "bg-red-500",
+      "default": "bg-black-500",
+      "primary": "bg-blue-500",
     },
     "size": {
-     "root": "bg-red-500",
+      "md": "",
+      "sm": "",
+      "xs": ""
     },
-    "variant": {
-     "root": "bg-red-500",
+    variant: {
+      "contained": "",
+      "text": ""
     }
   },
   compoundVariants: [
     {
-      "class": {
+      "classes": {
         "root": "bg-red-500",
       },
       "conditions": {
@@ -46,10 +57,6 @@ export const buttonVariants = compose<ComposeType>({
     "variant": "contained"
   }
 });
-
-type VariantProps<T extends Record<string, string[]>> = {
-  [K in keyof T]: T[K][number]; // Extracts only valid values from the variant array
-};
 
 // Combine variants and props into a single type for components
 export type ButtonProps = VariantProps<ComposeType["variants"]> & ComposeType["props"];

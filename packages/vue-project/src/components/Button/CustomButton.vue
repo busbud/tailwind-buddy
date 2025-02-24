@@ -9,7 +9,7 @@ import { buttonVariants, type ButtonProps } from './Button.variants';
     
 const props = defineProps<ButtonProps>()
 
-const { root } = buttonVariants
+const { slots: { root } } = buttonVariants
 
 console.log(root(props))
 

@@ -4,7 +4,7 @@ layout: home
 
 hero:
   name: "Tailwind Buddy"
-  text: "Your Friendly Helper for Composing Tailwind Classes, SSR friendly 🎨"
+  text: "Your Friendly Helper for Composing Tailwind Classes, SSR friendly and responsive variants 🎨"
   actions:
     - theme: brand
       text: Start now
@@ -15,6 +15,8 @@ features:
     details: works well with frameworks other than React
   - title: SSR-friendly
     details: SSR-friendly class generation, both responsive and non-responsive
+  - title: Responsive variants
+    details: Support for responsive variant props
   - title: Slots
     details: Ability to use slots for component composition
   - title: Compound variants

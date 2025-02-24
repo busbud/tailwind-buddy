@@ -3,13 +3,14 @@ import { compose } from "@busbud/tailwind-buddy";
 type ComposeType = {
   "slots": ["root", "label", "icon"],
   variants: {
-    appearance: ["default", "primary", "destructive"],
-    size: ["xs", "sm", "md"],
-    variant: ["contained", "text"],
+    appearance: ["primary"],
+    size: ["xs"],
+    variant: ["contained"],
   },
   props: {
     isDisabled?: boolean
-  }
+  },
+  screens: []
 }
 
 export const buttonVariants = compose<ComposeType>({
@@ -20,29 +21,29 @@ export const buttonVariants = compose<ComposeType>({
   },
   variants: {
     "appearance" : {
-      "root": "bg-red-500",
+      "primary": "bg-red-500"
     },
     "size": {
-      "label" :"bg-red-500"
+      "xs": "w-[100px]"
     },
     "variant": {
-      "label": "bg-red-500"
+      "contained": "h-[100px]"
     }
   },
   compoundVariants: [
     {
-      "class": {
+      "classes": {
         "root": "bg-red-500",
       },
       "conditions": {
         "isDisabled": false,
-        "size": "sm",
+        "size": "xs",
       }
     }
   ],
   defaultVariants: {
-    "appearance": "default",
-    "size": "md",
+    "appearance": "primary",
+    "size": "xs",
     "variant": "contained"
   }
 });

@@ -9,7 +9,6 @@ const variant_complex = {
         ${/* Some comment here */ ""}
         2 ${/* And some comment here */ ""}
         3
-
       `),
   },
   variants: {

@@ -2,7 +2,7 @@ import { describe, expect, test } from "vitest";
 import { responsiveAndCompoundComponent } from "../setup/responsive-and-compound";
 
 describe("test resposive simple config", () => {
-  const { root } = responsiveAndCompoundComponent;
+  const { slots: { root } } = responsiveAndCompoundComponent;
 
   describe("responsive values", () => {
     test("with compound and responsive", () => {

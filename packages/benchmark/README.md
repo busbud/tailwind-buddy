@@ -19,4 +19,4 @@ To make sure we do have the same outputs between library
 
 ## Our current benchmarks. TCA is our library At this time we had another name
 
-![Screenshot 2024-08-30 at 1 51 17 AM](https://github.com/user-attachments/assets/e84a33f5-2dec-4e71-8213-61bc918c6fff)
+<img width="825" alt="Image" src="https://github.com/user-attachments/assets/f78bf646-363d-4876-8477-0cc638dfd217" />

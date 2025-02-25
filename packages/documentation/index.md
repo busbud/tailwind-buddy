@@ -22,5 +22,5 @@ features:
   - title: Compound variants
     details: Compound variants that work responsively, overriding classes based on variant values and other props
   - title: High-performance
-    details: High-performance variant utility
+    details: The best High-performance variant utility
 ---

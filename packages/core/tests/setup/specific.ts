@@ -1,53 +1,61 @@
-import { ElementType } from "react";
-import { compose } from "../../tests/constants";
+import { compose } from "../../src/tailwind-buddy";
 
 export interface LabelProps {
-  as?: ElementType;
+  as?: string;
   className?: string;
   disabled?: boolean;
 }
 
-export const labelVariants = compose({
+export const labelVariants = compose<{
+    slots: ["root", "icon", "container"],
+    variants: {
+        backgroundColor: ["blue", "green"],
+        fontWeight: ["regular", "bold", "extraBold"],
+        size: ["xxl", "xl", "lg", "md", "sm", "xs", "xxs"]
+    },
+    props: {},
+    screens: []
+}>({
   slots: {
-    root: ["inline-flex"],
-    icon: ["shrink-0"],
-    container: ["truncate"],
+    root: "inline-flex",
+    icon: "shrink-0",
+    container: "truncate",
   },
   variants: {
     backgroundColor: {
-      blue: ["bg-color-scheme-literal-blue-500"],
-      green: ["bg-color-scheme-literal-green-500"],
+      blue: "bg-color-scheme-literal-blue-500",
+      green: "bg-color-scheme-literal-green-500",
     },
     fontWeight: {
-      regular: [""],
+      regular: "",
       bold: {
-        root: ["font-weight-bold"],
+        root: "font-weight-bold",
       },
       extraBold: {
-        root: ["font-weight-extra-bold"],
+        root: "font-weight-extra-bold",
       },
     },
     size: {
       xxl: {
-        root: ["text-size-150"],
+        root: "text-size-150",
       },
       xl: {
-        root: ["text-size-112"],
+        root: "text-size-112",
       },
       lg: {
-        root: ["text-size-100"],
+        root: "text-size-100",
       },
       md: {
-        root: ["text-size-87"],
+        root: "text-size-87",
       },
       sm: {
-        root: ["text-size-75"],
+        root: "text-size-75",
       },
       xs: {
-        root: ["text-size-62"],
+        root: "text-size-62",
       },
       xxs: {
-        root: ["text-size-56"],
+        root: "text-size-56",
       },
     },
   },
@@ -56,26 +64,27 @@ export const labelVariants = compose({
     size: "md",
     backgroundColor: "blue",
   },
-  responsiveVariants: ["fontWeight", "size", "backgroundColor"],
   compoundVariants: [
     {
       conditions: {
         disabled: true,
       },
-      class: ["opacity-50"],
+      classes: "opacity-50",
     },
     {
       conditions: {
         fontWeight: ["bold", "extraBold"],
       },
-      class: ["opacity-100"],
+      classes: "opacity-100",
     },
     {
       conditions: {
         fontWeight: ["bold", "extraBold"],
         size: "xl",
       },
-      class: ["opacity-200"],
+      classes: "opacity-200",
     },
   ],
-})<LabelProps>();
+  responsiveVariants: ["fontWeight", "size", "backgroundColor"]
+})
+

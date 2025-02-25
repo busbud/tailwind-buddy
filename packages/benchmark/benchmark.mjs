@@ -19,7 +19,7 @@ suite
     CVA.noSlotsAndCompoundNoTwMergeNoResponsive.avatar({ size: "md" });
   })
   .add("TAILWINDBUDDY - slots false - twMerge no - compound yes", function () {
-    noSlotsAndCompoundNoTwMergeNoResponsive.avatar.root({
+    noSlotsAndCompoundNoTwMergeNoResponsive.avatar.slots.root({
       size: "md",
     });
   })
@@ -33,7 +33,7 @@ suite
   })
   .add("TAILWINDBUDDY - slots false - twMerge yes - compound yes", function () {
     twMerge(
-      slotsAndCompoundNoTwMergeNoResponsive.avatar.root({
+      slotsAndCompoundNoTwMergeNoResponsive.avatar.slots.root({
         size: "md",
       })
     );

@@ -1,4 +1,4 @@
-function clean(str: string): string {
+export function cleanString(str: string): string {
   // Remove comments
   const noComments = str.replace(/\/\*[\s\S]*?\*\/|\/\/.*/g, "");
 
@@ -7,11 +7,4 @@ function clean(str: string): string {
 
   // Trim the string to remove leading and trailing spaces
   return noExtraSpaces.trim();
-}
-
-export function cleanString(str: string | string[]): string {
-  if (Array.isArray(str)) {
-    return str.map((s) => clean(s)).join(" ");
-  }
-  return clean(str);
 }

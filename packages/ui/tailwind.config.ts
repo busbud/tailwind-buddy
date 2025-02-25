@@ -11,5 +11,5 @@ export default {
       screens: screens,
     },
   },
-  safelist: generateSafeList([labelVariants, buttonVariants]),
+  safelist: generateSafeList([labelVariants, buttonVariants], screens),
 };

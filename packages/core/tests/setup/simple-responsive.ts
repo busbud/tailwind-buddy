@@ -1,20 +1,28 @@
-import { compose } from "../../tests/constants";
+import { compose } from "../../src/tailwind-buddy"
 
-export const simpleResponsiveComponent = compose({
+export const simpleResponsiveComponent = compose<{
+    slots: ["root"],
+    variants: {
+        size: ["small", "large", "extralarge"],
+        color: ["primary", "secondary"]
+    },
+    props: {},
+    screens: ["sm", "md", "lg", "xl", "xxl"]
+}>({
   slots: {
-    root: ["text-red-100"],
+    root: "text-red-100",
   },
   variants: {
     size: {
       small: {
-        root: ["text-xl"],
+        root: "text-xl",
       },
-      large: ["text-4xl"],
-      extralarge: ["text-5xl", "leading-tight bg-orange-500"],
+      large: "text-4xl",
+      extralarge: "text-5xl leading-tight bg-orange-500",
     },
     color: {
-      primary: ["text-red-200"],
-      secondary: ["text-blue-200"],
+      primary: "text-red-200",
+      secondary: "text-blue-200",
     },
   },
   defaultVariants: {
@@ -22,4 +30,4 @@ export const simpleResponsiveComponent = compose({
     color: "primary",
   },
   responsiveVariants: ["size"],
-})();
+});

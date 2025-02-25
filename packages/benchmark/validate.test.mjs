@@ -14,7 +14,7 @@ describe("validate output between libs", () => {
         expect(
             CVA.noSlotsAndCompoundNoTwMergeNoResponsive.avatar({ size: "md" })
         ).toBe(
-            TAILWINDBUDDY.noSlotsAndCompoundNoTwMergeNoResponsive.avatar.root({ size: "md" })
+            TAILWINDBUDDY.noSlotsAndCompoundNoTwMergeNoResponsive.avatar.slots.root({ size: "md" })
         )
     })
 
@@ -27,7 +27,7 @@ describe("validate output between libs", () => {
         expect(
             twMerge(CVA.noSlotsAndCompoundNoTwMergeNoResponsive.avatar({ size: "md" }))
         ).toBe(
-            twMerge(TAILWINDBUDDY.noSlotsAndCompoundNoTwMergeNoResponsive.avatar.root({ size: "md" }))
+            twMerge(TAILWINDBUDDY.noSlotsAndCompoundNoTwMergeNoResponsive.avatar.slots.root({ size: "md" }))
         )
     })
 })

@@ -2,7 +2,7 @@ import { describe, expect, test } from 'vitest'
 import { simpleComponent } from "../setup/simple-with-slots"
 
 describe('test with class name', () => {
-    const { root, label } = simpleComponent
+    const { slots: { root, label } } = simpleComponent
     
     describe("defaults values", () => {
         test("root", () => {
@@ -14,11 +14,11 @@ describe('test with class name', () => {
         })
 
         test("label", () => {
-            const full_str = /** @tw */ "text-blue-100 text-blue-200 bg-red-500 text-sm text-orange-500"
-            const options = {
+            const full_str = /** @tw */ "text-blue-100 text-blue-200 bg-green-500 text-sm text-orange-500"
+            
+            expect(label({
                 className: /** @tw */ "text-orange-500"
-            }
-            expect(label(options)).toBe(full_str)
+            })).toBe(full_str)
         })
     })
 })

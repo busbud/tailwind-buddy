@@ -17,7 +17,7 @@ describe("safelist", () => {
       "md:bg-orange-500",
     ];
 
-    const generate_str = generateSafeList([simpleResponsiveComponent]);
+    const generate_str = generateSafeList([simpleResponsiveComponent], ["sm", "md"]);
     expect(generate_str).toStrictEqual(str);
   });
 
@@ -25,14 +25,12 @@ describe("safelist", () => {
     const str = [
       "sm:text-red-200",
       "md:text-red-200",
-      "sm:text-blue-200",
-      "md:text-blue-200",
       "sm:text-green-100",
       "md:text-green-100",
-      "sm:text-green-200",
-      "md:text-green-200",
+      "sm:text-purple-200",
+      "md:text-purple-200",
     ];
-    const generate_str = generateSafeList([simpleCompoundComponent]);
+    const generate_str = generateSafeList([simpleCompoundComponent], ["sm", "md"]);
     expect(generate_str).toStrictEqual(str);
   });
 });

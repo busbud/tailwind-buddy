@@ -1,46 +1,63 @@
-import { VariantsProps } from "@busbud/tailwind-buddy";
-import { ButtonBaseProps } from "@/components/Button/Button.types.ts";
-import { compose } from "../../tailwind-buddy-interface";
+import { compose, VariantProps } from "@busbud/tailwind-buddy";
+import { ReactNode } from "react";
 
-export const buttonVariants = compose({
+type ComposeType = {
+  "slots": ["root", "label", "icon"],
+  variants: {
+    appearance: ["default", "primary", "destructive"],
+    size: ["xs", "sm", "md"],
+    variant: ["contained", "text"]
+  },
+  props: {
+    isDisabled: boolean,
+    children: ReactNode,
+    className: string,
+    iconEnd?: ReactNode,
+    iconStart?: ReactNode,
+  },
+  screens: []
+}
+
+export const buttonVariants = compose<ComposeType>({
   slots: {
-    root: /** @tw */ "bg-red-100",
-    label: /** @tw */ "bg-red-300",
-    icon: /** @tw */ "bg-red-500",
+    root: /** @tw */ "bg-red-500",
+    label: "bg-red-500",
+    icon: "bg-red-500",
   },
   variants: {
-    appearance: {
-      default: "bg-purple-100",
-      primary: "bg-purple-300",
-      destructive: "bg-purple-500",
+    "appearance": {
+      "destructive": "bg-red-500",
+      "default": "bg-black-500",
+      "primary": "bg-blue-500",
     },
-    size: {
-      xs: {
-        root: "bg-yellow-100",
-        label: "bg-yellow-300",
-      },
-      sm: {
-        root: "bg-blue-100",
-        label: "bg-blue-300",
-      },
-      md: {
-        root: "bg-orange-100",
-        label: "bg-orange-300",
-      },
+    "size": {
+      "md": "",
+      "sm": "",
+      "xs": ""
     },
-    /** Sets the button variant. */
     variant: {
-      contained: "",
-      text: "",
-    },
+      "contained": "",
+      "text": ""
+    }
   },
+  compoundVariants: [
+    {
+      "classes": {
+        "root": "bg-red-500",
+      },
+      "conditions": {
+        "isDisabled": false,
+        "size": "sm",
+      }
+    }
+  ],
   defaultVariants: {
-    appearance: "default",
-    size: "md",
-    variant: "contained",
-  },
-  responsiveVariants: ["size"],
-})<ButtonBaseProps>();
+    "appearance": "default",
+    "size": "md",
+    "variant": "contained"
+  }
+});
 
-export type ButtonProps = VariantsProps<typeof buttonVariants> &
-  ButtonBaseProps;
+// Combine variants and props into a single type for components
+export type ButtonProps = VariantProps<ComposeType["variants"]> & ComposeType["props"];
+

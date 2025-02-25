@@ -1,19 +1,26 @@
-import { compose } from "../../tests/constants";
+import { compose } from "../../src/tailwind-buddy";
 
-interface Component {
-  disabled?: boolean;
-}
-
-export const responsiveAndCompoundComponent = compose({
+export const responsiveAndCompoundComponent = compose<{
+    slots: ["root"],
+    variants: {
+        "size": ["small", "large", "extralarge"],
+    },
+    props: {
+        disabled?: boolean;
+        className?: string
+    },
+    responsiveVariants: [],
+    screens: []
+}>({
   slots: {
-    root: ["text-red-100"],
+    root: "text-red-100",
   },
   variants: {
     size: {
       small: {
-        root: ["text-xl"],
+        root: "text-xl",
       },
-      large: ["text-4xl"],
+      large: "text-4xl",
       extralarge: "text-5xl leading-tight",
     },
   },
@@ -25,8 +32,7 @@ export const responsiveAndCompoundComponent = compose({
       conditions: {
         size: "extralarge",
       },
-      class: `
-        
+      classes: `
       
       
           bg-red-500 
@@ -37,7 +43,7 @@ export const responsiveAndCompoundComponent = compose({
         disabled: true,
         size: "small",
       },
-      class: ["bg-gray-500", "border-red-500"],
+      classes: "bg-gray-500 border-red-500",
     },
   ],
-})<Component>();
+});

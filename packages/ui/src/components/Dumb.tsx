@@ -1,7 +1,12 @@
-import { compose } from "../tailwind-buddy-interface";
+import { compose } from "@busbud/tailwind-buddy";
 import React from "react";
 
-export const fooVariants = compose({
+export const fooVariants = compose<{
+    slots: ["root"],
+    variants: {}
+    props: {},
+    screens: []
+}>({
   slots: {
     root: `
           hover:border-blue-500
@@ -28,9 +33,9 @@ export const fooVariants = compose({
         `,
   },
   defaultVariants: {},
-})();
+});
 
 export const Dumb: React.FC<any> = () => {
-  const { root } = fooVariants;
+  const { slots: { root } } = fooVariants;
   return <div className={root()}>Hello</div>;
 };

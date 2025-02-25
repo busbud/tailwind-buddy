@@ -4,13 +4,14 @@ editLink: true
 
 # Add specific classes base on your different slots
 
-Lets say we want make the text act together base on configuration.
+Now, we want to create a variation of the component that affects both the label and the root container.
 
-As you can see a variant can take a string. That means it will apply to any slots. But you can also define an object with the slot name and value
+> [!NOTE]
+> As you can see, a variant can take a string, meaning it will apply to all slots. However, you can also define an object with the slot name and value to target specific slots.
 
 
 > [!IMPORTANT]
-> Make sure you add the defaultVariants property so tailwind buddy knows about the default values
+> Make sure to include the defaultVariants property so that Tailwind Buddy recognizes the default values.
 
 
 ```ts [Simple.variants.ts].{7,19-24,26-28}

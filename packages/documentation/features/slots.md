@@ -4,10 +4,7 @@ editLink: true
 
 # Split your component into smaller parts
 
-Lets say we want make the text a label design that react base on parent configuration.
-
-As you can see a variant can take a string. That means it will apply to any slots. But you can also define an object with the slot name and value
-
+Lets say we want a label where its design react base on parent configuration.
 
 ```ts [Simple.variants.ts].{4,12-13}
 import { compose, VariantProps } from "@busbud/tailwind-buddy";

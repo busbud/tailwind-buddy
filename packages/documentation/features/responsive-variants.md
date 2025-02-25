@@ -4,10 +4,10 @@ editLink: true
 
 # Handle responsivness to avoid flickering of the ui
 
-It can happen for example typo components where you want to le the user to change the size of the font himself base of screen size.
+For our typography components, we want to allow the user to adjust the font size based on the screen size.
 
 > [!NOTE]
-> This should not be use extensively as you will see we will use generateSafelist that force all css classes combinations for the variant and also compoundVariants into tailwind so it is aware of their existence.
+> This should not be used excessively. As you'll see, we use [generateSafelist - safelist](https://v3.tailwindcss.com/docs/content-configuration#safelisting-classes), which forces Tailwind to recognize all possible CSS class combinations for variants and compoundVariants, ensuring they are included in the final build.
 
 ```ts [Simple.variants.ts].{28-35,49}
 import { compose, VariantProps } from "@busbud/tailwind-buddy";

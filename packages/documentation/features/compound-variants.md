@@ -4,8 +4,7 @@ editLink: true
 
 # Go further with Compound Variants
 
-Compound variants are here to help you avoid trees of IF ELSE statements in your code base. Also it can base its conditions base on variants or props you define.
-
+Compound variants help you avoid deeply nested if-else statements in your codebase. They can also define conditions based on the variants or props you specify.
 
 ```ts [Simple.variants.ts].{31-41}
 import { compose, VariantProps } from "@busbud/tailwind-buddy";

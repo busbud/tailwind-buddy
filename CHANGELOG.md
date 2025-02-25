@@ -1,3 +1,25 @@
+## v3.0.0
+
+[compare changes](https://github.com/busbud/tailwind-buddy/compare/v2.4.2...v3.0.0)
+
+### 🚀 Enhancements
+
+- Update pnpm to v10 + node to 22 ([#29](https://github.com/busbud/tailwind-buddy/pull/29))
+- ⚠️  Simplify code + improvment performance + fix all typings issues ([#30](https://github.com/busbud/tailwind-buddy/pull/30))
+
+### 🏡 Chore
+
+- **release:** V2.4.2 ([34e6087](https://github.com/busbud/tailwind-buddy/commit/34e6087))
+
+#### ⚠️ Breaking Changes
+
+- ⚠️  Simplify code + improvment performance + fix all typings issues ([#30](https://github.com/busbud/tailwind-buddy/pull/30))
+
+### ❤️ Contributors
+
+- Florent Giraud ([@flozero](http://github.com/flozero))
+- Jesse Holden <jesse.holden@cyberfiend.com>
+
 ## v2.4.2
 
 [compare changes](https://github.com/busbud/tailwind-buddy/compare/v2.4.1...v2.4.2)

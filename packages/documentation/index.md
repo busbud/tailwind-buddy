@@ -8,7 +8,7 @@ hero:
   actions:
     - theme: brand
       text: Start now
-      link: /pages/why
+      link: /about/
 
 features:
   - title: Framework agnostic

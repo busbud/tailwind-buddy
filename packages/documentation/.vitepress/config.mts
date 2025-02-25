@@ -15,20 +15,20 @@ export default defineConfig({
     },
     // https://vitepress.dev/reference/default-theme-config
     nav: [
-      { text: "Documentation", link: "/about" },
+      { text: "Documentation", link: "/about/" },
     ],
     sidebar: [
       {
         "text": "Introduction",
         items: [
-          { text: "About Tailwind buddy", link: "/about" },
+          { text: "About Tailwind buddy", link: "/about/" },
           { text: "Benchmarks", link: "/about/benchmarks" },
         ]
       },
       {
         text: "Setup",
         items: [
-          { text: "Installation", link: "/setup" },
+          { text: "Installation", link: "/setup/" },
           {
             text: "Tailwind Autocomplete in VSCode (Optional)",
             link: "/setup/vscode",
@@ -39,7 +39,7 @@ export default defineConfig({
       {
         text: "Features",
         items: [
-          { text: "Basic Component", link: "/features"},
+          { text: "Basic Component", link: "/features/"},
           { text: "Slots", link: "/features/slots" },
           { text: "Variants", link: "/features/variants" },
           { text: "compoundVariants", link: "/features/compound-variants" },

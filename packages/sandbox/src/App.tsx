@@ -13,15 +13,15 @@ function App() {
       </Label>
 
       <Button
-        className="h-full w-full rounded-bl-none rounded-tl-none xl:rounded-bl-none xl:rounded-tl-none bg-blue-500 md:bg-blue-500"
-        appearance="primary"
         iconStart={<SearchIcon />}
-        size={{
-          initial: "sm",
-          md: "md",
-        }}
       >
-        asdas
+        Awesome button
+      </Button>
+
+      <Button
+        appearance="primary"
+      >
+        Primary button
       </Button>
 
       <Dumb />

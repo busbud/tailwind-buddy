@@ -9,9 +9,9 @@ type ComposeType = {
     variant: ["contained", "text"]
   },
   props: {
-    isDisabled: boolean,
-    children: ReactNode,
-    className: string,
+    isDisabled?: boolean,
+    children?: ReactNode,
+    className?: string,
     iconEnd?: ReactNode,
     iconStart?: ReactNode,
   },
@@ -20,7 +20,7 @@ type ComposeType = {
 
 export const buttonVariants = compose<ComposeType>({
   slots: {
-    root: /** @tw */ "bg-red-500",
+    root: /** @tw */ "bg-red-500 border rounded-full px-4 py-2",
     label: "bg-red-500",
     icon: "bg-red-500",
   },

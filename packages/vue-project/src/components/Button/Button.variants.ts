@@ -54,6 +54,6 @@ type VariantProps = {
   variant?: ComposeType["variants"]["variant"][number];
 };
 
-export type ButtonProps = VariantProps & ComposeType["props"];
+export type ButtonProps =  ComposeType["props"] & VariantProps;
 
 

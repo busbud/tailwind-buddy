@@ -1,3 +1,26 @@
+## v3.1.0
+
+[compare changes](https://github.com/busbud/tailwind-buddy/compare/v3.0.0...v3.1.0)
+
+### 🚀 Enhancements
+
+- Make variants optional to avoid having to pass defaults ([e08aa00](https://github.com/busbud/tailwind-buddy/commit/e08aa00))
+
+### 📖 Documentation
+
+- Fix doc path ([85bbab2](https://github.com/busbud/tailwind-buddy/commit/85bbab2))
+- Fix doc path ([d47e173](https://github.com/busbud/tailwind-buddy/commit/d47e173))
+- Better english wordings for the documentation ([727c664](https://github.com/busbud/tailwind-buddy/commit/727c664))
+
+### 🏡 Chore
+
+- **release:** V3.0.0 ([f1b804d](https://github.com/busbud/tailwind-buddy/commit/f1b804d))
+
+### ❤️ Contributors
+
+- Flozero ([@flozero](http://github.com/flozero))
+- Florent Giraud ([@flozero](http://github.com/flozero))
+
 ## v3.0.0
 
 [compare changes](https://github.com/busbud/tailwind-buddy/compare/v2.4.2...v3.0.0)

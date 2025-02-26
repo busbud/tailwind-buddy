@@ -23,7 +23,7 @@ type SlotFunction<Props extends Record<string, unknown>> = (opt?: Props) => stri
 interface Alias {
   slots: string[],
   variants: Record<string, readonly string[]>
-  props: Record<string, unknown>,
+  props: Record<string, any>;
   screens: string[]
 }
 

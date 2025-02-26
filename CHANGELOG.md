@@ -1,3 +1,20 @@
+## v3.1.1
+
+[compare changes](https://github.com/busbud/tailwind-buddy/compare/v3.1.0...v3.1.1)
+
+### 🩹 Fixes
+
+- Make Alias type more generous and not use unknown ([5291ee6](https://github.com/busbud/tailwind-buddy/commit/5291ee6))
+
+### 🏡 Chore
+
+- **release:** V3.1.0 ([0f2b22e](https://github.com/busbud/tailwind-buddy/commit/0f2b22e))
+
+### ❤️ Contributors
+
+- Flozero ([@flozero](http://github.com/flozero))
+- Florent Giraud ([@flozero](http://github.com/flozero))
+
 ## v3.1.0
 
 [compare changes](https://github.com/busbud/tailwind-buddy/compare/v3.0.0...v3.1.0)

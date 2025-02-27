@@ -3,3 +3,5 @@ packages:
   - "packages/ui"
   - "packages/sandbox"
   - "packages/benchmark"
+  - "packages/vuelib"
+  - "packages/vuelib-tailwind4"

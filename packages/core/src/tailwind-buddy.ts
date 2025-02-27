@@ -110,10 +110,11 @@ export const compose = <Def extends Alias>(options: {
   Object.entries(slots).forEach((s) => {
       const [slotKey, baseClasses] = s
 
-      ret[slotKey as Def['slots'][number]] = (props: Def['props'] | {
-          [K in keyof Def["variants"]]?: Def["variants"][K][number] | {
-            ["initial"]: Def["variants"][K][number]
-          };
+      ret[slotKey as Def['slots'][number]] = (props: Def['props'] | { [K in keyof Def["variants"]]?: Def["variants"][K][number] | {
+        ["initial"]: Def["variants"][K][number]
+      } | {
+        [k in Def["screens"][number]]: Def["variants"][K][number]
+      }
       } = {}) => {
         const cleanedProps: Record<string, any> = {}
 

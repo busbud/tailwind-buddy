@@ -61,7 +61,7 @@ export default defineConfig({
             "link": '/others/'
           },
           {
-            "text": "Known limitation with VueJS",
+            "text": "VueJS Specificity",
             "link": "/others/vue-limitation"
           }
         ]

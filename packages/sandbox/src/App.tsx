@@ -6,7 +6,10 @@ function App() {
       <Label
         size="large"
         disabled={true}
-        fontWeight="xxl"
+        fontWeight={{
+          "initial": "xxl",
+          "sm": "xxl"
+        }}
         className="text-green-500"
       >
         Label

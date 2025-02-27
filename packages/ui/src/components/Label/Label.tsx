@@ -1,9 +1,8 @@
 import React from "react";
 
-import { PropsWithChildren } from "react";
 import { LabelProps, labelVariants } from "./Label.variants";
 
-export const Label: React.FC<PropsWithChildren<LabelProps>> = ({
+export const Label: React.FC<LabelProps> = ({
   as: Component = "span",
   className,
   children,
@@ -17,10 +16,7 @@ export const Label: React.FC<PropsWithChildren<LabelProps>> = ({
   return (
     <Component
       className={root({
-        fontWeight: {
-          initial: "xxl",
-          md: "xxl",
-        },
+        fontWeight,
         size,
         className,
         disabled,

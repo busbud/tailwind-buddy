@@ -1,6 +1,7 @@
 import { compose } from "../../src/tailwind-buddy";
+import { VariantProps } from "../../src/main"
 
-export const responsiveAndCompoundComponent = compose<{
+type ComposeType = { 
     slots: ["root"],
     variants: {
         "size": ["small", "large", "extralarge"],
@@ -9,9 +10,10 @@ export const responsiveAndCompoundComponent = compose<{
         disabled?: boolean;
         className?: string
     },
-    responsiveVariants: [],
-    screens: []
-}>({
+    screens: ["sm", "md"]
+}
+
+export const responsiveAndCompoundComponent = compose<ComposeType>({
   slots: {
     root: "text-red-100",
   },
@@ -46,4 +48,22 @@ export const responsiveAndCompoundComponent = compose<{
       classes: "bg-gray-500 border-red-500",
     },
   ],
+  responsiveVariants: ["size"]
 });
+
+export type ResponsiveCompoundProps = VariantProps<ComposeType["variants"], ComposeType["screens"]>;
+
+// const { slots: { root }} = responsiveAndCompoundComponent
+
+// root({
+//   size: {
+//     "initial": "extralarge"
+//   }
+// })
+
+// const Pr: ResponsiveCompoundProps = {
+//   "size": {
+//     "initial": "large",
+//     "md"
+//   }
+// }

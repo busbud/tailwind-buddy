@@ -1,16 +1,21 @@
-import { compose } from "@busbud/tailwind-buddy";
+import { compose, type VariantProps } from "@busbud/tailwind-buddy";
+
+export type Screens = "sm" | "md";
+export const screens: Screens[] = ["sm", "md"];
+
+export interface ButtonBaseProps {
+  isDisabled?: boolean
+}
 
 type ComposeType = {
   "slots": ["root", "label", "icon"],
   variants: {
     appearance: ["primary"],
-    size: ["xs"],
+    size: ["xs", "lg"],
     variant: ["contained"],
   },
-  props: {
-    isDisabled?: boolean
-  },
-  screens: []
+  props: ButtonBaseProps,
+  screens: typeof screens
 }
 
 export const buttonVariants = compose<ComposeType>({
@@ -24,7 +29,8 @@ export const buttonVariants = compose<ComposeType>({
       "primary": "bg-red-500"
     },
     "size": {
-      "xs": "w-[100px]"
+      "xs": "w-[100px]",
+      "lg": "w-[400px]",
     },
     "variant": {
       "contained": "h-[100px]"
@@ -45,15 +51,8 @@ export const buttonVariants = compose<ComposeType>({
     "appearance": "primary",
     "size": "xs",
     "variant": "contained"
-  }
+  },
+  responsiveVariants: ["size"]
 });
 
-type VariantProps = {
-  appearance?: ComposeType["variants"]["appearance"][number];
-  size?: ComposeType["variants"]["size"][number];
-  variant?: ComposeType["variants"]["variant"][number];
-};
-
-export type ButtonProps =  ComposeType["props"] & VariantProps;
-
-
+export type ButtonProps =  VariantProps<ComposeType["variants"], ComposeType["screens"]> & ButtonBaseProps;

@@ -3,7 +3,8 @@ import CustomButton from "./components/Button/CustomButton.vue"
 </script>
 
 <template>
-  <h1 class="text-3xl font-bold underline bg-red-300">
-    <CustomButton>Hello world</CustomButton>
-  </h1>
+    <CustomButton appearance="primary" :size="{
+      'initial': 'xs',
+      'md': 'lg'
+    }">Hello world</CustomButton>
 </template>

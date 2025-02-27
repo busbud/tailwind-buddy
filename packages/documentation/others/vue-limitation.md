@@ -5,87 +5,35 @@ editLink: true
 # A known limitation to VueJS and vite
 
 
-You can check any time inside our `packages/vue-project` how it is used.
+You can check any time inside our `packages/vuelib-tailwind4` or `packages/vuelib` how it is used.
 
-But in comparaison with React we use it like this.
+The only difference with React is how vite + vue extract the types. The definition stay the same
 
-## React
+but inside the component when you define the props we need to extract manually the variants. Check `packages/vuelib/src/components/Button/Button.variants.ts` for more details
 
-```ts [Simple.variants.ts]
-import { compose, VariantProps } from "@busbud/tailwind-buddy";
-
-type ComposeType = {
-  "slots": ["root"],
-  variants: {
-    variant: ["red", "blue"]
-  },
-  props: {
-    isDisabled: boolean,
-  },
-  screens: []
-}
-
-export const simpleVariants = compose<ComposeType>({
-    slots: {
-        "root": /** @tw */ "p-4"
-    },
-    variants: {
-        variant: {
-            "red": "bg-red-500",
-            "blue": "bg-blue-500"
-        }
-    },
-    defaultVariants: {
-        variant: "red"
-    }
-})
-
-// export type so we can use it in the component after
-export type SimpleProps = VariantProps<ComposeType["variants"]> & ComposeType["props"];
-
-```
-
-## VueJS
-
-There is not much differences but a bit more writing
-
-
-```ts [Simple.variants.ts] .{1,30-35}
-import { compose } from "@busbud/tailwind-buddy"; // [!code focus]
-
-type ComposeType = {
-  "slots": ["root"],
-  variants: {
-    variant: ["red", "blue"]
-  },
-  props: {
-    isDisabled: boolean,
-  },
-  screens: []
-}
-
-export const simpleVariants = compose<ComposeType>({
-    slots: {
-        "root": /** @tw */ "p-4"
-    },
-    variants: {
-        variant: {
-            "red": "bg-red-500",
-            "blue": "bg-blue-500"
-        }
-    },
-    defaultVariants: {
-        variant: "red"
-    }
-})
-
-// we need to mannually extract the type as vite as a known issue handling poorly this type extraction
-type VariantProps = { // [!code focus]
-  variant?: ComposeType["variants"]["variant"][number]; // [!code focus]
-}; // [!code focus]
-
-// export type so we can use it in the component after
-export type SimpleProps = VariantProps & ComposeType["props"]; // [!code focus]
+```vue
+<template>
+    <button :class="cn(root({
+      appearance,
+      isDisabled,
+      size,
+      variant
+    }))">
+      <slot />
+    </button>
+  </template>
+  
+<script setup lang="ts">
+import { cn } from '../../lib/utils';
+import { buttonVariants, type ButtonProps } from './Button.variants';
+      
+const { slots: { root } } = buttonVariants;
+defineProps<{ // [!code focus]
+  appearance?: ButtonProps['appearance']; // [!code focus]
+  size?: ButtonProps['size']; // [!code focus]
+  variant?: ButtonProps['variant']; // [!code focus]
+} & ButtonBaseProps>(); // [!code focus]
+</script>
 
 ```
 

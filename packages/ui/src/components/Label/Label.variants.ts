@@ -1,10 +1,12 @@
+import { screens } from "@/tailwind-buddy-interface";
 import { compose, VariantProps } from "@busbud/tailwind-buddy";
+import { ReactNode } from "react";
 
-interface LabelBaseProps extends React.HTMLAttributes<HTMLBaseElement> {
-    [key: string]: unknown;
-    /** The component used for the root node. Either a string to use a HTML element or a component. */
+interface LabelBaseProps {
     as?: React.ElementType;
     disabled?: boolean;
+    className?: string,
+    children?: ReactNode
 }
   
 type ComposeType = {
@@ -14,7 +16,7 @@ type ComposeType = {
         size: ["small", "large"],
     },
     props: LabelBaseProps,
-    screens: []
+    screens: typeof screens
 }
 
 export const labelVariants = compose<ComposeType>({
@@ -47,4 +49,4 @@ export const labelVariants = compose<ComposeType>({
   responsiveVariants: ["fontWeight"],
 });
 
-export type LabelProps = VariantProps<ComposeType["variants"]> & ComposeType["props"];
+export type LabelProps = VariantProps<ComposeType["variants"], ComposeType["screens"]> & ComposeType["props"];

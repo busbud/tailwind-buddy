@@ -88,7 +88,7 @@ export type SimpleProps = VariantProps<ComposeType["variants"], ComposeType["scr
 
 ## Specificity for TAILWIND 4
 
-We do have a project example using [tailwind v4](../../vuelib-tailwind4/). As you know for now tailwind4 don't plan to support the safelist from tailwind 3. In that case we need to generate the file so
+We do have a project example using tailwind v4. As you know for now tailwind4 don't plan to support the safelist from tailwind 3. In that case we need to generate the file so
 tailwind will know which css classes used.
 
 

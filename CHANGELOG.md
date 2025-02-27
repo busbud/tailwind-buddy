@@ -1,3 +1,21 @@
+## v3.1.2
+
+[compare changes](https://github.com/busbud/tailwind-buddy/compare/v3.1.1...v3.1.2)
+
+### 🩹 Fixes
+
+- Responsive variants typing + update documentation for it with new changes ([ac7ca91](https://github.com/busbud/tailwind-buddy/commit/ac7ca91))
+- Responsive variants typing + update documentation for it with new changes ([df7b2f7](https://github.com/busbud/tailwind-buddy/commit/df7b2f7))
+
+### 🏡 Chore
+
+- **release:** V3.1.1 ([28d3386](https://github.com/busbud/tailwind-buddy/commit/28d3386))
+
+### ❤️ Contributors
+
+- Flozero ([@flozero](http://github.com/flozero))
+- Florent Giraud ([@flozero](http://github.com/flozero))
+
 ## v3.1.1
 
 [compare changes](https://github.com/busbud/tailwind-buddy/compare/v3.1.0...v3.1.1)

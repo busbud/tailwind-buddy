@@ -104,7 +104,10 @@ export const compose = <Def extends Alias>(options: {
       ["initial"]: Def["variants"][K][number]
     } | {
       [k in Def["screens"][number]]: Def["variants"][K][number]
-    }}>
+    }} | {
+      className?: string,
+      class?: string
+    }>
   > = {}
 
   Object.entries(slots).forEach((s) => {
@@ -114,6 +117,9 @@ export const compose = <Def extends Alias>(options: {
         ["initial"]: Def["variants"][K][number]
       } | {
         [k in Def["screens"][number]]: Def["variants"][K][number]
+      } | {
+        className?: string,
+        class?: string
       }
       } = {}) => {
         const cleanedProps: Record<string, any> = {}
@@ -125,6 +131,7 @@ export const compose = <Def extends Alias>(options: {
         });
 
         const cacheKey = JSON.stringify({ slot: slotKey, props: cleanedProps });
+
         if (variantCache.has(cacheKey)) {
           return variantCache.get(cacheKey) || "";
         }
@@ -146,7 +153,7 @@ export const compose = <Def extends Alias>(options: {
         });
         // Apply variants (including overridden defaults)
         Object.entries(mergedProps).forEach(([key, value]) => {
-          if (key !== "className" && flattenedVariants.has(key)) {
+          if (key !== "className" && key !== "class" && flattenedVariants.has(key)) {
             if (typeof value === "object" && value !== null) {
               // Handle responsive variants
               Object.entries(value).forEach(

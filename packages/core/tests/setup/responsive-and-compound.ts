@@ -8,7 +8,6 @@ type ComposeType = {
     },
     props: {
         disabled?: boolean;
-        className?: string
     },
     screens: ["sm", "md"]
 }

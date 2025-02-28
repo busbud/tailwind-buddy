@@ -1,3 +1,20 @@
+## v3.1.3
+
+[compare changes](https://github.com/busbud/tailwind-buddy/compare/v3.1.2...v3.1.3)
+
+### 🩹 Fixes
+
+- Missing className and class that slot take by default ([e443cad](https://github.com/busbud/tailwind-buddy/commit/e443cad))
+
+### 🏡 Chore
+
+- **release:** V3.1.2 ([c5d38b9](https://github.com/busbud/tailwind-buddy/commit/c5d38b9))
+
+### ❤️ Contributors
+
+- Flozero ([@flozero](http://github.com/flozero))
+- Florent Giraud ([@flozero](http://github.com/flozero))
+
 ## v3.1.2
 
 [compare changes](https://github.com/busbud/tailwind-buddy/compare/v3.1.1...v3.1.2)

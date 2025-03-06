@@ -1,3 +1,20 @@
+## v2.4.3
+
+[compare changes](https://github.com/jesse-holden/tailwind-buddy/compare/v2.4.2...v2.4.3)
+
+### 🩹 Fixes
+
+- Include other falsy values in cleanedProps ([81b424a](https://github.com/jesse-holden/tailwind-buddy/commit/81b424a))
+
+### 🏡 Chore
+
+- **release:** V2.4.2 ([34e6087](https://github.com/jesse-holden/tailwind-buddy/commit/34e6087))
+
+### ❤️ Contributors
+
+- Jesse Holden ([@jesse-holden](http://github.com/jesse-holden))
+- Florent Giraud ([@flozero](http://github.com/flozero))
+
 ## v2.4.2
 
 [compare changes](https://github.com/busbud/tailwind-buddy/compare/v2.4.1...v2.4.2)

@@ -39,5 +39,12 @@ export const responsiveAndCompoundComponent = compose({
       },
       class: ["bg-gray-500", "border-red-500"],
     },
+    {
+      conditions: {
+        disabled: false,
+        size: "large",
+      },
+      class: ["bg-gray-500", "border-red-500", "border-black"],
+    },
   ],
 })<Component>();

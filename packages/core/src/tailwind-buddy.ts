@@ -99,13 +99,14 @@ export const setupCompose = <Sc extends string>(
 
             if (props) {
               Object.keys(props).forEach(key => {
-                if (props[key]) {
+                if (props[key] !== undefined) {
                   cleanedProps[key] = props[key]
                 }
               });
             }
 
             const cacheKey = JSON.stringify({ slot: slotKey, props: cleanedProps });
+
             if (variantCache.has(cacheKey)) {
               return variantCache.get(cacheKey) || "";
             }
@@ -131,7 +132,7 @@ export const setupCompose = <Sc extends string>(
 
             // Apply variants (including overridden defaults)
             Object.entries(mergedProps).forEach(([key, value]) => {
-              if (key !== "className" && flattenedVariants.has(key)) {
+              if (key !== "className" && key !== "class" && flattenedVariants.has(key)) {
                 if (typeof value === "object" && value !== null) {
                   // Handle responsive variants
                   Object.entries(value).forEach(

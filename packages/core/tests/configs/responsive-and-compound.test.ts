@@ -47,5 +47,16 @@ describe("test resposive simple config", () => {
         })
       ).toBe(root_full_str);
     });
+
+    test("with falsy props that should be retained", () => {
+      const root_full_str = "text-red-100 text-4xl bg-gray-500 border-red-500 border-black";
+
+      expect(
+        root({
+          size: "large",
+          disabled: false,
+        })
+      ).toBe(root_full_str);
+    });
   });
 });

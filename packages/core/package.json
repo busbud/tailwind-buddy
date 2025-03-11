@@ -11,9 +11,14 @@
   "types": "./dist/main.d.ts",
   "exports": {
     ".": {
-      "import": "./dist/tailwindbuddy.js",
-      "require": "./dist/tailwindbuddy.umd.cjs",
-      "types": "./dist/main.d.ts"
+      "import": {
+        "types": "./dist/main.d.ts",
+        "default": "./dist/tailwindbuddy.js"
+      },
+      "require": {
+        "types": "./dist/main.d.cts",
+        "default": "./dist/tailwindbuddy.umd.cjs"
+      }
     }
   },
   "scripts": {

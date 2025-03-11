@@ -1,9 +1,15 @@
 import { defineConfig } from "vite";
 import dts from "vite-plugin-dts";
-import path from "path";
+import * as path from "node:path";
+import { copyFileSync } from "node:fs";
 
 export default defineConfig({
-  plugins: [dts({ "rollupTypes": true})],
+  plugins: [ dts({
+    "rollupTypes": true,
+    afterBuild: () => {
+      copyFileSync("dist/main.d.ts", "dist/main.d.cts");
+    },
+  }) ],
   resolve: {
     alias: {
       "@": path.resolve(__dirname, "./src"),
@@ -12,13 +18,13 @@ export default defineConfig({
   build: {
     lib: {
       // Could also be a dictionary or array of multiple entry points
-      entry: ["./src/main.ts"],
+      entry: [ "./src/main.ts" ],
       name: "tailwindbuddy",
-      // the proper extensions will be added
       fileName: "tailwindbuddy",
+      formats: [ "es", "umd" ]
     },
     rollupOptions: {
-      external: ["fs", "path"],
+      external: [ "fs", "path" ],
       output: {
         globals: {
           path: "path",

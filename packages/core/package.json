@@ -19,7 +19,8 @@
         "types": "./dist/main.d.cts",
         "default": "./dist/tailwindbuddy.umd.cjs"
       }
-    }
+    },
+    "./dist/*": "./dist/*"
   },
   "scripts": {
     "build": "tsc && vite build",

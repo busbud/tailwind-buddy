@@ -40,12 +40,12 @@
     "@types/react-dom": "^18.3.0",
     "@typescript-eslint/eslint-plugin": "^7.2.0",
     "@typescript-eslint/parser": "^7.2.0",
-    "@vitejs/plugin-react": "^4.2.1",
-    "autoprefixer": "^10.4.19",
-    "postcss": "^8.4.38",
+    "@vitejs/plugin-react": "^4.3.4",
+    "autoprefixer": "^10.4.21",
+    "postcss": "^8.5.3",
     "@busbud/tailwind-buddy": "workspace:*",
     "tailwindcss": "^3.4.3",
-    "typescript": "^5.2.2",
+    "typescript": "^5.8.2",
     "vite": "^5.2.0",
     "vite-plugin-dts": "^3.8.1"
   }

@@ -31,22 +31,38 @@
   },
   "dependencies": {
     "clsx": "^2.1.1",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
     "tailwind-merge": "^2.3.0"
   },
   "devDependencies": {
-    "@types/react": "^18.3.2",
-    "@types/react-dom": "^18.3.0",
+    "@busbud/tailwind-buddy": "workspace:*",
+    "@types/react": "^18.3.18",
+    "@types/react-dom": "^18.3.5",
     "@typescript-eslint/eslint-plugin": "^7.2.0",
     "@typescript-eslint/parser": "^7.2.0",
     "@vitejs/plugin-react": "^4.3.4",
     "autoprefixer": "^10.4.21",
     "postcss": "^8.5.3",
-    "@busbud/tailwind-buddy": "workspace:*",
-    "tailwindcss": "^3.4.3",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "tailwindcss": "^3.4.17",
     "typescript": "^5.8.2",
     "vite": "^5.2.0",
     "vite-plugin-dts": "^3.8.1"
+  },
+  "peerDependencies": {
+    "@busbud/tailwind-buddy": "workspace:*",
+    "react": ">=18.0.0",
+    "react-dom": ">=18.0.0",
+    "@types/react": ">=18.0.0",
+    "@types/react-dom": ">=18.0.0",
+    "tailwindcss": "^3"
+  },
+  "peerDependenciesMeta": {
+    "@types/react": {
+      "optional": true
+    },
+    "@types/react-dom": {
+      "optional": true
+    }
   }
 }

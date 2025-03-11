@@ -14,7 +14,8 @@
   "scripts": {
     "build": "tsc && vite build",
     "build:withcss": "tsc && vite build && pnpm generate:css",
-    "generate:css": "tailwindcss -i ./index.css -o ./dist/style.css"
+    "generate:css": "tailwindcss -i ./index.css -o ./dist/style.css",
+    "prepare": "pnpm build"
   },
   "exports": {
     ".": {

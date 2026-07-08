@@ -26,8 +26,8 @@ const makeBadge = () =>
     compoundVariants: [
       {
         conditions: { size: "md" },
-        // v2 `class:` spelling — must end up in the safelist.
-        class: { root: "ring-2" },
+        // v2 `class:` spelling with per-slot arrays — must end up in the safelist.
+        class: { root: ["ring-2", "shadow"] },
       },
     ],
     defaultVariants: { size: "sm" },
@@ -47,6 +47,8 @@ describe("v2 compat: generateSafeList", () => {
     // expanded across screens too.
     expect(safelist).toContain("sm:ring-2");
     expect(safelist).toContain("md:ring-2");
+    expect(safelist).toContain("sm:shadow");
+    expect(safelist).toContain("md:shadow");
   });
 
   it("works with the v3 `compose` result shape too (mixed consumers)", () => {

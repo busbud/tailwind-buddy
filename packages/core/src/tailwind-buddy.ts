@@ -418,6 +418,8 @@ type NormalizedCompound<S extends Slots> = {
   classes: VariantValue<S>;
 };
 
+type EmptyVariants = Record<never, never>;
+
 type ComposeConfigNormalized<
   S extends Slots,
   V extends Variants<S>,
@@ -482,10 +484,10 @@ export const setupCompose = <Sc extends string>(
   mergeClasses: (input: string) => string = identityMerge
 ) => {
   return <
-    V extends Variants<S>,
-    CV extends CompoundVariant<V, S>,
-    DV extends DefaultVariants<V, S>,
     S extends Slots,
+    V extends Variants<S> = EmptyVariants,
+    CV extends CompoundVariant<V, S> = CompoundVariant<V, S>,
+    DV extends DefaultVariants<V, S> = DefaultVariants<V, S>,
     R extends ResponsiveVariants<V> = ResponsiveVariants<V>
   >(
     config: ComposeConfigInput<S, V, CV, R, DV>

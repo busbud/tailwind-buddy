@@ -1,106 +1,93 @@
 import { generateResponsiveVariants } from "./generate-responsive-variants";
 import { cleanString } from "./strings";
 
-function cleanVariantsClasses(variants: {
-  [k in string]: {
-    [k in string]: string
-  } | {
-    [k in string]: string
+const isRecord = (value: unknown): value is Record<string, unknown> =>
+  typeof value === "object" && value !== null && !Array.isArray(value);
+
+const cleanClassPayload = (value: unknown): unknown => {
+  if (typeof value === "string") {
+    return cleanString(value);
   }
-}) {
-  const _variants = variants
-  Object.entries(_variants).forEach(([vKey, vValue]) => {
-    Object.entries(vValue).forEach(([key, value]) => {
-      if (typeof value === "string") {
-        _variants[vKey][key] = cleanString(value);
-      } else if (typeof value === "object") {
-        Object.entries(value).forEach(([rKey, values]) => {
-          // @ts-ignore
-          _variants[vKey][key][rKey] = cleanString(values);
-        });
-      } else {
-        console.log("cleanVariantsClasses: type missmatch on safeList");
-      }
+
+  if (Array.isArray(value)) {
+    return value
+      .filter((className): className is string => typeof className === "string")
+      .map(cleanString);
+  }
+
+  if (isRecord(value)) {
+    return Object.fromEntries(
+      Object.entries(value).map(([key, classValue]) => [
+        key,
+        cleanClassPayload(classValue),
+      ])
+    );
+  }
+
+  return value;
+};
+
+const addClassTokens = (value: unknown, safelistClasses: Set<string>) => {
+  if (typeof value === "string") {
+    cleanString(value)
+      .split(" ")
+      .filter(Boolean)
+      .forEach((className) => {
+        safelistClasses.add(className);
+      });
+    return;
+  }
+
+  if (Array.isArray(value)) {
+    value.forEach((classValue) => {
+      addClassTokens(classValue, safelistClasses);
+    });
+    return;
+  }
+
+  if (isRecord(value)) {
+    Object.values(value).forEach((classValue) => {
+      addClassTokens(classValue, safelistClasses);
+    });
+  }
+};
+
+function cleanVariantsClasses<
+  T extends Record<string, Record<string, unknown>> | undefined
+>(variants: T): T {
+  if (!variants) return variants;
+
+  Object.values(variants).forEach((variantValues) => {
+    Object.entries(variantValues).forEach(([key, value]) => {
+      variantValues[key] = cleanClassPayload(value);
     });
   });
 
-  return _variants
+  return variants;
 }
 
 function cleanCompoundClasses(
   compoundClasses: {
-    conditions: any[];
-    classes: string | string[] | { [key: string]: string | string[] };
+    conditions: unknown;
+    class?: unknown;
+    classes?: unknown;
   }[]
 ) {
   return compoundClasses.map((compound) => {
-    const { conditions, classes: c } = compound;
-    if (Array.isArray(c)) {
-      const ret: string[] = [];
-      c.forEach((v) => {
-        ret.push(cleanString(v));
-      });
-      return { conditions, class: ret };
-    } else if (typeof c === "string") {
-      return { conditions, class: cleanString(c) };
-    } else if (typeof c === "object") {
-      const ret: { [key: string]: string | string[] } = {};
-      Object.entries(c).forEach(([rKey, values]) => {
-        if (Array.isArray(values)) {
-          const retValues: string[] = [];
-          values.forEach((v) => {
-            retValues.push(cleanString(v));
-          });
-          ret[rKey] = retValues;
-        } else {
-          ret[rKey] = cleanString(values);
-        }
-      });
-      return { conditions, class: ret };
-    } else {
-      console.log("cleanCompoundClasses: type missmatch on safeList");
-    }
+    const { conditions } = compound;
+    const classValue =
+      compound.classes !== undefined ? compound.classes : compound.class;
+
+    return { conditions, class: cleanClassPayload(classValue) };
   });
 }
 
 function extractVariantClasses(variant: any, safelistClasses: Set<string>) {
-  Object.entries(variant).forEach(([_, values]: any) => {
-    if (typeof values === "string") {
-      const splitValues = values.split(" ");
-      splitValues.forEach((values: any) => {
-        safelistClasses.add(values);
-      });
-    } else if (typeof values === "object") {
-      Object.entries(values).forEach(([_, values]: any) => {
-        const splitValues = values.split(" ");
-        splitValues.forEach((values: any) => {
-          safelistClasses.add(values);
-        });
-      });
-    } else {
-      console.log("extractVariantClasses: type missmatch on safeList");
-    }
-  });
+  addClassTokens(variant, safelistClasses);
 }
 
 function extractCompoundClasses(compound: any, safelistClasses: Set<string>) {
-  const c = compound.class;
-   if (typeof c === "string") {
-    const splitValues = c.split(" ");
-    splitValues.forEach((values: any) => {
-      safelistClasses.add(values);
-    });
-  } else if (typeof c === "object") {
-    Object.entries(c).forEach(([_, values]: any) => {
-      const splitValues = values.split(" ");
-      splitValues.forEach((values: any) => {
-        safelistClasses.add(values);
-      });
-    });
-  } else {
-    // @ts-ignore
-    console.log("extractCompoundClasses: type missmatch on safeList for variants");
-  }
+  addClassTokens(compound.class, safelistClasses);
 }
 
 export const generateSafeList = function (variantsArray: any[], screens = ["sm", "md", "lg", "xl", "xxl"]) {

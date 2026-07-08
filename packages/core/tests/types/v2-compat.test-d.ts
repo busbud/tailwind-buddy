@@ -8,6 +8,7 @@
  * behaviour existing v2 consumers were built against, so preserving it means zero migration.
  */
 import { expectTypeOf } from "vitest";
+import { setupCompose } from "../../src/tailwind-buddy";
 import type { ButtonProps } from "../setup/v2-compat";
 import { buttonVariants } from "../setup/v2-compat";
 
@@ -71,3 +72,10 @@ expectTypeOf(root).toBeCallableWith({
   isDisabled: false,
   className: "extra",
 });
+
+// 8. Slot-only configs keep consumer props assignable when `variants` is omitted.
+const slotOnlyVariants = setupCompose(["md"] as const)({
+  slots: { root: "x" },
+  defaultVariants: {},
+})<{ disabled?: boolean }>();
+slotOnlyVariants.root({ disabled: true });

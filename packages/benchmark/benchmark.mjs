@@ -6,6 +6,7 @@ import * as CVA from "./configs/cva.mjs";
 import {
   noSlotsAndCompoundNoTwMergeNoResponsive,
   slotsAndCompoundNoTwMergeNoResponsive,
+  v2SetupComposeWithMerge,
 } from "./configs/tailwindbuddy.mjs";
 import * as TV from "./configs/tv.mjs";
 import { twMerge } from "./configs/twMerge.config.mjs";
@@ -37,6 +38,12 @@ suite
         size: "md",
       })
     );
+  })
+  // v2 setupCompose path: tailwind-merge injected internally (no external wrap)
+  .add("TAILWINDBUDDY v2 setupCompose - twMerge injected - compound yes", function () {
+    v2SetupComposeWithMerge.avatar.root({
+      size: "md",
+    });
   })
 
   .on("cycle", function (event) {

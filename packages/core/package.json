@@ -21,8 +21,9 @@
     "release": "pnpm prepack && changelogen --release --output ../../CHANGELOG.md  && pnpm publish --no-git-checks --access public && git push --follow-tags",
     "npm-auth-check": "[[ $(npm_config_registry=https://registry.npmjs.org npm whoami) = \"busbud-dev\" ]] && echo \"NPM Authentication ✅\"",
     "prepack": "pnpm build",
-    "test:ci": "CI=true pnpm test:unit",
-    "test:unit": "vitest"
+    "test:ci": "CI=true pnpm test:unit && pnpm typecheck:tests",
+    "test:unit": "vitest",
+    "typecheck:tests": "tsc --noEmit -p tsconfig.tests.json"
   },
   "devDependencies": {
     "autoprefixer": "^10.4.19",

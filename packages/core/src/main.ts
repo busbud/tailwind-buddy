@@ -1,5 +1,11 @@
 export { generateSafeList } from "./utils/tailwind-utils";
-export { compose } from "./tailwind-buddy";
+export { compose, setupCompose } from "./tailwind-buddy";
+
+export type {
+  VariantsProps,
+  ComposeResult,
+  ComposeResultV2,
+} from "./tailwind-buddy";
 
 export type VariantProps<
   T extends Record<string, readonly string[]>,

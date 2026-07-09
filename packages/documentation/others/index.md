@@ -2,7 +2,7 @@
 editLink: true
 ---
 
-# Migrate from  Migratiom from 2.4.2 to 3.0.0
+# Migrate from 2.4.2 to 3.0.0
 
 ## Component configuration
 
@@ -47,7 +47,7 @@ export type FooProps = VariantsProps<typeof fooVariants> &
 ### Now
 
 > [!NOTE]
-> No more arrray of string to write the classes
+> No more array of strings to write the classes
 
 
 ```ts [tailwind-buddy-interface.ts]
@@ -89,7 +89,7 @@ export type FooProps = VariantProps<ComposeType["variants"]> & ComposeType["prop
 
 ### Previously
 
-We we using class
+We were using class
 
 ```ts
 compoundVariants: [
@@ -126,7 +126,7 @@ compoundVariants: [
 
 ### Previously
 
-We didn't had to add the screens as it was passed from the setupCompose
+We didn't have to add the screens as it was passed from the setupCompose
 
 ```ts
 import { screens } from "./src/tailwind-buddy-interface";
@@ -148,7 +148,7 @@ export default {
 
 ### Now
 
-Now we need to be eplicit here and also inside the component type alias explicitly say what is available. you will generally use the same type defined 
+Now we need to be explicit here and also inside the component type alias explicitly say what is available. You will generally use the same type defined in your component configuration.
 
 ```ts
 import { screens } from "./src/tailwind-buddy-interface";

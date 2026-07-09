@@ -2,7 +2,7 @@
 editLink: true
 ---
 
-# Add specific classes base on your different slots
+# Add specific classes based on your different slots
 
 Now, we want to create a variation of the component that affects both the label and the root container.
 

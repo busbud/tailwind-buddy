@@ -1,6 +1,6 @@
 # Benchmarks
 
-We do compare our library against `cva` amd `tailwind-variants`
+We compare our library against `cva` and `tailwind-variants`
 
 To run them:
 
@@ -15,8 +15,8 @@ come back to benchmark folder and run
 ## Test
 
 `pnpm test`
-To make sure we do have the same outputs between library
+To make sure we have the same outputs between libraries
 
-## Our current benchmarks. TCA is our library At this time we had another name
+## Our current benchmarks (TCA was our library's name at the time)
 
 <img width="825" alt="Image" src="https://github.com/user-attachments/assets/f78bf646-363d-4876-8477-0cc638dfd217" />

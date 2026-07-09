@@ -4,7 +4,7 @@ editLink: true
 
 # Split your component into smaller parts
 
-Lets say we want a label where its design react base on parent configuration.
+Let's say we want a label where its design reacts based on parent configuration.
 
 ```ts [Simple.variants.ts].{4,12-13}
 import { compose, VariantProps } from "@busbud/tailwind-buddy";

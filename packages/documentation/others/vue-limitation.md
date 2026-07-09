@@ -2,14 +2,14 @@
 editLink: true
 ---
 
-# A known limitation to VueJS and vite
+# A known limitation with VueJS and Vite
 
 
 You can check any time inside our `packages/vuelib-tailwind4` or `packages/vuelib` how it is used.
 
-The only difference with React is how vite + vue extract the types. The definition stay the same
+The only difference with React is how Vite + Vue extract the types. The definition stays the same
 
-but inside the component when you define the props we need to extract manually the variants. Check `packages/vuelib/src/components/Button/Button.variants.ts` for more details
+But inside the component when you define the props, we need to manually extract the variants. Check `packages/vuelib/src/components/Button/Button.variants.ts` for more details
 
 ```vue
 <template>

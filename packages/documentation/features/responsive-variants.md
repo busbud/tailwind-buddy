@@ -2,22 +2,22 @@
 editLink: true
 ---
 
-# Handle responsivness to avoid flickering of the ui
+# Handle responsiveness to avoid flickering of the UI
 
 > [!NOTE]
 > This should not be used excessively. As you'll see, we use [safelist](https://v3.tailwindcss.com/docs/content-configuration#safelisting-classes), which forces Tailwind to recognize all possible CSS class combinations for variants and compoundVariants, ensuring they are included in the final build.
 
 
-Use case: We want to let the user define what size of the button he wants base on the breakpoints.
+Use case: We want to let the user define what size of the button they want based on the breakpoints.
 
-To use repsonsive variants we will setup things like this:
+To use responsive variants we will set up things like this:
 
 
 ## Create `tailwind-buddy-interface.ts`
 
 ```ts [tailwind-buddy-interface.ts]
 export type Screens = "sm" | "md";
-export const screens: Screens[] = ["sm", "md"]; // or use tailwind default screns
+export const screens: Screens[] = ["sm", "md"]; // or use Tailwind default screens
 
 ```
 
@@ -88,11 +88,11 @@ export type SimpleProps = VariantProps<ComposeType["variants"], ComposeType["scr
 
 ## Specificity for TAILWIND 4
 
-We do have a project example using tailwind v4. As you know for now tailwind4 don't plan to support the safelist from tailwind 3. In that case we need to generate the file so
-tailwind will know which css classes used.
+We do have a project example using Tailwind v4. Tailwind 4 does not currently support the Tailwind 3 safelist. In that case we need to generate the file so that
+Tailwind will know which CSS classes are used.
 
 
-To achieve that you can use our technic:
+To achieve that you can use our technique:
 - Create `generate-safelist.ts`
 ```ts [generate-safelist.ts]
 import { generateSafeList } from "@busbud/tailwind-buddy";
@@ -120,7 +120,7 @@ fs.writeFileSync(
 
 console.log('Safelist generated successfully!');
 ```
-- Update your package json
+- Update your package.json
 
 ```json
 scripts: {

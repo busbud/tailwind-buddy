@@ -5,3 +5,8 @@ packages:
   - "packages/benchmark"
   - "packages/vuelib"
   - "packages/vuelib-tailwind4"
+allowBuilds:
+  esbuild: true
+  husky: true
+
+minimumReleaseAge: 1440

@@ -51,6 +51,23 @@ describe("v2 compat: generateSafeList", () => {
     expect(safelist).toContain("md:shadow");
   });
 
+  it("does not throw when a component declares responsiveVariants but no variants", () => {
+    // v2 `variants` is optional. A component can list `responsiveVariants`
+    // while omitting `variants`; generateSafeList must not dereference an
+    // undefined variants map. (Built raw since the types forbid this shape.)
+    const optionsWithoutVariants = {
+      options: {
+        slots: { root: "block" },
+        compoundVariants: [],
+        defaultVariants: {},
+        responsiveVariants: ["size"],
+      },
+    };
+    expect(() =>
+      generateSafeList([optionsWithoutVariants], ["sm", "md"])
+    ).not.toThrow();
+  });
+
   it("works with the v3 `compose` result shape too (mixed consumers)", () => {
     const card = composeV3<{
       slots: ["root"];

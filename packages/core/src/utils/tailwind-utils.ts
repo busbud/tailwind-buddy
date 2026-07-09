@@ -105,7 +105,10 @@ export const generateSafeList = function (variantsArray: any[], screens = ["sm",
       const compounds = definitionResult.compoundVariants || [];
       definitionResult.responsiveVariants.forEach((variant: any) => {
         extractVariantClasses(
-          definitionResult.variants[variant],
+          // `variants` is optional for v2 consumers; a component may declare
+          // `responsiveVariants` without a `variants` map. Guard the access so
+          // it does not throw (extractVariantClasses no-ops on undefined).
+          definitionResult.variants?.[variant],
           safelistClasses
         );
         const compoundFounds = compounds.filter((compound: any) => {

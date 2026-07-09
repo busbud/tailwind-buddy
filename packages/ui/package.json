@@ -5,7 +5,6 @@
   "license": "UNLICENSED",
   "files": [
     "dist",
-    "tailwind.config.js",
     "src"
   ],
   "main": "./dist/uikit.umd.cjs",
@@ -13,7 +12,8 @@
   "types": "./dist/uikit.d.ts",
   "scripts": {
     "build": "tsc && vite build",
-    "build:withcss": "tsc && vite build && pnpm generate:css",
+    "build:withcss": "pnpm generate:safelist && tsc && vite build && pnpm generate:css",
+    "generate:safelist": "vite-node scripts/generate-safelist.ts",
     "generate:css": "tailwindcss -i ./index.css -o ./dist/style.css"
   },
   "exports": {
@@ -22,30 +22,27 @@
       "require": "./dist/uikit.umd.cjs",
       "types": "./dist/uikit.d.ts"
     },
-    "./tailwind.config": {
-      "import": "./tailwind.config.ts",
-      "require": "./tailwind.config.ts"
-    },
+    "./safelist.css": "./src/generated/safelist.css",
     "./style.css": "./dist/style.css"
   },
   "dependencies": {
     "clsx": "^2.1.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "tailwind-merge": "^2.3.0"
+    "tailwind-merge": "^3.6.0"
   },
   "devDependencies": {
+    "@tailwindcss/cli": "^4.3.2",
     "@types/react": "^18.3.2",
     "@types/react-dom": "^18.3.0",
     "@typescript-eslint/eslint-plugin": "^7.2.0",
     "@typescript-eslint/parser": "^7.2.0",
     "@vitejs/plugin-react": "^4.2.1",
-    "autoprefixer": "^10.4.19",
-    "postcss": "^8.4.38",
     "@busbud/tailwind-buddy": "workspace:*",
-    "tailwindcss": "^3.4.3",
+    "tailwindcss": "^4.3.2",
     "typescript": "^5.2.2",
     "vite": "^5.2.0",
+    "vite-node": "^1.6.1",
     "vite-plugin-dts": "^3.8.1"
   }
 }

@@ -1,3 +1,9 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
+
+/* Inherit ui-kit's runtime-composed safelist — the v4 equivalent of an app
+   consuming a component library's baked-in `@source inline`. */
+@import "ui-kit/safelist.css";
+
+/* Generate the utility classes ui-kit's compiled components reference
+   (v4 ignores node_modules by default, so register it explicitly). */
+@source "../node_modules/ui-kit/dist/uikit.js";

@@ -1,3 +1,15 @@
+## v3.3.0
+
+[compare changes](https://github.com/busbud/tailwind-buddy/compare/v3.2.0...v3.3.0)
+
+### 🚀 Enhancements
+
+- Support Tailwind CSS v4 ([#32](https://github.com/busbud/tailwind-buddy/pull/32))
+
+### ❤️ Contributors
+
+- Jesse Holden ([@jesse-holden](http://github.com/jesse-holden))
+
 ## v3.2.0
 
 [compare changes](https://github.com/busbud/tailwind-buddy/compare/v3.1.3...v3.2.0)

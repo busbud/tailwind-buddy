@@ -133,4 +133,26 @@ describe("v2 compat: setupCompose", () => {
     } as Record<string, unknown>);
     expect(loose).not.toContain("null");
   });
+
+  it("does not treat object-valued non-variant props as breakpoints", () => {
+    // Regression: an object-valued prop that is NOT a declared variant (e.g. a
+    // `style`/`sx` object) had its keys leaked into `usedBreakpoints`, so a
+    // matching compound emitted garbage `<key>:`-prefixed classes.
+    const compose2 = setupCompose(["sm", "lg"] as const);
+    const variants = compose2({
+      slots: { root: "block" },
+      variants: { intent: { primary: { root: "text-blue-500" } } },
+      compoundVariants: [
+        { conditions: { intent: "primary" }, class: { root: "font-bold" } },
+      ],
+      defaultVariants: { intent: "primary" },
+    })<{ style?: Record<string, unknown> }>();
+
+    const root = variants.root({ style: { color: "red" } });
+    // compound applies unprefixed…
+    expect(root).toContain("font-bold");
+    // …but the non-variant object's key must NOT become a breakpoint prefix.
+    expect(root).not.toContain("color:font-bold");
+    expect(root).not.toContain("color:");
+  });
 });

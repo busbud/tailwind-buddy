@@ -164,9 +164,13 @@ const createSlotsCore = <
             ...cleanedProps,
           };
 
-          // Collect every breakpoint referenced by responsive props.
+          // Collect every breakpoint referenced by responsive *variant* props.
+          // Only declared variants may carry responsive objects; iterating other
+          // object-valued props (e.g. a `style`/`sx` bag) would leak their keys
+          // as breakpoints and emit garbage `<key>:`-prefixed compound classes.
           const usedBreakpoints = new Set<string>(["initial"]);
-          for (const value of Object.values(mergedProps)) {
+          for (const [key, value] of Object.entries(mergedProps)) {
+            if (!flattenedVariants.has(key)) continue;
             if (isRecord(value)) {
               for (const bp of Object.keys(value)) {
                 usedBreakpoints.add(bp);

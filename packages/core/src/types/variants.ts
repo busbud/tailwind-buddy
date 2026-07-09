@@ -3,8 +3,12 @@ import type { Slots } from "./slots";
 /**
  * The set of variant names that may receive responsive (`{ initial, ...screens }`) values.
  *
- * Defaults to `never[]` so that, when `responsiveVariants` is omitted, every
- * variant is treated as a plain scalar (resolves issue #31 — optionality).
+ * When the `responsiveVariants` generic is not supplied, it defaults to this
+ * type (`(keyof V)[]`), so `MergedProps` type-accepts a responsive object for
+ * every variant. That is intentionally permissive: the runtime accepts both a
+ * scalar and a responsive object regardless of what `responsiveVariants` lists,
+ * so widening the type never produces an invalid config. `responsiveVariants`
+ * itself stays optional (resolves issue #31 — optionality).
  */
 export type ResponsiveVariants<V> = (keyof V)[];
 

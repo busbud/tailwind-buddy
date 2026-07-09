@@ -526,10 +526,15 @@ export const setupCompose = <Sc extends string>(
  * Infers the props bag of a composed component from its slot functions.
  *
  * Works against the v2 `setupCompose` result (which carries slot functions plus
- * a `definition` / `options` member): `Extract` keeps only the function members,
- * so `VariantsProps<typeof buttonVariants>` yields the merged props without
+ * a `definition` / `options` member). Slot functions are the only members that
+ * return `string`; `Extract`ing by that return type keeps them and drops
+ * `definition` (returns an object) and `options` (not callable). Extracting on
+ * `(...args: any[]) => unknown` instead would also match `definition`, widening
+ * the result to `Parameters<slot> | Parameters<definition>` — i.e. the slot bag
+ * `| undefined`. Selecting on the `string` return type yields exactly the slot
+ * bag, so `VariantsProps<typeof buttonVariants>` gives the merged props without
  * requiring the consumer to re-declare the variant keys (resolves issue #31).
  */
 export type VariantsProps<C extends Record<string, unknown>> = Parameters<
-  Extract<C[keyof C], (...args: any[]) => unknown>
+  Extract<C[keyof C], (...args: any[]) => string>
 >[0];

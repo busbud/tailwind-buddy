@@ -1,3 +1,5 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
+
+/* Runtime-composed responsive variants that never appear literally in source.
+   Generated from tailwind-buddy's generateSafeList — see scripts/generate-safelist.ts. */
+@import "./src/generated/safelist.css";

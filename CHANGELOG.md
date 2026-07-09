@@ -1,3 +1,25 @@
+## v3.2.0
+
+[compare changes](https://github.com/busbud/tailwind-buddy/compare/v3.1.3...v3.2.0)
+
+### 🚀 Enhancements
+
+- Restore v2 setupCompose + inferred VariantsProps compat over v3 core ([#33](https://github.com/busbud/tailwind-buddy/pull/33))
+
+### 📖 Documentation
+
+- Fix typos and grammar ([12c000f](https://github.com/busbud/tailwind-buddy/commit/12c000f))
+
+### 🏡 Chore
+
+- **release:** V3.1.3 ([386aa67](https://github.com/busbud/tailwind-buddy/commit/386aa67))
+- Update pnpm to 11.10.0 ([93fce32](https://github.com/busbud/tailwind-buddy/commit/93fce32))
+
+### ❤️ Contributors
+
+- Jesse Holden ([@jesse-holden](http://github.com/jesse-holden))
+- Florent Giraud ([@flozero](http://github.com/flozero))
+
 ## v3.1.3
 
 [compare changes](https://github.com/busbud/tailwind-buddy/compare/v3.1.2...v3.1.3)

@@ -12,6 +12,19 @@ inside core folder:
 come back to benchmark folder and run
 `node benchmarks.mjs`
 
+## `cn` helper benchmark (`cn-benchmark.mjs`)
+
+Measures the `cn` utility that consumers use to merge classes, comparing the
+legacy `clsx` + `tailwind-merge` implementation against the drop-in `cnfast`.
+
+Workloads are harvested from real call sites in this repo (vuelib Button
+variants + the shadcn-style override pattern). A parity guard asserts
+byte-identical output before every run.
+
+Run it from the benchmark folder:
+
+`node cn-benchmark.mjs`
+
 ## Test
 
 `pnpm test`

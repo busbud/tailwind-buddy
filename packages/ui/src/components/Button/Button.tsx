@@ -1,6 +1,6 @@
 import React, { ReactNode } from "react";
 import { type ButtonProps, buttonVariants } from "./Button.variants";
-import { twMerge } from "tailwind-merge"
+import { cn } from "cnfast"
 
 const defaultVariants = buttonVariants.options.defaultVariants;
 
@@ -32,7 +32,7 @@ export const Button: React.FC<ButtonProps> = ({
 
   return (
     <button
-      className={twMerge(root({
+      className={cn(root({
         appearance,
         className,
         size,
